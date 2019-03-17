@@ -22,7 +22,7 @@ void Analysis(){
 
   Int_t Nch=2;
   Int_t TimeBin=300,EnergyBin=100;
-  Float_t TMin=0,TMax=18000,EMin=0,EMax=100;
+  Float_t TMin=0,TMax=100000,EMin=0,EMax=100;
   
 
   bool printFileList= true;
@@ -43,9 +43,11 @@ void Analysis(){
   TTree* DataTree[3]; //Tree dei dati
   TH1F* Histo[(int)FileList.size()][Nch]; // [2] canali 59 e 315
 
-  TH2F* HistoEnergyVsTime = new TH2F("HistoEnergyVsTime","HistoEnergyVsTime",TimeBin,TMin,TMax,EnergyBin,Emin,Emax);
+  TH2F* HistoEnergyVsTime[2]; 
+  HistoEnergyVsTime[0] = new TH2F("HistoEnergyVsTimeCh59","HistoEnergyVsTimeCh59",TimeBin,TMin,TMax,EnergyBin,EMin,EMax);
+  HistoEnergyVsTime[1] = new TH2F("HistoEnergyVsTimeCh315","HistoEnergyVsTimeCh315",TimeBin,TMin,TMax,EnergyBin,EMin,EMax);
   
-  TCanvas* canvino = new TCanvas("HistoCanvas","HistoCanvas",1Nch00,800);
+  TCanvas* canvino = new TCanvas("HistoCanvas","HistoCanvas",1200,800);
   canvino->Divide(3,Nch);
   
   Double_t MeanPedCh59,MeanPedCh315; // mean value of pedestal taken before and after Phys for both channel
@@ -74,6 +76,7 @@ void Analysis(){
     Histo[i+1][1]  =  new TH1F(("HistoPhysCh315Num"+to_string(i+1)).c_str(),("HistoPhysCh315Num"+to_string(i+1)).c_str(),600,0,600);
     GetSpectrum(DataTree[1],Histo[i+1][0],Histo[i+1][1],MeanPedCh59,MeanPedCh315);
 
+    FillETime(DataTree[1],HistoEnergyVsTime[0],HistoEnergyVsTime[1],MeanPedCh59,MeanPedCh315);
 
     canvino->cd(1);
     //Histo[i][0]->GetXaxis()->SetRangeUser(Histo[i][0]->GetMean()-7*Histo[i][0]->GetRMS(),Histo[i][0]->GetMean()+7*Histo[i][0]->GetRMS());
@@ -104,8 +107,17 @@ void Analysis(){
     Histo[i+1][1]->Draw();
     
     canvino->SaveAs(("Plot/Plot"+to_string(i+1)+".png").c_str());
-    
-  }//chiudo for i+=3
   
+  }//chiudo for i+=3
 
+  gROOT->SetBatch(kFALSE);
+
+  TCanvas* canvET = new TCanvas("EnergySpectrumVsTime","EnergySpectrumVsTime",1200,800);
+  canvET->Divide(2,1);
+  canvET->cd(1);
+  HistoEnergyVsTime[0]->Draw("COLZ");
+  canvET->cd(2);
+  HistoEnergyVsTime[1]->Draw("COLZ");
+  
+  canvET->SaveAs("Plot/EnergyPlot/EnergySpectrumVsTime.png");
 }
