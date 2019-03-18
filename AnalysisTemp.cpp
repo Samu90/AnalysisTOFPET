@@ -18,93 +18,96 @@
 
 
 void Analysis(){
-
+  
   gROOT->Reset();
   gROOT->SetBatch(kTRUE);
 
   gSystem->Exec("mkdir Plot");
-  gSystem->Exec("mkdir Plot/EnergyTemp");
-  gSystem->Exec("mkdir Plot/EnergyTemp/Projections/");
-
-  vector<string> FileList;
-  FileList=ReadData("TestStability3/fileov7.txt");
-
-  Int_t Nch=2;
-  Int_t EnergyBin=100,TempBin=15;
-  Double_t EMin=0,EMax=100,TempMin=26,TempMax=35;
-
-  bool printOpenedFileNumber=true;
-  bool PrintVectorTGraph=true;
   
-  TFile* DataFile[3]; //File dei dati
-  TTree* DataTree[3]; //Tree dei dati
-  TH1D* Histo[(int)FileList.size()][Nch]; // [2] canali 59 e 315
+  gSystem->Exec("mkdir Plot/EnergyTempV2");
+  gSystem->Exec("mkdir Plot/EnergyTempV2/Partials/");
 
-  TH2D* HistoEnergyVsTemp[2]; 
-  HistoEnergyVsTemp[0] = new TH2D("HistoEnergyVsTempCh59","HistoEnergyVsTempCh59",TempBin,TempMin,TempMax,EnergyBin,EMin,EMax);
-  HistoEnergyVsTemp[1] = new TH2D("HistoEnergyVsTempCh315","HistoEnergyVsTempCh315",TempBin,TempMin,TempMax,EnergyBin,EMin,EMax);
+  //gStyle->SetOptStat("000001000");
 
-  Double_t MeanPedCh59,MeanPedCh315; // mean value of pedestal taken before and after Phys for both channel
+  vector<string> FileListPedestal;
+  FileListPedestal=ReadData("TestStability3/PedFile.txt");
+
+  vector<string> FileListPhysics;
+  FileListPhysics=ReadData("TestStability3/PhysFile.txt");
+
   
-  for(int i=0;i<(int)FileList.size()-2;i+=3){
+  //Get Pedestal
+  Double_t Pedestal[(int)FileListPhysics.size()][2];
+  Double_t PedestalCh1[2];
+  Double_t PedestalCh2[2];
+
+  int k=0;
+
+  for(int i=0;i < (int)FileListPedestal.size()-1;i+=2){
     
-    for(int j=0; j<3;j++){
-      DataFile[j]=TFile::Open(("TestStability3/"+FileList.at(i+j)).c_str());
-      if(printOpenedFileNumber) std::cout << "FileOpened: " << i+j << std::endl;
-      DataTree[j] = (TTree*)DataFile[j]->Get("data");
-    }//chiudo for j
+    TFile* f0= TFile::Open(("TestStability3/"+FileListPedestal.at(i)).c_str());
+    TFile* f1= TFile::Open(("TestStability3/"+FileListPedestal.at(i)).c_str());
+
+    TTree* tree0 = (TTree*)f0->Get("data"); //Before
+    TTree* tree1 = (TTree*)f1->Get("data"); //After
     
-    Histo[i][0]  =  new TH1D(("HistoPedCh59BNum"+to_string(i+1)).c_str(),("HistoPedCh59BNum"+to_string(i+1)).c_str(),600,0,600);
-    Histo[i][1]  =  new TH1D(("HistoPedCh315BNum"+to_string(i+1)).c_str(),("HistoPedCh315BNum"+to_string(i+1)).c_str(),600,0,600);
-    GetPedestal(DataTree[0], Histo[i][0], Histo[i][1]);
+    GetPedestal(tree0,&PedestalCh1[0],&PedestalCh2[0]);
+    GetPedestal(tree1,&PedestalCh1[1],&PedestalCh2[1]);
     
+    Pedestal[k][0]=(PedestalCh1[0]+PedestalCh1[1])/2;
+    Pedestal[k][1]=(PedestalCh2[0]+PedestalCh2[1])/2;
     
-    Histo[i+2][0]  =  new TH1D(("HistoPedCh59ANum"+to_string(i+1)).c_str(),("HistoPedCh59ANum"+to_string(i+1)).c_str(),600,0,600);
-    Histo[i+2][1]  =  new TH1D(("HistoPedCh315ANum"+to_string(i+1)).c_str(),("HistoPedCh315ANum"+to_string(i+1)).c_str(),600,0,600);
-    GetPedestal(DataTree[2],Histo[i+2][0],Histo[i+2][1]);
-    
-    MeanPedCh59=(Histo[i][0]->GetMean()+Histo[i+2][0]->GetMean())/2;
-    MeanPedCh315=(Histo[i][1]->GetMean()+Histo[i+2][1]->GetMean())/2;
-    
-    FillETemperature(DataTree[1],HistoEnergyVsTemp[0],HistoEnergyVsTemp[1],MeanPedCh59,MeanPedCh315);
+    k++;
+  }// chiudo for
+
+  
+  for(int i=0;i<(int)FileListPhysics.size();i++){
+    std::cout <<(int)FileListPhysics.size() <<"   "<< (int)FileListPedestal.size()<< Pedestal[i][0] << "    " << Pedestal[i][1] << std::endl;
   }
+
   
-  Double_t XTemp[TempBin];
-  std::vector<std::vector<Double_t> > YTemp(8, std::vector<Double_t>(TempBin));
-  //Y1->[0]:Y511ch59,[1]:EY511ch59,[2]Y1275ch59,[3]EY1275ch59
-  //    [4]:Y511ch315,[5]:EY511ch315,[6]Y1275ch315,[7]EY1275ch315
+
+
+
+
+
+  TH1D* HistoCh59[(int)FileListPhysics.size()];
+  TH1D* HistoCh315[(int)FileListPhysics.size()];
+    
+  Double_t MeanTCh59[(int)FileListPhysics.size()], MeanTCh315[(int)FileListPhysics.size()];
+  Double_t SigmaTCh59[(int)FileListPhysics.size()], SigmaTCh315[(int)FileListPhysics.size()];
+
   
-  GetProfiles(HistoEnergyVsTemp[0],HistoEnergyVsTemp[1],XTemp,YTemp,"EnergyTemp");
-  
-  TGraphErrors* graphTemp1Ch59 = new TGraphErrors(TempBin,XTemp,&YTemp[0][0],0,&YTemp[1][0]);
-  TGraphErrors* graphTemp2Ch59 = new TGraphErrors(TempBin,XTemp,&YTemp[2][0],0,&YTemp[3][0]);
-  TGraphErrors* graphTemp1Ch315 = new TGraphErrors(TempBin,XTemp,&YTemp[4][0],0,&YTemp[5][0]);
-  TGraphErrors* graphTemp2Ch315 = new TGraphErrors(TempBin,XTemp,&YTemp[6][0],0,&YTemp[7][0]);
-  
-  if(PrintVectorTGraph){
-    for(int i=0;i<8;i++){
-      for(int j=0;j<TempBin;j++){
-	std::cout<<XTemp[j] <<"    " << YTemp[i][j]<< std::endl;
-      }//chiudo for j
-    }//chiudo for i
-  }//chiudo if
-  
-  
-  TCanvas* canvETemp = new TCanvas("EnergySpectrumVsTemp","EnergySpectrumVsTemp",1200,600);
-  canvETemp->Divide(2,1);
-  
-  canvETemp->cd(1);
-  HistoEnergyVsTemp[0]->Draw("COLZ");
-  graphTemp1Ch59->Draw("SAMEP");
-  graphTemp2Ch59->Draw("SAMEP");
-  
-  canvETemp->cd(2);
-  HistoEnergyVsTemp[1]->Draw("COLZ");
-  graphTemp1Ch315->Draw("SAMEP");
-  graphTemp2Ch315->Draw("SAMEP");
-  
-  
-  canvETemp->SaveAs("Plot/EnergyTemp/EnergySpectrumVsTemp.png");
-  
-  
+
+
+
+
+
+  for(int i=0;i < (int)FileListPhysics.size();i++){
+    
+    TFile* f0= TFile::Open(("TestStability3/"+FileListPhysics.at(i)).c_str());
+    TTree* tree0 = (TTree*)f0->Get("data");
+    
+    HistoCh59[i] = new TH1D(("HistoCh59N"+to_string(i)).c_str(),("HistoCh59N"+to_string(i)).c_str(),100,0,100);
+    HistoCh315[i] = new TH1D(("HistoCh315N"+to_string(i)).c_str(),("HistoCh315N"+to_string(i)).c_str(),100,0,100);
+    
+    GetSpectrum(tree0,HistoCh59[i],HistoCh315[i],Pedestal[i][0],Pedestal[i][1]);
+    GetMeanTemperature(tree0,&MeanTCh59[i],&SigmaTCh59[i],&MeanTCh315[i],&SigmaTCh315[i]);
+    
+    TCanvas* canvino = new TCanvas("Canvino","Canvino",1200,600);
+    canvino->Divide(2,1);
+    
+    canvino->cd(1);
+    HistoCh59[i]->Draw();
+    
+    canvino->cd(2);
+    HistoCh315[i]->Draw();
+      
+    canvino->SaveAs(("Plot/EnergyTempV2/Partials/Canvas"+to_string(i)+".png").c_str());
+    
+    delete canvino;
+  }
+
+
+
 }
