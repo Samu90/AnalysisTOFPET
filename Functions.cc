@@ -49,9 +49,12 @@ void FillETime(TTree* tree, TH2F* HistoCh59,TH2F* HistoCh315, Double_t MeanPedCh
 
   for(int i=0; i<tree->GetEntries();i++){
     tree->GetEntry(i);
-    if(chID==59){HistoCh59->Fill(time-1552505309,energy-MeanPedCh59);}
+    if(chID==59){
+      HistoCh59->Fill(time-1552505309,energy-MeanPedCh59);
+      //  if(i%20000==0) std::cout <<chID <<" "<< time-1552505309 <<"  "<< energy<<"-"<<MeanPedCh59<< std::endl;
+    }
     else if(chID==315){HistoCh315->Fill(time-1552505309,energy-MeanPedCh315);}
-    if(i%50000==0) std::cout<< time-1552505322 << std::endl;
+      //   if(i%20000==0) std::cout <<chID <<" "<< time-1552505309 <<"  "<< energy<<"-"<<MeanPedCh315<< std::endl;
   }//chiudo for
 
   std::cout<<"Filled EnergyTime" << std::endl;
@@ -88,7 +91,7 @@ TF1* FitNaSpectrum(TH1D* Profile){
   return spectrum;
 }
 
-void GetProfiles(TH2F* HistoCh59, TH2F* HistoCh315,Double_t* X,std::vector<std::vector<Double_t> >& Y){
+void GetProfiles(TH2F* HistoCh59, TH2F* HistoCh315,Double_t* X,std::vector<std::vector<Double_t> >& Y,string dir){
 
   //gStyle->SetOptFit(0111);
    
@@ -127,7 +130,7 @@ void GetProfiles(TH2F* HistoCh59, TH2F* HistoCh315,Double_t* X,std::vector<std::
     HistoTemp315->Draw();
     TempFitCh315->Draw("SAME");
     
-    canvino->SaveAs(("Plot/EnergyTime/Projections/Projection"+to_string(k)+".png").c_str());
+    canvino->SaveAs(("Plot/"+dir+"/Projections/Projection"+to_string(k)+".png").c_str());
 
 
     X[k]=XMax/Nbins*(k+1)-(XMax/Nbins)/2;
@@ -148,25 +151,32 @@ void GetProfiles(TH2F* HistoCh59, TH2F* HistoCh315,Double_t* X,std::vector<std::
 }
 
 
+
 void FillETemperature(TTree* tree, TH2D* HistoCh59,TH2D* HistoCh315, Double_t MeanPedCh59, Double_t MeanPedCh315){
 
   Float_t energy;
   UShort_t chID;
+  
   Double_t temp2;
   Double_t temp3;
 
+  
   tree->SetBranchAddress("energy",&energy);
   tree->SetBranchAddress("channelID",&chID);
   tree->SetBranchAddress("temp2",&temp2);
   tree->SetBranchAddress("temp3",&temp3);
 
-  for(int i=0; i<tree->GetEntries();i++){
+  for(int i=0; i< tree->GetEntries(); i++){
+
     tree->GetEntry(i);
-    if(chID==59){HistoCh59->Fill(temp2,energy-MeanPedCh59);}
-    else if(chID==315){
-      HistoCh315->Fill(temp3,energy-MeanPedCh315);
-      std::cout << temp3 << "   " << energy-MeanPedCh315 << std::endl;
-    }
+    
+    if(chID==59){
+      HistoCh59->Fill(temp2,(Double_t)energy-MeanPedCh59);
+    }//chiudo if
+    
+    if(chID==315){
+      HistoCh315->Fill(temp3,(Double_t)energy-MeanPedCh315);
+    }//chiudo if
     
   }//chiudo for
   
