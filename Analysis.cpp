@@ -9,6 +9,7 @@
 #include "TCanvas.h"
 #include "TF1.h"
 #include "TH2F.h"
+#include "TStyle.h"
 
 #include "ReadFileList.cc"
 #include "Functions.cc"
@@ -21,8 +22,8 @@ void Analysis(){
   FileList=ReadData("TestStability3/fileov7.txt");
 
   Int_t Nch=2;
-  Int_t TimeBin=300,EnergyBin=100;
-  Float_t TMin=0,TMax=100000,EMin=0,EMax=100;
+  Int_t TimeBin=30,EnergyBin=100;
+  Float_t TMin=0,TMax=20000,EMin=0,EMax=100;
   
 
   bool printFileList= true;
@@ -110,9 +111,9 @@ void Analysis(){
   
   }//chiudo for i+=3
 
-  gROOT->SetBatch(kFALSE);
+  //gROOT->SetBatch(kTRUE);
 
-  TCanvas* canvET = new TCanvas("EnergySpectrumVsTime","EnergySpectrumVsTime",1200,800);
+  TCanvas* canvET = new TCanvas("EnergySpectrumVsTime","EnergySpectrumVsTime",1200,600);
   canvET->Divide(2,1);
   canvET->cd(1);
   HistoEnergyVsTime[0]->Draw("COLZ");
@@ -120,4 +121,11 @@ void Analysis(){
   HistoEnergyVsTime[1]->Draw("COLZ");
   
   canvET->SaveAs("Plot/EnergyPlot/EnergySpectrumVsTime.png");
+
+  //gROOT->SetBatch(kTRUE);
+  
+  Double_t X[TimeBin],Y1[TimeBin],EY1[TimeBin],Y2[TimeBin],EY2[TimeBin];
+  
+  GetProfiles(HistoEnergyVsTime[0],HistoEnergyVsTime[1],X,Y1,EY1,Y2,EY2);
+  
 }
