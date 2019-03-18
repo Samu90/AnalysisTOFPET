@@ -75,15 +75,23 @@ TF1* FitNaSpectrum(TH1D* Profile){
   spectrum->SetParameter(8,550);
   spectrum->SetParameter(9,0.8);
 
+  spectrum->SetParLimits(5,250,500);
+  spectrum->SetParLimits(7,3,4);
+  spectrum->SetParLimits(8,300,700);
+  spectrum->SetParLimits(9,0.8,1);
+  
+
+
+
   Profile->Fit("SpectrumFit","R0");
 
   return spectrum;
 }
 
-void GetProfiles(TH2F* HistoCh59, TH2F* HistoCh315,Double_t* X,Double_t* Y1,Double_t* EY1,Double_t* Y2,Double_t* EY2){
+void GetProfiles(TH2F* HistoCh59, TH2F* HistoCh315,Double_t* X,std::vector<std::vector<Double_t> >& Y){
 
-  gStyle->SetOptFit(0111);
-  
+  //gStyle->SetOptFit(0111);
+   
   TH1D* HistoTemp59;
   TH1D* HistoTemp315;
 
@@ -94,7 +102,10 @@ void GetProfiles(TH2F* HistoCh59, TH2F* HistoCh315,Double_t* X,Double_t* Y1,Doub
   
   std::cout << "Getting Profiles" << std::endl;
   
-  for(int k=0;k< HistoCh59->GetXaxis()->GetNbins();k++){
+  Double_t XMax=HistoCh59->GetXaxis()->GetXmax();
+  Int_t Nbins=HistoCh59->GetXaxis()->GetNbins();
+
+  for(int k=0;k < Nbins;k++){
     
     canvino= new TCanvas(("Projection"+to_string(k)).c_str(),("Projection"+to_string(k)).c_str(),1200,700);
     canvino->Divide(2,1);
@@ -116,9 +127,51 @@ void GetProfiles(TH2F* HistoCh59, TH2F* HistoCh315,Double_t* X,Double_t* Y1,Doub
     HistoTemp315->Draw();
     TempFitCh315->Draw("SAME");
     
-    canvino->SaveAs(("Plot/EnergyPlot/Projections/Projection"+to_string(k)+".png").c_str());
+    canvino->SaveAs(("Plot/EnergyTime/Projections/Projection"+to_string(k)+".png").c_str());
+
+
+    X[k]=XMax/Nbins*(k+1)-(XMax/Nbins)/2;
+    
+    Y[0][k]=TempFitCh59->GetParameter(1);
+    Y[1][k]=TempFitCh59->GetParError(1);
+    Y[2][k]=TempFitCh59->GetParameter(6);
+    Y[3][k]=TempFitCh59->GetParError(6);
+
+    Y[4][k]=TempFitCh315->GetParameter(1);
+    Y[5][k]=TempFitCh315->GetParError(1);
+    Y[6][k]=TempFitCh315->GetParameter(6);
+    Y[7][k]=TempFitCh315->GetParError(6);
+    
     
   }
   
 }
 
+
+void FillETemperature(TTree* tree, TH2D* HistoCh59,TH2D* HistoCh315, Double_t MeanPedCh59, Double_t MeanPedCh315){
+
+  Float_t energy;
+  UShort_t chID;
+  Double_t temp2;
+  Double_t temp3;
+
+  tree->SetBranchAddress("energy",&energy);
+  tree->SetBranchAddress("channelID",&chID);
+  tree->SetBranchAddress("temp2",&temp2);
+  tree->SetBranchAddress("temp3",&temp3);
+
+  for(int i=0; i<tree->GetEntries();i++){
+    tree->GetEntry(i);
+    if(chID==59){HistoCh59->Fill(temp2,energy-MeanPedCh59);}
+    else if(chID==315){
+      HistoCh315->Fill(temp3,energy-MeanPedCh315);
+      std::cout << temp3 << "   " << energy-MeanPedCh315 << std::endl;
+    }
+    
+  }//chiudo for
+  
+  std::cout<<"Filled EnergyTemperature" << std::endl;
+  
+  
+  
+}
