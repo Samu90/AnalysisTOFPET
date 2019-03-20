@@ -51,7 +51,7 @@ void GetMeanTemperature(TTree* tree, Double_t* MeanTempCh59, Double_t* SigmaTemp
   UShort_t chID;
   Double_t temp1,temp2,temp3;
 
-  TH1D* histo1 = new TH1D("pippoch1","pippoch1",20,20,40);
+  TH1D* histo1 = new TH1D("pippoch1","pippoch1",20,10,35);
   TH1D* histoCh59 = new TH1D("pippoch59","pippoch59",20,20,40);
   TH1D* histoCh315 = new TH1D("pippoch315","pippoch315",20,20,40);
 
@@ -128,7 +128,35 @@ TF1* FitNaSpectrumCB(TH1D* Profile){
   spectrum->SetParameter(11,0.04);
   spectrum->SetParameter(12,-1.4);
 
+  spectrum->SetParLimits(10,4,6);
+  
   Profile->Fit("SpectrumFit","R0");
 
   return spectrum;
 }
+
+
+void EnergyRatioWithErr(Double_t* A,Double_t* B,Double_t* sA,Double_t* sB,Double_t* ratio, Double_t* sigmaRatio,int Ndata){
+
+  for(int i=0;i<Ndata;i++){
+    ratio[i]=A[i]/B[i];
+    sigmaRatio[i]=TMath::Sqrt((sA[i]*sA[i])/(B[i]*B[i])+(A[i]*A[i])/(B[i]*B[i]*B[i]*B[i])*(sB[i]*sB[i]));
+  }
+  
+}
+
+void SetStyleRatioPlot(TGraphErrors* ratioPlot,Double_t minRange,Double_t maxRange){
+
+  ratioPlot->SetTitle("");
+  ratioPlot->GetXaxis()->SetTitle("TMeanBoxRun [°C]");
+  ratioPlot->GetYaxis()->SetTitle("PeakRatio");
+  ratioPlot->GetXaxis()->SetTitleSize(0.08);
+  ratioPlot->GetYaxis()->SetTitleSize(0.08);
+  ratioPlot->GetYaxis()->SetTitleOffset(0.5);
+  ratioPlot->GetXaxis()->SetLabelSize(0.075);
+  ratioPlot->GetYaxis()->SetLabelSize(0.075);
+  ratioPlot->GetYaxis()->SetLimits(minRange,maxRange);
+  ratioPlot->GetYaxis()->SetRangeUser(minRange,maxRange);
+  
+}
+
