@@ -68,7 +68,6 @@ void Analysis(){
     std::cout <<NFilePhys <<"   "<< (int)FileListPedestal.size()<< Pedestal[i][0] << "    " << Pedestal[i][1] << std::endl;
   }
 
-  
 
   TH1D* HistoCh59[NFilePhys];
   TH1D* HistoCh315[NFilePhys];
@@ -182,6 +181,8 @@ void Analysis(){
   PlotEVsT->SaveAs("Plot/EnergyTempCB/PlotEVsT.png");
 
   //gROOT->SetBatch(kFALSE);
+  //gStyle->SetOptFit(1111);
+  
   TCanvas* CanvGlobalTemp = new TCanvas("CanvasGlobalTemp", "CanvasGlobalTemp",1200,600);
   
   
@@ -202,7 +203,10 @@ void Analysis(){
   //RatioEnergyCh1 (TGlobal)
   CanvGlobalTemp->Divide(2,1);
   CanvGlobalTemp->cd(1);
- 
+
+  TF1* fitRatioCh59 = new TF1("fitRatioCh59","[0]+[1]*x");
+  TF1* fitRatioCh315 = new TF1("fitRatioCh315","[0]+[1]*x");
+  
   TPad *p2Ch59 = new TPad("p2","p3",0.,0.,1.,0.3); p2Ch59->Draw();
   TPad *p1Ch59 = new TPad("p1","p1",0.,0.3,1.,1.); p1Ch59->Draw();
   p1Ch59->SetBottomMargin(0.001);
@@ -223,6 +227,7 @@ void Analysis(){
   p2Ch59->cd()->SetGridy();
   SetStyleRatioPlot(GraphRatioCh59,0.35,0.65);
   GraphRatioCh59->Draw("AP");
+  GraphRatioCh59->Fit("fitRatioCh59");
   //////////////////////////////////////////////////////////////////////////////////////
   //RatioEnergyCh1 (TGlobal)
   CanvGlobalTemp->cd(2);
@@ -248,6 +253,7 @@ void Analysis(){
   p2Ch315->cd()->SetGridy();
   SetStyleRatioPlot(GraphRatioCh315,0.35,0.65);
   GraphRatioCh315->Draw("AP");
+  GraphRatioCh315->Fit("fitRatioCh315");
   ////////////////////////////////////////////////////////////////////////////////
   CanvGlobalTemp->SaveAs("Plot/EnergyTempCB/PlotEVsTglobal.png");
   ////////////////////////////////////////////////////////////////////////////////
@@ -266,6 +272,9 @@ void Analysis(){
   CanvasComparisonPeak->Divide(2,1);
   CanvasComparisonPeak->cd(1);
 
+  TF1* fitRatioPeak1 = new TF1("fitRatioPeak1","[0]+[1]*x");
+  TF1* fitRatioPeak2 = new TF1("fitRatioPeak2","[0]+[1]*x");
+  
   TPad *pad2Peak1 = new TPad("p2","p3",0.,0.,1.,0.3); pad2Peak1->Draw();
   TPad *pad1Peak1 = new TPad("p1","p1",0.,0.3,1.,1.); pad1Peak1->Draw();
   pad1Peak1->SetBottomMargin(0.001);
@@ -290,6 +299,8 @@ void Analysis(){
   pad2Peak1->cd()->SetGridy();
   SetStyleRatioPlot(GraphRatioPeak1,0.9,1.1);
   GraphRatioPeak1->Draw("AP");
+  GraphRatioPeak1->Fit("fitRatioPeak1");
+  
   //////////////////////////////////////////////////////////////
   CanvasComparisonPeak->cd(2);
   TPad *pad2Peak2 = new TPad("p2","p3",0.,0.,1.,0.3); pad2Peak2->Draw();
@@ -316,6 +327,29 @@ void Analysis(){
   pad2Peak2->cd()->SetGridy();
   SetStyleRatioPlot(GraphRatioPeak2,0.9,1.1);
   GraphRatioPeak2->Draw("AP");
-
+  GraphRatioPeak2->Fit("fitRatioPeak2");
+  
   CanvasComparisonPeak->SaveAs("Plot/EnergyTempCB/PeakComparisonVsTemp.png");
+
+  ////////////////////////////////////////////////////////////////////////////////
+  TH1D* HistoSumCh59 = new TH1D("HistoSumCh59","HistoSumCh59",100,0,100);
+  TH1D* HistoSumCh315 = new TH1D("HistoSumCh315","HistoSumCh315",100,0,100);
+  
+  for(int i=0;i<NFilePhys;i++){
+    
+    HistoSumCh59->Add(HistoCh59[i]);
+    HistoSumCh315->Add(HistoCh315[i]);
+
+  }
+
+  TCanvas* canvasSum = new TCanvas("CanvasSumHisto","CanvasSumHisto",1200,600);
+  canvasSum->Divide(2,1);
+
+  canvasSum->cd(1);
+  HistoSumCh59->Draw();
+
+  canvasSum->cd(2);
+  HistoSumCh315->Draw();
+
+  canvasSum->SaveAs("Plot/EnergyTempCB/HistoSum.png");
 }
