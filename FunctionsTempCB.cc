@@ -46,7 +46,7 @@ void GetSpectrum(TTree* tree, TH1D* histoCh1, TH1D* histoCh2, Double_t MeanPedCh
 
 
 
-void GetMeanTemperature(TTree* tree, Double_t* MeanTempCh59, Double_t* SigmaTempCh59,Double_t* MeanTempCh315, Double_t* SigmaTempCh315, Double_t* MeanTGlobal,Double_t* SigmaTGlobal){
+void GetMeanTemperature(TTree* tree, Double_t* MeanTempCh59, Double_t* SigmaTempCh59,Double_t* MeanTempCh315, Double_t* SigmaTempCh315, Double_t* MeanTGlobal,Double_t* SigmaTGlobal,int j){
 
   UShort_t chID;
   Double_t temp1,temp2,temp3;
@@ -69,13 +69,13 @@ void GetMeanTemperature(TTree* tree, Double_t* MeanTempCh59, Double_t* SigmaTemp
 
   }//chiudo for
   
-  *MeanTGlobal= histo1->GetMean();
-  *SigmaTGlobal= histo1->GetMeanError();
-  *MeanTempCh59= histoCh59->GetMean();
-  *SigmaTempCh59= histoCh59->GetMeanError();
-  *MeanTempCh315= histoCh315->GetMean();
-  *SigmaTempCh315= histoCh315->GetMeanError();
-  
+  MeanTGlobal[j]= histo1->GetMean();
+  SigmaTGlobal[j]= histo1->GetMeanError();
+  MeanTempCh59[j]= histoCh59->GetMean();
+  SigmaTempCh59[j]= histoCh59->GetMeanError();
+  SigmaTempCh315[j]= histoCh315->GetMeanError();
+  MeanTempCh315[j]= histoCh315->GetMean();
+
   std::cout << "TMeanDone"<< std::endl;
 
 }
@@ -112,17 +112,20 @@ TF1* FitNaSpectrum(TH1D* Profile){
 TF1* FitNaSpectrumCB(TH1D* Profile){
 
   
-  TF1* spectrum = new TF1("SpectrumFit","[0] * exp(-( x-[1] )*( x-[1] )/( 2* [2]* [2])) + [3] / (exp( (x*[4]-(2*[1]*[1]/([1]+2*[1])))) + 1)+ [5] * exp(-( x-[6] )*( x-[6] )/( 2* [7]* [7])) +crystalball([8],[9],[10],[11],[12])",30,88);
+  TF1* spectrum = new TF1("SpectrumFit","[0] * exp(-( x-[1] )*( x-[1] )/( 2* [2]* [2])) + [3] / (exp( (x*[4]-(2*[1]*[1]/([1]+2*[1])))) + 1)+ [5] * exp(-( x-[6] )*( x-[6] )/( 2* [7]* [7])) +crystalball([8],[9],[10],[11],[12])",30,92);
+
+  Double_t max;
+  max= Profile->GetMaximum();
   
-  spectrum->SetParameter(0,6000);
+  spectrum->SetParameter(0,max);
   spectrum->SetParameter(1,41);
   spectrum->SetParameter(2,3);
-  spectrum->SetParameter(3,1700);
+  spectrum->SetParameter(3,max/5);
   spectrum->SetParameter(4,0.82);
-  spectrum->SetParameter(5,350);
+  spectrum->SetParameter(5,max/20);
   spectrum->SetParameter(6,80);
   spectrum->SetParameter(7,3.2);
-  spectrum->SetParameter(8,572);
+  spectrum->SetParameter(8,max/12);
   spectrum->SetParameter(9,68);
   spectrum->SetParameter(10,4.3);
   spectrum->SetParameter(11,0.04);
@@ -130,13 +133,13 @@ TF1* FitNaSpectrumCB(TH1D* Profile){
 
   spectrum->SetParLimits(10,4,6);
   
-  Profile->Fit("SpectrumFit","R0");
+  Profile->Fit("SpectrumFit","R0Q");
 
   return spectrum;
 }
 
 
-void EnergyRatioWithErr(Double_t* A,Double_t* B,Double_t* sA,Double_t* sB,Double_t* ratio, Double_t* sigmaRatio,int Ndata){
+void RatioWithError(Double_t* A,Double_t* B,Double_t* sA,Double_t* sB,Double_t* ratio, Double_t* sigmaRatio,int Ndata){
 
   for(int i=0;i<Ndata;i++){
     ratio[i]=A[i]/B[i];

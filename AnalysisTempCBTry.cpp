@@ -101,7 +101,7 @@ void Analysis(){
     HistoCh315[i] = new TH1D(("HistoCh315N"+to_string(i)).c_str(),("HistoCh315N"+to_string(i)).c_str(),100,0,100);
     
     GetSpectrum(tree0,HistoCh59[i],HistoCh315[i],Pedestal[i][0],Pedestal[i][1]);
-    GetMeanTemperature(tree0,&MeanTCh59[i],&SigmaTCh59[i],&MeanTCh315[i],&SigmaTCh315[i],&MeanTGlobal[i],&SigmaTGlobal[i]);
+    GetMeanTemperature(tree0,MeanTCh59,SigmaTCh59,MeanTCh315,SigmaTCh315,MeanTGlobal,SigmaTGlobal,i);
     
     TCanvas* canvino = new TCanvas("Canvino","Canvino",1200,600);
     canvino->Divide(2,1);
@@ -177,7 +177,8 @@ void Analysis(){
   Graph2Ch315->Draw("SAMEP");
   
   
-
+  
+  
   PlotEVsT->SaveAs("Plot/EnergyTempCB/PlotEVsT.png");
 
   //gROOT->SetBatch(kFALSE);
@@ -193,8 +194,8 @@ void Analysis(){
   ////////////////////////////////////////////////////////////////////////////////////
   Double_t RatioPeakCh59[NFilePhys], RatioPeakCh315[NFilePhys],SigmaRPeakCh59[NFilePhys],SigmaRPeakCh315[NFilePhys];
   
-  EnergyRatioWithErr(Peak1Ch59,Peak2Ch59,SigmaPeak1Ch59,SigmaPeak2Ch59,RatioPeakCh59,SigmaRPeakCh59,NFilePhys);
-  EnergyRatioWithErr(Peak1Ch315,Peak2Ch315,SigmaPeak1Ch315,SigmaPeak2Ch315,RatioPeakCh315,SigmaRPeakCh315,NFilePhys);
+  RatioWithError(Peak1Ch59,Peak2Ch59,SigmaPeak1Ch59,SigmaPeak2Ch59,RatioPeakCh59,SigmaRPeakCh59,NFilePhys);
+  RatioWithError(Peak1Ch315,Peak2Ch315,SigmaPeak1Ch315,SigmaPeak2Ch315,RatioPeakCh315,SigmaRPeakCh315,NFilePhys);
   
   TGraphErrors* GraphRatioCh59 = new TGraphErrors(NFilePhys,MeanTGlobal,RatioPeakCh59,SigmaTGlobal,SigmaRPeakCh59);
   TGraphErrors* GraphRatioCh315 = new TGraphErrors(NFilePhys,MeanTGlobal,RatioPeakCh315,SigmaTGlobal,SigmaRPeakCh315);
@@ -261,8 +262,8 @@ void Analysis(){
 
   Double_t ratioPeak1[NFilePhys], sigmaRatioPeak1[NFilePhys], ratioPeak2[NFilePhys], sigmaRatioPeak2[NFilePhys];
   
-  EnergyRatioWithErr(Peak1Ch59,Peak1Ch315,SigmaPeak1Ch59,SigmaPeak1Ch315,ratioPeak1,sigmaRatioPeak1,NFilePhys);
-  EnergyRatioWithErr(Peak2Ch59,Peak2Ch315,SigmaPeak2Ch59,SigmaPeak2Ch315,ratioPeak2,sigmaRatioPeak2,NFilePhys);
+  RatioWithError(Peak1Ch59,Peak1Ch315,SigmaPeak1Ch59,SigmaPeak1Ch315,ratioPeak1,sigmaRatioPeak1,NFilePhys);
+  RatioWithError(Peak2Ch59,Peak2Ch315,SigmaPeak2Ch59,SigmaPeak2Ch315,ratioPeak2,sigmaRatioPeak2,NFilePhys);
 
   TGraphErrors* GraphRatioPeak1 = new TGraphErrors(NFilePhys,MeanTGlobal,ratioPeak1,SigmaTGlobal,sigmaRatioPeak1);
   TGraphErrors* GraphRatioPeak2 = new TGraphErrors(NFilePhys,MeanTGlobal,ratioPeak2,SigmaTGlobal,sigmaRatioPeak2);
@@ -342,14 +343,105 @@ void Analysis(){
 
   }
 
+  TF1* fitHistoSum[2];
+  
   TCanvas* canvasSum = new TCanvas("CanvasSumHisto","CanvasSumHisto",1200,600);
   canvasSum->Divide(2,1);
 
   canvasSum->cd(1);
   HistoSumCh59->Draw();
+  fitHistoSum[0]=FitNaSpectrumCB(HistoSumCh59);
+  fitHistoSum[0]->Draw("SAME");
 
   canvasSum->cd(2);
   HistoSumCh315->Draw();
+  fitHistoSum[1]=FitNaSpectrumCB(HistoSumCh315);
+  fitHistoSum[1]->Draw("SAME");
 
   canvasSum->SaveAs("Plot/EnergyTempCB/HistoSum.png");
+
+  ///////////////////////////////////////////////////////////////////////////////
+  Double_t MeanCh59P1[NFilePhys],MeanCh315P1[NFilePhys],SigmaCh59P1[NFilePhys],SigmaCh315P1[NFilePhys];
+  Double_t ErrMeanCh59P1[NFilePhys],ErrMeanCh315P1[NFilePhys],ErrSigmaCh59P1[NFilePhys],ErrSigmaCh315P1[NFilePhys];
+
+  Double_t MeanCh59P2[NFilePhys],MeanCh315P2[NFilePhys],SigmaCh59P2[NFilePhys],SigmaCh315P2[NFilePhys];
+  Double_t ErrMeanCh59P2[NFilePhys],ErrMeanCh315P2[NFilePhys],ErrSigmaCh59P2[NFilePhys],ErrSigmaCh315P2[NFilePhys];
+
+  Double_t ResCh59P1[NFilePhys],ResCh315P1[NFilePhys],SigmaResCh59P1[NFilePhys],SigmaResCh315P1[NFilePhys];
+  Double_t ResCh59P2[NFilePhys],ResCh315P2[NFilePhys],SigmaResCh59P2[NFilePhys],SigmaResCh315P2[NFilePhys];
+    
+  for(int i=0;i<NFilePhys;i++){
+
+    MeanCh59P1[i] = FitSpectrum[i][0]->GetParameter(1);
+    MeanCh315P1[i] = FitSpectrum[i][1]->GetParameter(1);
+    SigmaCh59P1[i] = FitSpectrum[i][0]->GetParameter(2);
+    SigmaCh315P1[i] = FitSpectrum[i][1]->GetParameter(2);
+
+    ErrMeanCh59P1[i] = FitSpectrum[i][0]->GetParError(1);
+    ErrMeanCh315P1[i] = FitSpectrum[i][1]->GetParError(1);
+    ErrSigmaCh59P1[i] = FitSpectrum[i][0]->GetParError(2);
+    ErrSigmaCh315P1[i] = FitSpectrum[i][1]->GetParError(2);
+    
+    MeanCh59P2[i] = FitSpectrum[i][0]->GetParameter(6);
+    MeanCh315P2[i] = FitSpectrum[i][1]->GetParameter(6);
+    SigmaCh59P2[i] = FitSpectrum[i][0]->GetParameter(7);
+    SigmaCh315P2[i] = FitSpectrum[i][1]->GetParameter(7);
+
+    ErrMeanCh59P2[i] = FitSpectrum[i][0]->GetParError(6);
+    ErrMeanCh315P2[i] = FitSpectrum[i][1]->GetParError(6);
+    ErrSigmaCh59P2[i] = FitSpectrum[i][0]->GetParError(7);
+    ErrSigmaCh315P2[i] = FitSpectrum[i][1]->GetParError(7);
+
+    std::cout<< MeanCh59P2[i] << " " << SigmaCh59P2[i] << std::endl;
+  }
+
+  RatioWithError(SigmaCh59P1,MeanCh59P1,ErrSigmaCh59P1,ErrMeanCh59P1,ResCh59P1,SigmaResCh59P1,NFilePhys);
+  RatioWithError(SigmaCh315P1,MeanCh315P1,ErrSigmaCh315P1,ErrMeanCh315P1,ResCh315P1,SigmaResCh315P1,NFilePhys);
+  RatioWithError(SigmaCh59P2,MeanCh59P2,ErrSigmaCh59P2,ErrMeanCh59P2,ResCh59P2,SigmaResCh59P2,NFilePhys);
+  RatioWithError(SigmaCh315P2,MeanCh315P2,ErrSigmaCh315P2,ErrMeanCh315P2,ResCh315P2,SigmaResCh315P2,NFilePhys);
+
+  //////////////////////////////////////////////////////////////////////////////////
+
+  TCanvas* ResolutionVsTemp= new TCanvas("ResolutionVsTemp","ResolutionVsTem",1200,600);
+  ResolutionVsTemp->Divide(2,2);
+  
+  TGraphErrors* PlotResCh59P1 = new TGraphErrors(NFilePhys,MeanTGlobal,ResCh59P1,SigmaTGlobal,SigmaResCh59P1);
+  TGraphErrors* PlotResCh315P1 = new TGraphErrors(NFilePhys,MeanTGlobal,ResCh315P1,SigmaTGlobal,SigmaResCh315P1);
+  TGraphErrors* PlotResCh59P2 = new TGraphErrors(NFilePhys,MeanTGlobal,ResCh59P2,SigmaTGlobal,SigmaResCh59P2);
+  TGraphErrors* PlotResCh315P2 = new TGraphErrors(NFilePhys,MeanTGlobal,ResCh315P2,SigmaTGlobal,SigmaResCh315P2);
+
+  PlotResCh59P1->SetTitle("ResCh59P 511KeV");
+  PlotResCh315P1->SetTitle("ResCh315P 511KeV");
+
+  PlotResCh59P2->SetTitle("ResCh59P 1275KeV");
+  PlotResCh315P2->SetTitle("ResCh315P 1275KeV");
+
+  PlotResCh59P1->GetXaxis()->SetTitle("TMeanBox [°C]");
+  PlotResCh59P1->GetYaxis()->SetTitle("EnergyResolution");
+  //PlotResCh59P1->GetYaxis()->SetLimits(0.5,0.9);
+  //PlotResCh59P1->GetYaxis()->SetRangeUser(0.5,0.9);
+  PlotResCh315P1->GetXaxis()->SetTitle("TMeanBox [°C]");
+  PlotResCh315P1->GetYaxis()->SetTitle("EnergyResolution");
+  //PlotResCh315P1->GetYaxis()->SetLimits(0.5,0.9);
+  //PlotResCh315P1->GetYaxis()->SetRangeUser(0.5,0.9);
+  PlotResCh59P2->GetXaxis()->SetTitle("TMeanBox [°C]");
+  PlotResCh59P2->GetYaxis()->SetTitle("EnergyResolution");
+  //PlotResCh59P2->GetYaxis()->SetLimits(0.5,0.9);
+  //PlotResCh59P2->GetYaxis()->SetRangeUser(0.5,0.9);
+  PlotResCh315P2->GetXaxis()->SetTitle("TMeanBox [°C]");
+  PlotResCh315P2->GetYaxis()->SetTitle("EnergyResolution");
+  //PlotResCh315P2->GetYaxis()->SetLimits(0.5,0.9);
+  //PlotResCh315P2->GetYaxis()->SetRangeUser(0.5,0.9);
+  
+  ResolutionVsTemp->cd(1);
+  PlotResCh59P1->Draw("AP");
+  ResolutionVsTemp->cd(2);
+  PlotResCh315P1->Draw("AP");
+  ResolutionVsTemp->cd(3);
+  PlotResCh59P2->Draw("AP");
+  ResolutionVsTemp->cd(4);
+  PlotResCh315P2->Draw("AP");
+
+  ResolutionVsTemp->SaveAs("Plot/EnergyTempCB/ResolutionVsTemp.png");
+  
 }
