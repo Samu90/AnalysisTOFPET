@@ -16,21 +16,21 @@
 #include "ReadFileList.cc"
 #include "Functions.cc"
 
-void Analysis(){
+void Analysis(string DirData){
   
   gROOT->Reset();
   gROOT->SetBatch(kTRUE);
 
-  gSystem->Exec("mkdir Plot");
-  gSystem->Exec("mkdir Plot/EnergyTime");
-  gSystem->Exec("mkdir Plot/EnergyTime/Projections/");
+  gSystem->Exec(("mkdir "+DirData+"/Plot").c_str());
+  gSystem->Exec(("mkdir "+DirData+"/Plot/EnergyTime").c_str());
+  gSystem->Exec(("mkdir "+DirData+"/Plot/EnergyTime/Projection").c_str());
   //  gSystem->Exec("mkdir Plot/EnergyTemp");
   //  gSystem->Exec("mkdir Plot/EnergyTemp/Projections/");
 
   //gStyle->SetOptStat("000001000");
 
   vector<string> FileList;
-  FileList=ReadData("TestStability3/fileov7.txt");
+  FileList=ReadData(DirData+"/fileov7.txt");
 
   Int_t Nch=2;
   Int_t TimeBin=30,EnergyBin=100,TempBin=40;
@@ -118,7 +118,7 @@ void Analysis(){
     Histo[i+1][1]->GetXaxis()->SetRangeUser(0,100);
     Histo[i+1][1]->Draw();
     
-    canvino->SaveAs(("Plot/Plot"+to_string(i+1)+".png").c_str());
+    canvino->SaveAs((DirData+"/Plot/Plot"+to_string(i+1)+".png").c_str());
   
   }//chiudo for i+=3
 
@@ -159,7 +159,7 @@ void Analysis(){
   graphTime2Ch315->Draw("SAMEP");
 
 
-  canvETime->SaveAs("Plot/EnergyTime/EnergySpectrumVsTime.png");
+  canvETime->SaveAs((DirData+"/Plot/EnergyTime/EnergySpectrumVsTime.png").c_str());
 
   /*
   Double_t XTemp[TempBin];

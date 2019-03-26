@@ -14,28 +14,33 @@
 #include "TSystem.h"
 #include "TPad.h"
 #include "TMath.h"
+#include "TLine.h"
 
 #include "ReadFileList.cc"
 #include "FunctionsTempCB.cc"
 
 
-void Analysis(){
+void Analysis(string DirData){
   
   gROOT->Reset();
   gROOT->SetBatch(kTRUE);
 
-  gSystem->Exec("mkdir Plot");
+  gSystem->Exec(("mkdir "+DirData+"/Plot").c_str());
   
-  gSystem->Exec("mkdir Plot/EnergyTempCB");
-  gSystem->Exec("mkdir Plot/EnergyTempCB/Partials/");
+  gSystem->Exec(("mkdir "+DirData+"/Plot/EnergyTempCB").c_str());
+  gSystem->Exec(("mkdir "+DirData+"/Plot/EnergyTempCB/Partials/").c_str());
 
   //gStyle->SetOptStat("000001000");
 
   vector<string> FileListPedestal;
-  FileListPedestal=ReadData("TestStability3/PedFile.txt");
-
+  string ListFilePed = DirData+"/PedFile.txt";
+  std::cout << "Lista File Pedestal: "<< ListFilePed << std::endl;    
+  FileListPedestal=ReadData(ListFilePed);
+  
   vector<string> FileListPhysics;
-  FileListPhysics=ReadData("TestStability3/PhysFile.txt");
+  string ListFilePhys = DirData+"/PhysFile.txt";
+  std::cout << "Lista File Pedestal: "<< ListFilePed << std::endl;
+  FileListPhysics=ReadData(ListFilePhys);
 
   int NFilePhys=(int)FileListPhysics.size();
   
@@ -48,8 +53,9 @@ void Analysis(){
 
   for(int i=0;i < (int)FileListPedestal.size()-1;i+=2){
     
-    TFile* f0= TFile::Open(("TestStability3/"+FileListPedestal.at(i)).c_str());
-    TFile* f1= TFile::Open(("TestStability3/"+FileListPedestal.at(i)).c_str());
+    std::cout<< "open file:  " << (DirData+"/"+FileListPedestal.at(i)).c_str() << std::endl;
+    TFile* f0= TFile::Open((DirData+"/"+FileListPedestal.at(i)).c_str());
+    TFile* f1= TFile::Open((DirData+"/"+FileListPedestal.at(i)).c_str());
 
     TTree* tree0 = (TTree*)f0->Get("data"); //Before
     TTree* tree1 = (TTree*)f1->Get("data"); //After
@@ -94,18 +100,23 @@ void Analysis(){
 
   for(int i=0;i < NFilePhys;i++){
     
-    f0= TFile::Open(("TestStability3/"+FileListPhysics.at(i)).c_str());
+    f0= TFile::Open((DirData+"/"+FileListPhysics.at(i)).c_str());
     tree0 = (TTree*)f0->Get("data");
-    
+
+        
     HistoCh59[i] = new TH1D(("HistoCh59N"+to_string(i)).c_str(),("HistoCh59N"+to_string(i)).c_str(),100,0,100);
     HistoCh315[i] = new TH1D(("HistoCh315N"+to_string(i)).c_str(),("HistoCh315N"+to_string(i)).c_str(),100,0,100);
-    
+
+        
     GetSpectrum(tree0,HistoCh59[i],HistoCh315[i],Pedestal[i][0],Pedestal[i][1]);
     GetMeanTemperature(tree0,MeanTCh59,SigmaTCh59,MeanTCh315,SigmaTCh315,MeanTGlobal,SigmaTGlobal,i);
+
+    //HistoCh59[i]->SetTitle(("HistoCh59Temp"+to_string(MeanTGlobal[i])).c_str());
+    //HistoCh315[i]->SetTitle(("HistoCh315Temp"+to_string(MeanTGlobal[i])).c_str());
+    
     
     TCanvas* canvino = new TCanvas("Canvino","Canvino",1200,600);
     canvino->Divide(2,1);
-
 
     FitSpectrum[i][0]=FitNaSpectrumCB(HistoCh59[i]);
     FitSpectrum[i][1]=FitNaSpectrumCB(HistoCh315[i]);
@@ -122,7 +133,7 @@ void Analysis(){
     HistoCh315[i]->Draw();
     FitSpectrum[i][1]->Draw("SAME");    
 
-    canvino->SaveAs(("Plot/EnergyTempCB/Partials/Canvas"+to_string(i)+".png").c_str());
+    canvino->SaveAs((DirData+"/Plot/EnergyTempCB/Partials/Canvas"+to_string(i)+".png").c_str());
     delete canvino;
   }
 
@@ -176,10 +187,7 @@ void Analysis(){
   Graph1Ch315->Draw("AP");
   Graph2Ch315->Draw("SAMEP");
   
-  
-  
-  
-  PlotEVsT->SaveAs("Plot/EnergyTempCB/PlotEVsT.png");
+  PlotEVsT->SaveAs((DirData+"/Plot/EnergyTempCB/PlotEVsT.png").c_str());
 
   //gROOT->SetBatch(kFALSE);
   //gStyle->SetOptFit(1111);
@@ -256,7 +264,7 @@ void Analysis(){
   GraphRatioCh315->Draw("AP");
   GraphRatioCh315->Fit("fitRatioCh315");
   ////////////////////////////////////////////////////////////////////////////////
-  CanvGlobalTemp->SaveAs("Plot/EnergyTempCB/PlotEVsTglobal.png");
+  CanvGlobalTemp->SaveAs((DirData+"/Plot/EnergyTempCB/PlotEVsTglobal.png").c_str());
   ////////////////////////////////////////////////////////////////////////////////
   //RatioPeak1(511)PeackCh59/315 (TGlobal)
 
@@ -330,7 +338,7 @@ void Analysis(){
   GraphRatioPeak2->Draw("AP");
   GraphRatioPeak2->Fit("fitRatioPeak2");
   
-  CanvasComparisonPeak->SaveAs("Plot/EnergyTempCB/PeakComparisonVsTemp.png");
+  CanvasComparisonPeak->SaveAs((DirData+"/Plot/EnergyTempCB/PeakComparisonVsTemp.png").c_str());
 
   ////////////////////////////////////////////////////////////////////////////////
   TH1D* HistoSumCh59 = new TH1D("HistoSumCh59","HistoSumCh59",100,0,100);
@@ -358,7 +366,7 @@ void Analysis(){
   fitHistoSum[1]=FitNaSpectrumCB(HistoSumCh315);
   fitHistoSum[1]->Draw("SAME");
 
-  canvasSum->SaveAs("Plot/EnergyTempCB/HistoSum.png");
+  canvasSum->SaveAs((DirData+"/Plot/EnergyTempCB/HistoSum.png").c_str());
 
   ///////////////////////////////////////////////////////////////////////////////
   Double_t MeanCh59P1[NFilePhys],MeanCh315P1[NFilePhys],SigmaCh59P1[NFilePhys],SigmaCh315P1[NFilePhys];
@@ -392,7 +400,7 @@ void Analysis(){
     ErrSigmaCh59P2[i] = FitSpectrum[i][0]->GetParError(7);
     ErrSigmaCh315P2[i] = FitSpectrum[i][1]->GetParError(7);
 
-    std::cout<< MeanCh59P2[i] << " " << SigmaCh59P2[i] << std::endl;
+    //  std::cout<< MeanCh59P2[i] << " " << SigmaCh59P2[i] << std::endl;
   }
 
   RatioWithError(SigmaCh59P1,MeanCh59P1,ErrSigmaCh59P1,ErrMeanCh59P1,ResCh59P1,SigmaResCh59P1,NFilePhys);
@@ -410,6 +418,18 @@ void Analysis(){
   TGraphErrors* PlotResCh59P2 = new TGraphErrors(NFilePhys,MeanTGlobal,ResCh59P2,SigmaTGlobal,SigmaResCh59P2);
   TGraphErrors* PlotResCh315P2 = new TGraphErrors(NFilePhys,MeanTGlobal,ResCh315P2,SigmaTGlobal,SigmaResCh315P2);
 
+  Double_t YCh59P1Line= fitHistoSum[0]->GetParameter(2)/fitHistoSum[0]->GetParameter(1);
+  TLine* ResSumCh59P1Line = new TLine(PlotResCh59P1->GetXaxis()->GetXmin(),YCh59P1Line,PlotResCh59P1->GetXaxis()->GetXmax(), YCh59P1Line);
+
+  Double_t YCh315P1Line= fitHistoSum[1]->GetParameter(2)/fitHistoSum[1]->GetParameter(1);
+  TLine* ResSumCh315P1Line = new TLine(PlotResCh315P1->GetXaxis()->GetXmin(),YCh315P1Line,PlotResCh59P1->GetXaxis()->GetXmax(), YCh315P1Line);
+
+  Double_t YCh59P2Line= fitHistoSum[0]->GetParameter(7)/fitHistoSum[0]->GetParameter(6);
+  TLine* ResSumCh59P2Line = new TLine(PlotResCh59P2->GetXaxis()->GetXmin(),YCh59P2Line,PlotResCh59P1->GetXaxis()->GetXmax(), YCh59P2Line);
+
+  Double_t YCh315P2Line= fitHistoSum[1]->GetParameter(7)/fitHistoSum[1]->GetParameter(6);
+  TLine* ResSumCh315P2Line = new TLine(PlotResCh315P2->GetXaxis()->GetXmin(),YCh315P2Line,PlotResCh59P1->GetXaxis()->GetXmax(), YCh315P2Line);
+
   PlotResCh59P1->SetTitle("ResCh59P 511KeV");
   PlotResCh315P1->SetTitle("ResCh315P 511KeV");
 
@@ -418,30 +438,37 @@ void Analysis(){
 
   PlotResCh59P1->GetXaxis()->SetTitle("TMeanBox [°C]");
   PlotResCh59P1->GetYaxis()->SetTitle("EnergyResolution");
-  //PlotResCh59P1->GetYaxis()->SetLimits(0.5,0.9);
-  //PlotResCh59P1->GetYaxis()->SetRangeUser(0.5,0.9);
+  PlotResCh59P1->SetMinimum(0.06);
+  PlotResCh59P1->SetMaximum(0.08);
   PlotResCh315P1->GetXaxis()->SetTitle("TMeanBox [°C]");
   PlotResCh315P1->GetYaxis()->SetTitle("EnergyResolution");
-  //PlotResCh315P1->GetYaxis()->SetLimits(0.5,0.9);
-  //PlotResCh315P1->GetYaxis()->SetRangeUser(0.5,0.9);
+  PlotResCh315P1->SetMinimum(0.06);
+  PlotResCh315P1->SetMaximum(0.08);
   PlotResCh59P2->GetXaxis()->SetTitle("TMeanBox [°C]");
   PlotResCh59P2->GetYaxis()->SetTitle("EnergyResolution");
-  //PlotResCh59P2->GetYaxis()->SetLimits(0.5,0.9);
-  //PlotResCh59P2->GetYaxis()->SetRangeUser(0.5,0.9);
+  PlotResCh59P2->SetMinimum(0.03);
+  PlotResCh59P2->SetMaximum(0.05);
   PlotResCh315P2->GetXaxis()->SetTitle("TMeanBox [°C]");
   PlotResCh315P2->GetYaxis()->SetTitle("EnergyResolution");
-  //PlotResCh315P2->GetYaxis()->SetLimits(0.5,0.9);
-  //PlotResCh315P2->GetYaxis()->SetRangeUser(0.5,0.9);
+  PlotResCh315P2->SetMinimum(0.03);
+  PlotResCh315P2->SetMaximum(0.05);
   
   ResolutionVsTemp->cd(1);
   PlotResCh59P1->Draw("AP");
+  ResSumCh59P1Line->Draw("SAME");
+  
   ResolutionVsTemp->cd(2);
   PlotResCh315P1->Draw("AP");
+  ResSumCh315P1Line->Draw("SAME");
+
   ResolutionVsTemp->cd(3);
   PlotResCh59P2->Draw("AP");
+  ResSumCh59P2Line->Draw("SAME");
+
   ResolutionVsTemp->cd(4);
   PlotResCh315P2->Draw("AP");
+  ResSumCh315P2Line->Draw("SAME");
 
-  ResolutionVsTemp->SaveAs("Plot/EnergyTempCB/ResolutionVsTemp.png");
+  ResolutionVsTemp->SaveAs((DirData+"/Plot/EnergyTempCB/ResolutionVsTemp.png").c_str());
   
 }
