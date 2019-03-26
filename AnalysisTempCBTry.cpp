@@ -19,23 +19,23 @@
 #include "FunctionsTempCB.cc"
 
 
-void Analysis(){
+void Analysis(string DirData){
   
   gROOT->Reset();
   gROOT->SetBatch(kTRUE);
 
-  gSystem->Exec("mkdir Plot");
+  gSystem->Exec(("mkdir"+DirData+"/Plot").c_str());
   
-  gSystem->Exec("mkdir Plot/EnergyTempCB");
-  gSystem->Exec("mkdir Plot/EnergyTempCB/Partials/");
+  gSystem->Exec(("mkdir"+DirData+"/Plot/EnergyTempCB").c_str());
+  gSystem->Exec(("mkdir"+DirData+"/Plot/EnergyTempCB/Partials/").c_str());
 
   //gStyle->SetOptStat("000001000");
 
   vector<string> FileListPedestal;
-  FileListPedestal=ReadData("TestStability3/PedFile.txt");
+  FileListPedestal=ReadData(DirData+"/PedFile.txt");
 
   vector<string> FileListPhysics;
-  FileListPhysics=ReadData("TestStability3/PhysFile.txt");
+  FileListPhysics=ReadData(DirData+"/PhysFile.txt");
 
   int NFilePhys=(int)FileListPhysics.size();
   
@@ -48,8 +48,8 @@ void Analysis(){
 
   for(int i=0;i < (int)FileListPedestal.size()-1;i+=2){
     
-    TFile* f0= TFile::Open(("TestStability3/"+FileListPedestal.at(i)).c_str());
-    TFile* f1= TFile::Open(("TestStability3/"+FileListPedestal.at(i)).c_str());
+    TFile* f0= TFile::Open((DirData+"/"+FileListPedestal.at(i)).c_str());
+    TFile* f1= TFile::Open((DirData+"/"+FileListPedestal.at(i)).c_str());
 
     TTree* tree0 = (TTree*)f0->Get("data"); //Before
     TTree* tree1 = (TTree*)f1->Get("data"); //After
@@ -94,7 +94,7 @@ void Analysis(){
 
   for(int i=0;i < NFilePhys;i++){
     
-    f0= TFile::Open(("TestStability3/"+FileListPhysics.at(i)).c_str());
+    f0= TFile::Open((DirData+"/"+FileListPhysics.at(i)).c_str());
     tree0 = (TTree*)f0->Get("data");
     
     HistoCh59[i] = new TH1D(("HistoCh59N"+to_string(i)).c_str(),("HistoCh59N"+to_string(i)).c_str(),100,0,100);
