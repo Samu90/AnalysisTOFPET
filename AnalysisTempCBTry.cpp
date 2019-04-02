@@ -94,7 +94,7 @@ void Analysis(string DirData){
 
   TF1* FitSpectrum[NFilePhys][2];
   
-  gStyle->SetOptFit(0111);
+  gStyle->SetOptFit(1111);
   gStyle->SetStatW(0.2);
   gStyle->SetStatH(0.15);
 
@@ -119,7 +119,9 @@ void Analysis(string DirData){
     canvino->Divide(2,1);
 
     FitSpectrum[i][0]=FitNaSpectrumCB(HistoCh59[i]);
+    std::cout << "here" << std::endl;
     FitSpectrum[i][1]=FitNaSpectrumCB(HistoCh315[i]);
+    std::cout << "here" << std::endl;
     
     canvino->cd(1);
     HistoCh59[i]->GetXaxis()->SetTitle("E [DU]");
@@ -215,6 +217,11 @@ void Analysis(string DirData){
 
   TF1* fitRatioCh59 = new TF1("fitRatioCh59","[0]+[1]*x");
   TF1* fitRatioCh315 = new TF1("fitRatioCh315","[0]+[1]*x");
+
+  fitRatioCh59->SetParameter(0,0.5);
+  fitRatioCh59->SetParameter(1,0.00001);
+  fitRatioCh315->SetParameter(0,0.5);
+  fitRatioCh315->SetParameter(1,0.00001);
   
   TPad *p2Ch59 = new TPad("p2","p3",0.,0.,1.,0.3); p2Ch59->Draw();
   TPad *p1Ch59 = new TPad("p1","p1",0.,0.3,1.,1.); p1Ch59->Draw();
@@ -276,14 +283,19 @@ void Analysis(string DirData){
   TGraphErrors* GraphRatioPeak1 = new TGraphErrors(NFilePhys,MeanTGlobal,ratioPeak1,SigmaTGlobal,sigmaRatioPeak1);
   TGraphErrors* GraphRatioPeak2 = new TGraphErrors(NFilePhys,MeanTGlobal,ratioPeak2,SigmaTGlobal,sigmaRatioPeak2);
   
-    
+  TF1* fitRatioPeak1 = new TF1("fitRatioPeak1","[0]+[1]*x");
+  TF1* fitRatioPeak2 = new TF1("fitRatioPeak2","[0]+[1]*x");
+
+  fitRatioPeak1->SetParameter(0,1);
+  fitRatioPeak1->SetParameter(1,0.00001);
+
+  fitRatioPeak2->SetParameter(0,1);
+  fitRatioPeak2->SetParameter(1,0.00001);
+  
   TCanvas* CanvasComparisonPeak= new TCanvas("CanvasComparisonPeak","CanvasComparisonPeak",1200,600);
   CanvasComparisonPeak->Divide(2,1);
   CanvasComparisonPeak->cd(1);
-
-  TF1* fitRatioPeak1 = new TF1("fitRatioPeak1","[0]+[1]*x");
-  TF1* fitRatioPeak2 = new TF1("fitRatioPeak2","[0]+[1]*x");
-  
+    
   TPad *pad2Peak1 = new TPad("p2","p3",0.,0.,1.,0.3); pad2Peak1->Draw();
   TPad *pad1Peak1 = new TPad("p1","p1",0.,0.3,1.,1.); pad1Peak1->Draw();
   pad1Peak1->SetBottomMargin(0.001);
@@ -470,5 +482,7 @@ void Analysis(string DirData){
   ResSumCh315P2Line->Draw("SAME");
 
   ResolutionVsTemp->SaveAs((DirData+"/Plot/EnergyTempCB/ResolutionVsTemp.png").c_str());
-  
+
+
+ 
 }

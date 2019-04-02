@@ -70,7 +70,7 @@ void Analysis(string DirData){
   for(int i=0;i<(int)FileList.size()-2;i+=3){
     
     for(int j=0; j<3;j++){
-      DataFile[j]=TFile::Open(("TestStability3/"+FileList.at(i+j)).c_str());
+      DataFile[j]=TFile::Open((DirData+"/"+FileList.at(i+j)).c_str());
       if(printOpenedFileNumber) std::cout << "FileOpened: " << i+j << std::endl;
       DataTree[j] = (TTree*)DataFile[j]->Get("data");
     }//chiudo for j
