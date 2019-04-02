@@ -29,6 +29,7 @@ void Analysis(string DirData){
   
   gSystem->Exec(("mkdir "+DirData+"/Plot/EnergyTempCB").c_str());
   gSystem->Exec(("mkdir "+DirData+"/Plot/EnergyTempCB/Partials/").c_str());
+  gSystem->Exec(("mkdir "+DirData+"/Plot/EnergyTempCB/CalibPlot/").c_str());
 
   //gStyle->SetOptStat("000001000");
 
@@ -219,9 +220,9 @@ void Analysis(string DirData){
   TF1* fitRatioCh315 = new TF1("fitRatioCh315","[0]+[1]*x");
 
   fitRatioCh59->SetParameter(0,0.5);
-  fitRatioCh59->SetParameter(1,0.00001);
+  fitRatioCh59->SetParameter(1,0.000001);
   fitRatioCh315->SetParameter(0,0.5);
-  fitRatioCh315->SetParameter(1,0.00001);
+  fitRatioCh315->SetParameter(1,0.000001);
   
   TPad *p2Ch59 = new TPad("p2","p3",0.,0.,1.,0.3); p2Ch59->Draw();
   TPad *p1Ch59 = new TPad("p1","p1",0.,0.3,1.,1.); p1Ch59->Draw();
@@ -287,10 +288,10 @@ void Analysis(string DirData){
   TF1* fitRatioPeak2 = new TF1("fitRatioPeak2","[0]+[1]*x");
 
   fitRatioPeak1->SetParameter(0,1);
-  fitRatioPeak1->SetParameter(1,0.00001);
+  fitRatioPeak1->SetParameter(1,0.000001);
 
   fitRatioPeak2->SetParameter(0,1);
-  fitRatioPeak2->SetParameter(1,0.00001);
+  fitRatioPeak2->SetParameter(1,0.000001);
   
   TCanvas* CanvasComparisonPeak= new TCanvas("CanvasComparisonPeak","CanvasComparisonPeak",1200,600);
   CanvasComparisonPeak->Divide(2,1);
@@ -483,6 +484,87 @@ void Analysis(string DirData){
 
   ResolutionVsTemp->SaveAs((DirData+"/Plot/EnergyTempCB/ResolutionVsTemp.png").c_str());
 
+  ///////////////////////////////////////////////////////////////////////////////////////////
 
- 
+  TGraphErrors* CalibPlot[NFilePhys][2];
+  TCanvas* CanvasCalib;
+  TF1* FitCalib[2];
+
+  Double_t ACh59[NFilePhys],sACh59[NFilePhys],BCh59[NFilePhys],sBCh59[NFilePhys];
+  Double_t ACh315[NFilePhys],sACh315[NFilePhys],BCh315[NFilePhys],sBCh315[NFilePhys];
+  
+  for(int i=0;i<NFilePhys;i++){
+
+    CanvasCalib= new TCanvas("CanvasCalib","CanvasCalib",1200,600);
+    CanvasCalib->Divide(2,1);
+
+    CanvasCalib->cd(1);
+    CalibPlot[i][0] = new TGraphErrors();
+    CalibPlot[i][0]->SetTitle(("CalibPlotCh59"+to_string(i)).c_str());
+    CalibPlot[i][0]->SetPoint(0,0,0);
+    CalibPlot[i][0]->SetPoint(1,511,MeanCh59P1[i]);
+    CalibPlot[i][0]->SetPointError(1,0,ErrMeanCh59P1[i]);
+    CalibPlot[i][0]->SetPoint(2,1275,MeanCh59P2[i]);
+    CalibPlot[i][0]->SetPointError(2,0,ErrMeanCh59P2[i]);
+    FitCalib[0]= CalibrationCurve(CalibPlot[i][0],i);
+    CalibPlot[i][0]->Draw("AP");
+    FitCalib[0]->Draw("SAME");
+    
+    CanvasCalib->cd(2);
+    CalibPlot[i][1] = new TGraphErrors();
+    CalibPlot[i][1]->SetTitle(("CalibPlotCh315"+to_string(i)).c_str());
+    CalibPlot[i][1]->SetPoint(0,0,0);
+    CalibPlot[i][1]->SetPoint(1,511,MeanCh315P1[i]);
+    CalibPlot[i][1]->SetPointError(1,0,ErrMeanCh315P1[i]);
+    CalibPlot[i][1]->SetPoint(2,1275,MeanCh315P2[i]);
+    CalibPlot[i][1]->SetPointError(2,0,ErrMeanCh315P2[i]);
+    FitCalib[1]= CalibrationCurve(CalibPlot[i][1],i);
+    CalibPlot[i][1]->Draw("AP");
+    FitCalib[1]->Draw("SAME");
+    
+    CanvasCalib->SaveAs((DirData+"/Plot/EnergyTempCB/CalibPlot/CalibPlot"+to_string(i)+".png").c_str());
+
+    ACh59[i]=FitCalib[0]->GetParameter(0);
+    sACh59[i]=FitCalib[0]->GetParError(0);
+    BCh59[i]=FitCalib[0]->GetParameter(1);
+    sBCh59[i]=FitCalib[0]->GetParError(1);
+
+    ACh315[i]=FitCalib[1]->GetParameter(0);
+    sACh315[i]=FitCalib[1]->GetParError(0);
+    BCh315[i]=FitCalib[1]->GetParameter(1);
+    sBCh315[i]=FitCalib[1]->GetParError(1);
+    
+    delete CanvasCalib;
+    delete FitCalib[0];
+    delete FitCalib[1];
+  }
+
+  TGraphErrors* SatValVsMeanTemp[2];
+  TGraphErrors* LYValVsMeanTemp[2];
+  
+  SatValVsMeanTemp[0]= new TGraphErrors(NFilePhys,MeanTGlobal,ACh59,SigmaTGlobal,sACh59);
+  SatValVsMeanTemp[0]->SetTitle("SatValVsMeanTempCh59");
+  SatValVsMeanTemp[1]= new TGraphErrors(NFilePhys,MeanTGlobal,ACh315,SigmaTGlobal,sACh315);
+  SatValVsMeanTemp[1]->SetTitle("SatValVsMeanTempCh315");
+  
+  LYValVsMeanTemp[0]= new TGraphErrors(NFilePhys,MeanTGlobal,BCh59,SigmaTGlobal,sBCh59);
+  LYValVsMeanTemp[0]->SetTitle("LYValVsMeanTempCh59");
+  LYValVsMeanTemp[1]= new TGraphErrors(NFilePhys,MeanTGlobal,BCh315,SigmaTGlobal,sBCh315);
+  LYValVsMeanTemp[1]->SetTitle("LYValVsMeanTempCh315");
+  
+  TCanvas* CanvasValSat = new TCanvas("CanvasValSat","CanvasValSat",1200,600);
+  CanvasValSat->Divide(2,1);
+  CanvasValSat->cd(1);
+  SatValVsMeanTemp[0]->Draw("AP");
+  CanvasValSat->cd(2);
+  SatValVsMeanTemp[1]->Draw("AP");
+  CanvasValSat->SaveAs((DirData+"/Plot/EnergyTempCB/SatValueVsTemp.png").c_str());
+  
+  TCanvas* CanvasValLY = new TCanvas("CanvasValLY","CanvasValLY",1200,600);
+  CanvasValLY->Divide(2,1);
+  CanvasValLY->cd(1);
+  LYValVsMeanTemp[0]->Draw("AP");
+  CanvasValLY->cd(2);
+  LYValVsMeanTemp[1]->Draw("AP");
+  CanvasValLY->SaveAs((DirData+"/Plot/EnergyTempCB/LYValueVsTemp.png").c_str());
 }

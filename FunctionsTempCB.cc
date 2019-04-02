@@ -95,9 +95,7 @@ TF1* FitNaSpectrum(TH1D* Profile){
   spectrum->SetParameter(8,550);
   spectrum->SetParameter(9,0.8);
 
-  spectrum->SetParLimits(5,250,500);
-  spectrum->SetParLimits(7,3,4);
-  spectrum->SetParLimits(8,300,700);
+
   spectrum->SetParLimits(9,0.8,1);
   
 
@@ -110,15 +108,17 @@ TF1* FitNaSpectrum(TH1D* Profile){
 
 TF1* FitNaSpectrumCB(TH1D* Profile){
 
+  string HistoName;
+  HistoName=Profile->GetName();
   Double_t min;
   Profile->GetXaxis()->SetRangeUser(20,40);
   min = Profile->GetBinCenter(Profile->GetMinimumBin());
   Profile->GetXaxis()->UnZoom();
 
-  std::cout<<"minimum: "<< min<< std::endl;
+  //std::cout<<"minimum: "<< min<< std::endl;
   
   
-  TF1* spectrum = new TF1("SpectrumFit","[0] * exp(-( x-[1] )*( x-[1] )/( 2* [2]* [2])) + [3] / (exp( (x*[4]-(2*[1]*[1]/([1]+2*[1])))) + 1)+ [5] * exp(-( x-[6] )*( x-[6] )/( 2* [7]* [7])) +crystalball([8],[9],[10],[11],[12])",32,92);
+  TF1* spectrum = new TF1(("Fit"+HistoName).c_str(),"[0] * exp(-( x-[1] )*( x-[1] )/( 2* [2]* [2])) + [3] / (exp( (x*[4]-(2*[1]*[1]/([1]+2*[1])))) + 1)+ [5] * exp(-( x-[6] )*( x-[6] )/( 2* [7]* [7])) +crystalball([8],[9],[10],[11],[12])",min,92);
 
   Double_t max;
   max= Profile->GetMaximum();
@@ -137,11 +137,12 @@ TF1* FitNaSpectrumCB(TH1D* Profile){
   spectrum->SetParameter(11,0.04);
   spectrum->SetParameter(12,-1.4);
 
+  spectrum->SetParLimits(8,300,850);
   spectrum->SetParLimits(10,3.8,6);
   spectrum->SetParLimits(3,4,2700);
   
-  Profile->Fit("SpectrumFit","R0");
-
+  Profile->Fit(spectrum,"R0Q");
+  
   return spectrum;
 }
 
@@ -172,3 +173,14 @@ void SetStyleRatioPlot(TGraphErrors* ratioPlot,Double_t minRange,Double_t maxRan
 
 
 
+TF1* CalibrationCurve(TGraphErrors* graph,int i){
+  
+  TF1* fit = new TF1(("fitCalib"+to_string(i)).c_str()," [0] * (1-exp(-[1]*x) )",0,1300);
+
+  fit->SetParameter(0,144);
+  fit->SetParameter(1,4e-4);
+
+  graph->Fit(fit,"Q");
+
+  return fit;
+}
