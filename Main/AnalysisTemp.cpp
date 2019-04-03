@@ -205,8 +205,8 @@ int main(int argc, char* argv[] ){
   std::string DirData(argv[1]);
   std::string OV(argv[2]);
 
-  gSystem->Exex(("ls ../"+DirData+"/*PED*"+OV+"_singles.root > ../"+DirData+"/PedFile.txt").c_str());
-  gSystem->Exex(("ls ../"+DirData+"/*PHYS*"+OV+"_singles.root > ../"+DirData+"/PhysFile.txt").c_str());
+  gSystem->Exec(("ls ../"+DirData+"/*PED*"+OV+"_singles.root > ../"+DirData+"/PedFile.txt").c_str());
+  gSystem->Exec(("ls ../"+DirData+"/*PHYS*"+OV+"_singles.root > ../"+DirData+"/PhysFile.txt").c_str());
   gSystem->Exec(("mkdir "+DirData+"/Plot").c_str());
   
   gSystem->Exec(("mkdir "+DirData+"/Plot/EnergyTempCB").c_str());

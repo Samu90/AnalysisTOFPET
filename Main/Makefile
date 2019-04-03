@@ -12,7 +12,7 @@ EXTRALIBS := -L$(ROOTSYS)/lib -L$(ROOFIT_LIBDIR)/ -lHtml -lMathCore -lGenVector 
 
 
 main: AnalysisTemp.cpp
-	$(CC) -Wall $(INCLUDES) -o AnalysisTemp AnalysisTemp.cpp $(ROOTFLAG) $(EXTRALIBS)
+	$(CC) -Wall $(INCLUDES) -o AnalysisTemp.exe AnalysisTemp.cpp $(ROOTFLAG) $(EXTRALIBS)
 
 clean:
 	rm AnalysisTemp
