@@ -1,0 +1,15 @@
+./../AnalysisTemp/AnalysisTemp.exe ../TestStability_25_03_2018 7
+./TimeResolution.exe ../TestStability_25_03_2018 7
+./../AnalysisTemp/AnalysisTemp.exe ../TestStability3 7
+./TimeResolution.exe ../TestStability3 7
+./../AnalysisTemp/AnalysisTemp.exe ../TestStabilityNa22PedAllChannels_01_04_2019 7
+./TimeResolution.exe ../TestStabilityNa22PedAllChannels_01_04_2019 7
+./../AnalysisTemp/AnalysisTemp.exe ../TestStabilityNa22PedAllChannels_02_04_2019 7
+./TimeResolution.exe ../TestStabilityNa22PedAllChannels_02_04_2019 7
+./../AnalysisTemp/AnalysisTemp.exe ../TestStabilityNa22PedAllChannels_03_04_2019 7
+./TimeResolution.exe ../TestStabilityNa22PedAllChannels_03_04_2019 7
+
+
+
+
+

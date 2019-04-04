@@ -1,0 +1,8 @@
+AnalysisTemp
+#AnalysisTemp.cpp#
+AnalysisTemp.cpp
+AnalysisTemp.cpp~
+FunctionsTempCB.cc
+Makefile
+prova.txt
+ReadFileList.cc
