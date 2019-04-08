@@ -14,5 +14,6 @@ EXTRALIBS := -L$(ROOTSYS)/lib -L$(ROOFIT_LIBDIR)/ -lHtml -lMathCore -lGenVector 
 main: GlobalPlot.cpp
 	$(CC) -Wall $(INCLUDES) -o GlobalPlot.exe GlobalPlot.cpp $(ROOTFLAG) $(EXTRALIBS)
 
-clean:
+cl:
 	rm GlobalPlot.exe
+	rm File*.root

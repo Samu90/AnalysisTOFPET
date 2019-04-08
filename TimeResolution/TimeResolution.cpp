@@ -338,15 +338,49 @@ int main(int argc, char* argv[] ){
     delete CanvTimeRes;
   }
 
+  std::string FileName =DirData;
+  FileName.erase(0,3);
+
+  TFile* f = new TFile(("../RootFileGraph/"+FileName+"TRes.root").c_str(),"RECREATE");
+  
   TCanvas* TResVsTemp = new TCanvas("TResVsTemp","TResVsTemp",1600,800);
   TGraphErrors* GraphTResVsTemp = new TGraphErrors(NFilePhys,MeanTGlobal,TimeRes,SigmaTGlobal,SigmaTimeRes);
   GraphTResVsTemp->SetTitle("GraphTimeResolutionVsTemp");
+  GraphTResVsTemp->SetName(GraphTResVsTemp->GetTitle());
   GraphTResVsTemp->GetXaxis()->SetTitle("TempMeanBox [°C]");
   GraphTResVsTemp->GetYaxis()->SetTitle("TimeResolution [ps]");
 
-  GraphTResVsTemp->Draw();
+  GraphTResVsTemp->Draw("AP");
+  
+  f->cd();
+  GraphTResVsTemp->Write();
 
   TResVsTemp->SaveAs((DirData+"/Plot/TimeRes/TimeResVsTemp.png").c_str());
 
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+  TCanvas* CanvasTotalTimeRes= new TCanvas("CanvasTotalTimeRes","CanvasTotalTimeRes",1600,800);
+  TH1D* TimeResTot = new TH1D("TimeResTot","TimeResTot",200,-2000,2000);
+  TF1* FitTimeResTot = new TF1("FitTimeResTot","gaus");
+
+  for(int i=0; i< NFilePhys; i++){
+    TimeResTot->Add(HistoTdiff[i]);
+  }
+  
+  FitTimeResTot->SetParameter(0,TimeResTot->GetMaximum());
+  FitTimeResTot->SetParameter(1,TimeResTot->GetBinCenter(TimeResTot->GetMaximumBin()));
+  TimeResTot->Draw();    
+  TimeResTot->Fit(FitTimeResTot);
+  
+  CanvasTotalTimeRes->SaveAs((DirData+"/Plot/TimeRes/TimeResTotal.png").c_str());
+
+
+  f->cd();
+  TimeResTot->Write();
+  FitTimeResTot->Write();
+
+  
+  f->Save();
+  f->Close();
   return 0;
 }
