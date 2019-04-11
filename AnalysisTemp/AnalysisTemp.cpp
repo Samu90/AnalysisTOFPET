@@ -166,6 +166,66 @@ TF1* FitNaSpectrumCB(TH1D* Profile){
 }
 
 
+TF1* FitNaSpectrumCBFull(TH1D* Profile){
+
+  
+  Double_t min;
+  Double_t peak1,peak2, peak0;
+
+  Profile->GetXaxis()->SetRangeUser(20,40);
+  min = Profile->GetBinCenter(Profile->GetMinimumBin());
+  Profile->GetXaxis()->UnZoom();
+
+  Profile->GetXaxis()->SetRangeUser(30,55);
+  peak1 = Profile->GetBinCenter(Profile->GetMaximumBin());
+  Profile->GetXaxis()->UnZoom();
+
+  Profile->GetXaxis()->SetRangeUser(75,98);
+  peak2 = Profile->GetBinCenter(Profile->GetMaximumBin());
+  Profile->GetXaxis()->UnZoom();
+
+  Profile->GetXaxis()->SetRangeUser(0,30);
+  peak0 = Profile->GetBinCenter(Profile->GetMaximumBin());
+  Profile->GetXaxis()->UnZoom();
+
+  std::cout << "p1 , p2  ->  " << peak1 << " " << peak2 << std::endl;
+
+  TF1* spectrum = new TF1(Form("SpectrumFit_%s", Profile->GetName()),"[0] * exp(-( x-[1] )*( x-[1] )/( 2* [2]* [2])) + [3] / (exp( (x*[4]-(2*[1]*[1]/([1]+2*[1])))) + 1)+ [5] * exp(-( x-[6] )*( x-[6] )/( 2* [7]* [7])) +crystalball([8],[9],[10],[11],[12])+[13]*exp(-( x-[14] )*( x-[14] )/( 2* [15]* [15]))",10,92);
+
+  Double_t max;
+  max= Profile->GetMaximum();
+  
+
+  spectrum->SetParameter(0,max);
+  spectrum->SetParameter(1,peak1);
+  spectrum->SetParameter(2,3);
+  spectrum->SetParameter(3,max/5);
+  spectrum->SetParameter(4,0.82);
+  spectrum->SetParameter(5,max/20);
+  spectrum->SetParameter(6,peak2);
+  spectrum->SetParameter(7,3.2);
+  spectrum->SetParameter(8,max/12);
+  spectrum->SetParameter(9,peak2/1.21);
+  spectrum->SetParameter(10,4.3);
+  spectrum->SetParameter(11,0.04);
+  spectrum->SetParameter(12,-1.4);
+  spectrum->SetParameter(13,3000);
+  spectrum->SetParameter(14,peak0);
+  spectrum->SetParameter(15,9);
+
+ 
+  spectrum->SetParLimits(10,3.8,6);
+  spectrum->SetParLimits(3,4,2700);
+  spectrum->SetParLimits(11,0.02,1);
+  
+ 
+  Profile->Fit(Form("SpectrumFit_%s", Profile->GetName()),"R0");
+
+ 
+  return spectrum;
+}
+
+
 void RatioWithError(Double_t* A,Double_t* B,Double_t* sA,Double_t* sB,Double_t* ratio, Double_t* sigmaRatio,int Ndata){
 
   for(int i=0;i<Ndata;i++){
@@ -331,10 +391,10 @@ std::cout << "www2" << std::endl;
     TCanvas* canvino = new TCanvas("Canvino","Canvino",1200,600);
     canvino->Divide(2,1);
 
-    FitSpectrum[i][0]=FitNaSpectrumCB(HistoCh59[i]);
+    FitSpectrum[i][0]=FitNaSpectrumCBFull(HistoCh59[i]);
     //std::cout << "here " << FitSpectrum[i][0] << " " << FitSpectrum[i][0]->GetName() <<std::endl;
     //std::cout << FitSpectrum[i][1] << std::endl;
-    FitSpectrum[i][1]=FitNaSpectrumCB(HistoCh315[i]);
+    FitSpectrum[i][1]=FitNaSpectrumCBFull(HistoCh315[i]);
     //std::cout << "here " << FitSpectrum[i][1] << std::endl;
     //std::cout << " " << FitSpectrum[i][1]->GetName() <<std::endl;     
 
