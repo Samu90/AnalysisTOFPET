@@ -288,6 +288,8 @@ int main(int argc, char* argv[] ){
 
   gSystem->Exec(("ls "+DirData+"/*PED*"+OV+"_singles.root > "+DirData+"/PedFile.txt").c_str());
   gSystem->Exec(("ls "+DirData+"/*PHYS*"+OV+"_singles.root > "+DirData+"/PhysFile.txt").c_str());
+  gSystem->Exec(("ls "+DirData+"/*PHYS*"+OV+".txt > "+DirData+"/ConfigFile.txt").c_str());
+  
   gSystem->Exec(("mkdir "+DirData+"/Plot").c_str());
   
   gSystem->Exec(("mkdir "+DirData+"/Plot/EnergyTempCB").c_str());
@@ -306,18 +308,48 @@ int main(int argc, char* argv[] ){
   std::string ListFilePed = DirData+"/PedFile.txt";
   std::cout << "Lista File Pedestal: "<< ListFilePed << std::endl;    
   FileListPedestal=ReadData(ListFilePed);
-  
+
   std::vector<std::string> FileListPhysics;
   std::string ListFilePhys = DirData+"/PhysFile.txt";
   std::cout << "Lista File Pedestal: "<< ListFilePed << std::endl;
   FileListPhysics=ReadData(ListFilePhys);
 
+  std::vector<std::string> FileListConfig;
+  std::string ListFileConfig = DirData+"/ConfigFile.txt";
+  std::cout << "Lista File Configuration: "<< ListFileConfig << std::endl;    
+  FileListConfig=ReadData(ListFileConfig);
+  
+  for(int i=0; i< (int )FileListConfig.size();i++){
+    std::cout << FileListConfig.at(i) << std::endl;
+    
+  }
+  
+  std::vector<int> Channels;
+  std::vector<std::string> ConfigData;
+  ConfigData=ReadData(FileListConfig[0]);
+
+  for(int i=0; i<(int)ConfigData.size();i++){
+    std::string arr[10];
+    int k = 0;
+    std::stringstream ssin(ConfigData.at(i));
+    while (ssin.good() && k < 10){
+      ssin >> arr[k];
+      //std::cout << "instram    " << arr[k] << std::endl; 
+      ++k;
+    }
+    if(arr[0]=="CH"){ Channels.push_back(std::atoi((arr[6]).c_str()));}
+    
+  }//chiudo for
+
+  for(int i=0;i< (int)Channels.size(); i++){
+    std::cout<< Channels[i]<< std::endl;
+  }
+
   int NFilePhys=(int)FileListPhysics.size();
   
   //Get Pedestal
-  Double_t Pedestal[NFilePhys][2];
-  Double_t PedestalCh1[2];
-  Double_t PedestalCh2[2];
+  Double_t PedestalCh[(int)Channels.size()][2];
+  Double_t PedestalTot[(int)Channels.size()]
 
   int k=0;
 
@@ -429,6 +461,8 @@ int main(int argc, char* argv[] ){
     
   }
   
+  /*
+
   TCanvas* PlotEVsT = new TCanvas("PlotEVsT","PlotEVsT",1200,600);
 
   TGraphErrors* Graph1Ch59 = new TGraphErrors(NFilePhys,MeanTCh59,Peak1Ch59,SigmaTCh59,SigmaPeak1Ch59);
@@ -874,4 +908,6 @@ int main(int argc, char* argv[] ){
  
   f->Save();
   f->Close();
+
+  */
 }

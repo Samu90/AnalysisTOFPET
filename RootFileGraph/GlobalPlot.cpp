@@ -18,6 +18,7 @@
 #include "TFitResult.h"
 #include "TPaveStats.h"
 #include "TVirtualFitter.h"
+#include "TFormula.h"
 
 struct dataPlot {
   Double_t A[2]={0,0};
@@ -141,7 +142,8 @@ int main(int argc, char* argv[]){
   gSystem->Exec("ls Test*.root > listfiletemp.txt");
   gSystem->Exec("mkdir Plot");
   gSystem->Exec("mkdir Plot/CalibVsTempFit");
-   
+  gSystem->Exec("mkdir Plot/ControlPlotCorrected");
+
   std::vector<std::string> FileListTemp;
   FileListTemp=ReadData("listfiletemp.txt");
   int NFileTemp = FileListTemp.size();
@@ -253,6 +255,7 @@ int main(int argc, char* argv[]){
   CanvasCh59->SaveAs("Plot/GlobalPlotCh59.png");
   delete LegendCh59;
   delete CanvasCh59;
+
   ///////////////////////////////////CH315////////////////////////////////////
   TCanvas* CanvasCh315 = new TCanvas("CanvasCh315LT","CanvasCh315LT",1500,800);
   CanvasCh315->Divide(2,1);
@@ -460,7 +463,201 @@ int main(int argc, char* argv[]){
   BValue[1]->Draw("AP");
   
   AandBValues->SaveAs("Plot/ABValuesWithFit.png");
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+
+  Double_t T0,TRef;
+  T0=24;
+  TRef= *(GraphCh59GTP2[0]->GetX()+100%GraphCh59GTP2[0]->GetN()); //Take a quasi-random value
+  
+
+  TFormula* CorrCh59[2]; //So called correction functionn
+  TFormula* CorrCh315[2]; 
+
+  CorrCh59[0]= new TFormula("CorrCh59Peak1",("1/("+(std::string)(FitTotCh59P1->GetExpFormula())+")*"+std::to_string(FitTotCh59P1->Eval(T0))).c_str());
+  CorrCh59[0]->SetParameter(0,FitTotCh59P1->GetParameter(0));
+  CorrCh59[0]->SetParameter(1,FitTotCh59P1->GetParameter(1));
+  std::cout << CorrCh59[0]->GetExpFormula()<< " "<< CorrCh59[0]->GetParameter(0) << " "<<CorrCh59[0]->GetParameter(1) <<std::endl;
+    
+  CorrCh59[1]= new TFormula("CorrCh59Peak2",("1/("+(std::string)(FitTotCh59P2->GetExpFormula())+")*"+std::to_string(FitTotCh59P2->Eval(T0))).c_str());
+  CorrCh59[1]->SetParameter(0,FitTotCh59P2->GetParameter(0));
+  CorrCh59[1]->SetParameter(1,FitTotCh59P2->GetParameter(1));
+  std::cout << CorrCh59[1]->GetExpFormula()<< " "<< CorrCh59[1]->GetParameter(0) << " "<<CorrCh59[1]->GetParameter(1) <<std::endl;
+  
+  CorrCh315[0] = new TFormula("CorrCh315Peak1",("1/("+(std::string)(FitTotCh315P1->GetExpFormula())+")*"+std::to_string(FitTotCh315P1->Eval(T0))).c_str());
+  CorrCh315[0]->SetParameter(0,FitTotCh315P1->GetParameter(0));
+  CorrCh315[0]->SetParameter(1,FitTotCh315P1->GetParameter(1));
+  std::cout << CorrCh315[0]->GetExpFormula()<< " "<< CorrCh315[0]->GetParameter(0) << " "<<CorrCh315[0]->GetParameter(1) <<std::endl;
+
+  CorrCh315[1] = new TFormula("CorrCh315Peak2",("1/("+(std::string)(FitTotCh315P2->GetExpFormula())+")*"+std::to_string(FitTotCh315P2->Eval(T0))).c_str());
+  CorrCh315[1]->SetParameter(0,FitTotCh315P2->GetParameter(0));
+  CorrCh315[1]->SetParameter(1,FitTotCh315P2->GetParameter(1));
+  std::cout << CorrCh315[1]->GetExpFormula()<< " "<< CorrCh315[1]->GetParameter(0) << " "<<CorrCh315[1]->GetParameter(1) <<std::endl;
+
+  std::cout << TRef << std::endl;
+  //////////////////////////////////////////////////// AT T_REF
+  Double_t ADCRefT0Ch59[2]={*(GraphCh59GTP1[0]->GetY()+100%GraphCh59GTP1[0]->GetN()) * CorrCh59[0]->Eval(TRef) , *(GraphCh59GTP2[0]->GetY()+100%GraphCh59GTP2[0]->GetN()) * CorrCh59[1]->Eval(TRef)};
+
+  Double_t ADCRefT0Ch315[2]={*(GraphCh315GTP1[0]->GetY()+100%GraphCh315GTP1[0]->GetN()) * CorrCh315[0]->Eval(TRef), *(GraphCh315GTP2[0]->GetY()+100%GraphCh315GTP2[0]->GetN()) * CorrCh315[0]->Eval(TRef)};
+  
+  std::vector<Double_t> LYRelT0Ch59P1;
+  std::vector<Double_t> LYRelT0Ch59P2;
+  std::vector<Double_t> LYRelT0Ch315P1;
+  std::vector<Double_t> LYRelT0Ch315P2;
+    
+  std::vector<Double_t> BValCh59;
+  std::vector<Double_t> BValCh315;  
+  std::vector<Double_t> SigmaBValCh59;
+  std::vector<Double_t> SigmaBValCh315;  
+
+  std::vector<Double_t> GlobalTemperature;
+
+  TGraphErrors* CalibCh59Corr;
+  TGraphErrors* CalibCh315Corr;
+  
+  TF1* FitCalibCh59Corr;
+  TF1* FitCalibCh315Corr;
+  
+  TCanvas* CalibCanvasPlotCorr;
+
+  for(int i=0; i<NFile ; i++){
+    for(int j=0; j<GraphCh59GTP1[i]->GetN();j++){
+
+      CalibCanvasPlotCorr = new TCanvas("CalibCanvasPlotCorr","CalibCanvasPlotCorr",1500,700);
+      CalibCanvasPlotCorr->Divide(2,1);
+
+      CalibCanvasPlotCorr->cd(1);
+      CalibCh59Corr = new TGraphErrors();
+      CalibCh59Corr->SetName(("CalibPlotCh59"+std::to_string(i)+std::to_string(j)).c_str());
+      CalibCh59Corr->SetPoint(0,511,*(GraphCh59GTP1[i]->GetY()+j)  *  CorrCh59[0]->Eval(  *(GraphCh59GTP1[i]->GetX()+j) ) );
+      CalibCh59Corr->SetPoint(1,1275, *(GraphCh59GTP2[i]->GetY()+j)  *  CorrCh59[1]->Eval(  *(GraphCh59GTP2[i]->GetX()+j)  ) );
+      std::cout <<"CHECK_____________"<< *(GraphCh59GTP2[i]->GetY()+j)  *  CorrCh59[1]->Eval(  *(GraphCh59GTP2[i]->GetX()+j)  ) << std::endl;
+      FitCalibCh59Corr=CalibrationCurve(CalibCh59Corr,"Ch59");
+      BValCh59.push_back(FitCalibCh59Corr->GetParameter(1));
+      SigmaBValCh59.push_back(FitCalibCh59Corr->GetParError(1));
+      std::cout << FitCalibCh59Corr->GetParError(1) << std::endl;
+      CalibCh59Corr->SetMarkerStyle(8);
+      CalibCh59Corr->GetXaxis()->SetLimits(0,1700);
+      CalibCh59Corr->GetXaxis()->SetRangeUser(0,1700);
+      CalibCh59Corr->GetXaxis()->SetTitle("E [KeV]");
+      CalibCh59Corr->GetYaxis()->SetTitle("ADC [D.U.]");
+      CalibCh59Corr->GetYaxis()->SetLimits(0,110);
+      CalibCh59Corr->GetYaxis()->SetRangeUser(0,110);
+      CalibCh59Corr->Draw("AP");
+      FitCalibCh59Corr->Draw("SAME");
+
+      GlobalTemperature.push_back(*(GraphCh59GTP1[i]->GetX()+j));
+
+      LYRelT0Ch59P1.push_back(  *(GraphCh59GTP1[i]->GetY()+j)  *  CorrCh59[0]->Eval(  *(GraphCh59GTP1[i]->GetX()+j)  ) /  (  ADCRefT0Ch59[0] )        );
+      LYRelT0Ch59P2.push_back(  *(GraphCh59GTP2[i]->GetY()+j)  *  CorrCh59[1]->Eval(  *(GraphCh59GTP2[i]->GetX()+j)  ) /  (  ADCRefT0Ch59[1] )        );
+
+      CalibCanvasPlotCorr->cd(2);
+      CalibCh315Corr = new TGraphErrors();
+      CalibCh59Corr->SetName(("CalibPlotCh315"+std::to_string(i)+std::to_string(j)).c_str());
+      CalibCh315Corr->SetPoint(0,511,*(GraphCh315GTP1[i]->GetY()+j)  *  CorrCh315[0]->Eval(  *(GraphCh315GTP1[i]->GetX()+j) ) );
+      CalibCh315Corr->SetPoint(1,1275, *(GraphCh315GTP2[i]->GetY()+j)  *  CorrCh315[1]->Eval(  *(GraphCh315GTP2[i]->GetX()+j)  ) );
+      std::cout << "CHECK____________"<< *(GraphCh315GTP2[i]->GetY()+j)  *  CorrCh315[1]->Eval(  *(GraphCh315GTP2[i]->GetX()+j)  ) << std::endl;
+      FitCalibCh315Corr=CalibrationCurve(CalibCh315Corr,"Ch315");
+      BValCh315.push_back(FitCalibCh315Corr->GetParameter(1)); 
+      SigmaBValCh315.push_back(FitCalibCh315Corr->GetParError(1));
+      std::cout << FitCalibCh315Corr->GetParError(1) << std::endl;     
+      CalibCh315Corr->SetMarkerStyle(8);
+      CalibCh315Corr->GetXaxis()->SetLimits(0,1700);
+      CalibCh315Corr->GetXaxis()->SetRangeUser(0,1700);
+      CalibCh315Corr->GetXaxis()->SetTitle("E [KeV]");
+      CalibCh315Corr->GetYaxis()->SetTitle("ADC [D.U.]");
+      CalibCh315Corr->GetYaxis()->SetLimits(0,110);
+      CalibCh315Corr->GetYaxis()->SetRangeUser(0,110);
+      CalibCh315Corr->Draw("AP");
+      FitCalibCh315Corr->Draw("SAME");
+
+      LYRelT0Ch315P1.push_back(  *(GraphCh315GTP1[i]->GetY()+j)  *  CorrCh315[0]->Eval(  *(GraphCh315GTP1[i]->GetX()+j)  ) /  (  ADCRefT0Ch315[0] )        );
+      LYRelT0Ch315P2.push_back(  *(GraphCh315GTP2[i]->GetY()+j)  *  CorrCh315[1]->Eval(  *(GraphCh315GTP2[i]->GetX()+j)  ) /  (  ADCRefT0Ch315[1] )        );
+      
+      std::cout << LYRelT0Ch59P1.at(j) <<" " << LYRelT0Ch59P2.at(j) <<" "<< LYRelT0Ch315P1.at(j) <<" "<<LYRelT0Ch315P2.at(j) <<" "<< std::endl;
+      
+      CalibCanvasPlotCorr->SaveAs(("Plot/ControlPlotCorrected/CalibCurve"+std::to_string(i)+std::to_string(j)+".png").c_str());
+      
+      delete CalibCanvasPlotCorr;
+      delete FitCalibCh59Corr;
+      delete FitCalibCh315Corr;   
+      delete CalibCh59Corr;
+      delete CalibCh315Corr;
+    }//chiudo for j
+  }//chiudo for i
+  
+  
+  TH1D* HistoLYRelT0Ch59[2];
+  TH1D* HistoLYRelT0Ch315[2];
+
+  HistoLYRelT0Ch59[0]= new TH1D("HistoLYRelT0Ch59P1","HistoLYRelT0Ch59P1",80,0.8,1.2);
+  HistoLYRelT0Ch59[1]= new TH1D("HistoLYRelT0Ch59P2","HistoLYRelT0Ch59P2",90,0.8,1.2);
+
+  HistoLYRelT0Ch315[0]= new TH1D("HistoLYRelT0Ch315P1","HistoLYRelT0Ch315P1",80,0.8,1.2);
+  HistoLYRelT0Ch315[1]= new TH1D("HistoLYRelT0Ch315P2","HistoLYRelT0Ch315P2",90,0.8,1.2);
+
+  for(int i=0; i<(int)LYRelT0Ch315P1.size();i++){
+    
+    HistoLYRelT0Ch59[0]->Fill(LYRelT0Ch59P1.at(i));
+    HistoLYRelT0Ch59[1]->Fill(LYRelT0Ch59P2.at(i));
+    HistoLYRelT0Ch315[0]->Fill(LYRelT0Ch315P1.at(i));
+    HistoLYRelT0Ch315[1]->Fill(LYRelT0Ch315P2.at(i));
+  }
+  
+  TF1* FitLYResCh59P1 = new TF1("FitLYResCh59P1","gaus", 0.5, 1.5);
+  TF1* FitLYResCh315P1 = new TF1("FitLYResCh315P1","gaus", 0.5,1.5);
+  TF1* FitLYResCh59P2 = new TF1("FitLYResCh59P2","gaus", 0.5,1.5);
+  TF1* FitLYResCh315P2 = new TF1("FitLYResCh315P2","gaus", 0.5,1.5);
+ 
+
+  TCanvas* CanvasLYRelT0 = new TCanvas("CanvasLYRelT0","CanvasLYRelT0",1400,700);
+  CanvasLYRelT0->Divide(2,2);
+  CanvasLYRelT0->cd(1);
+  HistoLYRelT0Ch59[0]->Draw();
+  HistoLYRelT0Ch59[0]->Fit(FitLYResCh59P1,"Q0");
+  FitLYResCh59P1->SetLineWidth(2);
+  FitLYResCh59P1->Draw("SAME");
+  
+  CanvasLYRelT0->cd(2);
+  HistoLYRelT0Ch315[0]->Draw();
+  HistoLYRelT0Ch315[0]->Fit(FitLYResCh315P1,"Q0");
+  FitLYResCh315P1->SetLineWidth(2);
+  FitLYResCh315P1->Draw("SAME");
+  
+  CanvasLYRelT0->cd(3);
+  HistoLYRelT0Ch59[1]->Draw();
+  HistoLYRelT0Ch59[1]->Fit(FitLYResCh59P2,"Q0");
+  FitLYResCh59P2->SetLineWidth(2);
+  FitLYResCh59P2->Draw("SAME");
+
+  CanvasLYRelT0->cd(4);
+  HistoLYRelT0Ch315[1]->Draw();
+  HistoLYRelT0Ch315[1]->Fit(FitLYResCh315P2,"Q0");
+  FitLYResCh315P2->SetLineWidth(2);
+  FitLYResCh59P2->Draw("SAME");
+
+  CanvasLYRelT0->SaveAs("Plot/LYRelT0AllChannel.png");
+
+  TCanvas* CanvasBValuCorrected = new TCanvas("CanvasBValuCorrected", "CanvasBValuCorrected",1600,800);
+  CanvasBValuCorrected->Divide(2,1);
+  
+  CanvasBValuCorrected->cd(1);
+  TGraphErrors* GraphBValueCorrCh59 = new TGraphErrors((int)BValCh59.size(),&GlobalTemperature[0],&BValCh59[0],0,&SigmaBValCh59[0]);
+  GraphBValueCorrCh59->SetMarkerStyle(8);
+  GraphBValueCorrCh59->GetXaxis()->SetTitle("Temp [°C]");
+  GraphBValueCorrCh59->GetYaxis()->SetTitle("FitValue");  
+  GraphBValueCorrCh59->Draw("AP");
+  
+  CanvasBValuCorrected->cd(2);
+  TGraphErrors* GraphBValueCorrCh315 = new TGraphErrors((int)BValCh315.size(),&GlobalTemperature[0],&BValCh315[0],0,&SigmaBValCh315[0]);
+  GraphBValueCorrCh315->SetMarkerStyle(8);  
+  GraphBValueCorrCh315->GetXaxis()->SetTitle("Temp [°C]");
+  GraphBValueCorrCh315->GetYaxis()->SetTitle("FitValue");  
+  GraphBValueCorrCh315->Draw("AP");
+  
+  CanvasBValuCorrected->SaveAs("Plot/CavasBValuesCorrected.png");
+  
+  
 }
 
 
