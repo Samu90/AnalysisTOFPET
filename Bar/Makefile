@@ -11,8 +11,11 @@ ROOTFLAG = `${ROOTSYS}/bin/root-config --cflags --libs`
 EXTRALIBS := -L$(ROOTSYS)/lib -L$(ROOFIT_LIBDIR)/ -lHtml -lMathCore -lGenVector -lMinuit -lEG  -lPhysics -lz -lTreePlayer -lRooFitCore -lRooFit
 
 
-main: BarAnalysis.cpp
+bar: BarAnalysis.cpp
 	$(CC) -Wall $(INCLUDES) -o BarAnalysis.exe BarAnalysis.cpp $(ROOTFLAG) $(EXTRALIBS)
+
+temp: AnalysisTemp.cpp
+	$(CC) -Wall $(INCLUDES) -o AnalysisTemp.exe AnalysisTemp.cpp $(ROOTFLAG) $(EXTRALIBS)
 
 clean:
 	rm BarAnalysis.exe

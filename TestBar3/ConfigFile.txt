@@ -1,0 +1,1 @@
+../TestBar3/Run000002_2019-05-10-16-05-24_Na22Bar_PHYS_qdc_Time60_Gate15_OvRef7_Ov4.txt

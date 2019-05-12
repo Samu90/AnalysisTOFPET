@@ -1,0 +1,2 @@
+../TestBar3/Run000001_2019-05-10-16-05-18_Na22Bar_PED_qdc_Time1_Gate15_OvRef7_Ov4_singles.root
+../TestBar3/Run000003_2019-05-10-16-06-49_Na22Bar_PED_qdc_Time1_Gate15_OvRef7_Ov4_singles.root

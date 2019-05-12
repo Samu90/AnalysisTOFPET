@@ -19,6 +19,7 @@
 #include "TPaveStats.h"
 #include "TVirtualFitter.h"
 #include "TFormula.h"
+#include "TList.h" 
 
 struct dataPlot {
   Double_t A[2]={0,0};
@@ -27,7 +28,7 @@ struct dataPlot {
   Double_t SB[2]={0,0};
 };
 
-
+void ResidualPlot(TMultiGraph* ,TF1* , std::string );
 std::vector<std::string> ReadData(std::string FileName){
  
   std::vector<std::string> FileList;
@@ -138,6 +139,7 @@ void LYAtFixedTemp(Double_t TempEval, const std::pair<TF1*, Double_t>  FitTotCh5
 
 int main(int argc, char* argv[]){
   bool PlotDataset = true;
+  Int_t hadd=std::atoi(argv[1]);
 
   gSystem->Exec("ls Test*.root > listfiletemp.txt");
   gSystem->Exec("mkdir Plot");
@@ -151,7 +153,7 @@ int main(int argc, char* argv[]){
   std::vector<std::string> FileListOrigin;
   
   for(int i=0; i<NFileTemp-1;i+=2){
-    //gSystem->Exec(("hadd -f File"+std::to_string(i)+".root "+FileListTemp[i]+" "+FileListTemp[i+1]).c_str());
+    if(hadd==1)gSystem->Exec(("hadd -f File"+std::to_string(i)+".root "+FileListTemp[i]+" "+FileListTemp[i+1]).c_str());
     FileListOrigin.push_back(FileListTemp[i]); 
   }
   
@@ -180,6 +182,12 @@ int main(int argc, char* argv[]){
   TGraphErrors* GraphCh59GTP2[NFile];
   TGraphErrors* GraphCh315GTP1[NFile];
   TGraphErrors* GraphCh315GTP2[NFile];
+
+  TGraphErrors* GraphBetaLYCh59[NFile];
+  TGraphErrors* GraphBetaLYCh315[NFile];
+
+  TGraphErrors* GraphSatValCh59[NFile];
+  TGraphErrors* GraphSatValCh315[NFile];
  
   TGraphErrors* GraphTResVsTemp[NFile];
 
@@ -188,7 +196,12 @@ int main(int argc, char* argv[]){
   TMultiGraph* Ch315P1 = new TMultiGraph();
   TMultiGraph* Ch315P2 = new TMultiGraph();
   
- 
+  TMultiGraph* LYVsTempCh59 = new TMultiGraph();
+  TMultiGraph* LYVsTempCh315 = new TMultiGraph();
+
+  TMultiGraph* SatValVsTempCh59 = new TMultiGraph();
+  TMultiGraph* SatValVsTempCh315 = new TMultiGraph();
+
   for(int i=0;i<NFile;i++){
     
     PlotFile[i]= TFile::Open( (FileList.at(i)).c_str() );
@@ -205,6 +218,11 @@ int main(int argc, char* argv[]){
     
     GraphTResVsTemp[i] = (TGraphErrors*)PlotFile[i]->Get("GraphTimeResolutionVsTemp");
        
+    GraphBetaLYCh59[i]=(TGraphErrors*)PlotFile[i]->Get("LYValVsMeanTempCh59");
+    GraphBetaLYCh315[i]=(TGraphErrors*)PlotFile[i]->Get("LYValVsMeanTempCh315");
+  
+    GraphSatValCh59[i]=(TGraphErrors*)PlotFile[i]->Get("SatValVsMeanTempCh59");
+    GraphSatValCh315[i]=(TGraphErrors*)PlotFile[i]->Get("SatValVsMeanTempCh315");
   }
   
   GraphCh59LTP1[0]->SetTitle("Ch59LocalTempP1");
@@ -245,6 +263,12 @@ int main(int argc, char* argv[]){
     Ch59P1->Add(GraphCh59GTP1[i]);
     GraphCh59GTP2[i]->Draw("SAMEP");
     Ch59P2->Add(GraphCh59GTP2[i]);
+    
+    GraphBetaLYCh59[i]->SetMarkerStyle(24+i);
+    LYVsTempCh59->Add(GraphBetaLYCh59[i]);
+    
+    GraphSatValCh59[i]->SetMarkerStyle(24+i);
+    SatValVsTempCh59->Add(GraphSatValCh59[i]);
   }
   
   CanvasCh59->cd(1);
@@ -286,6 +310,11 @@ int main(int argc, char* argv[]){
     GraphCh315GTP2[i]->Draw("SAMEP");
     Ch315P2->Add(GraphCh315GTP2[i]);
  
+    GraphBetaLYCh315[i]->SetMarkerStyle(24+i);
+    LYVsTempCh315->Add(GraphBetaLYCh315[i]);
+
+    GraphSatValCh315[i]->SetMarkerStyle(24+i);
+    SatValVsTempCh315->Add(GraphSatValCh315[i]);
   }
   
   CanvasCh315->cd(1);
@@ -299,21 +328,39 @@ int main(int argc, char* argv[]){
 
   TCanvas* CanvasTimeResVsTemp = new TCanvas("TimeResTot","TimeResTot",1600,800);
   TLegend* LegendTResVsTemp = new TLegend(0.2, 0.2, .2, .2);
+  Double_t Mean=0;
+  Double_t RMSVal=0;
+  int count=0;
+  std::vector<Double_t> YVal;
   
-  GraphTResVsTemp[0]->GetXaxis()->SetLimits(17,28);
+  Mean+=GraphTResVsTemp[0]->GetMean(2);
+  for(int j=0;j< GraphTResVsTemp[0]->GetN();j++){
+    YVal.push_back(GraphTResVsTemp[0]->GetY()[j]);
+    count++;
+  }
+  
+  GraphTResVsTemp[0]->GetXaxis()->SetLimits(21,26.5);
   GraphTResVsTemp[0]->SetMarkerStyle(24);
   GraphTResVsTemp[0]->SetName(GraphTResVsTemp[0]->GetTitle());
   GraphTResVsTemp[0]->Draw("AP");
   LegendTResVsTemp->AddEntry(GraphTResVsTemp[0],(FileListOrigin.at(0)).c_str());
 			    
   for(int i=1; i< NFile;i++){
+    for(int j=0;j< GraphTResVsTemp[i]->GetN();j++){
+      YVal.push_back(GraphTResVsTemp[i]->GetY()[j]);
+      count++;
+    }
+    Mean+=GraphTResVsTemp[i]->GetMean(2);
     GraphTResVsTemp[i]->SetMarkerStyle(24+i);
     GraphTResVsTemp[i]->SetName(GraphTResVsTemp[i]->GetTitle());
     GraphTResVsTemp[i]->Draw("SAMEP");
     LegendTResVsTemp->AddEntry(GraphTResVsTemp[i],(FileListOrigin.at(i)).c_str());
   }
   
+  RMSVal=TMath::RMS(YVal.begin(),YVal.end());
+  LegendTResVsTemp->SetHeader(Form("Mean: %lf  MeanError: %lf",Mean/NFile,RMSVal/sqrt(count)));
   LegendTResVsTemp->Draw("SAME");
+    
   CanvasTimeResVsTemp->SaveAs("Plot/TimeResVsTempTot.png");
   delete CanvasTimeResVsTemp;
   delete LegendTResVsTemp;
@@ -391,6 +438,11 @@ int main(int argc, char* argv[]){
   std::pair<TF1*,Double_t> FullCh315P2;
   FullCh315P2.first=FitTotCh315P2;
   FullCh315P2.second=CMCh315P2[1];
+
+  ResidualPlot(Ch59P1,FitTotCh59P1,"FitTotalShiftPeak59P1");
+  ResidualPlot(Ch59P2,FitTotCh59P2,"FitTotalShiftPeak59P2");
+  ResidualPlot(Ch315P1,FitTotCh315P1,"FitTotalShiftPeak315P1");
+  ResidualPlot(Ch315P2,FitTotCh315P2,"FitTotalShiftPeak315P2");
 
   CanvasFitTotal->SaveAs("Plot/FitTotalShiftPeak.png");
   
@@ -531,11 +583,11 @@ int main(int argc, char* argv[]){
       CalibCh59Corr->SetName(("CalibPlotCh59"+std::to_string(i)+std::to_string(j)).c_str());
       CalibCh59Corr->SetPoint(0,511,*(GraphCh59GTP1[i]->GetY()+j)  *  CorrCh59[0]->Eval(  *(GraphCh59GTP1[i]->GetX()+j) ) );
       CalibCh59Corr->SetPoint(1,1275, *(GraphCh59GTP2[i]->GetY()+j)  *  CorrCh59[1]->Eval(  *(GraphCh59GTP2[i]->GetX()+j)  ) );
-      std::cout <<"CHECK_____________"<< *(GraphCh59GTP2[i]->GetY()+j)  *  CorrCh59[1]->Eval(  *(GraphCh59GTP2[i]->GetX()+j)  ) << std::endl;
+      //std::cout <<"CHECK_____________"<< *(GraphCh59GTP2[i]->GetY()+j)  *  CorrCh59[1]->Eval(  *(GraphCh59GTP2[i]->GetX()+j)  ) << std::endl;
       FitCalibCh59Corr=CalibrationCurve(CalibCh59Corr,"Ch59");
       BValCh59.push_back(FitCalibCh59Corr->GetParameter(1));
       SigmaBValCh59.push_back(FitCalibCh59Corr->GetParError(1));
-      std::cout << FitCalibCh59Corr->GetParError(1) << std::endl;
+      //std::cout << FitCalibCh59Corr->GetParError(1) << std::endl;
       CalibCh59Corr->SetMarkerStyle(8);
       CalibCh59Corr->GetXaxis()->SetLimits(0,1700);
       CalibCh59Corr->GetXaxis()->SetRangeUser(0,1700);
@@ -556,11 +608,11 @@ int main(int argc, char* argv[]){
       CalibCh59Corr->SetName(("CalibPlotCh315"+std::to_string(i)+std::to_string(j)).c_str());
       CalibCh315Corr->SetPoint(0,511,*(GraphCh315GTP1[i]->GetY()+j)  *  CorrCh315[0]->Eval(  *(GraphCh315GTP1[i]->GetX()+j) ) );
       CalibCh315Corr->SetPoint(1,1275, *(GraphCh315GTP2[i]->GetY()+j)  *  CorrCh315[1]->Eval(  *(GraphCh315GTP2[i]->GetX()+j)  ) );
-      std::cout << "CHECK____________"<< *(GraphCh315GTP2[i]->GetY()+j)  *  CorrCh315[1]->Eval(  *(GraphCh315GTP2[i]->GetX()+j)  ) << std::endl;
+      //std::cout << "CHECK____________"<< *(GraphCh315GTP2[i]->GetY()+j)  *  CorrCh315[1]->Eval(  *(GraphCh315GTP2[i]->GetX()+j)  ) << std::endl;
       FitCalibCh315Corr=CalibrationCurve(CalibCh315Corr,"Ch315");
       BValCh315.push_back(FitCalibCh315Corr->GetParameter(1)); 
       SigmaBValCh315.push_back(FitCalibCh315Corr->GetParError(1));
-      std::cout << FitCalibCh315Corr->GetParError(1) << std::endl;     
+      //std::cout << FitCalibCh315Corr->GetParError(1) << std::endl;     
       CalibCh315Corr->SetMarkerStyle(8);
       CalibCh315Corr->GetXaxis()->SetLimits(0,1700);
       CalibCh315Corr->GetXaxis()->SetRangeUser(0,1700);
@@ -571,8 +623,8 @@ int main(int argc, char* argv[]){
       CalibCh315Corr->Draw("AP");
       FitCalibCh315Corr->Draw("SAME");
 
-      LYRelT0Ch315P1.push_back(  *(GraphCh315GTP1[i]->GetY()+j)  *  CorrCh315[0]->Eval(  *(GraphCh315GTP1[i]->GetX()+j)  ) /  (  ADCRefT0Ch315[0] )        );
-      LYRelT0Ch315P2.push_back(  *(GraphCh315GTP2[i]->GetY()+j)  *  CorrCh315[1]->Eval(  *(GraphCh315GTP2[i]->GetX()+j)  ) /  (  ADCRefT0Ch315[1] )        );
+      LYRelT0Ch315P1.push_back(  *(GraphCh315GTP1[i]->GetY()+j)  *  CorrCh315[0]->Eval(  *(GraphCh315GTP1[i]->GetX()+j)  ) /  (  ADCRefT0Ch59[0] )        );
+      LYRelT0Ch315P2.push_back(  *(GraphCh315GTP2[i]->GetY()+j)  *  CorrCh315[1]->Eval(  *(GraphCh315GTP2[i]->GetX()+j)  ) /  (  ADCRefT0Ch59[1] )        );
       
       std::cout << LYRelT0Ch59P1.at(j) <<" " << LYRelT0Ch59P2.at(j) <<" "<< LYRelT0Ch315P1.at(j) <<" "<<LYRelT0Ch315P2.at(j) <<" "<< std::endl;
       
@@ -590,11 +642,15 @@ int main(int argc, char* argv[]){
   TH1D* HistoLYRelT0Ch59[2];
   TH1D* HistoLYRelT0Ch315[2];
 
-  HistoLYRelT0Ch59[0]= new TH1D("HistoLYRelT0Ch59P1","HistoLYRelT0Ch59P1",80,0.8,1.2);
-  HistoLYRelT0Ch59[1]= new TH1D("HistoLYRelT0Ch59P2","HistoLYRelT0Ch59P2",90,0.8,1.2);
+  Double_t minTH=0.95;
+  Double_t maxTH= 1.05;
+  Int_t NBin=70;
+  
+  HistoLYRelT0Ch59[0]= new TH1D("HistoLYRelT0Ch59P1","HistoLYRelT0Ch59P1",NBin,minTH,maxTH);
+  HistoLYRelT0Ch59[1]= new TH1D("HistoLYRelT0Ch59P2","HistoLYRelT0Ch59P2",NBin,minTH,maxTH);
 
-  HistoLYRelT0Ch315[0]= new TH1D("HistoLYRelT0Ch315P1","HistoLYRelT0Ch315P1",80,0.8,1.2);
-  HistoLYRelT0Ch315[1]= new TH1D("HistoLYRelT0Ch315P2","HistoLYRelT0Ch315P2",90,0.8,1.2);
+  HistoLYRelT0Ch315[0]= new TH1D("HistoLYRelT0Ch315P1","HistoLYRelT0Ch315P1",NBin,minTH,maxTH);
+  HistoLYRelT0Ch315[1]= new TH1D("HistoLYRelT0Ch315P2","HistoLYRelT0Ch315P2",NBin,minTH,maxTH);
 
   for(int i=0; i<(int)LYRelT0Ch315P1.size();i++){
     
@@ -642,22 +698,160 @@ int main(int argc, char* argv[]){
   CanvasBValuCorrected->Divide(2,1);
   
   CanvasBValuCorrected->cd(1);
+  
+  
   TGraphErrors* GraphBValueCorrCh59 = new TGraphErrors((int)BValCh59.size(),&GlobalTemperature[0],&BValCh59[0],0,&SigmaBValCh59[0]);
+  TLegend* legCh59 = new TLegend();
+  legCh59->AddEntry(GraphBValueCorrCh59,Form("Mean: %lf",TMath::Mean(BValCh59.size(),&BValCh59[0])));
+  legCh59->AddEntry(GraphBValueCorrCh59,Form("Mean: %lf",TMath::RMS(BValCh59.size(),&BValCh59[0])));
+ 
   GraphBValueCorrCh59->SetMarkerStyle(8);
   GraphBValueCorrCh59->GetXaxis()->SetTitle("Temp [°C]");
   GraphBValueCorrCh59->GetYaxis()->SetTitle("FitValue");  
   GraphBValueCorrCh59->Draw("AP");
-  
+  legCh59->Draw("SAME");
+
   CanvasBValuCorrected->cd(2);
   TGraphErrors* GraphBValueCorrCh315 = new TGraphErrors((int)BValCh315.size(),&GlobalTemperature[0],&BValCh315[0],0,&SigmaBValCh315[0]);
-  GraphBValueCorrCh315->SetMarkerStyle(8);  
+  TLegend* legCh315 = new TLegend();
+  legCh315->AddEntry(GraphBValueCorrCh315,Form("Mean: %lf",TMath::Mean(BValCh315.size(),&BValCh315[0])));
+  legCh315->AddEntry(GraphBValueCorrCh315,Form("Mean: %lf",TMath::RMS(BValCh315.size(),&BValCh315[0])));
+
+  GraphBValueCorrCh315->SetMarkerStyle(8);    
   GraphBValueCorrCh315->GetXaxis()->SetTitle("Temp [°C]");
   GraphBValueCorrCh315->GetYaxis()->SetTitle("FitValue");  
   GraphBValueCorrCh315->Draw("AP");
-  
+  legCh315->Draw("SAME");
+ 
   CanvasBValuCorrected->SaveAs("Plot/CavasBValuesCorrected.png");
   
+
+
+
+  for(int i=0;i<NFile;i++){
+    for(int j=0; j<GraphBetaLYCh315[i]->GetN();j++ ){
+
+      std::cout<<j << " " << *(GraphBetaLYCh59[i]->GetY()+j) << std::endl;
+      if(*(GraphBetaLYCh59[i]->GetY()+j)==(Double_t)0){
+	GraphBetaLYCh59[i]->RemovePoint(j);
+	std::cout << "Ch59:LY-> point "<< j<< " removed: value "<< *(GraphBetaLYCh59[i]->GetY()+j) << std::endl;   
+      }//chiudo if
+
+      std::cout<< j<< " " << *(GraphBetaLYCh315[i]->GetY()+j) << std::endl; 
+      if(*(GraphBetaLYCh315[i]->GetY()+j)==(Double_t)0){
+	std::cout << "Ch315:LY-> point "<< j << " removed: value "<< *(GraphBetaLYCh315[i]->GetY()+j) << std::endl;
+	GraphBetaLYCh315[i]->RemovePoint(j);
+      }//chiudo if
+      
+      std::cout<< j<< " " << *(GraphSatValCh59[i]->GetY()+j) << std::endl; 
+      if(*(GraphSatValCh59[i]->GetY()+j)==(Double_t)0){
+	std::cout << "Ch59:SV-> point "<< j << " removed: value "<< *(GraphSatValCh59[i]->GetY()+j) << std::endl;
+	GraphSatValCh59[i]->RemovePoint(j);
+      }//chiudo if
+
+      std::cout<< j<< " " << *(GraphSatValCh315[i]->GetY()+j) << std::endl; 
+      if(*(GraphSatValCh315[i]->GetY()+j)==(Double_t)0){
+	std::cout << "Ch315:SV-> point "<< j << " removed: value "<< *(GraphSatValCh315[i]->GetY()+j) << std::endl;
+	GraphSatValCh315[i]->RemovePoint(j);
+      }//chiudo if
+      
+      
+      
+    }//chiudo for j
+  }//chiudo for i
   
+  //GraphSatValCh59[i]
+
+  TF1* FitLYCh59= new TF1("FitLYCh59","pol1");
+  TF1* FitLYCh315= new TF1("FitLYCh315","pol1");
+  
+  FitLYCh59->SetParameter(1,-1.4e-5);
+  FitLYCh315->SetParameter(1,-1.4e-5);
+
+  TCanvas* CanvasLYUncorr = new TCanvas("CanvasLYUncorr","CanvasLYUncorr",1400,700);
+  CanvasLYUncorr->Divide(2,1);
+  
+  CanvasLYUncorr->cd(1);
+  LYVsTempCh59->SetTitle("LYVsTempCh59Total");
+  LYVsTempCh59->SetMinimum(0.3e-3);
+  LYVsTempCh59->SetMaximum(0.9e-3);
+  LYVsTempCh59->Draw("AP");
+  LYVsTempCh59->Fit(FitLYCh59,"FM");
+
+  CanvasLYUncorr->cd(2);
+  LYVsTempCh315->SetTitle("LYVsTempCh315Total");
+  LYVsTempCh315->SetMinimum(0.3e-3);
+  LYVsTempCh315->SetMaximum(0.9e-3);
+  LYVsTempCh315->Draw("AP");        
+  LYVsTempCh315->Fit(FitLYCh315,"FM");
+
+  ResidualPlot(LYVsTempCh59,FitLYCh59,"LYUncorrTot59");
+  ResidualPlot(LYVsTempCh315,FitLYCh315,"LYUncorrTot315");
+  CanvasLYUncorr->SaveAs("Plot/LYUncorrTot.png");
+  
+  
+  TF1* FitSatCh59= new TF1("FitSatCh59","pol1");
+  TF1* FitSatCh315= new TF1("FitSatCh315","pol1");
+  
+  FitSatCh59->SetParameter(0,250);
+  FitSatCh59->SetParameter(1,-4.19);
+  FitSatCh315->SetParameter(0,250);
+  FitSatCh315->SetParameter(1,-4.19);
+
+
+  TCanvas* CavasSatVal = new TCanvas("CavasSatVal","CavasSatVal",1400,700);
+  CavasSatVal->Divide(2,1);
+  
+  CavasSatVal->cd(1);
+  SatValVsTempCh59->Draw("AP");
+  SatValVsTempCh59->Fit(FitSatCh59);
+  SatValVsTempCh59->SetMinimum(130);
+  SatValVsTempCh59->SetMaximum(180);
+  SatValVsTempCh59->Draw("AP");
+  
+  CavasSatVal->cd(2);
+  SatValVsTempCh315->Draw("AP");
+  SatValVsTempCh315->Fit(FitSatCh315);
+  SatValVsTempCh315->SetMinimum(130);
+  SatValVsTempCh315->SetMaximum(180);
+  SatValVsTempCh315->Draw("AP");
+
+  CavasSatVal->SaveAs("Plot/SatValUncorrTot.png");    
+
+  ResidualPlot(SatValVsTempCh59,FitSatCh59,"SatValUncorrTot59");
+  ResidualPlot(SatValVsTempCh315,FitSatCh315,"SatValUncorrTot315");
+ 
+
+}//chiudo main
+
+void ResidualPlot(TMultiGraph* graph,TF1* fit, std::string name){
+  
+  TGraphErrors* temp;
+  TList* lista = graph->GetListOfGraphs();
+  std::vector<Double_t> vec;
+  
+  for(int i=0; i< lista->GetSize();i++){
+    temp = (TGraphErrors*)(lista->At(i));
+    
+    for(int j=0; j<temp->GetN(); j++){
+      vec.push_back( *(temp->GetY()+j)-fit->Eval(*(temp->GetX()+j)) );
+    }//chiudo for j
+    
+  }//chiudo for i
+  
+  TH1D* residual = new TH1D(("Res"+name).c_str(),("Res"+name).c_str(),80, TMath::Mean(vec.begin(),vec.end())-5*TMath::RMS(vec.begin(),vec.end()),TMath::Mean(vec.begin(),vec.end())+5*TMath::RMS(vec.begin(),vec.end()));
+  
+  for(int i=0; i < (int)vec.size();i++){
+    
+    residual->Fill(vec.at(i));
+    
+  }//chiudo for i
+
+  TCanvas* CanvasRes = new TCanvas("CanvasRes","CanvasRes",700,700);
+  residual->Draw();
+
+  CanvasRes->SaveAs(("Plot/"+name+"Res.png").c_str());
+
+  delete CanvasRes;
+  delete residual;
 }
-
-
