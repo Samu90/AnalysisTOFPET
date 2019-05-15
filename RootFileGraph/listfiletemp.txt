@@ -1,5 +1,7 @@
 TestStability_25_03_2018.root
 TestStability_25_03_2018TRes.root
+TestStabilityBar_29_04_2019.root
+TestStabilityBar_30_04_2019.root
 TestStabilityNa22PedAllChannels_01_04_2019.root
 TestStabilityNa22PedAllChannels_01_04_2019TRes.root
 TestStabilityNa22PedAllChannels_02_04_2019.root

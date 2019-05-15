@@ -383,7 +383,7 @@ int main(int argc, char* argv[]){
   Ch59P1->SetMaximum(44);
   Ch59P1->SetTitle("Ch59P511KeV "+FitTotCh59P1->GetExpFormula());
   Ch59P1->Draw("AP");
-  Ch59P1->Fit(FitTotCh59P1, "R");
+  Ch59P1->Fit(FitTotCh59P1, "RW");
   
   TVirtualFitter* fitterCh59P1 = TVirtualFitter::GetFitter();
   Double_t* CMCh59P1 = fitterCh59P1->GetCovarianceMatrix();
@@ -399,7 +399,7 @@ int main(int argc, char* argv[]){
   Ch315P1->SetMaximum(44);
   Ch315P1->SetTitle("Ch315P511KeV");
   Ch315P1->Draw("AP");
-  Ch315P1->Fit(FitTotCh315P1);
+  Ch315P1->Fit(FitTotCh315P1,"W");
   
   TVirtualFitter* fitterCh315P1 = TVirtualFitter::GetFitter();
   Double_t* CMCh315P1 = fitterCh315P1->GetCovarianceMatrix();  
@@ -415,7 +415,7 @@ int main(int argc, char* argv[]){
   Ch59P2->SetMaximum(84);
   Ch59P2->SetTitle("Ch59P1275KeV");
   Ch59P2->Draw("AP");
-  Ch59P2->Fit(FitTotCh59P2);
+  Ch59P2->Fit(FitTotCh59P2,"W");
   TVirtualFitter* fitterCh59P2 = TVirtualFitter::GetFitter();
   Double_t* CMCh59P2 = fitterCh59P2->GetCovarianceMatrix();
   std::cout <<"CorrelationElements "  << CMCh59P2[0] << " " <<CMCh59P2[1] << " " << CMCh59P2[2] << std::endl;
@@ -430,7 +430,7 @@ int main(int argc, char* argv[]){
   Ch315P2->SetMaximum(84);
   Ch315P2->SetTitle("Ch315P1275KeV");
   Ch315P2->Draw("AP");
-  Ch315P2->Fit(FitTotCh315P2);
+  Ch315P2->Fit(FitTotCh315P2,"W");
   TVirtualFitter* fitterCh315P2 = TVirtualFitter::GetFitter();
   Double_t* CMCh315P2 = fitterCh315P2->GetCovarianceMatrix();
   std::cout <<"CorrelationElements "  << CMCh315P2[0] << " " <<CMCh315P2[1] << " " << CMCh315P2[2] << std::endl;
@@ -776,20 +776,58 @@ int main(int argc, char* argv[]){
   LYVsTempCh59->SetMinimum(0.3e-3);
   LYVsTempCh59->SetMaximum(0.9e-3);
   LYVsTempCh59->Draw("AP");
-  LYVsTempCh59->Fit(FitLYCh59,"FM");
+  LYVsTempCh59->Fit(FitLYCh59,"FMW");
 
   CanvasLYUncorr->cd(2);
   LYVsTempCh315->SetTitle("LYVsTempCh315Total");
   LYVsTempCh315->SetMinimum(0.3e-3);
   LYVsTempCh315->SetMaximum(0.9e-3);
   LYVsTempCh315->Draw("AP");        
-  LYVsTempCh315->Fit(FitLYCh315,"FM");
+  LYVsTempCh315->Fit(FitLYCh315,"FMW");
 
   ResidualPlot(LYVsTempCh59,FitLYCh59,"LYUncorrTot59");
   ResidualPlot(LYVsTempCh315,FitLYCh315,"LYUncorrTot315");
   CanvasLYUncorr->SaveAs("Plot/LYUncorrTot.png");
   
+  ///////////////////////////////////////////////////////////////
+  TH1D* LYCh59Proj = new TH1D("LYCh59Proj","LYCh59Proj",30,0.3e-3,0.9e-3);
+  TH1D* LYCh315Proj = new TH1D("LYCh315Proj","LYCh315Proj",30,0.3e-3,0.9e-3);
+
+  TGraphErrors* tempCh59;
+  TGraphErrors* tempCh315;
   
+  TList* listCh59 = LYVsTempCh59->GetListOfGraphs();
+  TList* listCh315 = LYVsTempCh315->GetListOfGraphs();
+  
+  for(int i=0; i< listCh59->GetSize();i++){
+    tempCh59 = (TGraphErrors*)(listCh59->At(i));
+    
+    for(int j=0; j<tempCh59->GetN(); j++){
+      LYCh59Proj->Fill( *(tempCh59->GetY()+j) );
+    }//chiudo for j
+    
+  }//chiudo for i
+
+  for(int i=0; i< listCh315->GetSize();i++){
+    tempCh315 = (TGraphErrors*)(listCh315->At(i));
+    
+    for(int j=0; j<tempCh315->GetN(); j++){
+      LYCh315Proj->Fill( *(tempCh315->GetY()+j) );
+    }//chiudo for j
+    
+  }//chiudo for i
+  
+  TCanvas* CanvasLYProjection = new TCanvas("CanvasLYProjection","CanvasLYProjection",1600,800);
+  CanvasLYProjection->Divide(2,1);
+  
+  CanvasLYProjection->cd(1);
+  LYCh59Proj->Draw();
+  CanvasLYProjection->cd(2);
+  LYCh315Proj->Draw();    
+
+  CanvasLYProjection->SaveAs("Plot/LYUncorrTotProjection.png");  
+
+  //////////////////////////////////////////////////////////////
   TF1* FitSatCh59= new TF1("FitSatCh59","pol1");
   TF1* FitSatCh315= new TF1("FitSatCh315","pol1");
   
@@ -804,14 +842,14 @@ int main(int argc, char* argv[]){
   
   CavasSatVal->cd(1);
   SatValVsTempCh59->Draw("AP");
-  SatValVsTempCh59->Fit(FitSatCh59);
+  SatValVsTempCh59->Fit(FitSatCh59,"W");
   SatValVsTempCh59->SetMinimum(130);
   SatValVsTempCh59->SetMaximum(180);
   SatValVsTempCh59->Draw("AP");
   
   CavasSatVal->cd(2);
   SatValVsTempCh315->Draw("AP");
-  SatValVsTempCh315->Fit(FitSatCh315);
+  SatValVsTempCh315->Fit(FitSatCh315,"W");
   SatValVsTempCh315->SetMinimum(130);
   SatValVsTempCh315->SetMaximum(180);
   SatValVsTempCh315->Draw("AP");
@@ -834,7 +872,7 @@ void ResidualPlot(TMultiGraph* graph,TF1* fit, std::string name){
     temp = (TGraphErrors*)(lista->At(i));
     
     for(int j=0; j<temp->GetN(); j++){
-      vec.push_back( *(temp->GetY()+j)-fit->Eval(*(temp->GetX()+j)) );
+      vec.push_back( *(temp->GetY()+j)/fit->Eval(*(temp->GetX()+j)) );
     }//chiudo for j
     
   }//chiudo for i
