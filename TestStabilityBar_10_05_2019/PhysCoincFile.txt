@@ -1,0 +1,11 @@
+../TestStabilityBar_10_05_2019/Run000017_2019-05-10-17-10-47_Na22Bar_PHYS_qdc_Time300_Gate15_OvRef7_Ov7_coincidences.root
+../TestStabilityBar_10_05_2019/Run000041_2019-05-10-18-06-46_Na22Bar_PHYS_qdc_Time300_Gate15_OvRef7_Ov7_coincidences.root
+../TestStabilityBar_10_05_2019/Run000065_2019-05-10-19-03-06_Na22Bar_PHYS_qdc_Time300_Gate15_OvRef7_Ov7_coincidences.root
+../TestStabilityBar_10_05_2019/Run000089_2019-05-10-19-59-37_Na22Bar_PHYS_qdc_Time300_Gate15_OvRef7_Ov7_coincidences.root
+../TestStabilityBar_10_05_2019/Run000113_2019-05-10-20-56-16_Na22Bar_PHYS_qdc_Time300_Gate15_OvRef7_Ov7_coincidences.root
+../TestStabilityBar_10_05_2019/Run000137_2019-05-10-21-53-10_Na22Bar_PHYS_qdc_Time300_Gate15_OvRef7_Ov7_coincidences.root
+../TestStabilityBar_10_05_2019/Run000161_2019-05-10-22-50-19_Na22Bar_PHYS_qdc_Time300_Gate15_OvRef7_Ov7_coincidences.root
+../TestStabilityBar_10_05_2019/Run000185_2019-05-10-23-47-33_Na22Bar_PHYS_qdc_Time300_Gate15_OvRef7_Ov7_coincidences.root
+../TestStabilityBar_10_05_2019/Run000209_2019-05-11-00-45-03_Na22Bar_PHYS_qdc_Time300_Gate15_OvRef7_Ov7_coincidences.root
+../TestStabilityBar_10_05_2019/Run000233_2019-05-11-01-42-58_Na22Bar_PHYS_qdc_Time300_Gate15_OvRef7_Ov7_coincidences.root
+../TestStabilityBar_10_05_2019/Run000257_2019-05-11-02-41-17_Na22Bar_PHYS_qdc_Time300_Gate15_OvRef7_Ov7_coincidences.root

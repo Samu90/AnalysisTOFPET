@@ -16,10 +16,11 @@
 #include "TMath.h"
 #include "TLine.h"
 
-void GetPedestal(TTree* tree,Double_t* pedch1,Double_t* pedch2){
+void GetPedestal(TTree* tree,Double_t* pedch1,Double_t* pedch2,Double_t* pedch3){
   
   TH1F* histoCh1 = new TH1F("pippoch1","pippoch1",600,0,600);
   TH1F* histoCh2 = new TH1F("pippoch2","pippoch2",600,0,600);
+  TH1F* histoCh3 = new TH1F("pippoch3","pippoch3",600,0,600);
 
   Float_t energy;
   UShort_t chID;
@@ -30,23 +31,26 @@ void GetPedestal(TTree* tree,Double_t* pedch1,Double_t* pedch2){
   for(int i=0; i<tree->GetEntries(); i++){
     tree->GetEntry(i);
     if(chID==59) { histoCh1->Fill(energy); }//chiudo if
-    else if(chID==288){ histoCh2->Fill(energy); }//chiudo else
+    else if(chID==288){ histoCh2->Fill(energy-6); }//chiudo else
+    else if(chID==291){ histoCh3->Fill(energy);}
   }//chiudo for
   
   std::cout << "Filled"<< std::endl;
 
   *pedch1 = histoCh1->GetMean();
   *pedch2 = histoCh2->GetMean();
-  
+  *pedch3 = histoCh3->GetMean();
+
   delete histoCh1;
   delete histoCh2;
+  delete histoCh3;
 }
 
 TF1* CalibrationCurve(TGraphErrors* graph,int i){
   
   TF1* fit = new TF1(("fitCalib"+std::to_string(i)).c_str()," [0] * (1-exp(-[1]*x) )",0,1300);
 
-  fit->SetParameter(0,144);
+  fit->SetParameter(0,147);
   fit->SetParameter(1,4e-4);
 
   graph->Fit(fit,"Q");
@@ -55,20 +59,30 @@ TF1* CalibrationCurve(TGraphErrors* graph,int i){
 }
 
 
-void GetSpectrum(TTree* tree, TH1D* histoCh1, TH1D* histoCh2, Double_t MeanPedCh59, Double_t MeanPedCh288){
+void GetSpectrum(TTree* tree,TTree* treeCoinc, TH1D* histoCh1, TH1D* histoCh2, TH1D* histoCh3,Double_t MeanPedCh59, Double_t MeanPedCh288,Double_t MeanPedCh291){
   
   Float_t energy;
   UShort_t chID;
 
+  Double_t energyCoinc[3];
+  Double_t chIDCoinc[3];
+
   tree->SetBranchAddress("energy",&energy);
   tree->SetBranchAddress("channelID",&chID);
    
+  treeCoinc->SetBranchAddress("energy",energyCoinc);
+  treeCoinc->SetBranchAddress("chId",chIDCoinc);
+
   for(int i=0; i<tree->GetEntries(); i++){
     tree->GetEntry(i);
     if(chID==59) { histoCh1->Fill(energy-MeanPedCh59); }//chiudo if
-    else if(chID==288){ histoCh2->Fill(energy-MeanPedCh288); }//chiudo else
   }//chiudo for
   
+  for(int i=0; i<treeCoinc->GetEntries(); i++){
+    treeCoinc->GetEntry(i);
+    if(chIDCoinc[1]!=-9 && chIDCoinc[2]!=-9){histoCh2->Fill((energyCoinc[1]-MeanPedCh288+energyCoinc[2]-MeanPedCh291)/2);}
+  }
+
   std::cout << "Filled"<< std::endl;
   
   
@@ -111,7 +125,7 @@ void GetMeanTemperature(TTree* tree, Double_t* MeanTempCh59, Double_t* SigmaTemp
 
 
 
-TF1* FitNaSpectrumCB(TH1D* Profile){
+TF1* FitNaSpectrumCB(TH1D* Profile,Int_t* fitStatus){
 
   
   Double_t min;
@@ -130,7 +144,7 @@ TF1* FitNaSpectrumCB(TH1D* Profile){
 
   std::cout << "p1 , p2  ->  " << peak1 << " " << peak2 << std::endl;
 
-  TF1* spectrum = new TF1(Form("SpectrumFit_%s", Profile->GetName()),"[0] * exp(-( x-[1] )*( x-[1] )/( 2* [2]* [2])) + [3] / (exp( (x*[4]-(2*[1]*[1]/([1]+2*[1])))) + 1)+ [5] * exp(-( x-[6] )*( x-[6] )/( 2* [7]* [7])) +crystalball([8],[9],[10],[11],[12])",min,92);
+  TF1* spectrum = new TF1(Form("SpectrumFit_%s", Profile->GetName()),"[0] * exp(-( x-[1] )*( x-[1] )/( 2* [2]* [2])) + [3] / (exp( (x*[4]-(2*[1]*[1]/([1]+2*[1])))) + 1)+ [5] * exp(-( x-[6] )*( x-[6] )/( 2* [7]* [7])) +crystalball([8],[9],[10],[11],[12])",min-1,92);
 
   Double_t max;
   max= Profile->GetMaximum();
@@ -150,19 +164,100 @@ TF1* FitNaSpectrumCB(TH1D* Profile){
   spectrum->SetParameter(11,0.04);
   spectrum->SetParameter(12,-1.4);
 
-  //std::cout << "kk6" << std::endl;
   spectrum->SetParLimits(10,3.8,6);
   spectrum->SetParLimits(3,4,2700);
   spectrum->SetParLimits(11,0.02,1);
   
-  //spectrum->SetParLimits(5,800,2000);
-  //spectrum->SetParLimits(8,1000,10000);
-  
-  //std::cout << "kk7" << std::endl;
-  Profile->Fit(Form("SpectrumFit_%s", Profile->GetName()),"R0");
 
-  //std::cout << "kk8" << std::endl;
+  *fitStatus = Profile->Fit(Form("SpectrumFit_%s", Profile->GetName()),"R0EQ");
+
   return spectrum;
+}
+
+TF1* FitNaSpectrumCBBar(TH1D* Profile,Int_t* fitStatus ,Int_t chID){
+
+  
+  Double_t min;
+  Double_t peak1,peak2;
+  
+  Profile->GetXaxis()->SetRangeUser(30,55);
+  peak1 = Profile->GetBinCenter(Profile->GetMaximumBin());
+  Profile->GetXaxis()->UnZoom();
+
+  Profile->GetXaxis()->SetRangeUser(12,peak1);
+  min = Profile->GetBinCenter(Profile->GetMinimumBin());
+  Profile->GetXaxis()->UnZoom();
+
+
+  Profile->GetXaxis()->SetRangeUser(75,98);
+  peak2 = Profile->GetBinCenter(Profile->GetMaximumBin());
+  Profile->GetXaxis()->UnZoom();
+
+  std::cout << "p1 , p2  ->  " << peak1 << " " << peak2 << std::endl;
+
+  TF1* spectrum = new TF1(Form("SpectrumFit_%s", Profile->GetName()),"[0] * exp(-( x-[1] )*( x-[1] )/( 2* [2]* [2])) + [3] / (exp( (x*[4]-(2*[1]*[1]/([1]+2*[1])))) + 1)+ [5] * exp(-( x-[6] )*( x-[6] )/( 2* [7]* [7])) +crystalball([8],[9],[10],[11],[12])",min,92);
+  TF1* spectrumBar = new TF1(Form("SpectrumBarFit_%s", Profile->GetName()),"[0] * exp(-( x-[1] )*( x-[1] )/( 2* [2]* [2])) +[3] * exp(-( x-[6] )*( x-[6] )/( 2* [5]* [5])) +[4] / (exp( (x*[7]-(2*[6]*[6]/([6]+2*[1])))) + 1)");
+  
+  Double_t max;
+  max= Profile->GetMaximum();
+  
+  Double_t secondMax=80;
+  
+
+  if(chID==59){
+    
+    spectrum->SetParameter(0,max);
+    spectrum->SetParameter(1,peak1);
+    spectrum->SetParameter(2,3);
+    spectrum->SetParameter(3,max/5);
+    spectrum->SetParameter(4,0.82);
+    spectrum->SetParameter(5,max/20);
+    spectrum->SetParameter(6,peak2);
+    spectrum->SetParameter(7,3.2);
+    spectrum->SetParameter(8,max/12);
+    spectrum->SetParameter(9,peak2/1.21);
+    spectrum->SetParameter(10,4.3);
+    spectrum->SetParameter(11,0.04);
+    spectrum->SetParameter(12,-1.4);
+    
+    spectrum->SetParLimits(10,3.8,6);
+    spectrum->SetParLimits(3,4,2700);
+    spectrum->SetParLimits(11,0.02,1);
+
+    *fitStatus=Profile->Fit(Form("SpectrumFit_%s", Profile->GetName()),"R0");
+    
+    return spectrum;
+
+  } else {
+    
+    for(int i=80;i>40;i--){ 
+      if(Profile->GetBinContent(i)<=Profile->GetBinContent(i-1) ){secondMax=i-1;}
+      else{ break; }
+    }
+    
+
+    std::cout<<"secondMax  " << secondMax << std::endl;
+    spectrumBar->SetRange(min+2,secondMax+10);
+    
+    spectrumBar->SetParameter(0,max);
+    spectrumBar->SetParameter(1,peak1);
+    spectrumBar->SetParameter(2,3);
+    spectrumBar->SetParameter(3,max/11);
+    spectrumBar->SetParameter(6,secondMax);
+    spectrumBar->SetParameter(5,4.3);
+    spectrumBar->SetParameter(4,max/10);
+    spectrumBar->SetParameter(7,1);
+    
+    spectrumBar->SetParLimits(3,2500,8000);
+    spectrumBar->SetParLimits(6,secondMax-2,secondMax+2);
+    spectrumBar->SetParLimits(5,3.9,5);
+
+    *fitStatus=Profile->Fit(Form("SpectrumBarFit_%s", Profile->GetName()),"R0M");
+  
+    return spectrumBar;
+  }  
+
+
 }
 
 
@@ -216,8 +311,7 @@ TF1* FitNaSpectrumCBFull(TH1D* Profile){
   spectrum->SetParameter(16,1);
   spectrum->SetParameter(17,0.05);
   
-
- 
+  //LIMITS
   spectrum->SetParLimits(10,3.8,6);
   spectrum->SetParLimits(3,4,2700);
   spectrum->SetParLimits(11,0.02,1);
@@ -288,6 +382,8 @@ int main(int argc, char* argv[] ){
 
   gSystem->Exec(("ls "+DirData+"/*PED*"+OV+"_singles.root > "+DirData+"/PedFile.txt").c_str());
   gSystem->Exec(("ls "+DirData+"/*PHYS*"+OV+"_singles.root > "+DirData+"/PhysFile.txt").c_str());
+  gSystem->Exec(("ls "+DirData+"/*PHYS*"+OV+"_coincidences.root > "+DirData+"/PhysFileCoinc.txt").c_str());
+  
   gSystem->Exec(("mkdir "+DirData+"/Plot").c_str());
   
   gSystem->Exec(("mkdir "+DirData+"/Plot/EnergyTempCB").c_str());
@@ -309,15 +405,21 @@ int main(int argc, char* argv[] ){
   
   std::vector<std::string> FileListPhysics;
   std::string ListFilePhys = DirData+"/PhysFile.txt";
-  std::cout << "Lista File Pedestal: "<< ListFilePed << std::endl;
+  std::cout << "Lista File Physics: "<< ListFilePhys << std::endl;
   FileListPhysics=ReadData(ListFilePhys);
+
+  std::vector<std::string> FileListPhysicsCoinc;
+  std::string ListFilePhysCoinc = DirData+"/PhysFileCoinc.txt";
+  std::cout << "Lista File Physics Coinc: "<< ListFilePhysCoinc << std::endl;
+  FileListPhysicsCoinc=ReadData(ListFilePhysCoinc);
 
   int NFilePhys=(int)FileListPhysics.size();
   
   //Get Pedestal
-  Double_t Pedestal[NFilePhys][2];
+  Double_t Pedestal[NFilePhys][3];
   Double_t PedestalCh1[2];
   Double_t PedestalCh2[2];
+  Double_t PedestalCh3[2];
 
   int k=0;
 
@@ -330,23 +432,25 @@ int main(int argc, char* argv[] ){
     TTree* tree0 = (TTree*)f0->Get("data"); //Before
     TTree* tree1 = (TTree*)f1->Get("data"); //After
     
-    GetPedestal(tree0,&PedestalCh1[0],&PedestalCh2[0]);
-    GetPedestal(tree1,&PedestalCh1[1],&PedestalCh2[1]);
+    GetPedestal(tree0,&PedestalCh1[0],&PedestalCh2[0],&PedestalCh3[0]);
+    GetPedestal(tree1,&PedestalCh1[1],&PedestalCh2[1],&PedestalCh3[1]);
     
     Pedestal[k][0]=(PedestalCh1[0]+PedestalCh1[1])/2;
     Pedestal[k][1]=(PedestalCh2[0]+PedestalCh2[1])/2;
+    Pedestal[k][2]=(PedestalCh3[0]+PedestalCh3[1])/2;
     
     k++;
   }// chiudo for
 
   
   for(int i=0;i<NFilePhys;i++){
-    std::cout <<NFilePhys <<"   "<< (int)FileListPedestal.size()<< Pedestal[i][0] << "    " << Pedestal[i][1] << std::endl;
+    std::cout <<NFilePhys <<"   "<< (int)FileListPedestal.size()<<"  " <<  Pedestal[i][0] << "    " << Pedestal[i][1] << std::endl;
   }
 
 
   TH1D* HistoCh59[NFilePhys];
   TH1D* HistoCh288[NFilePhys];
+  TH1D* HistoCh291[NFilePhys];
     
   Double_t MeanTCh59[NFilePhys], MeanTCh288[NFilePhys];
   Double_t SigmaTCh59[NFilePhys], SigmaTCh288[NFilePhys];
@@ -357,12 +461,16 @@ int main(int argc, char* argv[] ){
 
   Double_t Peak1Ch288[NFilePhys], Peak2Ch288[NFilePhys];
   Double_t SigmaPeak1Ch288[NFilePhys], SigmaPeak2Ch288[NFilePhys];
-  
+
+  Int_t fitStatus[NFilePhys][3];
 
   TFile* f0;
   TTree* tree0;
 
-  TF1* FitSpectrum[NFilePhys][2];
+  TFile* f0coinc;
+  TTree* tree0coinc;
+
+  TF1* FitSpectrum[NFilePhys][3];
   
   gStyle->SetOptFit(1111);
   gStyle->SetStatW(0.2);
@@ -371,15 +479,19 @@ int main(int argc, char* argv[] ){
   for(int i=0;i < NFilePhys;i++){
     
     std::cout << "i: " << i << std::endl;
+    
     f0= TFile::Open((DirData+"/"+FileListPhysics.at(i)).c_str());
     tree0 = (TTree*)f0->Get("data");
+
+    f0coinc= TFile::Open((DirData+"/"+FileListPhysicsCoinc.at(i)).c_str());
+    tree0coinc = (TTree*)f0coinc->Get("data");
 
         
     HistoCh59[i]  = new TH1D(Form("HistoCh59N%d", i),Form("HistoCh59N%d", i), 100,0,100);
     HistoCh288[i] = new TH1D(Form("HistoCh288N%d",i),Form("HistoCh288N%d",i), 100,0,100);
 
         
-    GetSpectrum(tree0,HistoCh59[i],HistoCh288[i],Pedestal[i][0],Pedestal[i][1]);
+    GetSpectrum(tree0,tree0coinc,HistoCh59[i],HistoCh288[i],HistoCh291[i],Pedestal[i][0],Pedestal[i][1],Pedestal[i][2]);
     GetMeanTemperature(tree0,MeanTCh59,SigmaTCh59,MeanTCh288,SigmaTCh288,MeanTGlobal,SigmaTGlobal,i);
 
     //HistoCh59[i]->SetTitle(("HistoCh59Temp"+std::to_string(MeanTGlobal[i])).c_str());
@@ -389,26 +501,37 @@ int main(int argc, char* argv[] ){
     canvino->Divide(2,1);
     
     //do{
-    FitSpectrum[i][0]=FitNaSpectrumCB(HistoCh59[i]);
+    FitSpectrum[i][0]=FitNaSpectrumCBBar(HistoCh59[i],&fitStatus[i][0],59);
     //}while(isnan(FitSpectrum[i][0]->GetParError(5)));
    
     //do{
-    FitSpectrum[i][1]=FitNaSpectrumCB(HistoCh288[i]);
+    FitSpectrum[i][1]=FitNaSpectrumCBBar(HistoCh288[i],&fitStatus[i][1],288);
+    //FitSpectrum[i][2]=FitNaSpectrumCBBar(HistoCh291[i],&fitStatus[i][2],291);
+    
+    std::cout << "FitStatus_________ " << fitStatus[i][0] <<"  " <<  fitStatus[i][1]  << std::endl;
     //}while(isnan(FitSpectrum[i][1]->GetParError(5)));
-        
+    
     canvino->cd(1);
     HistoCh59[i]->GetXaxis()->SetTitle("E [DU]");
     HistoCh59[i]->GetYaxis()->SetTitle("Counts");
     HistoCh59[i]->Draw();
     FitSpectrum[i][0]->Draw("SAME");
-
+    
     canvino->cd(2);
     HistoCh288[i]->GetXaxis()->SetTitle("E [DU]");
     HistoCh288[i]->GetYaxis()->SetTitle("Counts");
     HistoCh288[i]->Draw();
     FitSpectrum[i][1]->Draw("SAME");    
+    
+    /*canvino->cd(3);
+    HistoCh291[i]->GetXaxis()->SetTitle("E [DU]");
+    HistoCh291[i]->GetYaxis()->SetTitle("Counts");
+    HistoCh291[i]->Draw();
+    FitSpectrum[i][2]->Draw("SAME");    
+    */
 
     canvino->SaveAs((DirData+"/Plot/EnergyTempCB/Partials/Canvas"+std::to_string(i)+".png").c_str());
+    
     delete canvino;
   }
 
@@ -619,7 +742,7 @@ int main(int argc, char* argv[] ){
 
   pad2Peak1->cd()->SetGridx();
   pad2Peak1->cd()->SetGridy();
-  SetStyleRatioPlot(GraphRatioPeak1,0.9,1.1);
+  SetStyleRatioPlot(GraphRatioPeak1,0.9,1.3);
   GraphRatioPeak1->Draw("AP");
   GraphRatioPeak1->Fit("fitRatioPeak1");
   
@@ -635,7 +758,7 @@ int main(int argc, char* argv[] ){
   pad1Peak2->cd()->SetGridy();
   
   Graph2GlobalTempCh288->SetMaximum(90);
-  Graph2GlobalTempCh288->SetMinimum(75);
+  Graph2GlobalTempCh288->SetMinimum(60);
   Graph2GlobalTempCh288->SetMarkerStyle(4);
   Graph2GlobalTempCh59->SetMarkerStyle(8);
   //Graph2GlobalTempCh288->SetMarkerSize(.7);
@@ -647,7 +770,7 @@ int main(int argc, char* argv[] ){
 
   pad2Peak2->cd()->SetGridx();
   pad2Peak2->cd()->SetGridy();
-  SetStyleRatioPlot(GraphRatioPeak2,0.9,1.1);
+  SetStyleRatioPlot(GraphRatioPeak2,0.9,1.3);
   GraphRatioPeak2->Draw("AP");
   GraphRatioPeak2->Fit("fitRatioPeak2");
     
@@ -665,17 +788,19 @@ int main(int argc, char* argv[] ){
 
   TF1* fitHistoSum[2];
   
+  int fitStatInutile[2];
+  
   TCanvas* canvasSum = new TCanvas("CanvasSumHisto","CanvasSumHisto",1200,600);
   canvasSum->Divide(2,1);
 
   canvasSum->cd(1);
   HistoSumCh59->Draw();
-  fitHistoSum[0]=FitNaSpectrumCB(HistoSumCh59);
+  fitHistoSum[0]=FitNaSpectrumCB(HistoSumCh59,&fitStatInutile[0]);
   fitHistoSum[0]->Draw("SAME");
 
   canvasSum->cd(2);
   HistoSumCh288->Draw();
-  fitHistoSum[1]=FitNaSpectrumCB(HistoSumCh288);
+  fitHistoSum[1]=FitNaSpectrumCB(HistoSumCh288,&fitStatInutile[1]);
   fitHistoSum[1]->Draw("SAME");
 
   canvasSum->SaveAs((DirData+"/Plot/EnergyTempCB/HistoSum.png").c_str());
@@ -751,11 +876,11 @@ int main(int argc, char* argv[] ){
   PlotResCh59P1->GetXaxis()->SetTitle("TMeanBox [°C]");
   PlotResCh59P1->GetYaxis()->SetTitle("EnergyResolution");
   PlotResCh59P1->SetMinimum(0.06);
-  PlotResCh59P1->SetMaximum(0.08);
+  PlotResCh59P1->SetMaximum(0.1);
   PlotResCh288P1->GetXaxis()->SetTitle("TMeanBox [°C]");
   PlotResCh288P1->GetYaxis()->SetTitle("EnergyResolution");
   PlotResCh288P1->SetMinimum(0.06);
-  PlotResCh288P1->SetMaximum(0.08);
+  PlotResCh288P1->SetMaximum(0.1);
   PlotResCh59P2->GetXaxis()->SetTitle("TMeanBox [°C]");
   PlotResCh59P2->GetYaxis()->SetTitle("EnergyResolution");
   PlotResCh59P2->SetMinimum(0.03);
@@ -763,7 +888,7 @@ int main(int argc, char* argv[] ){
   PlotResCh288P2->GetXaxis()->SetTitle("TMeanBox [°C]");
   PlotResCh288P2->GetYaxis()->SetTitle("EnergyResolution");
   PlotResCh288P2->SetMinimum(0.03);
-  PlotResCh288P2->SetMaximum(0.05);
+  PlotResCh288P2->SetMaximum(0.08);
   
   ResolutionVsTemp->cd(1);
   PlotResCh59P1->Draw("AP");
@@ -805,6 +930,7 @@ int main(int argc, char* argv[] ){
     CalibPlot[i][0]->SetPointError(1,0,ErrMeanCh59P1[i]);
     CalibPlot[i][0]->SetPoint(2,1275,MeanCh59P2[i]);
     CalibPlot[i][0]->SetPointError(2,0,ErrMeanCh59P2[i]);
+    CalibPlot[i][0]->SetMarkerStyle(8);
     FitCalib[0]= CalibrationCurve(CalibPlot[i][0],i);
     CalibPlot[i][0]->Draw("AP");
     FitCalib[0]->Draw("SAME");
@@ -817,21 +943,39 @@ int main(int argc, char* argv[] ){
     CalibPlot[i][1]->SetPointError(1,0,ErrMeanCh288P1[i]);
     CalibPlot[i][1]->SetPoint(2,1275,MeanCh288P2[i]);
     CalibPlot[i][1]->SetPointError(2,0,ErrMeanCh288P2[i]);
+    CalibPlot[i][1]->SetMarkerStyle(8);
     FitCalib[1]= CalibrationCurve(CalibPlot[i][1],i);
     CalibPlot[i][1]->Draw("AP");
     FitCalib[1]->Draw("SAME");
     
     CanvasCalib->SaveAs((DirData+"/Plot/EnergyTempCB/CalibPlot/CalibPlot"+std::to_string(i)+".png").c_str());
 
-    ACh59[i]=FitCalib[0]->GetParameter(0);
-    sACh59[i]=FitCalib[0]->GetParError(0);
-    BCh59[i]=FitCalib[0]->GetParameter(1);
-    sBCh59[i]=FitCalib[0]->GetParError(1);
-
-    ACh288[i]=FitCalib[1]->GetParameter(0);
-    sACh288[i]=FitCalib[1]->GetParError(0);
-    BCh288[i]=FitCalib[1]->GetParameter(1);
-    sBCh288[i]=FitCalib[1]->GetParError(1);
+    if(fitStatus[i][0]==0 || fitStatus[i][0]==4000){
+      ACh59[i]=FitCalib[0]->GetParameter(0);
+      sACh59[i]=FitCalib[0]->GetParError(0);
+      BCh59[i]=FitCalib[0]->GetParameter(1);
+      sBCh59[i]=FitCalib[0]->GetParError(1);
+    } else{
+      ACh59[i]=0;
+      sACh59[i]=0;
+      BCh59[i]=0;
+      sBCh59[i]=0;
+      std::cout  << "Ch59 Point0, status: " << fitStatus[i][0]<<std::endl;
+    }
+    
+    if(fitStatus[i][1]==0 || fitStatus[i][1]==4000){
+      ACh288[i]=FitCalib[1]->GetParameter(0);
+      sACh288[i]=FitCalib[1]->GetParError(0);
+      BCh288[i]=FitCalib[1]->GetParameter(1);
+      sBCh288[i]=FitCalib[1]->GetParError(1);
+    } else {
+      ACh288[i]=0;
+      sACh288[i]=0;
+      BCh288[i]=0;
+      sBCh288[i]=0;
+      std::cout  << "Ch288 Point0, status: " << fitStatus[i][1] <<std::endl;    
+    }
+    
     
     delete CanvasCalib;
     delete FitCalib[0];
@@ -843,18 +987,28 @@ int main(int argc, char* argv[] ){
   
   SatValVsMeanTemp[0]= new TGraphErrors(NFilePhys,MeanTGlobal,ACh59,SigmaTGlobal,sACh59);
   SatValVsMeanTemp[0]->SetTitle("SatValVsMeanTempCh59");
+  SatValVsMeanTemp[0]->SetName(SatValVsMeanTemp[0]->GetTitle());
   SatValVsMeanTemp[0]->GetYaxis()->SetRangeUser(136,170);
   SatValVsMeanTemp[1]= new TGraphErrors(NFilePhys,MeanTGlobal,ACh288,SigmaTGlobal,sACh288);
   SatValVsMeanTemp[1]->SetTitle("SatValVsMeanTempCh288");
-  SatValVsMeanTemp[1]->GetYaxis()->SetRangeUser(136,170);  
+  SatValVsMeanTemp[1]->SetName(SatValVsMeanTemp[1]->GetTitle());
+  SatValVsMeanTemp[1]->GetYaxis()->SetRangeUser(90,120);  
 
   LYValVsMeanTemp[0]= new TGraphErrors(NFilePhys,MeanTGlobal,BCh59,SigmaTGlobal,sBCh59);
   LYValVsMeanTemp[0]->SetTitle("LYValVsMeanTempCh59");
+  LYValVsMeanTemp[0]->SetName(LYValVsMeanTemp[0]->GetTitle());
   LYValVsMeanTemp[0]->GetYaxis()->SetRangeUser(0.4e-3,0.7e-3);
   LYValVsMeanTemp[1]= new TGraphErrors(NFilePhys,MeanTGlobal,BCh288,SigmaTGlobal,sBCh288);
   LYValVsMeanTemp[1]->SetTitle("LYValVsMeanTempCh288");
-  LYValVsMeanTemp[1]->GetYaxis()->SetRangeUser(0.4e-3,0.7e-3);
+  LYValVsMeanTemp[1]->SetName(LYValVsMeanTemp[1]->GetTitle()); 
+  LYValVsMeanTemp[1]->GetYaxis()->SetRangeUser(0.8e-3,1.1e-3);
   
+  f->cd();
+  LYValVsMeanTemp[0]->Write();
+  LYValVsMeanTemp[1]->Write();
+  SatValVsMeanTemp[0]->Write();
+  SatValVsMeanTemp[1]->Write();
+
   TCanvas* CanvasValSat = new TCanvas("CanvasValSat","CanvasValSat",1200,600);
   CanvasValSat->Divide(2,1);
   CanvasValSat->cd(1);
@@ -874,4 +1028,21 @@ int main(int argc, char* argv[] ){
  
   f->Save();
   f->Close();
+
+  Double_t Perc[2]={0,0};
+  
+  for(int i=0; i< NFilePhys; i++){
+    if(fitStatus[i][0]==0 || fitStatus[i][0]==4000){Perc[0]++;}
+    if(fitStatus[i][1]==0 || fitStatus[i][1]==4000){Perc[1]++;}
+  }
+
+  Perc[0]/=NFilePhys;
+  Perc[1]/=NFilePhys;
+
+  std::ofstream myfile;
+  myfile.open (("../RootFileGraph/FitResult"+DirData.erase(0,3)+".txt").c_str());
+  myfile << DirData << "\n";
+  myfile << Perc[0] << "\t" << Perc[1] << "\n" ;
+  myfile.close();
+  
 }

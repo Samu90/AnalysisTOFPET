@@ -14,8 +14,11 @@ EXTRALIBS := -L$(ROOTSYS)/lib -L$(ROOFIT_LIBDIR)/ -lHtml -lMathCore -lGenVector 
 bar: BarAnalysis.cpp
 	$(CC) -Wall $(INCLUDES) -o BarAnalysis.exe BarAnalysis.cpp $(ROOTFLAG) $(EXTRALIBS)
 
-temp: AnalysisTemp.cpp
-	$(CC) -Wall $(INCLUDES) -o AnalysisTemp.exe AnalysisTemp.cpp $(ROOTFLAG) $(EXTRALIBS)
+temp: AnalysisTempBar.cpp
+	$(CC) -Wall $(INCLUDES) -o AnalysisTempBar.exe AnalysisTempBar.cpp $(ROOTFLAG) $(EXTRALIBS)
+
+new: AnalysisTempNewBar.cpp
+	$(CC) -Wall $(INCLUDES) -o AnalysisTempNewBar.exe AnalysisTempNewBar.cpp $(ROOTFLAG) $(EXTRALIBS)
 
 clean:
 	rm BarAnalysis.exe

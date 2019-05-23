@@ -39,7 +39,7 @@ void GetPedestal(TTree*,Double_t*,Double_t*, std::vector<int>,std::string,int);
 void GetSpectrum(TTree* ,TH1D**,Double_t* ,std::vector<int>);
 TF1* FitCoincSpectrum(TH1D*);
 void GetTdiff(TTree* , TH1D**,TH2D** ,TH2D**,TH2D*,Double_t*, TF1** , Double_t*, std::vector<int>, std::vector<std::string>);
-void GetTdiffCorr(TTree*, TH1D** ,TH2D**,  TF1** ,TF1**, Double_t* , std::vector<int> , std::vector<std::string> );
+void GetTdiffCorr(TTree* ,TH2D**,TH2D* , TF1** ,TF1**, Double_t*,Double_t* , std::vector<int> , std::vector<std::string> );
 
 int main(int argc, char* argv[] ){
   
@@ -170,13 +170,13 @@ int main(int argc, char* argv[] ){
 
   TH2D* tdiffVsE[2];
 
-  tdiffVsE[0] = new TH2D("tdiffVsE_time1","tdiffVsE_time1",24,24,48,200,-2000,2000);
-  tdiffVsE[1] = new TH2D("tdiffVsE_time2","tdiffVsE_time2",24,24,48,200,-2000,2000);
+  tdiffVsE[0] = new TH2D("tdiffVsE_time1","tdiffVsE_time1",70,0,70,200,-3000,3000);
+  tdiffVsE[1] = new TH2D("tdiffVsE_time2","tdiffVsE_time2",70,0,70,200,-3000,3000);
 
   TH2D* tdiffVsT[2];
 
-  tdiffVsT[0] = new TH2D("tdiffVsT_time1","tdiffVsT_time1",40,21,25,200,-2000,2000);
-  tdiffVsT[1] = new TH2D("tdiffVsT_time2","tdiffVsT_time2",40,21,25,200,-2000,2000);
+  tdiffVsT[0] = new TH2D("tdiffVsT_time1","tdiffVsT_time1",40,21,29,200,-2000,2000);
+  tdiffVsT[1] = new TH2D("tdiffVsT_time2","tdiffVsT_time2",40,21,29,200,-2000,2000);
   
   TH2D* tdiffVsAmpEff = new TH2D("tdiffVsAmpEff","tdiffVsAmpEff",50,-10,40,100,-3500,3000);
   
@@ -205,8 +205,8 @@ int main(int argc, char* argv[] ){
     
     for(int k=0; k<(int)Channels.size(); k++){
       
-      Double_t min=FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(1)-3*FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(2);
-      Double_t max=FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(1)+3*FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(2);
+      Double_t min=FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(1)-2.5*FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(2);
+      Double_t max=FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(1)+2.5*FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(2);
       
       line[mapCh[Channels[k]]][0]= new TLine(min,0,min,Spectrum[i][mapCh[Channels[k]]]->GetMaximum());
       line[mapCh[Channels[k]]][1]= new TLine(max,0,max,Spectrum[i][mapCh[Channels[k]]]->GetMaximum());
@@ -260,8 +260,8 @@ int main(int argc, char* argv[] ){
   TimeResoLogCavas->SaveAs((DirData+"/Plot/TR/TimeResoLog.png").c_str());
   
   TF1* fitTdiffVsE[2];
-  fitTdiffVsE[0] = new TF1("fitTdiffVsE0","pol1");
-  fitTdiffVsE[1] = new TF1("fitTdiffVsE1","pol1");
+  fitTdiffVsE[0] = new TF1("fitTdiffVsE0","pol5");
+  fitTdiffVsE[1] = new TF1("fitTdiffVsE1","pol5");
 
   TCanvas* CanvasTdiffVsE = new TCanvas("CanvasTdiffVsE","CanvasTdiffVsE",1500,700);
   CanvasTdiffVsE->Divide((int)Channels.size()-1,1);
@@ -269,12 +269,14 @@ int main(int argc, char* argv[] ){
   
   tdiffVsE[0]->GetXaxis()->SetTitle("Energy [D.U.]");
   tdiffVsE[0]->GetYaxis()->SetTitle("time1-timeRef [ps]");
+  tdiffVsE[0]->GetYaxis()->SetTitleOffset(0.6);
   tdiffVsE[0]->Draw("COLZ");
   tdiffVsE[0]->Fit(fitTdiffVsE[0]);
 
   CanvasTdiffVsE->cd(2);
   tdiffVsE[1]->GetXaxis()->SetTitle("Energy [D.U.]");
   tdiffVsE[1]->GetYaxis()->SetTitle("time2-timeRef [ps]");
+  tdiffVsE[0]->GetYaxis()->SetTitleOffset(0.6);
   tdiffVsE[1]->Draw("COLZ");
   tdiffVsE[1]->Fit(fitTdiffVsE[1]);
 
@@ -285,12 +287,12 @@ int main(int argc, char* argv[] ){
   CanvasTdiffVsT->Divide((int)Channels.size()-1,1);
   
   CanvasTdiffVsT->cd(1);
-  tdiffVsT[0]->GetXaxis()->SetTitle("Energy [D.U.]");
+  tdiffVsT[0]->GetXaxis()->SetTitle("Temperature [°C]");
   tdiffVsT[0]->GetYaxis()->SetTitle("time1-timeRef [ps]");
   tdiffVsT[0]->Draw("COLZ");
 
   CanvasTdiffVsT->cd(2);
-  tdiffVsT[1]->GetXaxis()->SetTitle("Energy [D.U.]");
+  tdiffVsT[1]->GetXaxis()->SetTitle("Temperature [°C]");
   tdiffVsT[1]->GetYaxis()->SetTitle("time2-timeRef [ps]");
   tdiffVsT[1]->Draw("COLZ");
 
@@ -306,19 +308,22 @@ int main(int argc, char* argv[] ){
 
   TH2D* tdiffCorrVsE[2];
 
-  tdiffCorrVsE[0] = new TH2D("tdiffCorrVsE_time1","tdiffCorrVsE_time1",24,24,48,200,-2000,2000);
-  tdiffCorrVsE[1] = new TH2D("tdiffCorrVsE_time2","tdiffCorrVsE_time2",24,24,48,200,-2000,2000);
+  tdiffCorrVsE[0] = new TH2D("tdiffCorrVsE_time1","tdiffCorrVsE_time1",70,0,70,200,-3000,3000);
+  tdiffCorrVsE[1] = new TH2D("tdiffCorrVsE_time2","tdiffCorrVsE_time2",70,0,70,200,-3000,3000);
   
-  /*for(int i=0;i<NFilePhys;i++){
+  TH2D* tdiffCorrVsAmpEff = new TH2D("tdiffCorrVsAmpEff","tdiffCorrVsAmpEff",50,-10,40,150,-3500,3000);
+
+
+  for(int i=0;i<NFilePhys;i++){
     
     f0= TFile::Open((DirData+"/"+FileListPhysics.at(i)).c_str());
     tree0 = (TTree*)f0->Get("data"); 
 
-    GetTdiffCorr(tree0,tdiffCorr,tdiffCorrVsE,FitSpectrum[i],fitTdiffVsE,Pedestal[i],Channels,ChannelType);
-    
-    }*/
+    GetTdiffCorr(tree0,tdiffCorrVsE,tdiffCorrVsAmpEff,FitSpectrum[i],fitTdiffVsE,Pedestal[i],RMSPedestal[i],Channels,ChannelType);
+    // GetTdiffCorr(TTree* tree, TH2D** tdiffVsE ,TF1** fitspectrum,TF1** fitcorr, Double_t* ped, std::vector<int> NCH, std::vector<std::string> ChType)
+  }
 
-  
+   
 
   TF1* FitTresoCorr[3];
   for(int i=0; i<(int)Channels.size();i++){
@@ -348,8 +353,8 @@ int main(int argc, char* argv[] ){
   TimeResoCorrLogCavas->SaveAs((DirData+"/Plot/TR/TimeResoCorrLog.png").c_str());
 
   TF1* fitTdiffCorrVsE[2];
-  fitTdiffCorrVsE[0] = new TF1("fitTdiffCorrVsE0","pol1");
-  fitTdiffCorrVsE[1] = new TF1("fitTdiffCorrVsE1","pol1");
+  fitTdiffCorrVsE[0] = new TF1("fitTdiffCorrVsE0","pol5");
+  fitTdiffCorrVsE[1] = new TF1("fitTdiffCorrVsE1","pol5");
 
   TCanvas* CanvasTdiffCorrVsE = new TCanvas("CanvasTdiffCorrVsE","CanvasTdiffCorrVsE",1500,700);
   CanvasTdiffCorrVsE->Divide((int)Channels.size()-1,1);
@@ -368,14 +373,22 @@ int main(int argc, char* argv[] ){
 
   CanvasTdiffCorrVsE->SaveAs((DirData+"/Plot/TR/TdiffCorrVsE.png").c_str());
   
-  TCanvas* CanvasAEff = new TCanvas("CanvasAEff","CanvasAEff",800,800);
+  TCanvas* CanvasAEff = new TCanvas("CanvasAEff","CanvasAEff",900,1000);
   tdiffVsAmpEff->GetXaxis()->SetTitle("A_Eff/#sigma_{n} [D.U]");
   tdiffVsAmpEff->GetYaxis()->SetTitle("T_diff [ps]");
+  tdiffVsAmpEff->GetYaxis()->SetTitleOffset(0.7);
   tdiffVsAmpEff->Draw("COLZ");
 
   CanvasAEff->SaveAs((DirData+"/Plot/TR/TdiffVsAEff.png").c_str());  
   
-  
+  TCanvas* CanvasTdiffCorrVsAmpEff = new TCanvas("CanvasTdiffCorrVsAmpEff","CanvasTdiffCorrVsAmpEff",900,1000);
+  tdiffCorrVsAmpEff->GetXaxis()->SetTitle("AmpEff/#sigma_{n}[D.U.]");
+  tdiffCorrVsAmpEff->GetYaxis()->SetTitle("t_ave-t_ref[ps]");
+  tdiffCorrVsAmpEff->GetYaxis()->SetTitleOffset(0.7);
+  tdiffCorrVsAmpEff->Draw("COLZ");
+  CanvasTdiffCorrVsAmpEff->SaveAs((DirData+"/Plot/TR/TdiffCorrVsAmpEff.png").c_str());
+
+ 
   Int_t nbins = tdiffVsAmpEff->GetXaxis()->GetNbins();
   
   TH1D* Projection;
@@ -391,16 +404,16 @@ int main(int argc, char* argv[] ){
   for(int i=0; i<nbins-1; i+=2){
 
     //ProjectionAEff
-    CanvasProjection = new TCanvas("CanvasProjection","CanvasProjection",800,800);
+    CanvasProjection = new TCanvas("CanvasProjection","CanvasProjection",900,1000);
     
-    Projection = tdiffVsAmpEff->ProjectionY(Form("Projection%i_Amp%lf",i,tdiffVsAmpEff->GetXaxis()->GetBinCenter(i)),i,i);
+    Projection = tdiffCorrVsAmpEff->ProjectionY(Form("ProjectionCorr%i_Amp%lf",i,tdiffCorrVsAmpEff->GetXaxis()->GetBinCenter(i)),i,i);
     Projection->GetXaxis()->SetTitle("t_diff [ps]");
     Projection->GetYaxis()->SetTitle("Counts");
-    Projection->GetXaxis()->SetRangeUser(-3500,3000);  
+    //Projection->GetXaxis()->SetRangeUser(-3500,3000);  
     Projection->SetTitle(Projection->GetName());
     Projection->Draw();
     
-    FitProjection = new TF1(Form("fitProjection%i",i) , "gaus" , Projection->GetBinCenter(Projection->GetMaximumBin())-1.1*Projection->GetRMS(),Projection->GetBinCenter(Projection->GetMaximumBin())+1.1*Projection->GetRMS());
+    FitProjection = new TF1(Form("fitProjectionCorr%i",i) , "gaus" , Projection->GetBinCenter(Projection->GetMaximumBin())-1.1*Projection->GetRMS(),Projection->GetBinCenter(Projection->GetMaximumBin())+1.1*Projection->GetRMS());
     
     std::cout << "Range_______:    " << Projection->GetBinCenter(Projection->GetMaximumBin())-1.1*Projection->GetRMS() << "   " << Projection->GetBinCenter(Projection->GetMaximumBin())+1.1*Projection->GetRMS() << std::endl;
           
@@ -411,8 +424,8 @@ int main(int argc, char* argv[] ){
     
     CanvasProjection->SaveAs((DirData+"/Plot/TR/ProjectionAEff/Projection"+std::to_string(i)+".png").c_str());
     
-    if(fitStatus==0 && tdiffVsAmpEff->GetXaxis()->GetBinCenter(i)>0){
-      AEffValue.push_back(tdiffVsAmpEff->GetXaxis()->GetBinCenter(i));
+    if(fitStatus==0 && tdiffCorrVsAmpEff->GetXaxis()->GetBinCenter(i)>0){
+      AEffValue.push_back(tdiffCorrVsAmpEff->GetXaxis()->GetBinCenter(i));
       TimeResValue.push_back(sqrt(FitProjection->GetParameter(2)*FitProjection->GetParameter(2)-93*93));
       ErrTimeResValue.push_back(FitProjection->GetParError(2));
     }
@@ -421,19 +434,20 @@ int main(int argc, char* argv[] ){
     delete Projection;
     delete CanvasProjection;
 
-    std::cout << tdiffVsAmpEff->GetXaxis()->GetBinCenter(i) << " " << FitProjection->GetParameter(2) << " " << FitProjection->GetParError(2) << std::endl;
+    std::cout << tdiffCorrVsAmpEff->GetXaxis()->GetBinCenter(i) << " " << FitProjection->GetParameter(2) << " " << FitProjection->GetParError(2) << std::endl;
   }
   
-  TCanvas* CanvasTimeResVsAEff = new TCanvas("CanvasTimeResVsAEff","CanvasTimeResVsAEff",800,800);
+  TCanvas* CanvasTimeResVsAEff = new TCanvas("CanvasTimeResVsAEff","CanvasTimeResVsAEff",900,1000);
   
   
   TGraphErrors* TimeResVsAEff = new TGraphErrors((int)AEffValue.size(),&AEffValue[0],&TimeResValue[0],0,&ErrTimeResValue[0]);
   
-  TF1* fitAEff = new TF1("fitAEff", "[0]/x + [1]",0,23);
+  TF1* fitAEff = new TF1("fitAEff", "sqrt([0]/(x*x)-+[1]*[1])",1.8,24.2);
   
-  fitAEff->SetParameter(0,1000);
-  fitAEff->SetParameter(1,40);
-
+  fitAEff->SetParameter(0,2.58e6);
+  fitAEff->SetParameter(1,70);
+  fitAEff->SetParLimits(1,0,500);
+  
   TimeResVsAEff->SetTitle("TimeResVsAEff");
   TimeResVsAEff->SetName(TimeResVsAEff->GetTitle());
   TimeResVsAEff->GetXaxis()->SetTitle("A_Eff/#sigma_{n} [D.U]");
@@ -447,7 +461,14 @@ int main(int argc, char* argv[] ){
   CanvasTimeResVsAEff->SaveAs((DirData+"/Plot/TR/TimeResVsAEff.png").c_str()); 
   
   
+  TFile* f1 = new TFile((DirData+"/Plot/TResVsAEff.root").c_str(),"RECREATE");
+  f1->cd();
   
+  TimeResVsAEff->Write();
+  fitAEff->Write();
+
+  f1->Save();
+  f1->Close();
   
   
   
@@ -509,7 +530,10 @@ void GetPedestal(TTree* tree,Double_t* ped,Double_t* RMSPed,std::vector<int> NCH
 
   for(int i=0;i<(int)NCH.size();i++){
     
-    ped[mapCh[NCH[i]]]= histo[mapCh[NCH[i]]]->GetMean();
+    if( NCH[i]==288 ){ ped[mapCh[NCH[i]]]= histo[mapCh[NCH[i]]]->GetMean()-6; }  //rimuovi quando il canale funziona
+    else{ ped[mapCh[NCH[i]]]= histo[mapCh[NCH[i]]]->GetMean(); }   //rimuovi quando il canale funziona
+    
+    //ped[mapCh[NCH[i]]]= histo[mapCh[NCH[i]]]->GetMean();
     RMSPed[mapCh[NCH[i]]]= histo[mapCh[NCH[i]]]->GetRMS();
     CavasPedestal->cd(1+i);
     histo[mapCh[NCH[i]]]->GetXaxis()->SetTitle("Energy [D.U]");
@@ -558,9 +582,9 @@ void GetSpectrum(TTree* tree, TH1D** histo,Double_t* ped, std::vector<int> NCH){
     if(check==0){
       
       for(int j=0;j<(int)NCH.size();j++){
-
+	
 	histo[mapCh[chID[j]]]->Fill(energy[mapCh[chID[j]]]-ped[mapCh[chID[j]]]);
-
+	
       }//CHIUDO FOR J
       
     }//CHIUDO IF
@@ -635,9 +659,6 @@ void GetTdiff(TTree* tree, TH1D** histo,TH2D** tdiffVsE,TH2D** tdiffVsT,TH2D* td
       histo[1]->Fill(time[mapCh[NCH[mapTime["timeRef"]]]]-time[mapCh[NCH[mapTime["time1"]]]]);
       histo[2]->Fill(time[mapCh[NCH[mapTime["timeRef"]]]]-time[mapCh[NCH[mapTime["time2"]]]]);
 
-      tdiffVsE[0]->Fill(energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]],time[mapCh[NCH[mapTime["time1"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]);
-      tdiffVsE[1]->Fill(energy[mapCh[NCH[mapTime["time2"]]]]-ped[mapCh[NCH[mapTime["time2"]]]],time[mapCh[NCH[mapTime["time2"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]);
-      
       tdiffVsT[0]->Fill(temp1,time[mapCh[NCH[mapTime["time2"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]);
       tdiffVsT[1]->Fill(temp1,time[mapCh[NCH[mapTime["time2"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]);
     
@@ -648,15 +669,21 @@ void GetTdiff(TTree* tree, TH1D** histo,TH2D** tdiffVsE,TH2D** tdiffVsT,TH2D* td
        energy[mapCh[NCH[mapTime["timeRef"]]]]-ped[mapCh[NCH[mapTime["timeRef"]]]] > fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(1)-3*fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(2) &&
        energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]] < fitspectrum[mapCh[NCH[mapTime["time1"]]]]->GetParameter(1)+3*fitspectrum[mapCh[NCH[mapTime["time1"]]]]->GetParameter(2) &&
        energy[mapCh[NCH[mapTime["time2"]]]]-ped[mapCh[NCH[mapTime["time2"]]]] < fitspectrum[mapCh[NCH[mapTime["time2"]]]]->GetParameter(1)+3*fitspectrum[mapCh[NCH[mapTime["time2"]]]]->GetParameter(2) &&
+       energy[mapCh[NCH[mapTime["time2"]]]]-ped[mapCh[NCH[mapTime["time2"]]]]>10 && energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]]>10 &&
        chID[mapCh[NCH[mapTime["timeRef"]]]]!=-9 && chID[mapCh[NCH[mapTime["time1"]]]]!=-9 && chID[mapCh[NCH[mapTime["time2"]]]]!=-9){
       
-      A1=energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]]+6; //Più 6 solo per far tornare il problema con l'elettroica e le eergie effettive nnegative//
+      A1=energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]]; 
       A2=energy[mapCh[NCH[mapTime["time2"]]]]-ped[mapCh[NCH[mapTime["time2"]]]];
 
       AmpEff=A1*A2/(sqrt(A1*A1+A2*A2));
+      //AmpEff=A1*A2/(A1+A2);
 
       tdiffVsAmpEff->Fill(AmpEff/MeanRMSPed,time[mapCh[NCH[mapTime["timeRef"]]]]-(time[mapCh[NCH[mapTime["time1"]]]]+time[mapCh[NCH[mapTime["time2"]]]])/2);
-      
+      //tdiffVsAmpEff->Fill(AmpEff,time[mapCh[NCH[mapTime["timeRef"]]]]-(time[mapCh[NCH[mapTime["time1"]]]]+time[mapCh[NCH[mapTime["time2"]]]])/2);
+
+      tdiffVsE[0]->Fill(energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]],time[mapCh[NCH[mapTime["time1"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]);
+      tdiffVsE[1]->Fill(energy[mapCh[NCH[mapTime["time2"]]]]-ped[mapCh[NCH[mapTime["time2"]]]],time[mapCh[NCH[mapTime["time2"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]);
+
     }//chiudo altro if
 
 
@@ -676,14 +703,14 @@ void GetTdiff(TTree* tree, TH1D** histo,TH2D** tdiffVsE,TH2D** tdiffVsT,TH2D* td
 
 
 
-void GetTdiffCorr(TTree* tree, TH1D** histo,TH2D** tdiffVsE, TF1** fitspectrum,TF1** fitcorr, Double_t* ped, std::vector<int> NCH, std::vector<std::string> ChType){
+void GetTdiffCorr(TTree* tree, TH2D** tdiffVsE,TH2D* tdiffVsAmpEffCorr ,TF1** fitspectrum,TF1** fitcorr, Double_t* ped,Double_t* RMSPed, std::vector<int> NCH, std::vector<std::string> ChType){
   //Histo0 tref-tave, histo1 tref-t1, histo2 tref-t2
   
   Double_t energy[(int)NCH.size()];
   Double_t chID[(int)NCH.size()];
   Double_t time[(int)NCH.size()];
   
-
+ 
   std::map<int,int> mapCh;
   std::map<std::string,int> mapTime;
   
@@ -714,29 +741,34 @@ void GetTdiffCorr(TTree* tree, TH1D** histo,TH2D** tdiffVsE, TF1** fitspectrum,T
   }
   
   Double_t NSigma=2.5;
-  
+  Double_t AmpEff;
+  Double_t A1,A2;
+  Double_t MeanRMSPed = (RMSPed[mapCh[NCH[mapTime["time1"]]]] + RMSPed[mapCh[NCH[mapTime["time2"]]]])/2;
+
+
+
+ 
   for(int i=0;i< tree->GetEntries();i++){
     tree->GetEntry(i);
-    //Histo0 tref-tave, histo1 tref-t1, histo2 tref-t2
     
-    if( energy[mapCh[NCH[0]]]-ped[mapCh[NCH[0]]]<fitspectrum[mapCh[NCH[0]]]->GetParameter(1)+NSigma*fitspectrum[mapCh[NCH[0]]]->GetParameter(2) && 
-	energy[mapCh[NCH[0]]]-ped[mapCh[NCH[0]]]>fitspectrum[mapCh[NCH[0]]]->GetParameter(1)-NSigma*fitspectrum[mapCh[NCH[0]]]->GetParameter(2) && 
-        energy[mapCh[NCH[1]]]-ped[mapCh[NCH[1]]]<fitspectrum[mapCh[NCH[1]]]->GetParameter(1)+NSigma*fitspectrum[mapCh[NCH[1]]]->GetParameter(2) && 
-        energy[mapCh[NCH[1]]]-ped[mapCh[NCH[1]]]>fitspectrum[mapCh[NCH[1]]]->GetParameter(1)-NSigma*fitspectrum[mapCh[NCH[1]]]->GetParameter(2) && 
-        energy[mapCh[NCH[2]]]-ped[mapCh[NCH[2]]]<fitspectrum[mapCh[NCH[2]]]->GetParameter(1)+NSigma*fitspectrum[mapCh[NCH[2]]]->GetParameter(2) && 
-        energy[mapCh[NCH[2]]]-ped[mapCh[NCH[2]]]>fitspectrum[mapCh[NCH[2]]]->GetParameter(1)-NSigma*fitspectrum[mapCh[NCH[2]]]->GetParameter(2)){
+     if(energy[mapCh[NCH[mapTime["timeRef"]]]]-ped[mapCh[NCH[mapTime["timeRef"]]]] < fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(1)+3*fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(2) && 
+       energy[mapCh[NCH[mapTime["timeRef"]]]]-ped[mapCh[NCH[mapTime["timeRef"]]]] > fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(1)-3*fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(2) &&
+       energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]] < fitspectrum[mapCh[NCH[mapTime["time1"]]]]->GetParameter(1)+3*fitspectrum[mapCh[NCH[mapTime["time1"]]]]->GetParameter(2) &&
+       energy[mapCh[NCH[mapTime["time2"]]]]-ped[mapCh[NCH[mapTime["time2"]]]] < fitspectrum[mapCh[NCH[mapTime["time2"]]]]->GetParameter(1)+3*fitspectrum[mapCh[NCH[mapTime["time2"]]]]->GetParameter(2) &&
+       chID[mapCh[NCH[mapTime["timeRef"]]]]!=-9 && chID[mapCh[NCH[mapTime["time1"]]]]!=-9 && chID[mapCh[NCH[mapTime["time2"]]]]!=-9){
       
-      histo[0]->Fill(time[mapCh[NCH[mapTime["timeRef"]]]]-(time[mapCh[NCH[mapTime["time1"]]]]-fitcorr[0]->Eval(energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]])+time[mapCh[NCH[mapTime["time2"]]]]-fitcorr[1]->Eval(energy[mapCh[NCH[mapTime["time2"]]]]-ped[mapCh[NCH[mapTime["time2"]]]]))/2);
+      A1=energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]]; 
+      A2=energy[mapCh[NCH[mapTime["time2"]]]]-ped[mapCh[NCH[mapTime["time2"]]]];
+
+      AmpEff=A1*A2/(sqrt(A1*A1+A2*A2));
+
+      tdiffVsAmpEffCorr->Fill(AmpEff/MeanRMSPed,time[mapCh[NCH[mapTime["timeRef"]]]]-(time[mapCh[NCH[mapTime["time1"]]]]- fitcorr[0]->Eval(energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]])+time[mapCh[NCH[mapTime["time2"]]]]- fitcorr[1]->Eval(energy[mapCh[NCH[mapTime["time2"]]]]-ped[mapCh[NCH[mapTime["time2"]]]]))/2);
       
-      histo[1]->Fill(time[mapCh[NCH[mapTime["timeRef"]]]]-time[mapCh[NCH[mapTime["time1"]]]]-fitcorr[0]->Eval(energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]]));
-      
-      histo[2]->Fill(time[mapCh[NCH[mapTime["timeRef"]]]]-time[mapCh[NCH[mapTime["time2"]]]]-fitcorr[1]->Eval(energy[mapCh[NCH[mapTime["time2"]]]]-ped[mapCh[NCH[mapTime["time2"]]]]));
-      
-      tdiffVsE[0]->Fill(energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]],time[mapCh[NCH[mapTime["time1"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]-fitcorr[0]->Eval(energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]]));
-      
-      tdiffVsE[1]->Fill(energy[mapCh[NCH[mapTime["time2"]]]]-ped[mapCh[NCH[mapTime["time2"]]]],time[mapCh[NCH[mapTime["time2"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]-fitcorr[1]->Eval(energy[mapCh[NCH[mapTime["time2"]]]]-ped[mapCh[NCH[mapTime["time2"]]]]));
-        
-    }
+      tdiffVsE[0]->Fill(energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]],time[mapCh[NCH[mapTime["time1"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]  - fitcorr[0]->Eval(energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]]) );
+      tdiffVsE[1]->Fill(energy[mapCh[NCH[mapTime["time2"]]]]-ped[mapCh[NCH[mapTime["time2"]]]],time[mapCh[NCH[mapTime["time2"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]  - fitcorr[1]->Eval(energy[mapCh[NCH[mapTime["time2"]]]]-ped[mapCh[NCH[mapTime["time2"]]]]) );
+
+    }//chiudo altro if
+    
     
   }
   
@@ -760,20 +792,29 @@ TF1* FitCoincSpectrum(TH1D* Profile){
   
   Double_t max;
   Double_t peak1;
+  Int_t minRange=0;
   
+  for(int i=1 ; i<Profile->GetNbinsX();i++){
+    
+    if( Profile->GetBinContent(i+1)>Profile->GetBinContent(i) ){  minRange=i; 
+      std::cout << Profile->GetBinContent(i+1)<< " > " << Profile->GetBinContent(i) << "  " << minRange << std::endl;} 
+    else { break; }
+    
+  }
+
   peak1 = Profile->GetBinCenter(Profile->GetMaximumBin());
   max = Profile->GetMaximum();
   Profile->GetXaxis()->UnZoom();
 
-  TF1* spectrum = new TF1(Form("SpectrumFit_%s", Profile->GetName()),"[0] * exp(-( x-[1] )*( x-[1] )/( 2* [2]* [2])) + [3] / (exp( (x*[4]-(2*[1]*[1]/([1]+2*[1])))) + 1)",10,48);
-  
+  TF1* spectrum = new TF1(Form("SpectrumFit_%s", Profile->GetName()),"[0] * exp(-( x-[1] )*( x-[1] )/( 2* [2]* [2])) + [3] / (exp( (x*[4]-(2*[1]*[1]/([1]+2*[1])))) + 1)",minRange,peak1+10);
+
   spectrum->SetParameter(0,max);
   spectrum->SetParameter(1,peak1);
   spectrum->SetParameter(2,3);
-  spectrum->SetParameter(3,700);
+  spectrum->SetParameter(3,max/2.1);
   spectrum->SetParameter(4,0.82);
   
-  Profile->Fit(Form("SpectrumFit_%s", Profile->GetName()),"R0");
+  Profile->Fit(Form("SpectrumFit_%s", Profile->GetName()),"R0Q");
 
   return spectrum;
 }
