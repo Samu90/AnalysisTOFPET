@@ -1,0 +1,4 @@
+./AnalysisTemp.exe ../TestStability_25_03_2018 7
+./AnalysisTemp.exe ../TestStabilityNa22PedAllChannels_01_04_2019 7
+./AnalysisTemp.exe ../TestStabilityNa22PedAllChannels_02_04_2019 7
+./AnalysisTemp.exe ../TestStabilityNa22PedAllChannels_03_04_2019 7

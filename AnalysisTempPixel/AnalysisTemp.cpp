@@ -16,11 +16,10 @@
 #include "TMath.h"
 #include "TLine.h"
 
-void GetPedestal(TTree* tree,Double_t* pedch1,Double_t* pedch2,Double_t* pedch3){
+void GetPedestal(TTree* tree,Double_t* pedch1,Double_t* pedch2){
   
   TH1F* histoCh1 = new TH1F("pippoch1","pippoch1",600,0,600);
   TH1F* histoCh2 = new TH1F("pippoch2","pippoch2",600,0,600);
-  TH1F* histoCh3 = new TH1F("pippoch3","pippoch3",600,0,600);
 
   Float_t energy;
   UShort_t chID;
@@ -31,19 +30,16 @@ void GetPedestal(TTree* tree,Double_t* pedch1,Double_t* pedch2,Double_t* pedch3)
   for(int i=0; i<tree->GetEntries(); i++){
     tree->GetEntry(i);
     if(chID==59) { histoCh1->Fill(energy); }//chiudo if
-    else if(chID==288){ histoCh2->Fill(energy-6); }//chiudo else
-    else if(chID==291){ histoCh3->Fill(energy);}
+    else if(chID==315){ histoCh2->Fill(energy); }//chiudo else
   }//chiudo for
   
   std::cout << "Filled"<< std::endl;
 
   *pedch1 = histoCh1->GetMean();
   *pedch2 = histoCh2->GetMean();
-  *pedch3 = histoCh3->GetMean();
-
+  
   delete histoCh1;
   delete histoCh2;
-  delete histoCh3;
 }
 
 TF1* CalibrationCurve(TGraphErrors* graph,int i){
@@ -59,44 +55,34 @@ TF1* CalibrationCurve(TGraphErrors* graph,int i){
 }
 
 
-void GetSpectrum(TTree* tree,TTree* treeCoinc, TH1D* histoCh1, TH1D* histoCh2, TH1D* histoCh3,Double_t MeanPedCh59, Double_t MeanPedCh288,Double_t MeanPedCh291){
+void GetSpectrum(TTree* tree, TH1D* histoCh1, TH1D* histoCh2, Double_t MeanPedCh59, Double_t MeanPedCh315){
   
   Float_t energy;
   UShort_t chID;
 
-  Double_t energyCoinc[3];
-  Double_t chIDCoinc[3];
-
   tree->SetBranchAddress("energy",&energy);
   tree->SetBranchAddress("channelID",&chID);
    
-  treeCoinc->SetBranchAddress("energy",energyCoinc);
-  treeCoinc->SetBranchAddress("chId",chIDCoinc);
-
   for(int i=0; i<tree->GetEntries(); i++){
     tree->GetEntry(i);
     if(chID==59) { histoCh1->Fill(energy-MeanPedCh59); }//chiudo if
+    else if(chID==315){ histoCh2->Fill(energy-MeanPedCh315); }//chiudo else
   }//chiudo for
   
-  for(int i=0; i<treeCoinc->GetEntries(); i++){
-    treeCoinc->GetEntry(i);
-    if(chIDCoinc[1]!=-9 && chIDCoinc[2]!=-9){histoCh2->Fill((energyCoinc[1]-MeanPedCh288+energyCoinc[2]-MeanPedCh291)/2);}
-  }
-
   std::cout << "Filled"<< std::endl;
   
   
 }
 
 
-void GetMeanTemperature(TTree* tree, Double_t* MeanTempCh59, Double_t* SigmaTempCh59,Double_t* MeanTempCh288, Double_t* SigmaTempCh288, Double_t* MeanTGlobal,Double_t* SigmaTGlobal,int j){
+void GetMeanTemperature(TTree* tree, Double_t* MeanTempCh59, Double_t* SigmaTempCh59,Double_t* MeanTempCh315, Double_t* SigmaTempCh315, Double_t* MeanTGlobal,Double_t* SigmaTGlobal,int j){
 
   UShort_t chID;
   Double_t temp1,temp2,temp3;
 
   TH1D* histo1 = new TH1D("pippoch1","pippoch1",20,10,35);
   TH1D* histoCh59 = new TH1D("pippoch59","pippoch59",20,20,40);
-  TH1D* histoCh288 = new TH1D("pippoch288","pippoch288",20,20,40);
+  TH1D* histoCh315 = new TH1D("pippoch315","pippoch315",20,20,40);
 
   tree->SetBranchAddress("temp1",&temp1);
   tree->SetBranchAddress("temp2",&temp2);
@@ -108,7 +94,7 @@ void GetMeanTemperature(TTree* tree, Double_t* MeanTempCh59, Double_t* SigmaTemp
     tree->GetEntry(i);
     histo1->Fill(temp1);
     if(chID==59) { histoCh59->Fill(temp2); }//chiudo if
-    else if(chID==288){ histoCh288->Fill(temp3); }//chiudo else
+    else if(chID==315){ histoCh315->Fill(temp3); }//chiudo else
 
   }//chiudo for
   
@@ -116,8 +102,8 @@ void GetMeanTemperature(TTree* tree, Double_t* MeanTempCh59, Double_t* SigmaTemp
   SigmaTGlobal[j]= histo1->GetMeanError();
   MeanTempCh59[j]= histoCh59->GetMean();
   SigmaTempCh59[j]= histoCh59->GetMeanError();
-  SigmaTempCh288[j]= histoCh288->GetMeanError();
-  MeanTempCh288[j]= histoCh288->GetMean();
+  SigmaTempCh315[j]= histoCh315->GetMeanError();
+  MeanTempCh315[j]= histoCh315->GetMean();
 
   std::cout << "TMeanDone"<< std::endl;
 
@@ -164,100 +150,19 @@ TF1* FitNaSpectrumCB(TH1D* Profile,Int_t* fitStatus){
   spectrum->SetParameter(11,0.04);
   spectrum->SetParameter(12,-1.4);
 
+  //std::cout << "kk6" << std::endl;
   spectrum->SetParLimits(10,3.8,6);
   spectrum->SetParLimits(3,4,2700);
   spectrum->SetParLimits(11,0.02,1);
   
-
+  //spectrum->SetParLimits(5,800,2000);
+  //spectrum->SetParLimits(8,1000,10000);
+  
+  //std::cout << "kk7" << std::endl;
   *fitStatus = Profile->Fit(Form("SpectrumFit_%s", Profile->GetName()),"R0EQ");
 
+  //std::cout << "kk8" << std::endl;
   return spectrum;
-}
-
-TF1* FitNaSpectrumCBBar(TH1D* Profile,Int_t* fitStatus ,Int_t chID){
-
-  
-  Double_t min;
-  Double_t peak1,peak2;
-  
-  Profile->GetXaxis()->SetRangeUser(30,55);
-  peak1 = Profile->GetBinCenter(Profile->GetMaximumBin());
-  Profile->GetXaxis()->UnZoom();
-
-  Profile->GetXaxis()->SetRangeUser(12,peak1);
-  min = Profile->GetBinCenter(Profile->GetMinimumBin());
-  Profile->GetXaxis()->UnZoom();
-
-
-  Profile->GetXaxis()->SetRangeUser(75,98);
-  peak2 = Profile->GetBinCenter(Profile->GetMaximumBin());
-  Profile->GetXaxis()->UnZoom();
-
-  std::cout << "p1 , p2  ->  " << peak1 << " " << peak2 << std::endl;
-
-  TF1* spectrum = new TF1(Form("SpectrumFit_%s", Profile->GetName()),"[0] * exp(-( x-[1] )*( x-[1] )/( 2* [2]* [2])) + [3] / (exp( (x*[4]-(2*[1]*[1]/([1]+2*[1])))) + 1)+ [5] * exp(-( x-[6] )*( x-[6] )/( 2* [7]* [7])) +crystalball([8],[9],[10],[11],[12])",min,92);
-  TF1* spectrumBar = new TF1(Form("SpectrumBarFit_%s", Profile->GetName()),"[0] * exp(-( x-[1] )*( x-[1] )/( 2* [2]* [2])) +[3] * exp(-( x-[6] )*( x-[6] )/( 2* [5]* [5])) +[4] / (exp( (x*[7]-(2*[6]*[6]/([6]+2*[1])))) + 1)");
-  
-  Double_t max;
-  max= Profile->GetMaximum();
-  
-  Double_t secondMax=80;
-  
-
-  if(chID==59){
-    
-    spectrum->SetParameter(0,max);
-    spectrum->SetParameter(1,peak1);
-    spectrum->SetParameter(2,3);
-    spectrum->SetParameter(3,max/5);
-    spectrum->SetParameter(4,0.82);
-    spectrum->SetParameter(5,max/20);
-    spectrum->SetParameter(6,peak2);
-    spectrum->SetParameter(7,3.2);
-    spectrum->SetParameter(8,max/12);
-    spectrum->SetParameter(9,peak2/1.21);
-    spectrum->SetParameter(10,4.3);
-    spectrum->SetParameter(11,0.04);
-    spectrum->SetParameter(12,-1.4);
-    
-    spectrum->SetParLimits(10,3.8,6);
-    spectrum->SetParLimits(3,4,2700);
-    spectrum->SetParLimits(11,0.02,1);
-
-    *fitStatus=Profile->Fit(Form("SpectrumFit_%s", Profile->GetName()),"R0");
-    
-    return spectrum;
-
-  } else {
-    
-    for(int i=80;i>40;i--){ 
-      if(Profile->GetBinContent(i)<=Profile->GetBinContent(i-1) ){secondMax=i+3;}
-      else{ break; }
-    }
-    
-
-    std::cout<<"secondMax  " << secondMax << std::endl;
-    spectrumBar->SetRange(min+2,secondMax+10);
-    
-    spectrumBar->SetParameter(0,max);
-    spectrumBar->SetParameter(1,peak1);
-    spectrumBar->SetParameter(2,3);
-    spectrumBar->SetParameter(3,max/11);
-    spectrumBar->SetParameter(6,secondMax);
-    spectrumBar->SetParameter(5,4.3);
-    spectrumBar->SetParameter(4,max/10);
-    spectrumBar->SetParameter(7,1);
-    
-    spectrumBar->SetParLimits(3,2500,8000);
-    //    spectrumBar->SetParLimits(6,secondMax-2,secondMax+2);
-    //    spectrumBar->SetParLimits(5,2.9,5);
-
-    *fitStatus=Profile->Fit(Form("SpectrumBarFit_%s", Profile->GetName()),"R0M");
-  
-    return spectrumBar;
-  }  
-
-
 }
 
 
@@ -311,7 +216,8 @@ TF1* FitNaSpectrumCBFull(TH1D* Profile){
   spectrum->SetParameter(16,1);
   spectrum->SetParameter(17,0.05);
   
-  //LIMITS
+
+ 
   spectrum->SetParLimits(10,3.8,6);
   spectrum->SetParLimits(3,4,2700);
   spectrum->SetParLimits(11,0.02,1);
@@ -382,19 +288,17 @@ int main(int argc, char* argv[] ){
 
   gSystem->Exec(("ls "+DirData+"/*PED*"+OV+"_singles.root > "+DirData+"/PedFile.txt").c_str());
   gSystem->Exec(("ls "+DirData+"/*PHYS*"+OV+"_singles.root > "+DirData+"/PhysFile.txt").c_str());
-  gSystem->Exec(("ls "+DirData+"/*PHYS*"+OV+"_coincidences.root > "+DirData+"/PhysFileCoinc.txt").c_str());
-  
   gSystem->Exec(("mkdir "+DirData+"/Plot").c_str());
   
   gSystem->Exec(("mkdir "+DirData+"/Plot/EnergyTempCB").c_str());
   gSystem->Exec(("mkdir "+DirData+"/Plot/EnergyTempCB/Partials/").c_str());
   gSystem->Exec(("mkdir "+DirData+"/Plot/EnergyTempCB/CalibPlot/").c_str());
-  gSystem->Exec(("mkdir "+DirData+"/../RootFileGraphBar").c_str());
+  gSystem->Exec(("mkdir "+DirData+"/../RootFileGraphPixel").c_str());
   
   
   //gStyle->SetOptStat("000001000");
 
-  TFile* f = new TFile(("../RootFileGraphBar/"+RootFileName+".root").c_str(),"RECREATE");
+  TFile* f = new TFile(("../RootFileGraphPixel/"+RootFileName+".root").c_str(),"RECREATE");
 
   if(f) std::cout << "Root File Graph opened->"<<RootFileName << std::endl;
 
@@ -405,21 +309,15 @@ int main(int argc, char* argv[] ){
   
   std::vector<std::string> FileListPhysics;
   std::string ListFilePhys = DirData+"/PhysFile.txt";
-  std::cout << "Lista File Physics: "<< ListFilePhys << std::endl;
+  std::cout << "Lista File Pedestal: "<< ListFilePed << std::endl;
   FileListPhysics=ReadData(ListFilePhys);
-
-  std::vector<std::string> FileListPhysicsCoinc;
-  std::string ListFilePhysCoinc = DirData+"/PhysFileCoinc.txt";
-  std::cout << "Lista File Physics Coinc: "<< ListFilePhysCoinc << std::endl;
-  FileListPhysicsCoinc=ReadData(ListFilePhysCoinc);
 
   int NFilePhys=(int)FileListPhysics.size();
   
   //Get Pedestal
-  Double_t Pedestal[NFilePhys][3];
+  Double_t Pedestal[NFilePhys][2];
   Double_t PedestalCh1[2];
   Double_t PedestalCh2[2];
-  Double_t PedestalCh3[2];
 
   int k=0;
 
@@ -432,45 +330,40 @@ int main(int argc, char* argv[] ){
     TTree* tree0 = (TTree*)f0->Get("data"); //Before
     TTree* tree1 = (TTree*)f1->Get("data"); //After
     
-    GetPedestal(tree0,&PedestalCh1[0],&PedestalCh2[0],&PedestalCh3[0]);
-    GetPedestal(tree1,&PedestalCh1[1],&PedestalCh2[1],&PedestalCh3[1]);
+    GetPedestal(tree0,&PedestalCh1[0],&PedestalCh2[0]);
+    GetPedestal(tree1,&PedestalCh1[1],&PedestalCh2[1]);
     
     Pedestal[k][0]=(PedestalCh1[0]+PedestalCh1[1])/2;
     Pedestal[k][1]=(PedestalCh2[0]+PedestalCh2[1])/2;
-    Pedestal[k][2]=(PedestalCh3[0]+PedestalCh3[1])/2;
     
     k++;
   }// chiudo for
 
   
   for(int i=0;i<NFilePhys;i++){
-    std::cout <<NFilePhys <<"   "<< (int)FileListPedestal.size()<<"  " <<  Pedestal[i][0] << "    " << Pedestal[i][1] << std::endl;
+    std::cout <<NFilePhys <<"   "<< (int)FileListPedestal.size()<< Pedestal[i][0] << "    " << Pedestal[i][1] << std::endl;
   }
 
 
   TH1D* HistoCh59[NFilePhys];
-  TH1D* HistoCh288[NFilePhys];
-  TH1D* HistoCh291[NFilePhys];
+  TH1D* HistoCh315[NFilePhys];
     
-  Double_t MeanTCh59[NFilePhys], MeanTCh288[NFilePhys];
-  Double_t SigmaTCh59[NFilePhys], SigmaTCh288[NFilePhys];
+  Double_t MeanTCh59[NFilePhys], MeanTCh315[NFilePhys];
+  Double_t SigmaTCh59[NFilePhys], SigmaTCh315[NFilePhys];
   Double_t MeanTGlobal[NFilePhys], SigmaTGlobal[NFilePhys];
 
   Double_t Peak1Ch59[NFilePhys], Peak2Ch59[NFilePhys];
   Double_t SigmaPeak1Ch59[NFilePhys], SigmaPeak2Ch59[NFilePhys];
 
-  Double_t Peak1Ch288[NFilePhys], Peak2Ch288[NFilePhys];
-  Double_t SigmaPeak1Ch288[NFilePhys], SigmaPeak2Ch288[NFilePhys];
+  Double_t Peak1Ch315[NFilePhys], Peak2Ch315[NFilePhys];
+  Double_t SigmaPeak1Ch315[NFilePhys], SigmaPeak2Ch315[NFilePhys];
 
-  Int_t fitStatus[NFilePhys][3];
+  Int_t fitStatus[NFilePhys][2];
 
   TFile* f0;
   TTree* tree0;
 
-  TFile* f0coinc;
-  TTree* tree0coinc;
-
-  TF1* FitSpectrum[NFilePhys][3];
+  TF1* FitSpectrum[NFilePhys][2];
   
   gStyle->SetOptFit(1111);
   gStyle->SetStatW(0.2);
@@ -479,76 +372,63 @@ int main(int argc, char* argv[] ){
   for(int i=0;i < NFilePhys;i++){
     
     std::cout << "i: " << i << std::endl;
-    
     f0= TFile::Open((DirData+"/"+FileListPhysics.at(i)).c_str());
     tree0 = (TTree*)f0->Get("data");
 
-    f0coinc= TFile::Open((DirData+"/"+FileListPhysicsCoinc.at(i)).c_str());
-    tree0coinc = (TTree*)f0coinc->Get("data");
-
         
     HistoCh59[i]  = new TH1D(Form("HistoCh59N%d", i),Form("HistoCh59N%d", i), 100,0,100);
-    HistoCh288[i] = new TH1D(Form("HistoCh288N%d",i),Form("HistoCh288N%d",i), 100,0,100);
+    HistoCh315[i] = new TH1D(Form("HistoCh315N%d",i),Form("HistoCh315N%d",i), 100,0,100);
 
         
-    GetSpectrum(tree0,tree0coinc,HistoCh59[i],HistoCh288[i],HistoCh291[i],Pedestal[i][0],Pedestal[i][1],Pedestal[i][2]);
-    GetMeanTemperature(tree0,MeanTCh59,SigmaTCh59,MeanTCh288,SigmaTCh288,MeanTGlobal,SigmaTGlobal,i);
+    GetSpectrum(tree0,HistoCh59[i],HistoCh315[i],Pedestal[i][0],Pedestal[i][1]);
+    GetMeanTemperature(tree0,MeanTCh59,SigmaTCh59,MeanTCh315,SigmaTCh315,MeanTGlobal,SigmaTGlobal,i);
 
     //HistoCh59[i]->SetTitle(("HistoCh59Temp"+std::to_string(MeanTGlobal[i])).c_str());
-    //HistoCh288[i]->SetTitle(("HistoCh288Temp"+std::to_string(MeanTGlobal[i])).c_str());
+    //HistoCh315[i]->SetTitle(("HistoCh315Temp"+std::to_string(MeanTGlobal[i])).c_str());
         
     TCanvas* canvino = new TCanvas("Canvino","Canvino",1200,600);
     canvino->Divide(2,1);
     
     //do{
-    FitSpectrum[i][0]=FitNaSpectrumCBBar(HistoCh59[i],&fitStatus[i][0],59);
+    FitSpectrum[i][0]=FitNaSpectrumCB(HistoCh59[i],&fitStatus[i][0]);
     //}while(isnan(FitSpectrum[i][0]->GetParError(5)));
    
     //do{
-    FitSpectrum[i][1]=FitNaSpectrumCBBar(HistoCh288[i],&fitStatus[i][1],288);
-    //FitSpectrum[i][2]=FitNaSpectrumCBBar(HistoCh291[i],&fitStatus[i][2],291);
+    FitSpectrum[i][1]=FitNaSpectrumCB(HistoCh315[i],&fitStatus[i][1]);
     
-    std::cout << "FitStatus_________ " << fitStatus[i][0] <<"  " <<  fitStatus[i][1]  << std::endl;
+    std::cout << "FitStatus_________ " << fitStatus[i][0] <<"  " <<  fitStatus[i][1] << std::endl;
     //}while(isnan(FitSpectrum[i][1]->GetParError(5)));
-    
+        
     canvino->cd(1);
     HistoCh59[i]->GetXaxis()->SetTitle("E [DU]");
     HistoCh59[i]->GetYaxis()->SetTitle("Counts");
     HistoCh59[i]->Draw();
     FitSpectrum[i][0]->Draw("SAME");
-    
+
     canvino->cd(2);
-    HistoCh288[i]->GetXaxis()->SetTitle("E [DU]");
-    HistoCh288[i]->GetYaxis()->SetTitle("Counts");
-    HistoCh288[i]->Draw();
+    HistoCh315[i]->GetXaxis()->SetTitle("E [DU]");
+    HistoCh315[i]->GetYaxis()->SetTitle("Counts");
+    HistoCh315[i]->Draw();
     FitSpectrum[i][1]->Draw("SAME");    
-    
-    /*canvino->cd(3);
-    HistoCh291[i]->GetXaxis()->SetTitle("E [DU]");
-    HistoCh291[i]->GetYaxis()->SetTitle("Counts");
-    HistoCh291[i]->Draw();
-    FitSpectrum[i][2]->Draw("SAME");    
-    */
 
     canvino->SaveAs((DirData+"/Plot/EnergyTempCB/Partials/Canvas"+std::to_string(i)+".png").c_str());
-    
     delete canvino;
   }
 
   for(int i=0;i<NFilePhys;i++){
-    std::cout << MeanTCh59[i] << " " <<SigmaTCh59[i]<< " " << MeanTCh288[i] << " " << SigmaTCh288[i] <<" " << MeanTGlobal[i]<< " " << SigmaTGlobal[i] <<std::endl;
+    std::cout << MeanTCh59[i] << " " <<SigmaTCh59[i]<< " " << MeanTCh315[i] << " " << SigmaTCh315[i] <<" " << MeanTGlobal[i]<< " " << SigmaTGlobal[i] <<std::endl;
 
     Peak1Ch59[i]=FitSpectrum[i][0]->GetParameter(1);
     SigmaPeak1Ch59[i]=FitSpectrum[i][0]->GetParError(1);
     Peak2Ch59[i]=FitSpectrum[i][0]->GetParameter(6);
     SigmaPeak2Ch59[i]=FitSpectrum[i][0]->GetParError(6);
 
-    Peak1Ch288[i]=FitSpectrum[i][1]->GetParameter(1);
-    SigmaPeak1Ch288[i]=FitSpectrum[i][1]->GetParError(1);
-    Peak2Ch288[i]=FitSpectrum[i][1]->GetParameter(6);
-    SigmaPeak2Ch288[i]=FitSpectrum[i][1]->GetParError(6);
+    Peak1Ch315[i]=FitSpectrum[i][1]->GetParameter(1);
+    SigmaPeak1Ch315[i]=FitSpectrum[i][1]->GetParError(1);
+    Peak2Ch315[i]=FitSpectrum[i][1]->GetParameter(6);
+    SigmaPeak2Ch315[i]=FitSpectrum[i][1]->GetParError(6);
     
-    std::cout << Peak1Ch59[i]<< " " << SigmaPeak1Ch59[i]<< " " << Peak2Ch59[i]<< " " << SigmaPeak2Ch59[i]<< " "<< Peak1Ch288[i]<< " " <<SigmaPeak1Ch288[i] <<" "<< Peak2Ch288[i]<< " " <<SigmaPeak2Ch288[i]<< std::endl; 
+    std::cout << Peak1Ch59[i]<< " " << SigmaPeak1Ch59[i]<< " " << Peak2Ch59[i]<< " " << SigmaPeak2Ch59[i]<< " "<< Peak1Ch315[i]<< " " <<SigmaPeak1Ch315[i] <<" "<< Peak2Ch315[i]<< " " <<SigmaPeak2Ch315[i]<< std::endl; 
     
   }
   
@@ -557,8 +437,8 @@ int main(int argc, char* argv[] ){
   TGraphErrors* Graph1Ch59 = new TGraphErrors(NFilePhys,MeanTCh59,Peak1Ch59,SigmaTCh59,SigmaPeak1Ch59);
   TGraphErrors* Graph2Ch59 = new TGraphErrors(NFilePhys,MeanTCh59,Peak2Ch59,SigmaTCh59,SigmaPeak2Ch59);
   
-  TGraphErrors* Graph1Ch288 = new TGraphErrors(NFilePhys,MeanTCh288,Peak1Ch288,SigmaTCh288,SigmaPeak1Ch288);
-  TGraphErrors* Graph2Ch288 = new TGraphErrors(NFilePhys,MeanTCh288,Peak2Ch288,SigmaTCh288,SigmaPeak2Ch288);
+  TGraphErrors* Graph1Ch315 = new TGraphErrors(NFilePhys,MeanTCh315,Peak1Ch315,SigmaTCh315,SigmaPeak1Ch315);
+  TGraphErrors* Graph2Ch315 = new TGraphErrors(NFilePhys,MeanTCh315,Peak2Ch315,SigmaTCh315,SigmaPeak2Ch315);
 
   
   PlotEVsT->Divide(2,1);
@@ -578,25 +458,25 @@ int main(int argc, char* argv[] ){
   PlotEVsT->cd(2)->SetGridx();
   PlotEVsT->cd(2)->SetGridy();
   
-  Graph1Ch288->SetMaximum(90);
-  Graph1Ch288->SetMinimum(30);
-  Graph1Ch288->SetTitle("EnergyVsTempCh288P1");
-  Graph2Ch288->SetTitle("EnergyVsTempCh288P2");
-  Graph1Ch288->GetXaxis()->SetTitle("TMeanRun [°C]");
-  Graph1Ch288->GetYaxis()->SetTitle("E [DU]");
-  Graph1Ch288->Draw("AP");
-  Graph2Ch288->Draw("SAMEP");
+  Graph1Ch315->SetMaximum(90);
+  Graph1Ch315->SetMinimum(30);
+  Graph1Ch315->SetTitle("EnergyVsTempCh315P1");
+  Graph2Ch315->SetTitle("EnergyVsTempCh315P2");
+  Graph1Ch315->GetXaxis()->SetTitle("TMeanRun [°C]");
+  Graph1Ch315->GetYaxis()->SetTitle("E [DU]");
+  Graph1Ch315->Draw("AP");
+  Graph2Ch315->Draw("SAMEP");
   
   f->cd();
   Graph1Ch59->SetName(Graph1Ch59->GetTitle());
-  Graph1Ch288->SetName(Graph1Ch288->GetTitle());
+  Graph1Ch315->SetName(Graph1Ch315->GetTitle());
   Graph2Ch59->SetName(Graph2Ch59->GetTitle());
-  Graph2Ch288->SetName(Graph2Ch288->GetTitle());
+  Graph2Ch315->SetName(Graph2Ch315->GetTitle());
 
   Graph1Ch59->Write();
-  Graph1Ch288->Write();
+  Graph1Ch315->Write();
   Graph2Ch59->Write();
-  Graph2Ch288->Write();
+  Graph2Ch315->Write();
 
   PlotEVsT->SaveAs((DirData+"/Plot/EnergyTempCB/PlotEVsT.png").c_str());
 
@@ -608,16 +488,16 @@ int main(int argc, char* argv[] ){
   
   TGraphErrors* Graph1GlobalTempCh59= new TGraphErrors(NFilePhys,MeanTGlobal,Peak1Ch59,SigmaTGlobal,SigmaPeak1Ch59);
   TGraphErrors* Graph2GlobalTempCh59= new TGraphErrors(NFilePhys,MeanTGlobal,Peak2Ch59,SigmaTGlobal,SigmaPeak2Ch59);
-  TGraphErrors* Graph1GlobalTempCh288= new TGraphErrors(NFilePhys,MeanTGlobal,Peak1Ch288,SigmaTGlobal,SigmaPeak1Ch288);
-  TGraphErrors* Graph2GlobalTempCh288= new TGraphErrors(NFilePhys,MeanTGlobal,Peak2Ch288,SigmaTGlobal,SigmaPeak2Ch288);
+  TGraphErrors* Graph1GlobalTempCh315= new TGraphErrors(NFilePhys,MeanTGlobal,Peak1Ch315,SigmaTGlobal,SigmaPeak1Ch315);
+  TGraphErrors* Graph2GlobalTempCh315= new TGraphErrors(NFilePhys,MeanTGlobal,Peak2Ch315,SigmaTGlobal,SigmaPeak2Ch315);
   ////////////////////////////////////////////////////////////////////////////////////
-  Double_t RatioPeakCh59[NFilePhys], RatioPeakCh288[NFilePhys],SigmaRPeakCh59[NFilePhys],SigmaRPeakCh288[NFilePhys];
+  Double_t RatioPeakCh59[NFilePhys], RatioPeakCh315[NFilePhys],SigmaRPeakCh59[NFilePhys],SigmaRPeakCh315[NFilePhys];
   
   RatioWithError(Peak1Ch59,Peak2Ch59,SigmaPeak1Ch59,SigmaPeak2Ch59,RatioPeakCh59,SigmaRPeakCh59,NFilePhys);
-  RatioWithError(Peak1Ch288,Peak2Ch288,SigmaPeak1Ch288,SigmaPeak2Ch288,RatioPeakCh288,SigmaRPeakCh288,NFilePhys);
+  RatioWithError(Peak1Ch315,Peak2Ch315,SigmaPeak1Ch315,SigmaPeak2Ch315,RatioPeakCh315,SigmaRPeakCh315,NFilePhys);
   
   TGraphErrors* GraphRatioCh59 = new TGraphErrors(NFilePhys,MeanTGlobal,RatioPeakCh59,SigmaTGlobal,SigmaRPeakCh59);
-  TGraphErrors* GraphRatioCh288 = new TGraphErrors(NFilePhys,MeanTGlobal,RatioPeakCh288,SigmaTGlobal,SigmaRPeakCh288);
+  TGraphErrors* GraphRatioCh315 = new TGraphErrors(NFilePhys,MeanTGlobal,RatioPeakCh315,SigmaTGlobal,SigmaRPeakCh315);
 
   /////////////////////////////////////////////////////////////////////////////////////
   //RatioEnergyCh1 (TGlobal)
@@ -625,12 +505,12 @@ int main(int argc, char* argv[] ){
   CanvGlobalTemp->cd(1);
 
   TF1* fitRatioCh59 = new TF1("fitRatioCh59","[0]+[1]*x");
-  TF1* fitRatioCh288 = new TF1("fitRatioCh288","[0]+[1]*x");
+  TF1* fitRatioCh315 = new TF1("fitRatioCh315","[0]+[1]*x");
 
   fitRatioCh59->SetParameter(0,0.5);
   fitRatioCh59->SetParameter(1,0.00001);
-  fitRatioCh288->SetParameter(0,0.5);
-  fitRatioCh288->SetParameter(1,0.00001);
+  fitRatioCh315->SetParameter(0,0.5);
+  fitRatioCh315->SetParameter(1,0.00001);
   
   TPad *p2Ch59 = new TPad("p2","p3",0.,0.,1.,0.3); p2Ch59->Draw();
   TPad *p1Ch59 = new TPad("p1","p1",0.,0.3,1.,1.); p1Ch59->Draw();
@@ -659,50 +539,50 @@ int main(int argc, char* argv[] ){
   CanvGlobalTemp->cd(2);
   
  
-  TPad *p2Ch288 = new TPad("p2","p3",0.,0.,1.,0.3); p2Ch288->Draw();
-  TPad *p1Ch288 = new TPad("p1","p1",0.,0.3,1.,1.); p1Ch288->Draw();
-  p1Ch288->SetBottomMargin(0.001);
-  p2Ch288->SetTopMargin(0.001);
-  p2Ch288->SetBottomMargin(0.3);
+  TPad *p2Ch315 = new TPad("p2","p3",0.,0.,1.,0.3); p2Ch315->Draw();
+  TPad *p1Ch315 = new TPad("p1","p1",0.,0.3,1.,1.); p1Ch315->Draw();
+  p1Ch315->SetBottomMargin(0.001);
+  p2Ch315->SetTopMargin(0.001);
+  p2Ch315->SetBottomMargin(0.3);
 
-  p1Ch288->cd()->SetGridx();
-  p1Ch288->cd()->SetGridy();
+  p1Ch315->cd()->SetGridx();
+  p1Ch315->cd()->SetGridy();
   
-  Graph1GlobalTempCh288->SetMaximum(90);
-  Graph1GlobalTempCh288->SetMinimum(30);
-  Graph1GlobalTempCh288->SetTitle("EnergyVsBoxTempCh288P1");
-  Graph2GlobalTempCh288->SetTitle("EnergyVsBoxTempCh288P2");
-  Graph1GlobalTempCh288->GetYaxis()->SetTitle("E [DU]");
-  Graph1GlobalTempCh288->Draw("AP");
-  Graph2GlobalTempCh288->Draw("SAMEP");
+  Graph1GlobalTempCh315->SetMaximum(90);
+  Graph1GlobalTempCh315->SetMinimum(30);
+  Graph1GlobalTempCh315->SetTitle("EnergyVsBoxTempCh315P1");
+  Graph2GlobalTempCh315->SetTitle("EnergyVsBoxTempCh315P2");
+  Graph1GlobalTempCh315->GetYaxis()->SetTitle("E [DU]");
+  Graph1GlobalTempCh315->Draw("AP");
+  Graph2GlobalTempCh315->Draw("SAMEP");
 
-  p2Ch288->cd()->SetGridx();
-  p2Ch288->cd()->SetGridy();
-  SetStyleRatioPlot(GraphRatioCh288,0.35,0.65);
-  GraphRatioCh288->Draw("AP");
-  GraphRatioCh288->Fit("fitRatioCh288");
+  p2Ch315->cd()->SetGridx();
+  p2Ch315->cd()->SetGridy();
+  SetStyleRatioPlot(GraphRatioCh315,0.35,0.65);
+  GraphRatioCh315->Draw("AP");
+  GraphRatioCh315->Fit("fitRatioCh315");
   ////////////////////////////////////////////////////////////////////////////////
   f->cd();
 
   Graph1GlobalTempCh59->SetName(Graph1GlobalTempCh59->GetTitle());
-  Graph1GlobalTempCh288->SetName(Graph1GlobalTempCh288->GetTitle());
+  Graph1GlobalTempCh315->SetName(Graph1GlobalTempCh315->GetTitle());
   Graph2GlobalTempCh59->SetName(Graph2GlobalTempCh59->GetTitle());
-  Graph2GlobalTempCh288->SetName(Graph2GlobalTempCh288->GetTitle());
+  Graph2GlobalTempCh315->SetName(Graph2GlobalTempCh315->GetTitle());
 
   Graph1GlobalTempCh59->Write();
   Graph2GlobalTempCh59->Write();
-  Graph1GlobalTempCh288->Write();
-  Graph2GlobalTempCh288->Write();
+  Graph1GlobalTempCh315->Write();
+  Graph2GlobalTempCh315->Write();
 
   CanvGlobalTemp->SaveAs((DirData+"/Plot/EnergyTempCB/PlotEVsTglobal.png").c_str());
   
   ////////////////////////////////////////////////////////////////////////////////
-  //RatioPeak1(511)PeackCh59/288 (TGlobal)
+  //RatioPeak1(511)PeackCh59/315 (TGlobal)
 
   Double_t ratioPeak1[NFilePhys], sigmaRatioPeak1[NFilePhys], ratioPeak2[NFilePhys], sigmaRatioPeak2[NFilePhys];
   
-  RatioWithError(Peak1Ch59,Peak1Ch288,SigmaPeak1Ch59,SigmaPeak1Ch288,ratioPeak1,sigmaRatioPeak1,NFilePhys);
-  RatioWithError(Peak2Ch59,Peak2Ch288,SigmaPeak2Ch59,SigmaPeak2Ch288,ratioPeak2,sigmaRatioPeak2,NFilePhys);
+  RatioWithError(Peak1Ch59,Peak1Ch315,SigmaPeak1Ch59,SigmaPeak1Ch315,ratioPeak1,sigmaRatioPeak1,NFilePhys);
+  RatioWithError(Peak2Ch59,Peak2Ch315,SigmaPeak2Ch59,SigmaPeak2Ch315,ratioPeak2,sigmaRatioPeak2,NFilePhys);
 
   TGraphErrors* GraphRatioPeak1 = new TGraphErrors(NFilePhys,MeanTGlobal,ratioPeak1,SigmaTGlobal,sigmaRatioPeak1);
   TGraphErrors* GraphRatioPeak2 = new TGraphErrors(NFilePhys,MeanTGlobal,ratioPeak2,SigmaTGlobal,sigmaRatioPeak2);
@@ -731,18 +611,18 @@ int main(int argc, char* argv[] ){
   
   Graph1GlobalTempCh59->SetMaximum(45);
   Graph1GlobalTempCh59->SetMinimum(35);
-  Graph1GlobalTempCh288->SetMarkerStyle(4);
+  Graph1GlobalTempCh315->SetMarkerStyle(4);
   Graph1GlobalTempCh59->SetMarkerStyle(8);
-  //Graph1GlobalTempCh288->SetMarkerSize(.7);
+  //Graph1GlobalTempCh315->SetMarkerSize(.7);
   //Graph1GlobalTempCh59->SetMarkerSize(.7);
   Graph1GlobalTempCh59->SetTitle("EnergyVsBoxTempPeak511Kev");
   Graph1GlobalTempCh59->GetYaxis()->SetTitle("E [DU]");
   Graph1GlobalTempCh59->Draw("AP");
-  Graph1GlobalTempCh288->Draw("SAMEP");
+  Graph1GlobalTempCh315->Draw("SAMEP");
 
   pad2Peak1->cd()->SetGridx();
   pad2Peak1->cd()->SetGridy();
-  SetStyleRatioPlot(GraphRatioPeak1,0.9,1.3);
+  SetStyleRatioPlot(GraphRatioPeak1,0.9,1.1);
   GraphRatioPeak1->Draw("AP");
   GraphRatioPeak1->Fit("fitRatioPeak1");
   
@@ -757,32 +637,32 @@ int main(int argc, char* argv[] ){
   pad1Peak2->cd()->SetGridx();
   pad1Peak2->cd()->SetGridy();
   
-  Graph2GlobalTempCh288->SetMaximum(90);
-  Graph2GlobalTempCh288->SetMinimum(60);
-  Graph2GlobalTempCh288->SetMarkerStyle(4);
+  Graph2GlobalTempCh315->SetMaximum(90);
+  Graph2GlobalTempCh315->SetMinimum(75);
+  Graph2GlobalTempCh315->SetMarkerStyle(4);
   Graph2GlobalTempCh59->SetMarkerStyle(8);
-  //Graph2GlobalTempCh288->SetMarkerSize(.7);
+  //Graph2GlobalTempCh315->SetMarkerSize(.7);
   //Graph2GlobalTempCh59->SetMarkerSize(.7);
-  Graph2GlobalTempCh288->SetTitle("EnergyVsBoxTempPeak1275KeV");
-  Graph2GlobalTempCh288->GetYaxis()->SetTitle("E [DU]");
-  Graph2GlobalTempCh288->Draw("AP");
+  Graph2GlobalTempCh315->SetTitle("EnergyVsBoxTempPeak1275KeV");
+  Graph2GlobalTempCh315->GetYaxis()->SetTitle("E [DU]");
+  Graph2GlobalTempCh315->Draw("AP");
   Graph2GlobalTempCh59->Draw("SAMEP");
 
   pad2Peak2->cd()->SetGridx();
   pad2Peak2->cd()->SetGridy();
-  SetStyleRatioPlot(GraphRatioPeak2,0.9,1.3);
+  SetStyleRatioPlot(GraphRatioPeak2,0.9,1.1);
   GraphRatioPeak2->Draw("AP");
   GraphRatioPeak2->Fit("fitRatioPeak2");
     
   CanvasComparisonPeak->SaveAs((DirData+"/Plot/EnergyTempCB/PeakComparisonVsTemp.png").c_str());
   ////////////////////////////////////////////////////////////////////////////////
   TH1D* HistoSumCh59 = new TH1D("HistoSumCh59","HistoSumCh59",100,0,100);
-  TH1D* HistoSumCh288 = new TH1D("HistoSumCh288","HistoSumCh288",100,0,100);
+  TH1D* HistoSumCh315 = new TH1D("HistoSumCh315","HistoSumCh315",100,0,100);
   
   for(int i=0;i<NFilePhys;i++){
     
     HistoSumCh59->Add(HistoCh59[i]);
-    HistoSumCh288->Add(HistoCh288[i]);
+    HistoSumCh315->Add(HistoCh315[i]);
 
   }
 
@@ -799,51 +679,51 @@ int main(int argc, char* argv[] ){
   fitHistoSum[0]->Draw("SAME");
 
   canvasSum->cd(2);
-  HistoSumCh288->Draw();
-  fitHistoSum[1]=FitNaSpectrumCB(HistoSumCh288,&fitStatInutile[1]);
+  HistoSumCh315->Draw();
+  fitHistoSum[1]=FitNaSpectrumCB(HistoSumCh315,&fitStatInutile[1]);
   fitHistoSum[1]->Draw("SAME");
 
   canvasSum->SaveAs((DirData+"/Plot/EnergyTempCB/HistoSum.png").c_str());
 
   ///////////////////////////////////////////////////////////////////////////////
-  Double_t MeanCh59P1[NFilePhys],MeanCh288P1[NFilePhys],SigmaCh59P1[NFilePhys],SigmaCh288P1[NFilePhys];
-  Double_t ErrMeanCh59P1[NFilePhys],ErrMeanCh288P1[NFilePhys],ErrSigmaCh59P1[NFilePhys],ErrSigmaCh288P1[NFilePhys];
+  Double_t MeanCh59P1[NFilePhys],MeanCh315P1[NFilePhys],SigmaCh59P1[NFilePhys],SigmaCh315P1[NFilePhys];
+  Double_t ErrMeanCh59P1[NFilePhys],ErrMeanCh315P1[NFilePhys],ErrSigmaCh59P1[NFilePhys],ErrSigmaCh315P1[NFilePhys];
 
-  Double_t MeanCh59P2[NFilePhys],MeanCh288P2[NFilePhys],SigmaCh59P2[NFilePhys],SigmaCh288P2[NFilePhys];
-  Double_t ErrMeanCh59P2[NFilePhys],ErrMeanCh288P2[NFilePhys],ErrSigmaCh59P2[NFilePhys],ErrSigmaCh288P2[NFilePhys];
+  Double_t MeanCh59P2[NFilePhys],MeanCh315P2[NFilePhys],SigmaCh59P2[NFilePhys],SigmaCh315P2[NFilePhys];
+  Double_t ErrMeanCh59P2[NFilePhys],ErrMeanCh315P2[NFilePhys],ErrSigmaCh59P2[NFilePhys],ErrSigmaCh315P2[NFilePhys];
 
-  Double_t ResCh59P1[NFilePhys],ResCh288P1[NFilePhys],SigmaResCh59P1[NFilePhys],SigmaResCh288P1[NFilePhys];
-  Double_t ResCh59P2[NFilePhys],ResCh288P2[NFilePhys],SigmaResCh59P2[NFilePhys],SigmaResCh288P2[NFilePhys];
+  Double_t ResCh59P1[NFilePhys],ResCh315P1[NFilePhys],SigmaResCh59P1[NFilePhys],SigmaResCh315P1[NFilePhys];
+  Double_t ResCh59P2[NFilePhys],ResCh315P2[NFilePhys],SigmaResCh59P2[NFilePhys],SigmaResCh315P2[NFilePhys];
     
   for(int i=0;i<NFilePhys;i++){
 
     MeanCh59P1[i] = FitSpectrum[i][0]->GetParameter(1);
-    MeanCh288P1[i] = FitSpectrum[i][1]->GetParameter(1);
+    MeanCh315P1[i] = FitSpectrum[i][1]->GetParameter(1);
     SigmaCh59P1[i] = FitSpectrum[i][0]->GetParameter(2);
-    SigmaCh288P1[i] = FitSpectrum[i][1]->GetParameter(2);
+    SigmaCh315P1[i] = FitSpectrum[i][1]->GetParameter(2);
 
     ErrMeanCh59P1[i] = FitSpectrum[i][0]->GetParError(1);
-    ErrMeanCh288P1[i] = FitSpectrum[i][1]->GetParError(1);
+    ErrMeanCh315P1[i] = FitSpectrum[i][1]->GetParError(1);
     ErrSigmaCh59P1[i] = FitSpectrum[i][0]->GetParError(2);
-    ErrSigmaCh288P1[i] = FitSpectrum[i][1]->GetParError(2);
+    ErrSigmaCh315P1[i] = FitSpectrum[i][1]->GetParError(2);
     
     MeanCh59P2[i] = FitSpectrum[i][0]->GetParameter(6);
-    MeanCh288P2[i] = FitSpectrum[i][1]->GetParameter(6);
+    MeanCh315P2[i] = FitSpectrum[i][1]->GetParameter(6);
     SigmaCh59P2[i] = FitSpectrum[i][0]->GetParameter(7);
-    SigmaCh288P2[i] = FitSpectrum[i][1]->GetParameter(7);
+    SigmaCh315P2[i] = FitSpectrum[i][1]->GetParameter(7);
 
     ErrMeanCh59P2[i] = FitSpectrum[i][0]->GetParError(6);
-    ErrMeanCh288P2[i] = FitSpectrum[i][1]->GetParError(6);
+    ErrMeanCh315P2[i] = FitSpectrum[i][1]->GetParError(6);
     ErrSigmaCh59P2[i] = FitSpectrum[i][0]->GetParError(7);
-    ErrSigmaCh288P2[i] = FitSpectrum[i][1]->GetParError(7);
+    ErrSigmaCh315P2[i] = FitSpectrum[i][1]->GetParError(7);
 
     //  std::cout<< MeanCh59P2[i] << " " << SigmaCh59P2[i] << std::endl;
   }
 
   RatioWithError(SigmaCh59P1,MeanCh59P1,ErrSigmaCh59P1,ErrMeanCh59P1,ResCh59P1,SigmaResCh59P1,NFilePhys);
-  RatioWithError(SigmaCh288P1,MeanCh288P1,ErrSigmaCh288P1,ErrMeanCh288P1,ResCh288P1,SigmaResCh288P1,NFilePhys);
+  RatioWithError(SigmaCh315P1,MeanCh315P1,ErrSigmaCh315P1,ErrMeanCh315P1,ResCh315P1,SigmaResCh315P1,NFilePhys);
   RatioWithError(SigmaCh59P2,MeanCh59P2,ErrSigmaCh59P2,ErrMeanCh59P2,ResCh59P2,SigmaResCh59P2,NFilePhys);
-  RatioWithError(SigmaCh288P2,MeanCh288P2,ErrSigmaCh288P2,ErrMeanCh288P2,ResCh288P2,SigmaResCh288P2,NFilePhys);
+  RatioWithError(SigmaCh315P2,MeanCh315P2,ErrSigmaCh315P2,ErrMeanCh315P2,ResCh315P2,SigmaResCh315P2,NFilePhys);
 
   //////////////////////////////////////////////////////////////////////////////////
 
@@ -851,60 +731,60 @@ int main(int argc, char* argv[] ){
   ResolutionVsTemp->Divide(2,2);
   
   TGraphErrors* PlotResCh59P1 = new TGraphErrors(NFilePhys,MeanTGlobal,ResCh59P1,SigmaTGlobal,SigmaResCh59P1);
-  TGraphErrors* PlotResCh288P1 = new TGraphErrors(NFilePhys,MeanTGlobal,ResCh288P1,SigmaTGlobal,SigmaResCh288P1);
+  TGraphErrors* PlotResCh315P1 = new TGraphErrors(NFilePhys,MeanTGlobal,ResCh315P1,SigmaTGlobal,SigmaResCh315P1);
   TGraphErrors* PlotResCh59P2 = new TGraphErrors(NFilePhys,MeanTGlobal,ResCh59P2,SigmaTGlobal,SigmaResCh59P2);
-  TGraphErrors* PlotResCh288P2 = new TGraphErrors(NFilePhys,MeanTGlobal,ResCh288P2,SigmaTGlobal,SigmaResCh288P2);
+  TGraphErrors* PlotResCh315P2 = new TGraphErrors(NFilePhys,MeanTGlobal,ResCh315P2,SigmaTGlobal,SigmaResCh315P2);
 
   Double_t YCh59P1Line= fitHistoSum[0]->GetParameter(2)/fitHistoSum[0]->GetParameter(1);
   TLine* ResSumCh59P1Line = new TLine(PlotResCh59P1->GetXaxis()->GetXmin(),YCh59P1Line,PlotResCh59P1->GetXaxis()->GetXmax(), YCh59P1Line);
 
-  Double_t YCh288P1Line= fitHistoSum[1]->GetParameter(2)/fitHistoSum[1]->GetParameter(1);
-  TLine* ResSumCh288P1Line = new TLine(PlotResCh288P1->GetXaxis()->GetXmin(),YCh288P1Line,PlotResCh59P1->GetXaxis()->GetXmax(), YCh288P1Line);
+  Double_t YCh315P1Line= fitHistoSum[1]->GetParameter(2)/fitHistoSum[1]->GetParameter(1);
+  TLine* ResSumCh315P1Line = new TLine(PlotResCh315P1->GetXaxis()->GetXmin(),YCh315P1Line,PlotResCh59P1->GetXaxis()->GetXmax(), YCh315P1Line);
 
   Double_t YCh59P2Line= fitHistoSum[0]->GetParameter(7)/fitHistoSum[0]->GetParameter(6);
   TLine* ResSumCh59P2Line = new TLine(PlotResCh59P2->GetXaxis()->GetXmin(),YCh59P2Line,PlotResCh59P1->GetXaxis()->GetXmax(), YCh59P2Line);
 
-  Double_t YCh288P2Line= fitHistoSum[1]->GetParameter(7)/fitHistoSum[1]->GetParameter(6);
-  TLine* ResSumCh288P2Line = new TLine(PlotResCh288P2->GetXaxis()->GetXmin(),YCh288P2Line,PlotResCh59P1->GetXaxis()->GetXmax(), YCh288P2Line);
+  Double_t YCh315P2Line= fitHistoSum[1]->GetParameter(7)/fitHistoSum[1]->GetParameter(6);
+  TLine* ResSumCh315P2Line = new TLine(PlotResCh315P2->GetXaxis()->GetXmin(),YCh315P2Line,PlotResCh59P1->GetXaxis()->GetXmax(), YCh315P2Line);
 
   PlotResCh59P1->SetTitle("ResCh59P 511KeV");
-  PlotResCh288P1->SetTitle("ResCh288P 511KeV");
+  PlotResCh315P1->SetTitle("ResCh315P 511KeV");
 
   PlotResCh59P2->SetTitle("ResCh59P 1275KeV");
-  PlotResCh288P2->SetTitle("ResCh288P 1275KeV");
+  PlotResCh315P2->SetTitle("ResCh315P 1275KeV");
 
   PlotResCh59P1->GetXaxis()->SetTitle("TMeanBox [°C]");
   PlotResCh59P1->GetYaxis()->SetTitle("EnergyResolution");
   PlotResCh59P1->SetMinimum(0.06);
-  PlotResCh59P1->SetMaximum(0.1);
-  PlotResCh288P1->GetXaxis()->SetTitle("TMeanBox [°C]");
-  PlotResCh288P1->GetYaxis()->SetTitle("EnergyResolution");
-  PlotResCh288P1->SetMinimum(0.06);
-  PlotResCh288P1->SetMaximum(0.1);
+  PlotResCh59P1->SetMaximum(0.08);
+  PlotResCh315P1->GetXaxis()->SetTitle("TMeanBox [°C]");
+  PlotResCh315P1->GetYaxis()->SetTitle("EnergyResolution");
+  PlotResCh315P1->SetMinimum(0.06);
+  PlotResCh315P1->SetMaximum(0.08);
   PlotResCh59P2->GetXaxis()->SetTitle("TMeanBox [°C]");
   PlotResCh59P2->GetYaxis()->SetTitle("EnergyResolution");
   PlotResCh59P2->SetMinimum(0.03);
   PlotResCh59P2->SetMaximum(0.05);
-  PlotResCh288P2->GetXaxis()->SetTitle("TMeanBox [°C]");
-  PlotResCh288P2->GetYaxis()->SetTitle("EnergyResolution");
-  PlotResCh288P2->SetMinimum(0.03);
-  PlotResCh288P2->SetMaximum(0.08);
+  PlotResCh315P2->GetXaxis()->SetTitle("TMeanBox [°C]");
+  PlotResCh315P2->GetYaxis()->SetTitle("EnergyResolution");
+  PlotResCh315P2->SetMinimum(0.03);
+  PlotResCh315P2->SetMaximum(0.05);
   
   ResolutionVsTemp->cd(1);
   PlotResCh59P1->Draw("AP");
   ResSumCh59P1Line->Draw("SAME");
   
   ResolutionVsTemp->cd(2);
-  PlotResCh288P1->Draw("AP");
-  ResSumCh288P1Line->Draw("SAME");
+  PlotResCh315P1->Draw("AP");
+  ResSumCh315P1Line->Draw("SAME");
 
   ResolutionVsTemp->cd(3);
   PlotResCh59P2->Draw("AP");
   ResSumCh59P2Line->Draw("SAME");
 
   ResolutionVsTemp->cd(4);
-  PlotResCh288P2->Draw("AP");
-  ResSumCh288P2Line->Draw("SAME");
+  PlotResCh315P2->Draw("AP");
+  ResSumCh315P2Line->Draw("SAME");
 
   ResolutionVsTemp->SaveAs((DirData+"/Plot/EnergyTempCB/ResolutionVsTemp.png").c_str());
   
@@ -915,7 +795,7 @@ int main(int argc, char* argv[] ){
   TF1* FitCalib[2];
 
   Double_t ACh59[NFilePhys],sACh59[NFilePhys],BCh59[NFilePhys],sBCh59[NFilePhys];
-  Double_t ACh288[NFilePhys],sACh288[NFilePhys],BCh288[NFilePhys],sBCh288[NFilePhys];
+  Double_t ACh315[NFilePhys],sACh315[NFilePhys],BCh315[NFilePhys],sBCh315[NFilePhys];
   
   for(int i=0;i<NFilePhys;i++){
 
@@ -937,12 +817,12 @@ int main(int argc, char* argv[] ){
     
     CanvasCalib->cd(2);
     CalibPlot[i][1] = new TGraphErrors();
-    CalibPlot[i][1]->SetTitle(("CalibPlotCh288"+std::to_string(i)).c_str());
+    CalibPlot[i][1]->SetTitle(("CalibPlotCh315"+std::to_string(i)).c_str());
     CalibPlot[i][1]->SetPoint(0,0,0);
-    CalibPlot[i][1]->SetPoint(1,511,MeanCh288P1[i]);
-    CalibPlot[i][1]->SetPointError(1,0,ErrMeanCh288P1[i]);
-    CalibPlot[i][1]->SetPoint(2,1275,MeanCh288P2[i]);
-    CalibPlot[i][1]->SetPointError(2,0,ErrMeanCh288P2[i]);
+    CalibPlot[i][1]->SetPoint(1,511,MeanCh315P1[i]);
+    CalibPlot[i][1]->SetPointError(1,0,ErrMeanCh315P1[i]);
+    CalibPlot[i][1]->SetPoint(2,1275,MeanCh315P2[i]);
+    CalibPlot[i][1]->SetPointError(2,0,ErrMeanCh315P2[i]);
     CalibPlot[i][1]->SetMarkerStyle(8);
     FitCalib[1]= CalibrationCurve(CalibPlot[i][1],i);
     CalibPlot[i][1]->Draw("AP");
@@ -950,7 +830,7 @@ int main(int argc, char* argv[] ){
     
     CanvasCalib->SaveAs((DirData+"/Plot/EnergyTempCB/CalibPlot/CalibPlot"+std::to_string(i)+".png").c_str());
 
-    if(fitStatus[i][0]==0 || fitStatus[i][0]==4000){
+    if(fitStatus[i][0]==0){
       ACh59[i]=FitCalib[0]->GetParameter(0);
       sACh59[i]=FitCalib[0]->GetParError(0);
       BCh59[i]=FitCalib[0]->GetParameter(1);
@@ -960,20 +840,18 @@ int main(int argc, char* argv[] ){
       sACh59[i]=0;
       BCh59[i]=0;
       sBCh59[i]=0;
-      std::cout  << "Ch59 Point0, status: " << fitStatus[i][0]<<std::endl;
     }
     
-    if(fitStatus[i][1]==0 || fitStatus[i][1]==4000){
-      ACh288[i]=FitCalib[1]->GetParameter(0);
-      sACh288[i]=FitCalib[1]->GetParError(0);
-      BCh288[i]=FitCalib[1]->GetParameter(1);
-      sBCh288[i]=FitCalib[1]->GetParError(1);
+    if(fitStatus[i][1]==0){
+      ACh315[i]=FitCalib[1]->GetParameter(0);
+      sACh315[i]=FitCalib[1]->GetParError(0);
+      BCh315[i]=FitCalib[1]->GetParameter(1);
+      sBCh315[i]=FitCalib[1]->GetParError(1);
     } else {
-      ACh288[i]=0;
-      sACh288[i]=0;
-      BCh288[i]=0;
-      sBCh288[i]=0;
-      std::cout  << "Ch288 Point0, status: " << fitStatus[i][1] <<std::endl;    
+      ACh315[i]=0;
+      sACh315[i]=0;
+      BCh315[i]=0;
+      sBCh315[i]=0;
     }
     
     
@@ -989,19 +867,19 @@ int main(int argc, char* argv[] ){
   SatValVsMeanTemp[0]->SetTitle("SatValVsMeanTempCh59");
   SatValVsMeanTemp[0]->SetName(SatValVsMeanTemp[0]->GetTitle());
   SatValVsMeanTemp[0]->GetYaxis()->SetRangeUser(136,170);
-  SatValVsMeanTemp[1]= new TGraphErrors(NFilePhys,MeanTGlobal,ACh288,SigmaTGlobal,sACh288);
-  SatValVsMeanTemp[1]->SetTitle("SatValVsMeanTempCh288");
+  SatValVsMeanTemp[1]= new TGraphErrors(NFilePhys,MeanTGlobal,ACh315,SigmaTGlobal,sACh315);
+  SatValVsMeanTemp[1]->SetTitle("SatValVsMeanTempCh315");
   SatValVsMeanTemp[1]->SetName(SatValVsMeanTemp[1]->GetTitle());
-  SatValVsMeanTemp[1]->GetYaxis()->SetRangeUser(90,120);  
+  SatValVsMeanTemp[1]->GetYaxis()->SetRangeUser(136,170);  
 
   LYValVsMeanTemp[0]= new TGraphErrors(NFilePhys,MeanTGlobal,BCh59,SigmaTGlobal,sBCh59);
   LYValVsMeanTemp[0]->SetTitle("LYValVsMeanTempCh59");
   LYValVsMeanTemp[0]->SetName(LYValVsMeanTemp[0]->GetTitle());
   LYValVsMeanTemp[0]->GetYaxis()->SetRangeUser(0.4e-3,0.7e-3);
-  LYValVsMeanTemp[1]= new TGraphErrors(NFilePhys,MeanTGlobal,BCh288,SigmaTGlobal,sBCh288);
-  LYValVsMeanTemp[1]->SetTitle("LYValVsMeanTempCh288");
+  LYValVsMeanTemp[1]= new TGraphErrors(NFilePhys,MeanTGlobal,BCh315,SigmaTGlobal,sBCh315);
+  LYValVsMeanTemp[1]->SetTitle("LYValVsMeanTempCh315");
   LYValVsMeanTemp[1]->SetName(LYValVsMeanTemp[1]->GetTitle()); 
-  LYValVsMeanTemp[1]->GetYaxis()->SetRangeUser(0.8e-3,1.1e-3);
+  LYValVsMeanTemp[1]->GetYaxis()->SetRangeUser(0.4e-3,0.7e-3);
   
   f->cd();
   LYValVsMeanTemp[0]->Write();
@@ -1032,15 +910,15 @@ int main(int argc, char* argv[] ){
   Double_t Perc[2]={0,0};
   
   for(int i=0; i< NFilePhys; i++){
-    if(fitStatus[i][0]==0 || fitStatus[i][0]==4000){Perc[0]++;}
-    if(fitStatus[i][1]==0 || fitStatus[i][1]==4000){Perc[1]++;}
+    if(fitStatus[i][0]==0){Perc[0]++;}
+    if(fitStatus[i][1]==0){Perc[1]++;}
   }
 
   Perc[0]/=NFilePhys;
   Perc[1]/=NFilePhys;
 
   std::ofstream myfile;
-  myfile.open (("../RootFileGraphBar/FitResult"+DirData.erase(0,3)+".txt").c_str());
+  myfile.open (("../RootFileGraphPixel/FitResult"+DirData.erase(0,3)+".txt").c_str());
   myfile << DirData << "\n";
   myfile << Perc[0] << "\t" << Perc[1] << "\n" ;
   myfile.close();

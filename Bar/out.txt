@@ -1,0 +1,2731 @@
+Analisys
+Root File Graph opened->/TestStabilityBar_30_04_2019
+Lista File Pedestal: ../TestStabilityBar_30_04_2019/PedFile.txt
+Lista File Pedestal: ../TestStabilityBar_30_04_2019/PedFile.txt
+Lista File Configuration: ../TestStabilityBar_30_04_2019/ConfigFile.txt
+../TestStabilityBar_30_04_2019/Run000002_2019-04-30-08-43-03_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000005_2019-04-30-08-50-42_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000008_2019-04-30-08-58-22_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000011_2019-04-30-09-06-04_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000014_2019-04-30-09-13-45_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000017_2019-04-30-09-21-27_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000020_2019-04-30-09-29-06_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000023_2019-04-30-09-36-48_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000026_2019-04-30-09-44-30_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000029_2019-04-30-09-52-11_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000032_2019-04-30-09-59-50_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000035_2019-04-30-10-07-34_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000038_2019-04-30-10-15-14_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000041_2019-04-30-10-23-02_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000044_2019-04-30-10-30-43_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000047_2019-04-30-10-38-26_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000050_2019-04-30-10-46-07_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000053_2019-04-30-10-53-54_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000056_2019-04-30-11-01-38_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000059_2019-04-30-11-09-30_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000062_2019-04-30-11-17-12_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000065_2019-04-30-11-24-53_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000068_2019-04-30-11-32-34_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000071_2019-04-30-11-40-18_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000074_2019-04-30-11-47-59_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000077_2019-04-30-11-55-41_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000080_2019-04-30-12-03-26_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000083_2019-04-30-12-11-11_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000086_2019-04-30-12-18-56_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000089_2019-04-30-12-26-43_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000092_2019-04-30-12-34-35_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000095_2019-04-30-12-42-19_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000098_2019-04-30-12-50-05_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000101_2019-04-30-12-57-49_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000104_2019-04-30-13-05-36_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000107_2019-04-30-13-13-22_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000110_2019-04-30-13-21-07_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000113_2019-04-30-13-28-54_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000116_2019-04-30-13-36-41_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000119_2019-04-30-13-44-30_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000122_2019-04-30-13-52-14_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000125_2019-04-30-14-00-01_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000128_2019-04-30-14-07-47_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000131_2019-04-30-14-15-33_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000134_2019-04-30-14-23-25_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000137_2019-04-30-14-31-12_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000140_2019-04-30-14-38-59_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+instram    #Configuration
+instram    CONFIG_INI_TEMPLATE
+instram    config_template.ini
+instram    HV_DAC
+instram    data/hvdacMezz27_ad5535_cal.tsv
+instram    SIPM_BIAS
+instram    data/sipm_bias_template.tsv
+instram    DISC_SETTINGS
+instram    data/disc_settings_template.tsv
+instram    CHANNEL_MAP
+instram    petsys_tables/febd_tofpet2tb_fake_channel_map.tsv
+instram    
+instram    TRIGGER_MAP
+instram    petsys_tables/febd_gbe_trigger_map.tsv
+instram    LSB_T1
+instram    60
+instram    LSB_T2
+instram    60
+instram    MIN_INTG_TIME
+instram    15
+instram    MAX_INTG_TIME
+instram    15
+instram    #
+instram    MIN_INTG_TIME/MAX_INTG_TIME
+instram    15
+instram    =
+instram    15
+instram    x
+instram    4
+instram    x
+instram    5
+instram    ns
+instram    =
+instram    300ns
+instram    
+instram    #Calibration
+instram    RUN_CALIB
+instram    0
+instram    CALIB_DIR
+instram    data/calib/TestBarGood_28_03_2019
+instram    DISC_CALIB
+instram    disc_calibration.tsv
+instram    TDC_CALIB
+instram    tdc_calibration.tsv
+instram    QDC_CALIB
+instram    qdc_calibration.tsv
+instram    #
+instram    Notes:
+instram    
+instram    #
+instram    use
+instram    a
+instram    different
+instram    directory
+instram    (different
+instram    CALIB_DIR)
+instram    for
+instram    each
+instram    calibration
+instram    set
+instram    #
+instram    xxx_CALIB
+instram    names
+instram    must
+instram    end
+instram    with
+instram    ".tsv"
+instram    #
+instram    if
+instram    RUN_CALIB=1
+instram    and
+instram    at
+instram    least
+instram    one
+instram    of
+instram    the
+instram    xxx_CALIB
+instram    already
+instram    exist,
+instram    the
+instram    script
+instram    stops
+instram    (in
+instram    order
+instram    not
+instram    to
+instram    cancel
+instram    an
+instram    existing
+instram    calibration
+instram    file).
+instram    #
+instram    if
+instram    RUN_CALIB=0
+instram    and
+instram    at
+instram    least
+instram    one
+instram    of
+instram    the
+instram    xxx_CALIB
+instram    does
+instram    not
+instram    exist,
+instram    the
+instram    script
+instram    stops
+instram    (since
+instram    there
+instram    is
+instram    no
+instram    valid
+instram    calibration)
+instram    #
+instram    if
+instram    one
+instram    of
+instram    the
+instram    two
+instram    conditions
+instram    above
+instram    is
+instram    passed,
+instram    then:
+instram    #
+instram    if
+instram    RUN_CALIB=1
+instram    (since
+instram    none
+instram    of
+instram    the
+instram    xxx_CALIB
+instram    exists)
+instram    xxx_CALIB
+instram    are
+instram    created
+instram    [takes
+instram    ~30-40
+instram    min.]
+instram    and
+instram    used
+instram    to
+instram    run
+instram    daq
+instram    #
+instram    if
+instram    RUN_CALIB=0
+instram    (since
+instram    all
+instram    the
+instram    xxx_CALIB
+instram    already
+instram    exists)
+instram    existing
+instram    xxx_CALIB
+instram    are
+instram    used
+instram    to
+instram    run
+instram    daq
+instram    #
+instram    -
+instram    QCD_CALIB
+instram    is
+instram    currently
+instram    not
+instram    used
+instram    to
+instram    reconstruct
+instram    energy
+instram    values
+instram    in
+instram    qdc
+instram    mode
+instram    (simply,
+instram    energy
+instram    =
+instram    raw
+instram    counts)
+instram    
+instram    #Run
+instram    settings
+instram    #DAQSCRIPT
+instram    acquire_sipm_data
+instram    PHYS
+instram    DAQSCRIPT
+instram    acquire_sipm_data
+instram    PHYS
+instram    #DAQSCRIPT
+instram    acquire_sipm_data
+instram    PHYS
+instram    CONVERTSINGLESCRIPT
+instram    convert_raw_to_singles
+instram    CONVERTCOINCIDENCESCRIPT
+instram    analysis/find_coincidences.py
+instram    #CONVERTCOINCIDENCESCRIPT
+instram    convert_raw_to_coincidence
+instram    TEMPERATUREFILE
+instram    arduino/temperature/temperature19.txt
+instram    MODE
+instram    qdc
+instram    TIME
+instram    300
+instram    #TIME
+instram    1
+instram    OUTPUT_DIR
+instram    /media/cmsdaq/ext/TOFPET/data/TestStabilityBar_30_04_2019
+instram    #OUTPUT_DIR
+instram    output/Pedestal
+instram    OUTPUT_LABEL
+instram    Run000002_2019-04-30-08-43-03_Na22Bar
+instram    #OUTPUT_LABEL
+instram    PedestalTest13_2ch_100000delay
+instram    
+instram    #Channels
+instram    
+instram    OVERWRITE_OV
+instram    -1
+instram    #If
+instram    OVERWRITE_OV
+instram    -1,
+instram    use
+instram    the
+instram    OV
+instram    values
+instram    in
+instram    the
+instram    table
+instram    below.
+instram    If
+instram    OVERWRITE_OV
+instram    >
+instram    0
+instram    set
+instram    all
+instram    channels
+instram    to
+instram    this
+instram    OV
+instram    value.
+instram    
+instram    #
+instram    ID
+instram    NHV
+instram    VBR
+instram    OV
+instram    NCHIP
+instram    NCH
+instram    VTH_1
+instram    VTH_2
+instram    VTH_E
+instram    SIPM_CODE
+instram    SIPM_TYPE
+instram    X
+instram    Y
+instram    Z
+instram    CRYSTAL
+instram    
+instram    CH
+instram    0
+instram    11
+instram    52.25
+instram    7.00
+instram    0
+instram    59
+instram    20
+instram    20
+instram    15
+instram    10579
+instram    S13360-3025CS
+instram    --
+instram    --
+instram    440
+instram    LYSO_3_3_5
+instram    CH
+instram    1
+instram    29
+instram    51.77
+instram    5.00
+instram    4
+instram    32
+instram    20
+instram    20
+instram    15
+instram    12380
+instram    S13360-3050CS
+instram    --
+instram    --
+instram    140
+instram    LYSO_bar
+instram    
+instram    CH
+instram    2
+instram    8
+instram    51.47
+instram    5.00
+instram    4
+instram    35
+instram    20
+instram    20
+instram    15
+instram    12381
+instram    S13360-3050CS
+instram    --
+instram    --
+instram    140
+instram    LYSO_bar
+instram    
+instram    #Before
+instram    29/04:
+instram    #CH
+instram    1
+instram    29
+instram    51.96
+instram    5.00
+instram    4
+instram    32
+instram    20
+instram    20
+instram    15
+instram    12379
+instram    S13360-3050CS
+instram    --
+instram    --
+instram    140
+instram    LYSO_bar
+instram    
+instram    #CH
+instram    2
+instram    8
+instram    51.47
+instram    5.00
+instram    4
+instram    35
+instram    20
+instram    20
+instram    15
+instram    12381
+instram    S13360-3050CS
+instram    --
+instram    --
+instram    140
+instram    LYSO_bar
+instram    
+instram    #
+instram    Note
+instram    on
+instram    VBR:
+instram    Different
+instram    CHs
+instram    can
+instram    be
+instram    connected
+instram    to
+instram    the
+instram    same
+instram    NHV.
+instram    If
+instram    different
+instram    values
+instram    of
+instram    VBR
+instram    are
+instram    provided
+instram    only
+instram    the
+instram    first
+instram    one
+instram    is
+instram    set
+instram    for
+instram    a
+instram    given
+instram    NHV.
+instram    
+instram    
+instram    
+59  LYSO_3_3_5
+288  LYSO_bar
+291  LYSO_bar
+originalmap  59 0
+originalmap  288 1
+originalmap  291 2
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000001_2019-04-30-08-42-56_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+242.749 131.785 148.959
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000004_2019-04-30-08-50-36_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+243.23 131.825 148.761
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000007_2019-04-30-08-58-16_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+242.189 132.123 149.175
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000010_2019-04-30-09-05-58_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+242.967 131.187 148.396
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000013_2019-04-30-09-13-39_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+243.612 131.476 148.731
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000016_2019-04-30-09-21-21_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+243.482 131.706 148.821
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000019_2019-04-30-09-29-00_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+243.965 131.379 148.708
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000022_2019-04-30-09-36-42_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+244.214 131.79 148.968
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000025_2019-04-30-09-44-24_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+244.388 131.544 148.965
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000028_2019-04-30-09-52-05_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+244.561 131.737 148.72
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000031_2019-04-30-09-59-44_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+244.326 131.056 148.842
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000034_2019-04-30-10-07-28_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+244.906 131.855 148.83
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000037_2019-04-30-10-15-08_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+244.544 131.267 148.415
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000040_2019-04-30-10-22-55_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+245.028 131.514 148.086
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000043_2019-04-30-10-30-36_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+244.746 131.796 148.493
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000046_2019-04-30-10-38-20_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+245.116 131.392 148.905
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000049_2019-04-30-10-46-00_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+245.226 131.56 148.452
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000052_2019-04-30-10-53-48_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+245.035 131.56 148.517
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000055_2019-04-30-11-01-31_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+245.25 131.823 148.535
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000058_2019-04-30-11-09-23_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+245.635 132.134 148.692
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000061_2019-04-30-11-17-05_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+245.384 132.189 148.802
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000064_2019-04-30-11-24-47_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+246.446 131.652 148.16
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000067_2019-04-30-11-32-28_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+246.935 131.52 148.42
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000070_2019-04-30-11-40-11_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+246.527 132.045 148.369
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000073_2019-04-30-11-47-53_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+246.463 131.719 148.429
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000076_2019-04-30-11-55-35_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+247.067 131.476 148.138
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000079_2019-04-30-12-03-20_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+247.637 131.805 148.729
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000082_2019-04-30-12-11-05_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+247.541 131.508 148.332
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000085_2019-04-30-12-18-50_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+248.037 131.519 148.327
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000088_2019-04-30-12-26-37_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+248.28 131.786 148.487
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000091_2019-04-30-12-34-29_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+248.06 130.118 148.519
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000094_2019-04-30-12-42-12_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+248.72 131.504 148.316
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000097_2019-04-30-12-49-59_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+248.762 131.722 148.595
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000100_2019-04-30-12-57-43_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+249.003 131.54 148.638
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000103_2019-04-30-13-05-29_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+249.431 131.859 148.431
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000106_2019-04-30-13-13-16_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+249.467 131.176 148.222
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000109_2019-04-30-13-21-00_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+249.746 131.562 147.936
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000112_2019-04-30-13-28-48_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+249.656 131.559 148.017
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000115_2019-04-30-13-36-34_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+249.482 131.951 148.224
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000118_2019-04-30-13-44-24_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+250.192 131.577 147.674
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000121_2019-04-30-13-52-08_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+250.081 131.446 147.633
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000124_2019-04-30-13-59-54_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+250.351 130.878 147.671
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000127_2019-04-30-14-07-40_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+250.154 131.214 147.72
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000130_2019-04-30-14-15-26_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+250.528 131.106 147.863
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000133_2019-04-30-14-23-18_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+250.919 131.458 147.914
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000136_2019-04-30-14-31-06_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+250.145 131.477 147.695
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000139_2019-04-30-14-38-52_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+249.98 131.748 147.908
+42 > 15  1
+81 > 42  2
+156 > 81  3
+286 > 156  4
+375 > 286  5
+471 > 375  6
+577 > 471  7
+588 > 577  8
+600 > 588  9
+722 > 600  10
+4 > 0  1
+21 > 4  2
+53 > 21  3
+125 > 53  4
+251 > 125  5
+391 > 251  6
+485 > 391  7
+601 > 485  8
+626 > 601  9
+669 > 626  10
+31 > 4  1
+80 > 31  2
+169 > 80  3
+303 > 169  4
+471 > 303  5
+513 > 471  6
+600 > 513  7
+637 > 600  8
+709 > 637  9
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+58 > 12  1
+110 > 58  2
+193 > 110  3
+328 > 193  4
+420 > 328  5
+467 > 420  6
+532 > 467  7
+603 > 532  8
+676 > 603  9
+21 > 3  1
+84 > 21  2
+155 > 84  3
+302 > 155  4
+488 > 302  5
+583 > 488  6
+628 > 583  7
+706 > 628  8
+726 > 706  9
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+15 > 6  1
+67 > 15  2
+114 > 67  3
+217 > 114  4
+300 > 217  5
+417 > 300  6
+465 > 417  7
+565 > 465  8
+629 > 565  9
+643 > 629  10
+649 > 643  11
+652 > 649  12
+670 > 652  13
+13 > 4  1
+68 > 13  2
+142 > 68  3
+279 > 142  4
+427 > 279  5
+536 > 427  6
+575 > 536  7
+713 > 575  8
+114 > 23  1
+178 > 114  2
+276 > 178  3
+477 > 276  4
+591 > 477  5
+625 > 591  6
+639 > 625  7
+719 > 639  8
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+11 > 2  1
+67 > 11  2
+118 > 67  3
+193 > 118  4
+302 > 193  5
+410 > 302  6
+539 > 410  7
+569 > 539  8
+594 > 569  9
+635 > 594  10
+646 > 635  11
+2 > 0  1
+24 > 2  2
+77 > 24  3
+168 > 77  4
+288 > 168  5
+418 > 288  6
+549 > 418  7
+580 > 549  8
+704 > 580  9
+50 > 8  1
+103 > 50  2
+184 > 103  3
+313 > 184  4
+470 > 313  5
+575 > 470  6
+656 > 575  7
+691 > 656  8
+711 > 691  9
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+46 > 17  1
+105 > 46  2
+186 > 105  3
+313 > 186  4
+388 > 313  5
+509 > 388  6
+578 > 509  7
+640 > 578  8
+693 > 640  9
+4 > 1  1
+30 > 4  2
+52 > 30  3
+132 > 52  4
+252 > 132  5
+415 > 252  6
+524 > 415  7
+626 > 524  8
+694 > 626  9
+710 > 694  10
+31 > 5  1
+93 > 31  2
+205 > 93  3
+303 > 205  4
+496 > 303  5
+630 > 496  6
+644 > 630  7
+684 > 644  8
+691 > 684  9
+724 > 691  10
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+31 > 5  1
+84 > 31  2
+174 > 84  3
+260 > 174  4
+376 > 260  5
+462 > 376  6
+537 > 462  7
+585 > 537  8
+676 > 585  9
+698 > 676  10
+5 > 0  1
+24 > 5  2
+59 > 24  3
+140 > 59  4
+242 > 140  5
+373 > 242  6
+507 > 373  7
+617 > 507  8
+702 > 617  9
+18 > 8  1
+83 > 18  2
+179 > 83  3
+326 > 179  4
+504 > 326  5
+585 > 504  6
+628 > 585  7
+673 > 628  8
+707 > 673  9
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+11 > 6  1
+54 > 11  2
+121 > 54  3
+210 > 121  4
+285 > 210  5
+420 > 285  6
+502 > 420  7
+556 > 502  8
+615 > 556  9
+662 > 615  10
+3 > 0  1
+19 > 3  2
+65 > 19  3
+129 > 65  4
+269 > 129  5
+359 > 269  6
+500 > 359  7
+590 > 500  8
+682 > 590  9
+29 > 3  1
+82 > 29  2
+176 > 82  3
+318 > 176  4
+446 > 318  5
+576 > 446  6
+586 > 576  7
+649 > 586  8
+698 > 649  9
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+45 > 16  1
+92 > 45  2
+187 > 92  3
+258 > 187  4
+346 > 258  5
+467 > 346  6
+605 > 467  7
+651 > 605  8
+670 > 651  9
+4 > 1  1
+18 > 4  2
+55 > 18  3
+150 > 55  4
+299 > 150  5
+442 > 299  6
+523 > 442  7
+585 > 523  8
+722 > 585  9
+38 > 8  1
+99 > 38  2
+173 > 99  3
+331 > 173  4
+529 > 331  5
+618 > 529  6
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+37 > 5  1
+88 > 37  2
+165 > 88  3
+243 > 165  4
+358 > 243  5
+456 > 358  6
+544 > 456  7
+639 > 544  8
+3 > 0  1
+20 > 3  2
+51 > 20  3
+127 > 51  4
+232 > 127  5
+391 > 232  6
+491 > 391  7
+611 > 491  8
+682 > 611  9
+708 > 682  10
+33 > 12  1
+97 > 33  2
+218 > 97  3
+334 > 218  4
+509 > 334  5
+619 > 509  6
+675 > 619  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+34 > 10  1
+86 > 34  2
+151 > 86  3
+273 > 151  4
+371 > 273  5
+454 > 371  6
+519 > 454  7
+591 > 519  8
+658 > 591  9
+694 > 658  10
+5 > 1  1
+23 > 5  2
+38 > 23  3
+133 > 38  4
+237 > 133  5
+397 > 237  6
+544 > 397  7
+587 > 544  8
+710 > 587  9
+751 > 710  10
+43 > 8  1
+93 > 43  2
+176 > 93  3
+335 > 176  4
+500 > 335  5
+637 > 500  6
+697 > 637  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+30 > 9  1
+65 > 30  2
+133 > 65  3
+228 > 133  4
+342 > 228  5
+465 > 342  6
+516 > 465  7
+632 > 516  8
+665 > 632  9
+29 > 10  1
+116 > 29  2
+206 > 116  3
+352 > 206  4
+485 > 352  5
+609 > 485  6
+681 > 609  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+37 > 18  1
+81 > 37  2
+177 > 81  3
+288 > 177  4
+377 > 288  5
+475 > 377  6
+538 > 475  7
+640 > 538  8
+24 > 13  1
+92 > 24  2
+222 > 92  3
+328 > 222  4
+523 > 328  5
+584 > 523  6
+648 > 584  7
+722 > 648  8
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+41 > 8  1
+64 > 41  2
+145 > 64  3
+247 > 145  4
+327 > 247  5
+478 > 327  6
+565 > 478  7
+609 > 565  8
+6 > 1  1
+26 > 6  2
+52 > 26  3
+128 > 52  4
+277 > 128  5
+461 > 277  6
+496 > 461  7
+576 > 496  8
+750 > 576  9
+28 > 6  1
+104 > 28  2
+219 > 104  3
+366 > 219  4
+508 > 366  5
+610 > 508  6
+661 > 610  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+73 > 25  1
+133 > 73  2
+216 > 133  3
+334 > 216  4
+434 > 334  5
+538 > 434  6
+602 > 538  7
+631 > 602  8
+644 > 631  9
+653 > 644  10
+3 > 2  1
+16 > 3  2
+57 > 16  3
+143 > 57  4
+267 > 143  5
+408 > 267  6
+471 > 408  7
+569 > 471  8
+721 > 569  9
+57 > 9  1
+136 > 57  2
+251 > 136  3
+429 > 251  4
+530 > 429  5
+671 > 530  6
+713 > 671  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+20 > 3  1
+57 > 20  2
+129 > 57  3
+212 > 129  4
+309 > 212  5
+419 > 309  6
+495 > 419  7
+617 > 495  8
+6 > 0  1
+12 > 6  2
+64 > 12  3
+145 > 64  4
+296 > 145  5
+411 > 296  6
+532 > 411  7
+574 > 532  8
+671 > 574  9
+707 > 671  10
+41 > 12  1
+110 > 41  2
+207 > 110  3
+338 > 207  4
+540 > 338  5
+624 > 540  6
+672 > 624  7
+683 > 672  8
+716 > 683  9
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+39 > 10  1
+114 > 39  2
+169 > 114  3
+274 > 169  4
+360 > 274  5
+495 > 360  6
+606 > 495  7
+634 > 606  8
+47 > 12  1
+87 > 47  2
+187 > 87  3
+358 > 187  4
+512 > 358  5
+589 > 512  6
+681 > 589  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+39 > 18  1
+114 > 39  2
+207 > 114  3
+308 > 207  4
+420 > 308  5
+526 > 420  6
+640 > 526  7
+4 > 0  1
+36 > 4  2
+59 > 36  3
+138 > 59  4
+280 > 138  5
+416 > 280  6
+510 > 416  7
+602 > 510  8
+709 > 602  9
+724 > 709  10
+45 > 9  1
+87 > 45  2
+251 > 87  3
+332 > 251  4
+498 > 332  5
+635 > 498  6
+687 > 635  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+72 > 33  1
+138 > 72  2
+217 > 138  3
+355 > 217  4
+454 > 355  5
+535 > 454  6
+621 > 535  7
+699 > 621  8
+2 > 0  1
+17 > 2  2
+50 > 17  3
+132 > 50  4
+293 > 132  5
+390 > 293  6
+568 > 390  7
+32 > 13  1
+121 > 32  2
+229 > 121  3
+334 > 229  4
+498 > 334  5
+643 > 498  6
+689 > 643  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+27 > 9  1
+84 > 27  2
+196 > 84  3
+264 > 196  4
+380 > 264  5
+443 > 380  6
+554 > 443  7
+589 > 554  8
+54 > 3  1
+133 > 54  2
+230 > 133  3
+355 > 230  4
+514 > 355  5
+616 > 514  6
+639 > 616  7
+697 > 639  8
+732 > 697  9
+741 > 732  10
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+28 > 8  1
+80 > 28  2
+138 > 80  3
+262 > 138  4
+363 > 262  5
+452 > 363  6
+573 > 452  7
+599 > 573  8
+619 > 599  9
+658 > 619  10
+678 > 658  11
+16 > 1  1
+61 > 16  2
+138 > 61  3
+243 > 138  4
+392 > 243  5
+524 > 392  6
+583 > 524  7
+715 > 583  8
+34 > 9  1
+102 > 34  2
+262 > 102  3
+380 > 262  4
+516 > 380  5
+626 > 516  6
+671 > 626  7
+687 > 671  8
+723 > 687  9
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+26 > 5  1
+59 > 26  2
+119 > 59  3
+211 > 119  4
+299 > 211  5
+449 > 299  6
+529 > 449  7
+570 > 529  8
+604 > 570  9
+636 > 604  10
+715 > 636  11
+19 > 3  1
+52 > 19  2
+119 > 52  3
+291 > 119  4
+456 > 291  5
+531 > 456  6
+556 > 531  7
+681 > 556  8
+710 > 681  9
+32 > 9  1
+110 > 32  2
+226 > 110  3
+327 > 226  4
+527 > 327  5
+642 > 527  6
+722 > 642  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+53 > 24  1
+111 > 53  2
+206 > 111  3
+304 > 206  4
+447 > 304  5
+522 > 447  6
+599 > 522  7
+655 > 599  8
+658 > 655  9
+683 > 658  10
+698 > 683  11
+3 > 2  1
+22 > 3  2
+48 > 22  3
+125 > 48  4
+255 > 125  5
+437 > 255  6
+541 > 437  7
+608 > 541  8
+724 > 608  9
+761 > 724  10
+55 > 15  1
+128 > 55  2
+266 > 128  3
+378 > 266  4
+586 > 378  5
+675 > 586  6
+679 > 675  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+28 > 11  1
+81 > 28  2
+165 > 81  3
+227 > 165  4
+344 > 227  5
+457 > 344  6
+538 > 457  7
+628 > 538  8
+652 > 628  9
+682 > 652  10
+692 > 682  11
+5 > 1  1
+16 > 5  2
+54 > 16  3
+145 > 54  4
+266 > 145  5
+421 > 266  6
+506 > 421  7
+585 > 506  8
+762 > 585  9
+41 > 14  1
+151 > 41  2
+221 > 151  3
+364 > 221  4
+489 > 364  5
+641 > 489  6
+710 > 641  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+34 > 3  1
+73 > 34  2
+143 > 73  3
+235 > 143  4
+331 > 235  5
+472 > 331  6
+541 > 472  7
+646 > 541  8
+718 > 646  9
+18 > 3  1
+64 > 18  2
+152 > 64  3
+262 > 152  4
+436 > 262  5
+536 > 436  6
+584 > 536  7
+701 > 584  8
+728 > 701  9
+42 > 16  1
+140 > 42  2
+244 > 140  3
+383 > 244  4
+549 > 383  5
+625 > 549  6
+690 > 625  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+23 > 3  1
+72 > 23  2
+160 > 72  3
+229 > 160  4
+349 > 229  5
+454 > 349  6
+505 > 454  7
+706 > 505  8
+8 > 1  1
+21 > 8  2
+48 > 21  3
+130 > 48  4
+293 > 130  5
+400 > 293  6
+537 > 400  7
+574 > 537  8
+729 > 574  9
+40 > 12  1
+111 > 40  2
+239 > 111  3
+361 > 239  4
+539 > 361  5
+656 > 539  6
+704 > 656  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+43 > 12  1
+89 > 43  2
+180 > 89  3
+281 > 180  4
+362 > 281  5
+509 > 362  6
+550 > 509  7
+650 > 550  8
+1 > 0  1
+16 > 1  2
+64 > 16  3
+139 > 64  4
+262 > 139  5
+431 > 262  6
+495 > 431  7
+617 > 495  8
+745 > 617  9
+757 > 745  10
+54 > 23  1
+131 > 54  2
+261 > 131  3
+426 > 261  4
+592 > 426  5
+614 > 592  6
+713 > 614  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+33 > 11  1
+80 > 33  2
+149 > 80  3
+260 > 149  4
+323 > 260  5
+464 > 323  6
+571 > 464  7
+624 > 571  8
+668 > 624  9
+1 > 0  1
+14 > 1  2
+41 > 14  3
+119 > 41  4
+267 > 119  5
+386 > 267  6
+491 > 386  7
+632 > 491  8
+695 > 632  9
+712 > 695  10
+49 > 12  1
+120 > 49  2
+242 > 120  3
+355 > 242  4
+546 > 355  5
+605 > 546  6
+679 > 605  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+31 > 13  1
+70 > 31  2
+166 > 70  3
+258 > 166  4
+364 > 258  5
+448 > 364  6
+583 > 448  7
+1 > 0  1
+21 > 1  2
+56 > 21  3
+156 > 56  4
+288 > 156  5
+429 > 288  6
+519 > 429  7
+624 > 519  8
+723 > 624  9
+53 > 10  1
+133 > 53  2
+250 > 133  3
+398 > 250  4
+589 > 398  5
+628 > 589  6
+719 > 628  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+53 > 18  1
+137 > 53  2
+222 > 137  3
+323 > 222  4
+465 > 323  5
+537 > 465  6
+578 > 537  7
+629 > 578  8
+687 > 629  9
+699 > 687  10
+5 > 0  1
+17 > 5  2
+53 > 17  3
+160 > 53  4
+287 > 160  5
+420 > 287  6
+527 > 420  7
+617 > 527  8
+653 > 617  9
+772 > 653  10
+65 > 8  1
+135 > 65  2
+254 > 135  3
+392 > 254  4
+527 > 392  5
+653 > 527  6
+696 > 653  7
+715 > 696  8
+755 > 715  9
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+40 > 11  1
+79 > 40  2
+190 > 79  3
+286 > 190  4
+398 > 286  5
+493 > 398  6
+547 > 493  7
+658 > 547  8
+698 > 658  9
+6 > 0  1
+15 > 6  2
+52 > 15  3
+133 > 52  4
+232 > 133  5
+444 > 232  6
+559 > 444  7
+578 > 559  8
+761 > 578  9
+42 > 14  1
+150 > 42  2
+259 > 150  3
+399 > 259  4
+577 > 399  5
+693 > 577  6
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+61 > 24  1
+117 > 61  2
+201 > 117  3
+318 > 201  4
+432 > 318  5
+518 > 432  6
+571 > 518  7
+628 > 571  8
+647 > 628  9
+48 > 10  1
+134 > 48  2
+259 > 134  3
+439 > 259  4
+554 > 439  5
+649 > 554  6
+675 > 649  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+22 > 4  1
+67 > 22  2
+123 > 67  3
+197 > 123  4
+313 > 197  5
+434 > 313  6
+532 > 434  7
+601 > 532  8
+642 > 601  9
+683 > 642  10
+14 > 0  1
+25 > 14  2
+61 > 25  3
+144 > 61  4
+293 > 144  5
+464 > 293  6
+566 > 464  7
+606 > 566  8
+750 > 606  9
+46 > 12  1
+101 > 46  2
+231 > 101  3
+386 > 231  4
+536 > 386  5
+667 > 536  6
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+16 > 1  1
+57 > 16  2
+128 > 57  3
+200 > 128  4
+329 > 200  5
+425 > 329  6
+537 > 425  7
+600 > 537  8
+5 > 0  1
+20 > 5  2
+50 > 20  3
+135 > 50  4
+285 > 135  5
+420 > 285  6
+543 > 420  7
+575 > 543  8
+778 > 575  9
+44 > 15  1
+123 > 44  2
+250 > 123  3
+396 > 250  4
+583 > 396  5
+675 > 583  6
+689 > 675  7
+735 > 689  8
+755 > 735  9
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+40 > 15  1
+102 > 40  2
+212 > 102  3
+282 > 212  4
+411 > 282  5
+493 > 411  6
+605 > 493  7
+634 > 605  8
+700 > 634  9
+53 > 17  1
+150 > 53  2
+270 > 150  3
+386 > 270  4
+560 > 386  5
+688 > 560  6
+697 > 688  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+29 > 7  1
+85 > 29  2
+163 > 85  3
+267 > 163  4
+367 > 267  5
+465 > 367  6
+580 > 465  7
+613 > 580  8
+670 > 613  9
+689 > 670  10
+1 > 0  1
+19 > 1  2
+59 > 19  3
+109 > 59  4
+258 > 109  5
+409 > 258  6
+512 > 409  7
+637 > 512  8
+733 > 637  9
+49 > 17  1
+113 > 49  2
+236 > 113  3
+371 > 236  4
+556 > 371  5
+693 > 556  6
+744 > 693  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+34 > 5  1
+80 > 34  2
+164 > 80  3
+264 > 164  4
+374 > 264  5
+480 > 374  6
+584 > 480  7
+692 > 584  8
+4 > 0  1
+27 > 4  2
+68 > 27  3
+151 > 68  4
+282 > 151  5
+415 > 282  6
+612 > 415  7
+64 > 27  1
+153 > 64  2
+297 > 153  3
+473 > 297  4
+625 > 473  5
+675 > 625  6
+761 > 675  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+28 > 8  1
+79 > 28  2
+153 > 79  3
+275 > 153  4
+360 > 275  5
+462 > 360  6
+565 > 462  7
+668 > 565  8
+4 > 1  1
+25 > 4  2
+72 > 25  3
+152 > 72  4
+274 > 152  5
+427 > 274  6
+524 > 427  7
+609 > 524  8
+712 > 609  9
+755 > 712  10
+17 > 4  1
+68 > 17  2
+153 > 68  3
+323 > 153  4
+437 > 323  5
+565 > 437  6
+719 > 565  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+19 > 6  1
+57 > 19  2
+141 > 57  3
+235 > 141  4
+371 > 235  5
+436 > 371  6
+550 > 436  7
+706 > 550  8
+5 > 1  1
+16 > 5  2
+65 > 16  3
+146 > 65  4
+280 > 146  5
+469 > 280  6
+566 > 469  7
+614 > 566  8
+735 > 614  9
+76 > 13  1
+176 > 76  2
+253 > 176  3
+455 > 253  4
+618 > 455  5
+702 > 618  6
+732 > 702  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+27 > 12  1
+83 > 27  2
+149 > 83  3
+239 > 149  4
+352 > 239  5
+461 > 352  6
+580 > 461  7
+692 > 580  8
+71 > 32  1
+201 > 71  2
+337 > 201  3
+524 > 337  4
+628 > 524  5
+737 > 628  6
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+68 > 19  1
+154 > 68  2
+264 > 154  3
+358 > 264  4
+449 > 358  5
+596 > 449  6
+603 > 596  7
+690 > 603  8
+2 > 0  1
+26 > 2  2
+80 > 26  3
+162 > 80  4
+313 > 162  5
+416 > 313  6
+545 > 416  7
+635 > 545  8
+721 > 635  9
+29 > 8  1
+91 > 29  2
+225 > 91  3
+323 > 225  4
+471 > 323  5
+624 > 471  6
+697 > 624  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+74 > 22  1
+148 > 74  2
+237 > 148  3
+331 > 237  4
+467 > 331  5
+571 > 467  6
+625 > 571  7
+678 > 625  8
+13 > 3  1
+24 > 13  2
+69 > 24  3
+159 > 69  4
+311 > 159  5
+480 > 311  6
+549 > 480  7
+582 > 549  8
+747 > 582  9
+32 > 5  1
+82 > 32  2
+191 > 82  3
+307 > 191  4
+463 > 307  5
+695 > 463  6
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+31 > 7  1
+88 > 31  2
+201 > 88  3
+264 > 201  4
+377 > 264  5
+496 > 377  6
+543 > 496  7
+599 > 543  8
+664 > 599  9
+36 > 3  1
+79 > 36  2
+200 > 79  3
+324 > 200  4
+494 > 324  5
+614 > 494  6
+708 > 614  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+62 > 16  1
+112 > 62  2
+219 > 112  3
+291 > 219  4
+448 > 291  5
+570 > 448  6
+607 > 570  7
+697 > 607  8
+8 > 0  1
+30 > 8  2
+89 > 30  3
+199 > 89  4
+366 > 199  5
+460 > 366  6
+597 > 460  7
+661 > 597  8
+785 > 661  9
+36 > 9  1
+83 > 36  2
+210 > 83  3
+350 > 210  4
+535 > 350  5
+636 > 535  6
+734 > 636  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+24 > 9  1
+101 > 24  2
+168 > 101  3
+293 > 168  4
+401 > 293  5
+496 > 401  6
+587 > 496  7
+637 > 587  8
+669 > 637  9
+672 > 669  10
+688 > 672  11
+20 > 5  1
+73 > 20  2
+193 > 73  3
+262 > 193  4
+447 > 262  5
+619 > 447  6
+670 > 619  7
+710 > 670  8
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+23 > 8  1
+66 > 23  2
+126 > 66  3
+239 > 126  4
+332 > 239  5
+424 > 332  6
+524 > 424  7
+620 > 524  8
+4 > 0  1
+26 > 4  2
+76 > 26  3
+161 > 76  4
+316 > 161  5
+504 > 316  6
+560 > 504  7
+608 > 560  8
+738 > 608  9
+22 > 3  1
+77 > 22  2
+187 > 77  3
+330 > 187  4
+480 > 330  5
+616 > 480  6
+719 > 616  7
+722 > 719  8
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+33 > 10  1
+71 > 33  2
+165 > 71  3
+254 > 165  4
+373 > 254  5
+509 > 373  6
+572 > 509  7
+640 > 572  8
+28 > 4  1
+108 > 28  2
+215 > 108  3
+348 > 215  4
+476 > 348  5
+624 > 476  6
+723 > 624  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+5 > 3  1
+34 > 5  2
+85 > 34  3
+169 > 85  4
+271 > 169  5
+352 > 271  6
+499 > 352  7
+560 > 499  8
+653 > 560  9
+4 > 2  1
+19 > 4  2
+78 > 19  3
+177 > 78  4
+305 > 177  5
+463 > 305  6
+571 > 463  7
+607 > 571  8
+739 > 607  9
+19 > 5  1
+80 > 19  2
+167 > 80  3
+317 > 167  4
+475 > 317  5
+609 > 475  6
+697 > 609  7
+732 > 697  8
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+ FCN=89.4009 FROM MIGRAD    STATUS=CONVERGED      79 CALLS          80 TOTAL
+                     EDM=5.76575e-10    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.27880e+04   3.87196e+01   1.33298e-01  -5.82543e-09
+   2  Mean        -1.35041e+02   3.60242e-01   1.66869e-03  -7.10058e-05
+   3  Sigma        1.33340e+02   3.90747e-01   3.72019e-06   2.21004e-02
+ FCN=241.786 FROM MIGRAD    STATUS=CONVERGED      72 CALLS          73 TOTAL
+                     EDM=8.2494e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.04879e+04   3.19373e+01   1.80199e-01  -1.76879e-06
+   2  Mean        -1.02605e+02   4.18054e-01   3.17752e-03   9.44993e-04
+   3  Sigma        1.58373e+02   4.41297e-01   5.70956e-06  -1.04800e-01
+ FCN=424.039 FROM MIGRAD    STATUS=CONVERGED      72 CALLS          73 TOTAL
+                     EDM=1.38525e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.12885e+04   3.39609e+01   2.55097e-01  -5.60381e-07
+   2  Mean        -1.71717e+02   3.79588e-01   3.82043e-03   4.31547e-04
+   3  Sigma        1.47512e+02   3.88092e-01   7.10631e-06  -3.73450e-02
+ FCN=3225.95 FROM MIGRAD    STATUS=CONVERGED      74 CALLS          75 TOTAL
+                     EDM=2.11179e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.21170e+04   3.43213e+01   7.17782e-01  -4.12582e-06
+   2  Mean        -1.33178e+02   3.08494e-01   8.55218e-03  -2.80614e-04
+   3  Sigma        1.44369e+02   2.68572e-01   1.21633e-05   1.07700e-01
+ FCN=6017.81 FROM MIGRAD    STATUS=CONVERGED      65 CALLS          66 TOTAL
+                     EDM=1.36756e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     9.56379e+03   2.88262e+01   7.78561e-01  -1.46109e-05
+   2  Mean        -1.02277e+02   3.88448e-01   1.47063e-02   1.09436e-03
+   3  Sigma        1.80648e+02   3.81705e-01   1.79835e-05  -5.45263e-01
+ FCN=6833.5 FROM MIGRAD    STATUS=CONVERGED      76 CALLS          77 TOTAL
+                     EDM=9.01143e-12    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.03727e+04   3.13987e+01   9.01451e-01  -3.37636e-08
+   2  Mean        -1.70605e+02   3.57797e-01   1.44226e-02   5.71171e-06
+   3  Sigma        1.65954e+02   3.53053e-01   1.89668e-05  -6.80616e-03
+
+****************************************
+Minimizer is Linear
+Chi2                      =  4.66347e+07
+NDf                       =         4240
+p0                        =      3828.22   +/-   850.05      
+p1                        =     -481.715   +/-   180.823     
+p2                        =      31.0406   +/-   14.6191     
+p3                        =     -1.08581   +/-   0.563529    
+p4                        =    0.0189592   +/-   0.0104041   
+p5                        =  -0.00012868   +/-   7.39576e-05 
+FitAddress1:0x5d907220
+
+****************************************
+Minimizer is Linear
+Chi2                      =   4.0523e+07
+NDf                       =         3963
+p0                        =      3366.27   +/-   792.542     
+p1                        =     -419.888   +/-   178.073     
+p2                        =      27.6515   +/-   15.1656     
+p3                        =    -0.997238   +/-   0.614693    
+p4                        =    0.0180437   +/-   0.0119182   
+p5                        = -0.000127262   +/-   8.88919e-05 
+FitAddress2:0x5d84bdb0
+Address1_:0x5d907220 3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address2_:0x5d84bdb0 3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+
+****************************************
+Minimizer is Linear
+Chi2                      =    2.209e+07
+NDf                       =         1559
+p0                        =      -358.76   +/-   147.232     
+p1                        =      20.0062   +/-   6.39952     
+
+****************************************
+Minimizer is Linear
+Chi2                      =  1.95638e+07
+NDf                       =         1532
+p0                        =     -375.887   +/-   139.759     
+p1                        =      23.6952   +/-   6.07467     
+
+****************************************
+Minimizer is Linear
+Chi2                      =  1.44405e+07
+NDf                       =         1464
+p0                        =     -367.669   +/-   122.864     
+p1                        =      21.8408   +/-   5.34032     
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 70625456
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 131855264
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 54160736
+ FCN=21.1712 FROM HESSE     STATUS=OK             16 CALLS         149 TOTAL
+                     EDM=7.23224e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.52870e+02   3.86839e+00   1.32967e-03   9.73116e-05
+   2  Mean         8.83403e+01   3.35352e+00   1.53936e-03  -6.05785e-05
+   3  Sigma        1.53818e+02   3.42806e+00   2.75769e-06   5.26176e-02
+ FCN=42.7774 FROM HESSE     STATUS=OK             16 CALLS         165 TOTAL
+                     EDM=2.27151e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.63662e+02   4.15752e+00   1.99374e-03   2.14929e-05
+   2  Mean         1.48530e+02   3.18520e+00   2.04127e-03   2.50914e-06
+   3  Sigma        1.44911e+02   3.30579e+00   3.92783e-06   8.10847e-03
+ FCN=25.7747 FROM MIGRAD    STATUS=CONVERGED      66 CALLS          67 TOTAL
+                     EDM=6.27355e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.91496e+02   4.79942e+00   9.06132e-03  -3.69292e-05
+   2  Mean         1.15077e+02   2.74592e+00   6.93634e-03   1.17986e-04
+   3  Sigma        1.25926e+02   2.84248e+00   1.54434e-05  -1.91926e-02
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1570968368
+filledAve
+ FCN=37.2334 FROM HESSE     STATUS=OK             16 CALLS         169 TOTAL
+                     EDM=3.08724e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     2.74960e+02   5.22644e+00   2.33698e-03  -8.18151e-06
+   2  Mean         8.16543e+01   2.50847e+00   1.51445e-03  -5.85141e-05
+   3  Sigma        1.54519e+02   2.62488e+00   2.73650e-06   2.72182e-02
+ FCN=40.19 FROM MIGRAD    STATUS=CONVERGED      30 CALLS         268 TOTAL
+                     EDM=1.71721e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     2.91197e+02   5.45423e+00   1.27972e-02   6.65562e-06
+   2  Mean         1.43711e+02   2.35304e+00   7.35366e-03   7.81339e-06
+   3  Sigma        1.46416e+02   2.37812e+00   1.36325e-05   4.38626e-03
+ FCN=31.2015 FROM MIGRAD    STATUS=CONVERGED      67 CALLS          68 TOTAL
+                     EDM=4.49846e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     3.29983e+02   6.20815e+00   1.27777e-02   9.37715e-05
+   2  Mean         1.10092e+02   2.24568e+00   6.21622e-03  -3.38673e-04
+   3  Sigma        1.33552e+02   2.43184e+00   1.38390e-05   1.20358e-01
+ fitstaus1: 4000
+filled1
+ fitstaus2: 0
+filled2
+ fitstausave: 1570230800
+filledAve
+ FCN=35.781 FROM HESSE     STATUS=OK             16 CALLS         337 TOTAL
+                     EDM=2.11472e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     6.38538e+02   7.86974e+00   3.47369e-03  -1.12625e-06
+   2  Mean         8.22909e+01   1.67684e+00   9.91312e-04   3.86184e-05
+   3  Sigma        1.56837e+02   1.74049e+00   1.77272e-06  -3.26388e-03
+ FCN=36.2941 FROM HESSE     STATUS=OK             16 CALLS          93 TOTAL
+                     EDM=2.15497e-10    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     7.03970e+02   8.62683e+00   3.85144e-03  -8.85799e-07
+   2  Mean         1.44823e+02   1.48343e+00   8.83762e-04  -1.25652e-05
+   3  Sigma        1.41419e+02   1.49983e+00   1.69786e-06  -2.96312e-03
+ FCN=22.808 FROM MIGRAD    STATUS=CONVERGED      68 CALLS          69 TOTAL
+                     EDM=6.37729e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     7.80018e+02   9.53158e+00   1.68256e-02  -9.67058e-06
+   2  Mean         1.10146e+02   1.40710e+00   3.35010e-03  -2.47915e-04
+   3  Sigma        1.32656e+02   1.49238e+00   7.22425e-06  -2.71308e-02
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1569995664
+filledAve
+ FCN=42.2988 FROM HESSE     STATUS=OK             16 CALLS         185 TOTAL
+                     EDM=9.95954e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     5.66736e+02   7.49238e+00   3.55610e-03  -5.41703e-06
+   2  Mean         8.66003e+01   1.77095e+00   1.13702e-03  -1.42583e-04
+   3  Sigma        1.56244e+02   1.87404e+00   2.05849e-06   8.04702e-02
+ FCN=49.0138 FROM HESSE     STATUS=OK             16 CALLS         218 TOTAL
+                     EDM=4.03781e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     6.18227e+02   8.16530e+00   4.15812e-03   2.01326e-05
+   2  Mean         1.51966e+02   1.61408e+00   1.11083e-03  -1.34867e-04
+   3  Sigma        1.43490e+02   1.69884e+00   2.16615e-06   6.34975e-02
+ FCN=23.971 FROM MIGRAD    STATUS=CONVERGED      66 CALLS          67 TOTAL
+                     EDM=1.33058e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     6.92629e+02   9.09572e+00   1.63710e-02  -1.30253e-05
+   2  Mean         1.17067e+02   1.52417e+00   3.71488e-03   3.23697e-04
+   3  Sigma        1.31791e+02   1.66294e+00   8.34575e-06  -3.87639e-02
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1570033872
+filledAve
+ FCN=26.7397 FROM HESSE     STATUS=OK             16 CALLS          93 TOTAL
+                     EDM=1.83256e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.21681e+03   1.08752e+01   4.18242e-03  -2.80948e-05
+   2  Mean         8.74835e+01   1.19952e+00   6.15922e-04  -4.59098e-04
+   3  Sigma        1.55081e+02   1.22981e+00   1.10066e-06  -9.21550e-02
+ FCN=63.088 FROM HESSE     STATUS=OK             16 CALLS          93 TOTAL
+                     EDM=3.41034e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.30512e+03   1.17294e+01   6.80575e-03  -3.67030e-05
+   2  Mean         1.57115e+02   1.12124e+00   8.76257e-04   6.66824e-04
+   3  Sigma        1.45215e+02   1.17112e+00   1.69091e-06  -1.52310e-01
+ FCN=37.3735 FROM MIGRAD    STATUS=CONVERGED      68 CALLS          69 TOTAL
+                     EDM=1.64374e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.46963e+03   1.31272e+01   2.94623e-02  -8.16238e-06
+   2  Mean         1.18661e+02   1.05885e+00   3.19800e-03  -1.08178e-04
+   3  Sigma        1.33059e+02   1.14585e+00   7.12306e-06  -6.11305e-02
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1570179344
+filledAve
+ FCN=62.5471 FROM HESSE     STATUS=OK             16 CALLS          93 TOTAL
+                     EDM=9.39869e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.73070e+03   1.30137e+01   7.48581e-03  -6.72006e-05
+   2  Mean         9.35041e+01   1.03069e+00   8.02287e-04   1.13944e-03
+   3  Sigma        1.58674e+02   1.09868e+00   1.44817e-06  -3.34514e-01
+ FCN=91.6671 FROM HESSE     STATUS=OK             16 CALLS          93 TOTAL
+                     EDM=7.59044e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.88788e+03   1.41061e+01   9.84425e-03  -4.46853e-07
+   2  Mean         1.60315e+02   9.31319e-01   8.75494e-04  -1.31130e-04
+   3  Sigma        1.45138e+02   9.72429e-01   1.69004e-06  -8.14746e-03
+ FCN=32.8768 FROM MIGRAD    STATUS=CONVERGED      75 CALLS          76 TOTAL
+                     EDM=4.056e-10    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     2.12310e+03   1.57895e+01   3.33104e-02  -3.19823e-07
+   2  Mean         1.23954e+02   8.76366e-01   2.49038e-03  -2.34540e-05
+   3  Sigma        1.32617e+02   9.46701e-01   5.55222e-06   6.11806e-03
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1571148432
+filledAve
+ FCN=43.6549 FROM HESSE     STATUS=OK             16 CALLS         225 TOTAL
+                     EDM=2.85219e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     6.27743e+02   7.85347e+00   3.79754e-03  -4.13459e-06
+   2  Mean         1.01892e+02   1.68650e+00   1.09935e-03   1.40815e-04
+   3  Sigma        1.56554e+02   1.77273e+00   1.98015e-06  -1.17192e-02
+ FCN=40.3475 FROM HESSE     STATUS=OK             16 CALLS          91 TOTAL
+                     EDM=2.10624e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     6.72046e+02   8.34488e+00   3.91693e-03  -3.81274e-05
+   2  Mean         1.67307e+02   1.57367e+00   9.85944e-04  -3.77521e-04
+   3  Sigma        1.45843e+02   1.62016e+00   1.88512e-06  -6.64928e-02
+ FCN=30.9038 FROM MIGRAD    STATUS=CONVERGED      66 CALLS          67 TOTAL
+                     EDM=1.03134e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     7.65780e+02   9.40658e+00   1.93791e-02  -2.89890e-06
+   2  Mean         1.29942e+02   1.40161e+00   3.86309e-03  -1.01269e-04
+   3  Sigma        1.31158e+02   1.45111e+00   8.26515e-06  -8.15334e-03
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1571229856
+filledAve
+ FCN=31.3939 FROM HESSE     STATUS=OK             16 CALLS         190 TOTAL
+                     EDM=3.71981e-11    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     5.26987e+02   7.13799e+00   2.96682e-03  -2.22507e-07
+   2  Mean         1.03142e+02   1.83566e+00   1.01853e-03   1.61191e-06
+   3  Sigma        1.56089e+02   1.88664e+00   1.81636e-06  -2.11310e-03
+ FCN=38.5349 FROM HESSE     STATUS=OK             16 CALLS         232 TOTAL
+                     EDM=4.19026e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     5.72317e+02   7.81466e+00   3.56418e-03  -5.31193e-05
+   2  Mean         1.74158e+02   1.72233e+00   1.05749e-03  -4.88256e-04
+   3  Sigma        1.44417e+02   1.82561e+00   2.10317e-06  -9.76923e-02
+ FCN=13.7406 FROM MIGRAD    STATUS=CONVERGED      66 CALLS          67 TOTAL
+                     EDM=1.90727e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     6.38357e+02   8.61789e+00   1.20215e-02  -1.72075e-05
+   2  Mean         1.36810e+02   1.61290e+00   3.01962e-03   3.68528e-04
+   3  Sigma        1.33496e+02   1.73840e+00   6.70340e-06  -4.05060e-02
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1571320560
+filledAve
+ FCN=48.8045 FROM HESSE     STATUS=OK             16 CALLS         186 TOTAL
+                     EDM=1.33777e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     5.10579e+02   7.06834e+00   3.59447e-03  -2.06163e-05
+   2  Mean         1.05119e+02   1.90777e+00   1.31312e-03  -2.58513e-04
+   3  Sigma        1.59259e+02   2.04246e+00   2.36829e-06  -3.96689e-02
+ FCN=44.5664 FROM HESSE     STATUS=OK             16 CALLS         235 TOTAL
+                     EDM=6.84071e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     5.46524e+02   7.39634e+00   3.65089e-03  -3.02926e-05
+   2  Mean         1.79671e+02   1.76744e+00   1.16163e-03  -1.81947e-04
+   3  Sigma        1.50284e+02   1.80746e+00   2.14198e-06  -4.27793e-02
+ FCN=19.9917 FROM MIGRAD    STATUS=CONVERGED      69 CALLS          70 TOTAL
+                     EDM=2.63086e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     6.25828e+02   8.44285e+00   1.40978e-02   3.18189e-05
+   2  Mean         1.37811e+02   1.59250e+00   3.55969e-03   6.09301e-05
+   3  Sigma        1.34138e+02   1.67219e+00   7.59711e-06   4.89017e-02
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1571417776
+filledAve
+ FCN=29.578 FROM MIGRAD    STATUS=CONVERGED      30 CALLS         289 TOTAL
+                     EDM=1.89985e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     2.95234e+02   5.35613e+00   1.06825e-02   2.47451e-05
+   2  Mean         1.05064e+02   2.52761e+00   6.81750e-03   6.22876e-05
+   3  Sigma        1.60309e+02   2.70929e+00   1.22748e-05  -3.94792e-03
+ FCN=45.4542 FROM HESSE     STATUS=OK             16 CALLS         187 TOTAL
+                     EDM=4.41725e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     3.26976e+02   5.94606e+00   2.91075e-03   3.93406e-05
+   2  Mean         1.77197e+02   2.31789e+00   1.53358e-03   9.59862e-05
+   3  Sigma        1.45763e+02   2.51316e+00   3.07236e-06   3.60167e-02
+ FCN=34.5064 FROM MIGRAD    STATUS=CONVERGED      66 CALLS          67 TOTAL
+                     EDM=1.51902e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     3.68067e+02   6.65361e+00   1.42386e-02  -5.59310e-06
+   2  Mean         1.38328e+02   2.08786e+00   6.06442e-03  -9.06656e-06
+   3  Sigma        1.31576e+02   2.28879e+00   1.36537e-05  -1.10044e-02
+ fitstaus1: 0
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1571467600
+filledAve
+ FCN=46.0114 FROM HESSE     STATUS=OK             16 CALLS         229 TOTAL
+                     EDM=1.27796e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     6.61144e+02   8.00538e+00   3.97592e-03  -1.07974e-05
+   2  Mean         1.05064e+02   1.67473e+00   1.11932e-03  -2.98639e-04
+   3  Sigma        1.59039e+02   1.77034e+00   2.00852e-06  -1.68149e-02
+ FCN=41.1812 FROM HESSE     STATUS=OK             16 CALLS          91 TOTAL
+                     EDM=2.35011e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     7.14026e+02   8.57262e+00   4.06163e-03  -1.20270e-06
+   2  Mean         1.81116e+02   1.54222e+00   9.77292e-04   4.40103e-05
+   3  Sigma        1.47366e+02   1.59909e+00   1.86611e-06  -4.13980e-03
+ FCN=33.2605 FROM MIGRAD    STATUS=CONVERGED      66 CALLS          67 TOTAL
+                     EDM=2.50408e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     8.09010e+02   9.74082e+00   2.06272e-02  -9.04879e-06
+   2  Mean         1.40844e+02   1.43192e+00   4.09175e-03  -1.34601e-04
+   3  Sigma        1.33570e+02   1.55967e+00   9.12670e-06  -3.46484e-02
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1571520192
+filledAve
+ FCN=35.0109 FROM HESSE     STATUS=OK             16 CALLS          93 TOTAL
+                     EDM=1.2499e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     8.14272e+02   8.87646e+00   3.88007e-03  -8.64982e-06
+   2  Mean         1.15751e+02   1.48463e+00   8.69714e-04   9.65629e-05
+   3  Sigma        1.57000e+02   1.54038e+00   1.55407e-06  -2.44901e-02
+ FCN=81.5446 FROM HESSE     STATUS=OK             16 CALLS          92 TOTAL
+                     EDM=5.57926e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     8.75734e+02   9.57032e+00   6.33196e-03   7.55007e-07
+   2  Mean         1.86219e+02   1.36667e+00   1.21167e-03  -1.36532e-04
+   3  Sigma        1.44939e+02   1.41148e+00   2.32603e-06   8.20794e-02
+ FCN=20.953 FROM MIGRAD    STATUS=CONVERGED      68 CALLS          69 TOTAL
+                     EDM=5.87736e-10    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     9.95190e+02   1.06814e+01   1.82757e-02  -7.39926e-07
+   2  Mean         1.49298e+02   1.23981e+00   2.83515e-03  -2.48298e-05
+   3  Sigma        1.32136e+02   1.28541e+00   6.04995e-06  -5.67784e-03
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1571655648
+filledAve
+ FCN=54.7513 FROM HESSE     STATUS=OK             16 CALLS          91 TOTAL
+                     EDM=3.88538e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.04858e+03   1.01068e+01   5.46400e-03  -2.19142e-05
+   2  Mean         1.24189e+02   1.31957e+00   9.61514e-04  -6.49117e-04
+   3  Sigma        1.58135e+02   1.39317e+00   1.72962e-06  -7.51761e-02
+ FCN=50.8976 FROM HESSE     STATUS=OK             16 CALLS          93 TOTAL
+                     EDM=8.21521e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.15907e+03   1.11954e+01   5.86075e-03  -1.45094e-05
+   2  Mean         1.94786e+02   1.17904e+00   8.28986e-04  -3.19540e-04
+   3  Sigma        1.41117e+02   1.22954e+00   1.65162e-06  -5.69705e-02
+ FCN=24.293 FROM MIGRAD    STATUS=CONVERGED      68 CALLS          69 TOTAL
+                     EDM=9.85379e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.29663e+03   1.24312e+01   2.26428e-02  -1.24954e-05
+   2  Mean         1.57324e+02   1.09656e+00   2.69208e-03   3.77576e-04
+   3  Sigma        1.30153e+02   1.17450e+00   6.02161e-06  -6.17838e-02
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1571735472
+filledAve
+ FCN=29.2922 FROM HESSE     STATUS=OK             16 CALLS          93 TOTAL
+                     EDM=6.44815e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.02123e+03   1.00941e+01   4.01824e-03  -5.52268e-05
+   2  Mean         1.24699e+02   1.33996e+00   7.20062e-04   7.73803e-04
+   3  Sigma        1.55455e+02   1.43124e+00   1.33755e-06  -1.62365e-01
+ FCN=43.1199 FROM HESSE     STATUS=OK             16 CALLS          93 TOTAL
+                     EDM=7.5624e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.08941e+03   1.06250e+01   5.14369e-03  -2.17373e-06
+   2  Mean         1.98728e+02   1.23792e+00   8.02964e-04   9.73055e-05
+   3  Sigma        1.46376e+02   1.28270e+00   1.53781e-06  -1.05078e-02
+ FCN=30.278 FROM MIGRAD    STATUS=CONVERGED      68 CALLS          69 TOTAL
+                     EDM=7.897e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.24204e+03   1.20298e+01   2.45659e-02  -4.26756e-06
+   2  Mean         1.58934e+02   1.13355e+00   3.09115e-03  -9.44633e-05
+   3  Sigma        1.31315e+02   1.19659e+00   6.83178e-06  -2.79445e-02
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1571783600
+filledAve
+ FCN=29.4562 FROM MIGRAD    STATUS=CONVERGED      30 CALLS         299 TOTAL
+                     EDM=4.04387e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     4.50226e+02   6.59040e+00   1.32274e-02   7.71305e-06
+   2  Mean         1.37051e+02   2.01425e+00   5.42679e-03   2.09025e-05
+   3  Sigma        1.58242e+02   2.10568e+00   9.69673e-06   7.62577e-03
+ FCN=41.5455 FROM HESSE     STATUS=OK             16 CALLS         237 TOTAL
+                     EDM=6.96252e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     4.89685e+02   7.11242e+00   3.40270e-03  -5.54481e-06
+   2  Mean         2.02938e+02   1.81998e+00   1.15926e-03  -6.21411e-05
+   3  Sigma        1.44519e+02   1.84683e+00   2.20586e-06  -8.90712e-03
+ FCN=30.9669 FROM MIGRAD    STATUS=CONVERGED      66 CALLS          67 TOTAL
+                     EDM=2.25564e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     5.49206e+02   7.93242e+00   1.63548e-02  -1.54333e-06
+   2  Mean         1.67716e+02   1.68002e+00   4.63104e-03   3.81705e-05
+   3  Sigma        1.32768e+02   1.75034e+00   9.88978e-06  -4.70369e-03
+ fitstaus1: 0
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1571849680
+filledAve
+ FCN=1.73932 FROM HESSE     STATUS=OK             18 CALLS         448 TOTAL
+                     EDM=7.15483e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     3.45645e+00   1.69378e+01   7.97439e-04  -2.77303e-04
+   2  Mean        -1.41553e+03   3.56101e+03   1.67579e-01  -1.00201e-06
+   3  Sigma        1.03972e+03   8.64236e+02   1.27218e-02  -1.99978e-05
+ FCN=0.463396 FROM HESSE     STATUS=OK             16 CALLS         200 TOTAL
+                     EDM=3.0681e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.07416e+00   3.93207e-01   3.44819e-05  -4.92624e-04
+   2  Mean         2.32526e+02   6.86066e+02   6.97098e-02  -1.02746e-06
+   3  Sigma        5.32445e+02   9.07600e+02   3.07493e-04   1.52342e-04
+ FCN=0.661822 FROM MIGRAD    STATUS=CONVERGED      77 CALLS          78 TOTAL
+                     EDM=6.31726e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     2.64682e+00   1.12275e+00   4.56080e-04  -9.21773e-05
+   2  Mean         1.21637e+02   2.93993e+01   1.77338e-02   2.56239e-06
+   3  Sigma        9.93865e+01   3.49827e+01   4.85230e-05  -4.15452e-04
+ fitstaus1: 4000
+ fitstaus2: 4000
+ fitstausave: 1571965440
+filledAve
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1572039328
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1571998528
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1572068192
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1572100832
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1572133984
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1572166528
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1572198864
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1572231056
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1572264112
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1572297008
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1572329456
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1572362144
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1572381280
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1572427360
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1572459104
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1572478816
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1572524816
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1572556784
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1572576496
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1572622608
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1572654352
+PlotAddress :0x5d8f3b30 0x5d904ce0 0x5d9358b0
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+0x5d907220____0x5d84bdb0
+Address:0x5d907220  Param:3828.22 -481.715 31.0406 -1.08581 0.0189592 -0.00012868
+Address:0x5d84bdb0  Param:3366.27 -419.888 27.6515 -0.997238 0.0180437 -0.000127262
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+
+****************************************
+Minimizer is Linear
+Chi2                      =  5.74022e+07
+NDf                       =         4678
+p0                        =      341.579   +/-   505.781     
+p1                        =     -52.7052   +/-   116.883     
+p2                        =       3.1754   +/-   10.1046     
+p3                        =   -0.0934812   +/-   0.411076    
+p4                        =   0.00134523   +/-   0.00792649  
+p5                        = -7.57419e-06   +/-   5.83754e-05 
+
+****************************************
+Minimizer is Linear
+Chi2                      =  4.90571e+07
+NDf                       =         4324
+p0                        =      243.558   +/-   458.626     
+p1                        =     -47.5185   +/-   112.645     
+p2                        =      3.56598   +/-   10.303      
+p3                        =    -0.129815   +/-   0.442108    
+p4                        =     0.002299   +/-   0.00897303  
+p5                        = -1.58791e-05   +/-   6.94527e-05 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -385.625   535.625
+5.5 325.05 4.53869
+Range_______:    -271.146   421.146
+7.5 237.898 3.43585
+Range_______:    -272.237   335.57
+9.5 206.245 2.16505
+Range_______:    -253.268   316.601
+11.5 181.707 2.15706
+Range_______:    -217.186   280.52
+13.5 157.709 1.93533
+Range_______:    -306.942   196.942
+15.5 153.591 2.15643
+Range_______:    -270.14   246.807
+17.5 145.073 2.34848
+Range_______:    -216.912   193.579
+19.5 134.3 1.11042
+Range_______:    -219.923   196.589
+21.5 129.917 1.01992
+Range_______:    -280.935   257.602
+23.5 134.355 2.65955
+Range_______:    -528.078   418.078
+25.5 735.218 383.663
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+
+****************************************
+Minimizer is Minuit / Migrad
+Chi2                      =       175.11
+NDf                       =            7
+Edm                       =  7.84463e-11
+NCalls                    =           58
+p0                        =   2.7772e+06   +/-   82399.5     
+p1                        =      41.6544   +/-   5.12997      	 (limited)
