@@ -336,6 +336,7 @@ int main(int argc, char* argv[]){
   Double_t RMSVal=0;
   int count=0;
   std::vector<Double_t> YVal;
+
   /*
   Mean+=GraphTResVsTemp[0]->GetMean(2);
   for(int j=0;j< GraphTResVsTemp[0]->GetN();j++){
@@ -850,6 +851,7 @@ int main(int argc, char* argv[]){
   CavasSatVal->Divide(2,1);
   
   CavasSatVal->cd(1);
+  SatValVsTempCh59->SetTitle("SatValVsTempCh59");                                       
   SatValVsTempCh59->Draw("AP");
   SatValVsTempCh59->Fit(FitSatCh59,"W");
   //SatValVsTempCh59->SetMinimum(130);
@@ -857,6 +859,7 @@ int main(int argc, char* argv[]){
   SatValVsTempCh59->Draw("AP");
   
   CavasSatVal->cd(2);
+  SatValVsTempCh315->SetTitle("SatValVsTempCh315");
   SatValVsTempCh315->Draw("AP");
   SatValVsTempCh315->Fit(FitSatCh315,"W");
   //SatValVsTempCh315->SetMinimum(130);
@@ -867,7 +870,29 @@ int main(int argc, char* argv[]){
 
   ResidualPlot(SatValVsTempCh59,FitSatCh59,"SatValUncorrTot59");
   ResidualPlot(SatValVsTempCh315,FitSatCh315,"SatValUncorrTot315");
+  
+  TFile* f = new TFile("Plot/Plot.root","RECREATE");
+  
+  f->cd();
+
+  SatValVsTempCh59->SetName(SatValVsTempCh59->GetTitle());
+  SatValVsTempCh59->Write();
+  SatValVsTempCh315->SetName(SatValVsTempCh315->GetTitle());
+  SatValVsTempCh315->Write();
+  FitSatCh59->Write();
+  FitSatCh315->Write();
+  
+  LYVsTempCh59->SetName(LYVsTempCh59->GetTitle());
+  LYVsTempCh59->Write();
+  FitLYCh59->Write();
+  LYVsTempCh315->SetName(LYVsTempCh315->GetTitle());
+  LYVsTempCh315->Write();
+  FitLYCh315->Write();
+  
+  f->Save();
+  f->Close();
  
+  return 0;
 
 }//chiudo main
 

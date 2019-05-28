@@ -852,23 +852,33 @@ int main(int argc, char* argv[]){
   CavasSatVal->cd(1);
   SatValVsTempCh59->Draw("AP");
   SatValVsTempCh59->Fit(FitSatCh59,"W");
-  //SatValVsTempCh59->SetMinimum(130);
-  //SatValVsTempCh59->SetMaximum(180);
+  SatValVsTempCh59->SetMinimum(130);
+  SatValVsTempCh59->SetMaximum(180);
   SatValVsTempCh59->Draw("AP");
   
   CavasSatVal->cd(2);
   SatValVsTempCh315->Draw("AP");
   SatValVsTempCh315->Fit(FitSatCh315,"W");
-  //SatValVsTempCh315->SetMinimum(130);
-  //SatValVsTempCh315->SetMaximum(180);
+  SatValVsTempCh315->SetMinimum(130);
+  SatValVsTempCh315->SetMaximum(180);
   SatValVsTempCh315->Draw("AP");
 
   CavasSatVal->SaveAs("Plot/SatValUncorrTot.png");    
 
   ResidualPlot(SatValVsTempCh59,FitSatCh59,"SatValUncorrTot59");
   ResidualPlot(SatValVsTempCh315,FitSatCh315,"SatValUncorrTot315");
- 
 
+
+  TFile* file = new TFile("/Plot/Plot.root","RECREATE");
+  file->cd();
+  
+  SatValVsTempCh59->Write();
+  SatValVsTempCh315->Write();
+  
+
+  file->Save();
+  file->Close();
+  
 }//chiudo main
 
 void ResidualPlot(TMultiGraph* graph,TF1* fit, std::string name){

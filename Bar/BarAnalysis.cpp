@@ -65,7 +65,6 @@ int main(int argc, char* argv[] ){
   gSystem->Exec(("mkdir "+DirData+"/Plot/TR/ProjectionAEff").c_str());
   gSystem->Exec(("mkdir "+DirData+"/Plot/TR/ProjectionTemp").c_str());
   
-  //gStyle->SetOptStat("000001000");
   
   TFile* f = new TFile(("../RootFileGraphBar/"+RootFileName+".root").c_str(),"RECREATE");
 
@@ -499,8 +498,12 @@ int main(int argc, char* argv[] ){
   
   TimeResVsAEff->SetMarkerStyle(8);
   
+  TimeResVsAEff->GetXaxis()->SetRangeUser(0,25);
+  TimeResVsAEff->GetYaxis()->SetRangeUser(0,800);
+
   TimeResVsAEff->Draw("AP");
   TimeResVsAEff->Fit(fitAEff,"RW");
+  
   
   CanvasTimeResVsAEff->SaveAs((DirData+"/Plot/TR/TimeResVsAEff.png").c_str()); 
   
@@ -574,8 +577,8 @@ void GetPedestal(TTree* tree,Double_t* ped,Double_t* RMSPed,std::vector<int> NCH
 
   for(int i=0;i<(int)NCH.size();i++){
     
-    if( NCH[i]==288 ){ ped[mapCh[NCH[i]]]= histo[mapCh[NCH[i]]]->GetMean()-6; }  //rimuovi quando il canale funziona
-    else{ ped[mapCh[NCH[i]]]= histo[mapCh[NCH[i]]]->GetMean(); }   //rimuovi quando il canale funziona
+    
+    ped[mapCh[NCH[i]]]= histo[mapCh[NCH[i]]]->GetMean(); //rimuovi quando il canale funziona
     
     //ped[mapCh[NCH[i]]]= histo[mapCh[NCH[i]]]->GetMean();
     RMSPed[mapCh[NCH[i]]]= histo[mapCh[NCH[i]]]->GetRMS();
@@ -708,6 +711,7 @@ void GetTdiff(TTree* tree, TH1D** histo,TH2D** tdiffVsE,TH2D** tdiffVsT,TH2D* td
       tdiffVsT[2]->Fill(temp1,(time[mapCh[NCH[mapTime["time2"]]]]+time[mapCh[NCH[mapTime["time1"]]]])/2-time[mapCh[NCH[mapTime["timeRef"]]]]);
     
     }//chiudo if grande
+
     
 
     if(energy[mapCh[NCH[mapTime["timeRef"]]]]-ped[mapCh[NCH[mapTime["timeRef"]]]] < fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(1)+3*fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(2) && 
