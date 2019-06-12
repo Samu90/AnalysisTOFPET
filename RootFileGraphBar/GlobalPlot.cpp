@@ -160,9 +160,12 @@ int main(int argc, char* argv[]){
   gSystem->Exec("ls File*.root > filelist.txt");
 
   std::vector<std::string> FileList;
-  FileList=ReadData("filelist.txt");
+  FileList=ReadData("listfiletemp.txt");
   int NFile = FileList.size();
 
+  FileListOrigin=FileList;
+  std::cout<< NFile << std::endl;
+  
   if(PlotDataset){
     
     for(int i=0; i<NFile;i++){
@@ -243,35 +246,42 @@ int main(int argc, char* argv[]){
   TCanvas* CanvasCh59 = new TCanvas("CanvasCh59LT","CanvasCh59LT",1500,800);
   CanvasCh59->Divide(2,1);
   TLegend* LegendCh59 = new TLegend(0.2, 0.2, .2, .2);
-    std::cout << "kk16" << std::endl;
   CanvasCh59->cd(1);
-  GraphCh59LTP1[0]->GetXaxis()->SetLimits(26,36);
+  GraphCh59LTP1[0]->GetYaxis()->SetLimits(0,200);
+  GraphCh59LTP1[0]->GetYaxis()->SetRangeUser(0,200);
+  GraphCh59LTP1[0]->GetXaxis()->SetRangeUser(30,36);
   GraphCh59LTP1[0]->Draw("AP");
-  std::cout << "kk17" << std::endl;
+  
   CanvasCh59->cd(2);
-  GraphCh59GTP1[0]->GetXaxis()->SetLimits(17,27);
+  GraphCh59GTP1[0]->GetYaxis()->SetLimits(0,200);
+  GraphCh59GTP1[0]->GetYaxis()->SetRangeUser(0,200);
+  GraphCh59GTP1[0]->GetXaxis()->SetRangeUser(24,28);
   GraphCh59GTP1[0]->Draw("AP");
-
+  
+  
   for(int i=0;i<NFile;i++){
+  
     CanvasCh59->cd(1);
-    GraphCh59LTP1[i]->SetMarkerStyle(24+i);
-    GraphCh59LTP2[i]->SetMarkerStyle(24+i);
+    GraphCh59LTP1[i]->SetMarkerStyle(22+i);
+    GraphCh59LTP2[i]->SetMarkerStyle(22+i);
     LegendCh59->AddEntry(GraphCh59LTP1[i],(FileListOrigin.at(i).erase(FileListOrigin.at(i).size()-3,FileListOrigin.at(i).size())).c_str());
     GraphCh59LTP1[i]->Draw("SAMEP");
     GraphCh59LTP2[i]->Draw("SAMEP");
 
+  
+    
     CanvasCh59->cd(2);
-    GraphCh59GTP1[i]->SetMarkerStyle(24+i);
-    GraphCh59GTP2[i]->SetMarkerStyle(24+i);
+    GraphCh59GTP1[i]->SetMarkerStyle(22+i);
+    GraphCh59GTP2[i]->SetMarkerStyle(22+i);
     GraphCh59GTP1[i]->Draw("SAMEP");
     Ch59P1->Add(GraphCh59GTP1[i]);
     GraphCh59GTP2[i]->Draw("SAMEP");
     Ch59P2->Add(GraphCh59GTP2[i]);
     
-    GraphBetaLYCh59[i]->SetMarkerStyle(24+i);
+    GraphBetaLYCh59[i]->SetMarkerStyle(22+i);
     LYVsTempCh59->Add(GraphBetaLYCh59[i]);
     
-    GraphSatValCh59[i]->SetMarkerStyle(24+i);
+    GraphSatValCh59[i]->SetMarkerStyle(22+i);
     SatValVsTempCh59->Add(GraphSatValCh59[i]);
   }
   
@@ -290,34 +300,38 @@ int main(int argc, char* argv[]){
   TLegend* LegendCh315 = new TLegend(0.2, 0.2, .2, .2);
   
   CanvasCh315->cd(1);
-  GraphCh315LTP1[0]->GetXaxis()->SetLimits(26,36);
+  GraphCh315LTP1[0]->GetYaxis()->SetLimits(0,200);
+  GraphCh315LTP1[0]->GetYaxis()->SetRangeUser(0,200);
+  GraphCh315LTP1[0]->GetXaxis()->SetLimits(30,36);
   GraphCh315LTP1[0]->Draw("AP");
   
   CanvasCh315->cd(2);
-  GraphCh315GTP1[0]->GetXaxis()->SetLimits(17,27);
+  GraphCh315GTP1[0]->GetYaxis()->SetLimits(0,200);
+  GraphCh315GTP1[0]->GetYaxis()->SetRangeUser(0,200);
+  GraphCh315GTP1[0]->GetXaxis()->SetLimits(24,28);
   GraphCh315GTP1[0]->Draw("AP");
  
   for(int i=0;i<NFile;i++){
   
     CanvasCh315->cd(1);
-    GraphCh315LTP1[i]->SetMarkerStyle(24+i);
-    GraphCh315LTP2[i]->SetMarkerStyle(24+i);
+    GraphCh315LTP1[i]->SetMarkerStyle(22+i);
+    GraphCh315LTP2[i]->SetMarkerStyle(22+i);
     LegendCh315->AddEntry(GraphCh315LTP1[i],(FileListOrigin.at(i).erase(FileListOrigin.at(i).size()-3,FileListOrigin.at(i).size())).c_str());
     GraphCh315LTP1[i]->Draw("SAMEP");
     GraphCh315LTP2[i]->Draw("SAMEP");
 
     CanvasCh315->cd(2);
-    GraphCh315GTP1[i]->SetMarkerStyle(24+i);
-    GraphCh315GTP2[i]->SetMarkerStyle(24+i);
+    GraphCh315GTP1[i]->SetMarkerStyle(22+i);
+    GraphCh315GTP2[i]->SetMarkerStyle(22+i);
     GraphCh315GTP1[i]->Draw("SAMEP");
     Ch315P1->Add(GraphCh315GTP1[i]);
     GraphCh315GTP2[i]->Draw("SAMEP");
     Ch315P2->Add(GraphCh315GTP2[i]);
  
-    GraphBetaLYCh315[i]->SetMarkerStyle(24+i);
+    GraphBetaLYCh315[i]->SetMarkerStyle(22+i);
     LYVsTempCh315->Add(GraphBetaLYCh315[i]);
 
-    GraphSatValCh315[i]->SetMarkerStyle(24+i);
+    GraphSatValCh315[i]->SetMarkerStyle(22+i);
     SatValVsTempCh315->Add(GraphSatValCh315[i]);
   }
   
@@ -384,8 +398,8 @@ int main(int argc, char* argv[]){
   CanvasFitTotal->Divide(2,2);
   
   CanvasFitTotal->cd(1);
-  Ch59P1->SetMinimum(36);
-  Ch59P1->SetMaximum(44);
+  //Ch59P1->SetMinimum(36);
+  //Ch59P1->SetMaximum(44);
   Ch59P1->SetTitle("Ch59P511KeV "+FitTotCh59P1->GetExpFormula());
   Ch59P1->Draw("AP");
   Ch59P1->Fit(FitTotCh59P1, "RW");
@@ -400,8 +414,8 @@ int main(int argc, char* argv[]){
 
 
   CanvasFitTotal->cd(2);
-  Ch315P1->SetMinimum(36);
-  Ch315P1->SetMaximum(44);
+  //Ch315P1->SetMinimum(36);
+  //Ch315P1->SetMaximum(44);
   Ch315P1->SetTitle("Ch315P511KeV");
   Ch315P1->Draw("AP");
   Ch315P1->Fit(FitTotCh315P1,"W");
@@ -416,8 +430,8 @@ int main(int argc, char* argv[]){
 
 
   CanvasFitTotal->cd(3);
-  Ch59P2->SetMinimum(60);
-  Ch59P2->SetMaximum(84);
+  //Ch59P2->SetMinimum(60);
+  //Ch59P2->SetMaximum(84);
   Ch59P2->SetTitle("Ch59P1275KeV");
   Ch59P2->Draw("AP");
   Ch59P2->Fit(FitTotCh59P2,"W");
@@ -431,8 +445,8 @@ int main(int argc, char* argv[]){
 
   
   CanvasFitTotal->cd(4);
-  Ch315P2->SetMinimum(60);
-  Ch315P2->SetMaximum(84);
+  //Ch315P2->SetMinimum(60);
+  //Ch315P2->SetMaximum(84);
   Ch315P2->SetTitle("Ch315P1275KeV");
   Ch315P2->Draw("AP");
   Ch315P2->Fit(FitTotCh315P2,"W");
@@ -647,9 +661,9 @@ int main(int argc, char* argv[]){
   TH1D* HistoLYRelT0Ch59[2];
   TH1D* HistoLYRelT0Ch315[2];
 
-  Double_t minTH=0.85;
-  Double_t maxTH= 1.15;
-  Int_t NBin=300;
+  Double_t minTH=0;
+  Double_t maxTH= 3;
+  Int_t NBin=80;
   
   HistoLYRelT0Ch59[0]= new TH1D("HistoLYRelT0Ch59P1","HistoLYRelT0Ch59P1",NBin,minTH,maxTH);
   HistoLYRelT0Ch59[1]= new TH1D("HistoLYRelT0Ch59P2","HistoLYRelT0Ch59P2",NBin,minTH,maxTH);
@@ -889,10 +903,56 @@ int main(int argc, char* argv[]){
   LYVsTempCh315->Write();
   FitLYCh315->Write();
   
+  Ch59P1->SetName("Ch59P511KeV");
+  Ch59P1->Write();
+
+  Ch59P2->SetName(Ch59P2->GetTitle());  
+  Ch59P2->Write();
+ 
+  Ch315P1->SetName(Ch315P1->GetTitle());
+  Ch315P1->Write();
+  
+  Ch315P2->SetName(Ch315P2->GetTitle());
+  Ch315P2->Write();
+  
+  LYCh59Proj->Write();
+  LYCh315Proj->Write();
+
+
   f->Save();
   f->Close();
  
   return 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }//chiudo main
 
@@ -911,7 +971,7 @@ void ResidualPlot(TMultiGraph* graph,TF1* fit, std::string name){
     
   }//chiudo for i
   
-  TH1D* residual = new TH1D(("Res"+name).c_str(),("Res"+name).c_str(),80, TMath::Mean(vec.begin(),vec.end())-5*TMath::RMS(vec.begin(),vec.end()),TMath::Mean(vec.begin(),vec.end())+5*TMath::RMS(vec.begin(),vec.end()));
+  TH1D* residual = new TH1D(("Res"+name).c_str(),("Res"+name).c_str(),20, TMath::Mean(vec.begin(),vec.end())-5*TMath::RMS(vec.begin(),vec.end()),TMath::Mean(vec.begin(),vec.end())+5*TMath::RMS(vec.begin(),vec.end()));
   
   for(int i=0; i < (int)vec.size();i++){
     
@@ -926,4 +986,5 @@ void ResidualPlot(TMultiGraph* graph,TF1* fit, std::string name){
 
   delete CanvasRes;
   delete residual;
+
 }

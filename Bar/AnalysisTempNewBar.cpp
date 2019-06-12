@@ -204,7 +204,7 @@ TF1* FitNaSpectrumCBBar(TH1D* Profile,Int_t* fitStatus ,Int_t chID){
   
   std::cout << EndPlot << std::endl;
 
-  peak2=EndPlot/1.09;
+  peak2=EndPlot/1.05;
 
   std::cout << peak2 << std::endl;
   
@@ -213,7 +213,13 @@ TF1* FitNaSpectrumCBBar(TH1D* Profile,Int_t* fitStatus ,Int_t chID){
   RMS2 = Profile->GetRMS();
   Profile->GetXaxis()->UnZoom();
 
-  std::cout << "p1 , RMS1 , p2 , RMS2 ->  " << peak1<< " " << RMS1 << " " << peak2 << " " <<RMS2<< std::endl;
+  Double_t CBPeak;
+  
+  Profile->GetXaxis()->SetRangeUser((0.9)*(peak2-3*RMS2),peak2-3*RMS2);
+  CBPeak = Profile->GetBinCenter(Profile->GetMaximumBin());
+  Profile->GetXaxis()->UnZoom();
+  
+  std::cout << "p1 , RMS1 , p2 , RMS2 , CBPeak->  " << peak1<< " " << RMS1 << " " << peak2 << " " <<RMS2<< " " << CBPeak << std::endl;
 
   TF1* spectrum = new TF1(Form("SpectrumFit_%s", Profile->GetName()),"[0] * exp(-( x-[1] )*( x-[1] )/( 2* [2]* [2])) + [3] / (exp( (x*[4]-(2*[1]*[1]/([1]+2*[1])))) + 1)+ [5] * exp(-( x-[6] )*( x-[6] )/( 2* [7]* [7])) +crystalball([8],[9],[10],[11],[12])",min+1,EndPlot);
   
@@ -236,7 +242,8 @@ TF1* FitNaSpectrumCBBar(TH1D* Profile,Int_t* fitStatus ,Int_t chID){
     //spectrum->SetParameter(7,3.2);
     spectrum->SetParameter(7,RMS2);
     spectrum->SetParameter(8,max/12);
-    spectrum->SetParameter(9,peak2/1.21);
+    //spectrum->SetParameter(9,peak2/1.21);
+    spectrum->SetParameter(9,CBPeak);
     spectrum->SetParameter(10,4.3);
     spectrum->SetParameter(11,0.04);
     spectrum->SetParameter(12,-1.4);
@@ -261,14 +268,18 @@ TF1* FitNaSpectrumCBBar(TH1D* Profile,Int_t* fitStatus ,Int_t chID){
     //spectrum->SetParameter(7,3.2);
     spectrum->SetParameter(7,RMS2);
     spectrum->SetParameter(8,max/12);
-    spectrum->SetParameter(9,peak2/1.21);
+    //spectrum->SetParameter(9,peak2/1.18);
+    spectrum->SetParameter(9,CBPeak);
     spectrum->SetParameter(10,3.8);
     spectrum->SetParameter(11,0.02);
     spectrum->SetParameter(12,-4e5);
     
-    //spectrum->SetParLimits(10,3.6,4.6);
-    spectrum->SetParLimits(3,4,2700);
-    spectrum->SetParLimits(11,0.02,1);
+    spectrum->SetParLimits(10,3.6,4.6);
+    //spectrum->SetParLimits(3,4,4000);
+    spectrum->SetParLimits(7,1.8,3.2);
+    spectrum->SetParLimits(9,0,144);
+    //spectrum->SetParLimits(10,0,3.6);
+    spectrum->SetParLimits(11,0.02,1.7);
     spectrum->SetParLimits(12,-5e-7,-2000);
 
     
@@ -353,6 +364,42 @@ void RatioWithError(Double_t* A,Double_t* B,Double_t* sA,Double_t* sB,Double_t* 
   
 }
 
+void SetPlotRange(TGraphErrors* g1, TGraphErrors* g2){
+  
+  if(g1!=0 && g2!=0){
+    
+    Double_t max1,max2,min1,min2;
+    Double_t Max, Min;
+    
+    max1 = TMath::MaxElement(g1->GetN(),g1->GetY());
+    max2 = TMath::MaxElement(g2->GetN(),g2->GetY());
+    
+    min1 = TMath::MinElement(g1->GetN(),g1->GetY());
+    min2 = TMath::MinElement(g2->GetN(),g2->GetY());
+    
+    Min= TMath::Min(min1,min2);
+    Max= TMath::Max(max1,max2);
+    
+    g1->GetYaxis()->SetLimits(Min-0.2*Min,Max+0.2*Max);
+    g1->GetYaxis()->SetRangeUser(Min-0.2*Min,Max+0.2*Max);
+    
+    g2->GetYaxis()->SetLimits(Min-0.2*Min,Max+0.2*Max);
+    g2->GetYaxis()->SetRangeUser(Min-0.2*Min,Max+0.2*Max);
+  
+  } else if(g2==0){
+    
+    Double_t Max, Min;
+    Max = TMath::MaxElement(g1->GetN(),g1->GetY());
+    Min = TMath::MinElement(g1->GetN(),g1->GetY());
+    
+    g1->GetYaxis()->SetLimits(Min-0.2*Min,Max+0.2*Max);
+    g1->GetYaxis()->SetRangeUser(Min-0.2*Min,Max+0.2*Max);
+  }
+  
+  
+}
+
+
 void SetStyleRatioPlot(TGraphErrors* ratioPlot,Double_t minRange,Double_t maxRange){
 
   ratioPlot->SetTitle("");
@@ -409,14 +456,14 @@ int main(int argc, char* argv[] ){
   gSystem->Exec(("mkdir "+DirData+"/Plot/EnergyTempCB").c_str());
   gSystem->Exec(("mkdir "+DirData+"/Plot/EnergyTempCB/Partials/").c_str());
   gSystem->Exec(("mkdir "+DirData+"/Plot/EnergyTempCB/CalibPlot/").c_str());
-  gSystem->Exec(("mkdir "+DirData+"/../RootFileGraphBar").c_str());
+  //gSystem->Exec(("mkdir "+DirData+"/../RootFileGraphBar").c_str());
   
   
   //gStyle->SetOptStat("000001000");
 
-  TFile* f = new TFile(("../RootFileGraphBar/"+RootFileName+".root").c_str(),"RECREATE");
+  TFile* f = new TFile(("../RootFileGraphBar/"+RootFileName+OV+".root").c_str(),"RECREATE");
 
-  if(f) std::cout << "Root File Graph opened->"<<RootFileName << std::endl;
+  if(f) std::cout << "Root File Graph opened->" << RootFileName << std::endl;
 
   std::vector<std::string> FileListPedestal;
   std::string ListFilePed = DirData+"/PedFile.txt";
@@ -509,7 +556,7 @@ int main(int argc, char* argv[] ){
 
         
     HistoCh59[i]  = new TH1D(Form("HistoCh59N%d", i),Form("HistoCh59N%d", i), 100,0,100);
-    HistoCh288[i] = new TH1D(Form("HistoCh288N%d",i),Form("HistoCh288N%d",i), 100,0,100);
+    HistoCh288[i] = new TH1D(Form("HistoCh288N%d",i),Form("HistoCh288N%d",i), 200,0,200);
 
         
     GetSpectrum(tree0,tree0coinc,HistoCh59[i],HistoCh288[i],HistoCh291[i],Pedestal[i][0],Pedestal[i][1],Pedestal[i][2]);
@@ -586,12 +633,13 @@ int main(int argc, char* argv[] ){
   PlotEVsT->cd(1)->SetGridx();
   PlotEVsT->cd(1)->SetGridy();
   
-  Graph1Ch59->SetMaximum(90);
-  Graph1Ch59->SetMinimum(30);
+  //Graph1Ch59->SetMaximum(150);
+  //Graph1Ch59->SetMinimum(30);
   Graph1Ch59->SetTitle("EnergyVsTempCh59P1");
   Graph2Ch59->SetTitle("EnergyVsTempCh59P2");
   Graph1Ch59->GetXaxis()->SetTitle("TMeanRun [°C]");
   Graph1Ch59->GetYaxis()->SetTitle("E [DU]");
+  SetPlotRange(Graph1Ch59,Graph2Ch59);
   Graph1Ch59->Draw("AP");
   Graph2Ch59->Draw("SAMEP");
   
@@ -599,12 +647,13 @@ int main(int argc, char* argv[] ){
   PlotEVsT->cd(2)->SetGridx();
   PlotEVsT->cd(2)->SetGridy();
   
-  Graph1Ch288->SetMaximum(90);
-  Graph1Ch288->SetMinimum(30);
+  //Graph1Ch288->SetMaximum(150); //(TMath::MaxElement(NFilePhys,Graph1Ch288->GetY())) * 0.2 * (TMath::MaxElement(NFilePhys,Graph1Ch288->GetY())) );
+  //Graph1Ch288->SetMinimum(60);
   Graph1Ch288->SetTitle("EnergyVsTempCh288P1");
   Graph2Ch288->SetTitle("EnergyVsTempCh288P2");
   Graph1Ch288->GetXaxis()->SetTitle("TMeanRun [°C]");
   Graph1Ch288->GetYaxis()->SetTitle("E [DU]");
+  SetPlotRange(Graph1Ch288,Graph2Ch288);
   Graph1Ch288->Draw("AP");
   Graph2Ch288->Draw("SAMEP");
   
@@ -662,11 +711,12 @@ int main(int argc, char* argv[] ){
   p1Ch59->cd()->SetGridx();
   p1Ch59->cd()->SetGridy();
   
-  Graph1GlobalTempCh59->SetMaximum(90);
-  Graph1GlobalTempCh59->SetMinimum(30);
+  //Graph1GlobalTempCh59->SetMaximum(90);
+  //Graph1GlobalTempCh59->SetMinimum(30);
   Graph1GlobalTempCh59->SetTitle("EnergyVsBoxTempCh59P1");
   Graph2GlobalTempCh59->SetTitle("EnergyVsBoxTempCh59P2");
   Graph1GlobalTempCh59->GetYaxis()->SetTitle("E [DU]");
+  SetPlotRange(Graph1GlobalTempCh59,Graph2GlobalTempCh59);
   Graph1GlobalTempCh59->Draw("AP");
   Graph2GlobalTempCh59->Draw("SAMEP");
 
@@ -689,11 +739,12 @@ int main(int argc, char* argv[] ){
   p1Ch288->cd()->SetGridx();
   p1Ch288->cd()->SetGridy();
   
-  Graph1GlobalTempCh288->SetMaximum(90);
-  Graph1GlobalTempCh288->SetMinimum(30);
+  //Graph1GlobalTempCh288->SetMaximum(150);
+  //Graph1GlobalTempCh288->SetMinimum(30);
   Graph1GlobalTempCh288->SetTitle("EnergyVsBoxTempCh288P1");
   Graph2GlobalTempCh288->SetTitle("EnergyVsBoxTempCh288P2");
   Graph1GlobalTempCh288->GetYaxis()->SetTitle("E [DU]");
+  SetPlotRange(Graph1GlobalTempCh288,Graph2GlobalTempCh288);
   Graph1GlobalTempCh288->Draw("AP");
   Graph2GlobalTempCh288->Draw("SAMEP");
 
@@ -750,7 +801,7 @@ int main(int argc, char* argv[] ){
   pad1Peak1->cd()->SetGridx();
   pad1Peak1->cd()->SetGridy();
   
-  Graph1GlobalTempCh59->SetMaximum(45);
+  Graph1GlobalTempCh59->SetMaximum(Graph1GlobalTempCh59->GetMaximum()+0.2*Graph1GlobalTempCh59->GetMaximum());
   Graph1GlobalTempCh59->SetMinimum(35);
   Graph1GlobalTempCh288->SetMarkerStyle(4);
   Graph1GlobalTempCh59->SetMarkerStyle(8);
@@ -758,6 +809,7 @@ int main(int argc, char* argv[] ){
   //Graph1GlobalTempCh59->SetMarkerSize(.7);
   Graph1GlobalTempCh59->SetTitle("EnergyVsBoxTempPeak511Kev");
   Graph1GlobalTempCh59->GetYaxis()->SetTitle("E [DU]");
+  SetPlotRange(Graph1GlobalTempCh59,Graph1GlobalTempCh288);
   Graph1GlobalTempCh59->Draw("AP");
   Graph1GlobalTempCh288->Draw("SAMEP");
 
@@ -778,14 +830,15 @@ int main(int argc, char* argv[] ){
   pad1Peak2->cd()->SetGridx();
   pad1Peak2->cd()->SetGridy();
   
-  Graph2GlobalTempCh288->SetMaximum(90);
-  Graph2GlobalTempCh288->SetMinimum(60);
+  Graph2GlobalTempCh288->SetMaximum( (TMath::MaxElement(NFilePhys,Graph2GlobalTempCh288->GetY())) + 0.2 * (TMath::MaxElement(NFilePhys,Graph2GlobalTempCh288->GetY())) );
+  Graph2GlobalTempCh288->SetMinimum(40);
   Graph2GlobalTempCh288->SetMarkerStyle(4);
   Graph2GlobalTempCh59->SetMarkerStyle(8);
   //Graph2GlobalTempCh288->SetMarkerSize(.7);
   //Graph2GlobalTempCh59->SetMarkerSize(.7);
   Graph2GlobalTempCh288->SetTitle("EnergyVsBoxTempPeak1275KeV");
   Graph2GlobalTempCh288->GetYaxis()->SetTitle("E [DU]");
+  SetPlotRange(Graph2GlobalTempCh288,Graph2GlobalTempCh59);
   Graph2GlobalTempCh288->Draw("AP");
   Graph2GlobalTempCh59->Draw("SAMEP");
 
@@ -896,36 +949,37 @@ int main(int argc, char* argv[] ){
 
   PlotResCh59P1->GetXaxis()->SetTitle("TMeanBox [°C]");
   PlotResCh59P1->GetYaxis()->SetTitle("EnergyResolution");
-  PlotResCh59P1->SetMinimum(0.06);
-  PlotResCh59P1->SetMaximum(0.1);
+  PlotResCh59P1->SetMinimum( (TMath::MinElement(NFilePhys,PlotResCh59P1->GetY()))-0.2*(TMath::MinElement(NFilePhys,PlotResCh59P1->GetY())) );
+  PlotResCh59P1->SetMaximum( (TMath::MaxElement(NFilePhys,PlotResCh59P1->GetY()))+0.2*(TMath::MaxElement(NFilePhys,PlotResCh59P1->GetY())) );
   PlotResCh288P1->GetXaxis()->SetTitle("TMeanBox [°C]");
   PlotResCh288P1->GetYaxis()->SetTitle("EnergyResolution");
-  PlotResCh288P1->SetMinimum(0.06);
-  PlotResCh288P1->SetMaximum(0.1);
+  PlotResCh288P1->SetMinimum( (TMath::MinElement(NFilePhys,PlotResCh288P1->GetY()))-0.2*(TMath::MinElement(NFilePhys,PlotResCh288P1->GetY())) );
+  PlotResCh288P1->SetMaximum( (TMath::MaxElement(NFilePhys,PlotResCh288P1->GetY()))+0.2*(TMath::MaxElement(NFilePhys,PlotResCh288P1->GetY())) );
   PlotResCh59P2->GetXaxis()->SetTitle("TMeanBox [°C]");
   PlotResCh59P2->GetYaxis()->SetTitle("EnergyResolution");
-  PlotResCh59P2->SetMinimum(0.03);
-  PlotResCh59P2->SetMaximum(0.05);
+  PlotResCh59P2->SetMinimum( (TMath::MinElement(NFilePhys,PlotResCh59P2->GetY()))-0.2*(TMath::MinElement(NFilePhys,PlotResCh59P2->GetY())) );
+  PlotResCh59P2->SetMaximum( (TMath::MaxElement(NFilePhys,PlotResCh59P2->GetY()))+0.2*(TMath::MaxElement(NFilePhys,PlotResCh59P2->GetY())) );
   PlotResCh288P2->GetXaxis()->SetTitle("TMeanBox [°C]");
   PlotResCh288P2->GetYaxis()->SetTitle("EnergyResolution");
-  PlotResCh288P2->SetMinimum(0.03);
-  PlotResCh288P2->SetMaximum(0.08);
+  PlotResCh288P2->SetMinimum( (TMath::MinElement(NFilePhys,PlotResCh288P2->GetY()))-0.2*(TMath::MinElement(NFilePhys,PlotResCh288P2->GetY())) );
+  PlotResCh288P2->SetMaximum( (TMath::MaxElement(NFilePhys,PlotResCh288P2->GetY()))+0.2*(TMath::MaxElement(NFilePhys,PlotResCh288P2->GetY())) );
+
   
   ResolutionVsTemp->cd(1);
   PlotResCh59P1->Draw("AP");
-  ResSumCh59P1Line->Draw("SAME");
+  //ResSumCh59P1Line->Draw("SAME");
   
   ResolutionVsTemp->cd(2);
   PlotResCh288P1->Draw("AP");
-  ResSumCh288P1Line->Draw("SAME");
+  //ResSumCh288P1Line->Draw("SAME");
 
   ResolutionVsTemp->cd(3);
   PlotResCh59P2->Draw("AP");
-  ResSumCh59P2Line->Draw("SAME");
+  //ResSumCh59P2Line->Draw("SAME");
 
   ResolutionVsTemp->cd(4);
   PlotResCh288P2->Draw("AP");
-  ResSumCh288P2Line->Draw("SAME");
+  //ResSumCh288P2Line->Draw("SAME");
 
   ResolutionVsTemp->SaveAs((DirData+"/Plot/EnergyTempCB/ResolutionVsTemp.png").c_str());
   
@@ -1013,7 +1067,7 @@ int main(int argc, char* argv[] ){
   SatValVsMeanTemp[1]= new TGraphErrors(NFilePhys,MeanTGlobal,ACh288,SigmaTGlobal,sACh288);
   SatValVsMeanTemp[1]->SetTitle("SatValVsMeanTempCh288");
   SatValVsMeanTemp[1]->SetName(SatValVsMeanTemp[1]->GetTitle());
-  SatValVsMeanTemp[1]->GetYaxis()->SetRangeUser(90,120);  
+  SatValVsMeanTemp[1]->GetYaxis()->SetRangeUser( (TMath::MinElement(NFilePhys,SatValVsMeanTemp[1]->GetY()))-0.2*(TMath::MinElement(NFilePhys,SatValVsMeanTemp[1]->GetY())), (TMath::MaxElement(NFilePhys,SatValVsMeanTemp[1]->GetY()))+0.2*(TMath::MaxElement(NFilePhys,SatValVsMeanTemp[1]->GetY())) );  
 
   LYValVsMeanTemp[0]= new TGraphErrors(NFilePhys,MeanTGlobal,BCh59,SigmaTGlobal,sBCh59);
   LYValVsMeanTemp[0]->SetTitle("LYValVsMeanTempCh59");
@@ -1022,7 +1076,7 @@ int main(int argc, char* argv[] ){
   LYValVsMeanTemp[1]= new TGraphErrors(NFilePhys,MeanTGlobal,BCh288,SigmaTGlobal,sBCh288);
   LYValVsMeanTemp[1]->SetTitle("LYValVsMeanTempCh288");
   LYValVsMeanTemp[1]->SetName(LYValVsMeanTemp[1]->GetTitle()); 
-  LYValVsMeanTemp[1]->GetYaxis()->SetRangeUser(0.8e-3,1.1e-3);
+  LYValVsMeanTemp[1]->GetYaxis()->SetRangeUser((TMath::MinElement(NFilePhys,LYValVsMeanTemp[1]->GetY()))-0.2*(TMath::MinElement(NFilePhys,LYValVsMeanTemp[1]->GetY())), (TMath::MaxElement(NFilePhys,LYValVsMeanTemp[1]->GetY()))+0.2*(TMath::MaxElement(NFilePhys,LYValVsMeanTemp[1]->GetY())));
   
   f->cd();
   LYValVsMeanTemp[0]->Write();
@@ -1046,7 +1100,11 @@ int main(int argc, char* argv[] ){
   LYValVsMeanTemp[1]->Draw("AP");
   CanvasValLY->SaveAs((DirData+"/Plot/EnergyTempCB/LYValueVsTemp.png").c_str());
 
- 
+  Graph1GlobalTempCh59->Write(); 
+  Graph2GlobalTempCh59->Write();
+  Graph1GlobalTempCh288->Write();
+  Graph2GlobalTempCh288->Write();
+
   f->Save();
   f->Close();
 
@@ -1067,3 +1125,6 @@ int main(int argc, char* argv[] ){
   myfile.close();
   
 }
+
+
+

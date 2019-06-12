@@ -38,7 +38,7 @@ std::vector<std::string> ReadData(std::string FileName){
 }
 
 ////////////////////////////////////////////////////////////////////////////
-void GetPedestal(TTree* tree,Double_t* pedch1,Double_t* pedch2){
+void GetPedestal(TTree* tree,Double_t* pedch1,Double_t* pedch2, Double_t* RMSPed1, Double_t* RMSPed2){
   
   TH1F* histoCh1 = new TH1F("pippoch1","pippoch1",600,0,600);
   TH1F* histoCh2 = new TH1F("pippoch2","pippoch2",600,0,600);
@@ -58,8 +58,11 @@ void GetPedestal(TTree* tree,Double_t* pedch1,Double_t* pedch2){
   std::cout << "Filled"<< std::endl;
 
   *pedch1 = histoCh1->GetMean();
-  *pedch2 = histoCh2->GetMean();
+  *RMSPed1 = histoCh1->GetRMS();
   
+  *pedch2 = histoCh2->GetMean();
+  *RMSPed2 = histoCh2->GetRMS();  
+
   delete histoCh1;
   delete histoCh2;
 }
@@ -163,7 +166,7 @@ void GetTimeRes(TTree* tree, TF1* FitCh59, TF1* FitCh315, Double_t PedCh59,Doubl
   Double_t mean315=FitCh315->GetParameter(1);
   Double_t RMS59=FitCh59->GetParameter(2);
   Double_t RMS315=FitCh315->GetParameter(2);
-  Float_t NS=2.5;
+  Float_t NS=3;
 
   tree->SetBranchAddress("time",time);
   tree->SetBranchAddress("energy",energy);
@@ -178,22 +181,29 @@ void GetTimeRes(TTree* tree, TF1* FitCh59, TF1* FitCh315, Double_t PedCh59,Doubl
     }//chiudo if
     
   }//chiudo for
-  TF1* preFit = new TF1("TempFit","gaus");
-  
+  TF1* preFit = new TF1("TempFit","gaus", (Tdiff->GetMean())-2*(Tdiff->GetRMS()), (Tdiff->GetMean())+2*(Tdiff->GetRMS()));
 
   preFit->SetParameter(0,Tdiff->GetMaximum());
   preFit->SetParameter(1,Tdiff->GetBinCenter(Tdiff->GetMaximumBin()));
   
-  Tdiff->Fit(preFit,"Q");
+  Tdiff->Fit(preFit,"RQ");
 
   FitTdiff->SetParameter(0,preFit->GetParameter(0));
   FitTdiff->SetParameter(1,preFit->GetParameter(1));
   FitTdiff->SetParameter(2,preFit->GetParameter(2));
 
-  Tdiff->Fit(FitTdiff,"Q");
+  FitTdiff->SetRange((Tdiff->GetMean())-2*(Tdiff->GetRMS()), (Tdiff->GetMean())+2*(Tdiff->GetRMS()));
+
+  Tdiff->Fit(FitTdiff,"RQ");
   
 }
 ///////////////////////////////////////////////////////////////////////////////////////
+
+void AmpCorrection(TTree*, TH2D*, TH2D*, TF1*, TF1*, Double_t, Double_t,TF1*,TF1*);
+void GetTDiffVsAEff(TTree* , TH2D* , TF1*, TF1*, Double_t, Double_t , TF1*, TF1*, Double_t, Double_t);
+TGraphErrors* GetTimeResVsE(TH2D*, Int_t, std::string,TF1*  );
+
+//////////////////////////////////////////////////////////////////////////////////////
 
 int main(int argc, char* argv[] ){
   
@@ -209,7 +219,11 @@ int main(int argc, char* argv[] ){
   gSystem->Exec(("mkdir "+DirData+"/Plot/TimeRes").c_str());
   gSystem->Exec(("mkdir "+DirData+"/Plot/TimeRes/Partials/").c_str());
   gSystem->Exec(("mkdir "+DirData+"/Plot/TimeRes/Tdiff/").c_str());
-       
+  gSystem->Exec(("mkdir "+DirData+"/Plot/TimeRes/ProjAEff").c_str());
+  gSystem->Exec(("mkdir "+DirData+"/Plot/TimeRes/ProjTResE59").c_str());
+  gSystem->Exec(("mkdir "+DirData+"/Plot/TimeRes/ProjTResE315").c_str());
+
+
   std::vector<std::string> FileListPedestal;
   std::string ListFilePed = DirData+"/PedFile.txt";
   std::cout << "Lista File Pedestal: "<< ListFilePed << std::endl;    
@@ -227,6 +241,10 @@ int main(int argc, char* argv[] ){
   Double_t PedestalCh1[2];
   Double_t PedestalCh2[2];
 
+  Double_t RMSPedestal[NFilePhys][2];
+  Double_t RMSPedestalCh1[2];
+  Double_t RMSPedestalCh2[2];
+
   int k=0;
   ////////////////////////////////////////////////////CALCOLO PIEDISTALLI
   for(int i=0;i < (int)FileListPedestal.size()-1;i+=2){
@@ -238,11 +256,14 @@ int main(int argc, char* argv[] ){
     TTree* tree0 = (TTree*)f0->Get("data"); //Before
     TTree* tree1 = (TTree*)f1->Get("data"); //After
     
-    GetPedestal(tree0,&PedestalCh1[0],&PedestalCh2[0]);
-    GetPedestal(tree1,&PedestalCh1[1],&PedestalCh2[1]);
+    GetPedestal(tree0,&PedestalCh1[0],&PedestalCh2[0],&RMSPedestalCh1[0],&RMSPedestalCh2[0]);
+    GetPedestal(tree1,&PedestalCh1[1],&PedestalCh2[1],&RMSPedestalCh1[1],&RMSPedestalCh2[1]);
     
     Pedestal[k][0]=(PedestalCh1[0]+PedestalCh1[1])/2;
     Pedestal[k][1]=(PedestalCh2[0]+PedestalCh2[1])/2;
+
+    RMSPedestal[k][0] = (RMSPedestalCh1[0]+RMSPedestalCh1[1])/2;
+    RMSPedestal[k][1] = (RMSPedestalCh2[0]+RMSPedestalCh2[1])/2;
     
     k++;
   }// chiudo for
@@ -370,17 +391,367 @@ int main(int argc, char* argv[] ){
   FitTimeResTot->SetParameter(0,TimeResTot->GetMaximum());
   FitTimeResTot->SetParameter(1,TimeResTot->GetBinCenter(TimeResTot->GetMaximumBin()));
   TimeResTot->Draw();    
-  TimeResTot->Fit(FitTimeResTot);
+  FitTimeResTot->SetRange( (TimeResTot->GetMean())-2*(TimeResTot->GetRMS()) , (TimeResTot->GetMean())+2*(TimeResTot->GetRMS()) );
+  TimeResTot->Fit(FitTimeResTot,"R");
   
   CanvasTotalTimeRes->SaveAs((DirData+"/Plot/TimeRes/TimeResTotal.png").c_str());
 
+  //void AmpCorrection(TTree* tree, TH2D* Histo59, TH2D* Histo315, TF1* Spectrum59, TF1* Spectrum315, Double_t PedCh59, Double_t PedCh315)
 
+  TH2D* TDiffVsE59 = new TH2D("TDiffVsE59","TDiffVsE59",100,0,100,200,-2000,2000);
+  TH2D* TDiffVsE315 = new TH2D("TDiffVsE315","TDiffVsE315",100,0,100,200,-2000,2000);
+  
+  TDiffVsE59->GetXaxis()->SetTitle("ADC [D.U]");
+  TDiffVsE59->GetXaxis()->SetTitle("Tdiff[ps]");
+  
+  TDiffVsE315->GetXaxis()->SetTitle("ADC [D.U]");
+  TDiffVsE315->GetXaxis()->SetTitle("Tdiff[ps]");
+  
+  for(int i=0;i < NFilePhys;i++){
+    
+    std::cout << "i : " << i <<" File: " << DirData+"/"+FileListPhysicsCoinc.at(i) << std::endl;
+    f0= TFile::Open((DirData+"/"+FileListPhysicsCoinc.at(i)).c_str());
+    
+    if(f0) std::cout << "File Correctly Opend" << std::endl;
+    
+    tree0 = (TTree*)f0->Get("data");
+    
+    AmpCorrection(tree0,TDiffVsE59,TDiffVsE315,FitSpectrum[i][0],FitSpectrum[i][1],Pedestal[i][0],Pedestal[i][1],0,0);
+   
+  }
+
+  TF1* FitTdiffVsE59 = new TF1("FitTdiffVsE59","pol3");
+  TF1* FitTdiffVsE315 = new TF1("FitTdiffVsE315","pol3");
+
+  TCanvas* CanvasTDiffVsE = new TCanvas("CanvasTDiffVsE","CanvasTDiffVsE",1400,700);
+  CanvasTDiffVsE->Divide(2,1);
+  
+  CanvasTDiffVsE->cd(1);
+  TDiffVsE59->Draw("COLZ");
+  TDiffVsE59->Fit(FitTdiffVsE59);
+
+  CanvasTDiffVsE->cd(2);
+  TDiffVsE315->Draw("COLZ");
+  TDiffVsE315->Fit(FitTdiffVsE315);  
+
+  CanvasTDiffVsE->SaveAs((DirData+"/Plot/TimeRes/TdiffVsE.png").c_str());
+  
+  TH2D* TDiffCorrVsE59 = new TH2D("TDiffCorrVsE59","TDiffCorrVsE59",100,0,100,200,-2000,2000);
+  TH2D* TDiffCorrVsE315 = new TH2D("TDiffCorrVsE315","TDiffCorrVsE315",100,0,100,200,-2000,2000);
+
+  TDiffCorrVsE59->GetXaxis()->SetTitle("ADC [D.U]");
+  TDiffCorrVsE59->GetXaxis()->SetTitle("Tdiff[ps]");
+  
+  TDiffCorrVsE315->GetXaxis()->SetTitle("ADC [D.U]");
+  TDiffCorrVsE315->GetXaxis()->SetTitle("Tdiff[ps]");
+
+
+  for(int i=0;i < NFilePhys;i++){
+    
+    std::cout << "i : " << i <<" File: " << DirData+"/"+FileListPhysicsCoinc.at(i) << std::endl;
+    f0= TFile::Open((DirData+"/"+FileListPhysicsCoinc.at(i)).c_str());
+    
+    if(f0) std::cout << "File Correctly Opend" << std::endl;
+    
+    tree0 = (TTree*)f0->Get("data");
+    
+    AmpCorrection(tree0,TDiffCorrVsE59,TDiffCorrVsE315,FitSpectrum[i][0],FitSpectrum[i][1],Pedestal[i][0],Pedestal[i][1],FitTdiffVsE59,FitTdiffVsE315);
+    
+  }
+
+  
+  
+  TF1* FitTdiffCorrVsE59 = new TF1("FitTdiffCorrVsE59","pol3");
+  TF1* FitTdiffCorrVsE315 = new TF1("FitTdiffCorrVsE315","pol3");
+  
+  TCanvas* CanvasTdiffCorrVsE = new TCanvas("CanvasTdiffCorrVsE","CanvasTdiffCorrVsE",1400,700);
+  CanvasTdiffCorrVsE->Divide(2,1);
+  
+  CanvasTdiffCorrVsE->cd(1);
+  TDiffCorrVsE59->Draw("COLZ");
+  TDiffCorrVsE59->Fit(FitTdiffCorrVsE59);
+
+  CanvasTdiffCorrVsE->cd(2);
+  TDiffCorrVsE315->Draw("COLZ");
+  TDiffCorrVsE315->Fit(FitTdiffCorrVsE315);
+  
+  CanvasTdiffCorrVsE->SaveAs((DirData+"/Plot/TimeRes/TdiffVsECorr.png").c_str());
+
+  std::cout <<FitTdiffCorrVsE59->GetParameter(0) << " "<<FitTdiffCorrVsE59->GetParameter(1) << " "<<FitTdiffCorrVsE59->GetParameter(2) << " "<<FitTdiffCorrVsE59->GetParameter(3) << std::endl;
+  std::cout <<FitTdiffCorrVsE315->GetParameter(0) << " "<<FitTdiffCorrVsE315->GetParameter(1) << " "<<FitTdiffCorrVsE315->GetParameter(2) << " "<<FitTdiffCorrVsE315->GetParameter(3) << std::endl;
+
+  TH2D* TDiffVsAEff = new TH2D("TDiffVsAEff","TDiffVsAEff",100,0,100,200,-2000,2000);
+  TH2D* TDiffCorrVsAEff = new TH2D("TDiffCorrVsAEff","TDiffCorrVsAEff",100,0,100,200,-2000,2000);
+
+  TDiffVsAEff->GetXaxis()->SetTitle("AEff/#sigma_n");
+  TDiffVsAEff->GetYaxis()->SetTitle("Tdiff[ps]");
+
+  TDiffCorrVsAEff->GetXaxis()->SetTitle("AEff/#sigma_n");
+  TDiffCorrVsAEff->GetYaxis()->SetTitle("Tdiff[ps]");
+  
+
+  for(int i=0;i < NFilePhys;i++){
+    
+    std::cout << "i : " << i <<" File: " << DirData+"/"+FileListPhysicsCoinc.at(i) << std::endl;
+    f0= TFile::Open((DirData+"/"+FileListPhysicsCoinc.at(i)).c_str());
+    
+    if(f0) std::cout << "File Correctly Opend" << std::endl;
+    
+    tree0 = (TTree*)f0->Get("data");
+       
+    GetTDiffVsAEff(tree0,TDiffVsAEff,FitSpectrum[i][0],FitSpectrum[i][1],Pedestal[i][0],Pedestal[i][1],0,0,RMSPedestal[i][0],RMSPedestal[i][1]); //uncorrecter
+    GetTDiffVsAEff(tree0,TDiffCorrVsAEff,FitSpectrum[i][0],FitSpectrum[i][1],Pedestal[i][0],Pedestal[i][1],FitTdiffVsE59,FitTdiffVsE315,RMSPedestal[i][0],RMSPedestal[i][1]); //corrected
+
+  }
+  
+    
+
+  TCanvas* CanvasTDiffVsAEff = new TCanvas("CanvasTDiffVsAEff","CanvasTDiffVsAEff",1400,700);
+  CanvasTDiffVsAEff->Divide(2,1);
+  
+  CanvasTDiffVsAEff->cd(1);
+  TDiffVsAEff->GetXaxis()->SetRangeUser(0,40);
+  TDiffVsAEff->Draw("COLZ");
+  
+  CanvasTDiffVsAEff->cd(2);
+  TDiffCorrVsAEff->GetXaxis()->SetRangeUser(0,40); 
+  TDiffCorrVsAEff->Draw("COLZ");
+
+  CanvasTDiffVsAEff->SaveAs((DirData+"/Plot/TimeRes/TdiffVsAEff.png").c_str()); 
+
+
+  
+  TH1D* proj;
+  TF1* FitProj = new TF1("FitProj","gaus");
+  TCanvas* CanvasPlot = new TCanvas("CanvasPlot","CanvasPlot",700,700);
+  
+  std::vector<Double_t> X,Y,sY;
+  
+  Double_t ResPixel,SResPixel;
+  Double_t Res,SRes;
+
+  ResPixel= FitTimeResTot->GetParameter(2)/sqrt(2);
+  SResPixel= FitTimeResTot->GetParError(2)/sqrt(2);
+
+  for(int i=0; i<(TDiffCorrVsAEff->GetXaxis()->GetLast()-1); i+=2){
+    
+    proj=TDiffCorrVsAEff->ProjectionY(Form("Proj%i",i),i,i+1);
+    
+    CanvasPlot->cd(); 
+    proj->Draw();
+    proj->Fit(FitProj);
+    
+    FitProj->SetRange( FitProj->GetParameter(1)-1.7*FitProj->GetParameter(2), FitProj->GetParameter(1)+1.7*FitProj->GetParameter(2) );
+
+    proj->Fit(FitProj,"R");
+    
+    Res = FitProj->GetParameter(2); 
+    SRes = FitProj->GetParError(2);
+
+    if(FitProj->GetParError(2)<50 && proj->GetEntries()>100){
+      
+      X.push_back( TDiffCorrVsAEff->GetXaxis()->GetBinCenter(i+1) );
+      Y.push_back( sqrt(Res*Res-ResPixel*ResPixel) );
+      sY.push_back( sqrt( Res*Res/(Res*Res+ResPixel*ResPixel)*SRes*SRes + ResPixel*ResPixel/(Res*Res+ResPixel*ResPixel)*SResPixel*SResPixel ) );
+                            
+      CanvasPlot->SaveAs((DirData+"/Plot/TimeRes/ProjAEff/Proj"+std::to_string(i)+".png").c_str());
+    }
+    
+  }
+  
+  
+  
+  TGraphErrors* TResVsAEff = new TGraphErrors(X.size(),&X[0],&Y[0],0,&sY[0]);
+
+  TF1* fitTresVsAEff = new TF1("fitTresVsAEff","sqrt( [0]*[0]/(x*x)+2*[1]*[1] )",X.at(0)+1, X.at(X.size()-1)-1);
+  // TF1* fitTresVsAEff = new TF1("fitTresVsAEff","sqrt( [0]*[0]/(x)+2*[1]*[1] )",X.at(0)+1, X.at(X.size()-1)-1);
+  
+  TCanvas* CanvasTResVsAEff = new TCanvas("CanvasTResVsAEff","CanvasTResVsAEff",700,700);
+  TResVsAEff->SetMarkerStyle(8);
+  TResVsAEff->SetTitle("TResVsAEff");
+  TResVsAEff->SetName(TResVsAEff->GetTitle());
+  TResVsAEff->Draw("AP");
+  f->cd();
+  TResVsAEff->Write();
+  
+  fitTresVsAEff->SetParameter(0,1800);
+  fitTresVsAEff->SetParameter(1,100);
+  
+  TResVsAEff->Fit(fitTresVsAEff,"RWE");
+
+  CanvasTResVsAEff->SaveAs((DirData+"/Plot/TimeRes/TimeResVsAEff.png").c_str()); 
+  
+  TGraphErrors* TimeResVsEnergyCh59;
+  TGraphErrors* TimeResVsEnergyCh315;
+
+  TimeResVsEnergyCh59 = GetTimeResVsE(TDiffCorrVsE59, 59, DirData, FitTimeResTot);
+  TimeResVsEnergyCh315 = GetTimeResVsE(TDiffCorrVsE315, 315, DirData, FitTimeResTot);
+
+  TF1* fitTResVsECh59 = new TF1("fitTResVsECh59","sqrt( [0]*[0]/(x*x) + [1]*[1]/(x) + [2]*[2] )");
+  TF1* fitTResVsECh315 = new TF1("fitTResVsECh315","sqrt( [0]*[0]/(x*x) + [1]*[1]/(x) + [2]*[2] )");
+
+  TCanvas* CanvTResVsE = new TCanvas("CanvTResVsE","CanvTResVsE",1400,700);
+  CanvTResVsE->Divide(2,1);
+
+  CanvTResVsE->cd(1);
+  TimeResVsEnergyCh59->Draw("AP");
+  fitTResVsECh59->SetParameter(0,1000);
+  fitTResVsECh59->SetParameter(1,40);
+  TimeResVsEnergyCh59->Fit(fitTResVsECh59);
+
+  CanvTResVsE->cd(2);
+  TimeResVsEnergyCh315->Draw("AP");
+  fitTResVsECh315->SetParameter(0,1000);
+  fitTResVsECh315->SetParameter(1,40);
+  TimeResVsEnergyCh315->Fit(fitTResVsECh315);
+  
+  
+  CanvTResVsE->SaveAs((DirData+"/Plot/TimeRes/TimeResVsE.png").c_str());
+  
+  
   f->cd();
   TimeResTot->Write();
   FitTimeResTot->Write();
+  TDiffVsE59->Write();
+  TDiffVsE315->Write();
+  TDiffCorrVsE59->Write();
+  TDiffCorrVsE315->Write();
+  TDiffVsAEff->Write();
+  TDiffCorrVsAEff->Write();
+  TimeResVsEnergyCh59->Write();
+  TimeResVsEnergyCh315->Write();
 
-  
   f->Save();
   f->Close();
+
+  std::cout << "comand->  " <<("cp ../RootFileGraphPixel/"+FileName+"TRes.root "+DirData+"/Plot/.").c_str() << std::endl; 
+  gSystem->Exec(("cp ../RootFileGraphPixel/"+FileName+"TRes.root "+DirData+"/Plot/.").c_str());
+
   return 0;
+}
+
+
+
+void AmpCorrection(TTree* tree, TH2D* Histo59, TH2D* Histo315, TF1* Spectrum59, TF1* Spectrum315, Double_t PedCh59, Double_t PedCh315,TF1* corr59,TF1* corr315){
+  
+  Double_t energy[2];
+  Double_t time[2];
+  
+  tree->SetBranchAddress("time",time); 
+  tree->SetBranchAddress("energy",energy);
+  
+  for(int i=0; i< tree->GetEntries();i++){
+    tree->GetEntry(i);
+    
+    if(energy[0]-PedCh59 > 8 && energy[1]-PedCh315 > (Spectrum315->GetParameter(1)-3*Spectrum315->GetParameter(2)) 
+       && energy[1]-PedCh315 < (Spectrum315->GetParameter(1)+3*Spectrum315->GetParameter(2)) 
+       && energy[0]-PedCh59 < (Spectrum59->GetParameter(1)+3*Spectrum59->GetParameter(2))){
+
+      if(corr59) Histo59->Fill(energy[0]-PedCh59, time[0]-time[1] - corr59->Eval(energy[0]-PedCh59) );
+      else Histo59->Fill(energy[0]-PedCh59, time[0]-time[1]);
+      }//chiudo if
+
+    if(energy[1]-PedCh315 > 8 && energy[0]-PedCh59 > (Spectrum59->GetParameter(1)-3*Spectrum59->GetParameter(2)) 
+       && energy[0]-PedCh59 < (Spectrum59->GetParameter(1)+3*Spectrum59->GetParameter(2)) 
+       && energy[1]-PedCh315 < (Spectrum315->GetParameter(1)+3*Spectrum315->GetParameter(2))){
+      
+      if(corr315) Histo315->Fill(energy[1]-PedCh315, time[0]-time[1] - corr315->Eval(energy[1]-PedCh315) );
+      else Histo315->Fill(energy[1]-PedCh315, time[0]-time[1] );
+    }//chiudo if
+    
+    
+  }//chiudo for
+  
+  
+}
+
+
+
+void GetTDiffVsAEff(TTree* tree, TH2D* Histo, TF1* Spectrum59, TF1* Spectrum315, Double_t PedCh59, Double_t PedCh315, TF1* corr59, TF1* corr315, Double_t RMSPedCh59, Double_t RMSPedCh315){
+  
+  Double_t energy[2];
+  Double_t time[2];
+  
+  Double_t A1,A2;
+  Double_t AmpEff;
+  
+  tree->SetBranchAddress("time",time); 
+  tree->SetBranchAddress("energy",energy);
+  
+  
+  
+  for(int i=0; i< tree->GetEntries();i++){
+    tree->GetEntry(i);
+    
+    A1=energy[0]-PedCh59;
+    A2=energy[1]-PedCh315;
+
+    if(A1 > 8 && A1 < ( Spectrum59->GetParameter(1)+2.5*Spectrum59->GetParameter(3) ) && A2 > 8 && A2 < ( Spectrum315->GetParameter(1)+2.5*Spectrum315->GetParameter(3) )){
+     
+      AmpEff=A1*A2/(sqrt(A1*A1+A2*A2))/((RMSPedCh59+RMSPedCh315)/2);
+      //    AmpEff=A1*A2/(A1+A2);
+      
+      if(corr59 && corr315) {
+	
+	Histo->Fill(AmpEff, ( time[0]-corr59->Eval(A1) ) - ( time[1]+corr315->Eval(A2) ) );
+	
+      }
+      else Histo->Fill(AmpEff, time[0]-time[1]);
+      
+    }//chiudo if
+    
+  }//chiudo for
+  
+}
+
+
+TGraphErrors* GetTimeResVsE(TH2D* Histo, Int_t Ch,std::string DirData,TF1* FitTResTot){
+  
+  TH1D* proj;
+  TF1* fitProj = new TF1("fitProj","gaus");
+  TCanvas* canv = new TCanvas("canv","canv",700,700);
+  
+  std::vector<Double_t> X,Y,sY;
+
+  Double_t ResPixel,SResPixel;
+  Double_t Res,SRes;
+  
+  ResPixel= FitTResTot->GetParameter(2)/sqrt(2);
+  SResPixel= FitTResTot->GetParError(2)/sqrt(2);
+
+
+  for(int i=0; i<Histo->GetXaxis()->GetNbins()-2; i+=2){ 
+    
+    proj = Histo->ProjectionY(Form("Histo%i_%i",i,(int)Histo->GetXaxis()->GetBinCenter(i+1)),i,i+1); 
+    proj->Draw();
+    proj->Fit(fitProj);
+
+    fitProj->SetRange(fitProj->GetParameter(1)-1.7*fitProj->GetParameter(2), fitProj->GetParameter(1)+1.7*fitProj->GetParameter(2));
+    
+    proj->Fit(fitProj,"R");
+
+    Res = fitProj->GetParameter(2); 
+    SRes = fitProj->GetParError(2);
+
+    if(proj->GetEntries()>1000 && fitProj->GetParError(2)<20){
+
+      X.push_back( Histo->GetXaxis()->GetBinCenter(i+1) );
+      Y.push_back( sqrt(Res*Res-ResPixel*ResPixel) );
+      sY.push_back( sqrt( Res*Res/(Res*Res+ResPixel*ResPixel)*SRes*SRes + ResPixel*ResPixel/(Res*Res+ResPixel*ResPixel)*SResPixel*SResPixel ) );
+      
+
+      canv->SaveAs((DirData+"/Plot/TimeRes/ProjTResE"+std::to_string(Ch)+"/TimeRes"+std::to_string(i)+".png").c_str());  
+    }//chiudo if
+    
+ 
+  }//chiudo for
+  
+  TGraphErrors* graph = new TGraphErrors(X.size(),&X[0],&Y[0],0,&sY[0]);
+  graph->SetTitle(Form("TimeResVsECh%i",Ch));
+  graph->SetName(graph->GetTitle());
+  graph->GetXaxis()->SetTitle("ADC [D.U]");
+  graph->GetYaxis()->SetTitle("TimeRes [ps]");
+  
+  return graph;
+  
 }

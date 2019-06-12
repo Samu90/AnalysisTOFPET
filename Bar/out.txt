@@ -1,0 +1,5114 @@
+Analisys
+Root File Graph opened->/TestStabilityBar_30_04_2019
+Lista File Pedestal: ../TestStabilityBar_30_04_2019/PedFile.txt
+Lista File Pedestal: ../TestStabilityBar_30_04_2019/PedFile.txt
+Lista File Configuration: ../TestStabilityBar_30_04_2019/ConfigFile.txt
+../TestStabilityBar_30_04_2019/Run000002_2019-04-30-08-43-03_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000005_2019-04-30-08-50-42_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000008_2019-04-30-08-58-22_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000011_2019-04-30-09-06-04_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000014_2019-04-30-09-13-45_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000017_2019-04-30-09-21-27_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000020_2019-04-30-09-29-06_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000023_2019-04-30-09-36-48_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000026_2019-04-30-09-44-30_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000029_2019-04-30-09-52-11_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000032_2019-04-30-09-59-50_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000035_2019-04-30-10-07-34_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000038_2019-04-30-10-15-14_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000041_2019-04-30-10-23-02_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000044_2019-04-30-10-30-43_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000047_2019-04-30-10-38-26_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000050_2019-04-30-10-46-07_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000053_2019-04-30-10-53-54_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000056_2019-04-30-11-01-38_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000059_2019-04-30-11-09-30_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000062_2019-04-30-11-17-12_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000065_2019-04-30-11-24-53_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000068_2019-04-30-11-32-34_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000071_2019-04-30-11-40-18_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000074_2019-04-30-11-47-59_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000077_2019-04-30-11-55-41_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000080_2019-04-30-12-03-26_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000083_2019-04-30-12-11-11_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000086_2019-04-30-12-18-56_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000089_2019-04-30-12-26-43_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000092_2019-04-30-12-34-35_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000095_2019-04-30-12-42-19_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000098_2019-04-30-12-50-05_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000101_2019-04-30-12-57-49_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000104_2019-04-30-13-05-36_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000107_2019-04-30-13-13-22_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000110_2019-04-30-13-21-07_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000113_2019-04-30-13-28-54_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000116_2019-04-30-13-36-41_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000119_2019-04-30-13-44-30_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000122_2019-04-30-13-52-14_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000125_2019-04-30-14-00-01_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000128_2019-04-30-14-07-47_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000131_2019-04-30-14-15-33_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000134_2019-04-30-14-23-25_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000137_2019-04-30-14-31-12_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+../TestStabilityBar_30_04_2019/Run000140_2019-04-30-14-38-59_Na22Bar_PHYS_qdc_Time300_Gate15_Ov-1.txt
+instram    #Configuration
+instram    CONFIG_INI_TEMPLATE
+instram    config_template.ini
+instram    HV_DAC
+instram    data/hvdacMezz27_ad5535_cal.tsv
+instram    SIPM_BIAS
+instram    data/sipm_bias_template.tsv
+instram    DISC_SETTINGS
+instram    data/disc_settings_template.tsv
+instram    CHANNEL_MAP
+instram    petsys_tables/febd_tofpet2tb_fake_channel_map.tsv
+instram    
+instram    TRIGGER_MAP
+instram    petsys_tables/febd_gbe_trigger_map.tsv
+instram    LSB_T1
+instram    60
+instram    LSB_T2
+instram    60
+instram    MIN_INTG_TIME
+instram    15
+instram    MAX_INTG_TIME
+instram    15
+instram    #
+instram    MIN_INTG_TIME/MAX_INTG_TIME
+instram    15
+instram    =
+instram    15
+instram    x
+instram    4
+instram    x
+instram    5
+instram    ns
+instram    =
+instram    300ns
+instram    
+instram    #Calibration
+instram    RUN_CALIB
+instram    0
+instram    CALIB_DIR
+instram    data/calib/TestBarGood_28_03_2019
+instram    DISC_CALIB
+instram    disc_calibration.tsv
+instram    TDC_CALIB
+instram    tdc_calibration.tsv
+instram    QDC_CALIB
+instram    qdc_calibration.tsv
+instram    #
+instram    Notes:
+instram    
+instram    #
+instram    use
+instram    a
+instram    different
+instram    directory
+instram    (different
+instram    CALIB_DIR)
+instram    for
+instram    each
+instram    calibration
+instram    set
+instram    #
+instram    xxx_CALIB
+instram    names
+instram    must
+instram    end
+instram    with
+instram    ".tsv"
+instram    #
+instram    if
+instram    RUN_CALIB=1
+instram    and
+instram    at
+instram    least
+instram    one
+instram    of
+instram    the
+instram    xxx_CALIB
+instram    already
+instram    exist,
+instram    the
+instram    script
+instram    stops
+instram    (in
+instram    order
+instram    not
+instram    to
+instram    cancel
+instram    an
+instram    existing
+instram    calibration
+instram    file).
+instram    #
+instram    if
+instram    RUN_CALIB=0
+instram    and
+instram    at
+instram    least
+instram    one
+instram    of
+instram    the
+instram    xxx_CALIB
+instram    does
+instram    not
+instram    exist,
+instram    the
+instram    script
+instram    stops
+instram    (since
+instram    there
+instram    is
+instram    no
+instram    valid
+instram    calibration)
+instram    #
+instram    if
+instram    one
+instram    of
+instram    the
+instram    two
+instram    conditions
+instram    above
+instram    is
+instram    passed,
+instram    then:
+instram    #
+instram    if
+instram    RUN_CALIB=1
+instram    (since
+instram    none
+instram    of
+instram    the
+instram    xxx_CALIB
+instram    exists)
+instram    xxx_CALIB
+instram    are
+instram    created
+instram    [takes
+instram    ~30-40
+instram    min.]
+instram    and
+instram    used
+instram    to
+instram    run
+instram    daq
+instram    #
+instram    if
+instram    RUN_CALIB=0
+instram    (since
+instram    all
+instram    the
+instram    xxx_CALIB
+instram    already
+instram    exists)
+instram    existing
+instram    xxx_CALIB
+instram    are
+instram    used
+instram    to
+instram    run
+instram    daq
+instram    #
+instram    -
+instram    QCD_CALIB
+instram    is
+instram    currently
+instram    not
+instram    used
+instram    to
+instram    reconstruct
+instram    energy
+instram    values
+instram    in
+instram    qdc
+instram    mode
+instram    (simply,
+instram    energy
+instram    =
+instram    raw
+instram    counts)
+instram    
+instram    #Run
+instram    settings
+instram    #DAQSCRIPT
+instram    acquire_sipm_data
+instram    PHYS
+instram    DAQSCRIPT
+instram    acquire_sipm_data
+instram    PHYS
+instram    #DAQSCRIPT
+instram    acquire_sipm_data
+instram    PHYS
+instram    CONVERTSINGLESCRIPT
+instram    convert_raw_to_singles
+instram    CONVERTCOINCIDENCESCRIPT
+instram    analysis/find_coincidences.py
+instram    #CONVERTCOINCIDENCESCRIPT
+instram    convert_raw_to_coincidence
+instram    TEMPERATUREFILE
+instram    arduino/temperature/temperature19.txt
+instram    MODE
+instram    qdc
+instram    TIME
+instram    300
+instram    #TIME
+instram    1
+instram    OUTPUT_DIR
+instram    /media/cmsdaq/ext/TOFPET/data/TestStabilityBar_30_04_2019
+instram    #OUTPUT_DIR
+instram    output/Pedestal
+instram    OUTPUT_LABEL
+instram    Run000002_2019-04-30-08-43-03_Na22Bar
+instram    #OUTPUT_LABEL
+instram    PedestalTest13_2ch_100000delay
+instram    
+instram    #Channels
+instram    
+instram    OVERWRITE_OV
+instram    -1
+instram    #If
+instram    OVERWRITE_OV
+instram    -1,
+instram    use
+instram    the
+instram    OV
+instram    values
+instram    in
+instram    the
+instram    table
+instram    below.
+instram    If
+instram    OVERWRITE_OV
+instram    >
+instram    0
+instram    set
+instram    all
+instram    channels
+instram    to
+instram    this
+instram    OV
+instram    value.
+instram    
+instram    #
+instram    ID
+instram    NHV
+instram    VBR
+instram    OV
+instram    NCHIP
+instram    NCH
+instram    VTH_1
+instram    VTH_2
+instram    VTH_E
+instram    SIPM_CODE
+instram    SIPM_TYPE
+instram    X
+instram    Y
+instram    Z
+instram    CRYSTAL
+instram    
+instram    CH
+instram    0
+instram    11
+instram    52.25
+instram    7.00
+instram    0
+instram    59
+instram    20
+instram    20
+instram    15
+instram    10579
+instram    S13360-3025CS
+instram    --
+instram    --
+instram    440
+instram    LYSO_3_3_5
+instram    CH
+instram    1
+instram    29
+instram    51.77
+instram    5.00
+instram    4
+instram    32
+instram    20
+instram    20
+instram    15
+instram    12380
+instram    S13360-3050CS
+instram    --
+instram    --
+instram    140
+instram    LYSO_bar
+instram    
+instram    CH
+instram    2
+instram    8
+instram    51.47
+instram    5.00
+instram    4
+instram    35
+instram    20
+instram    20
+instram    15
+instram    12381
+instram    S13360-3050CS
+instram    --
+instram    --
+instram    140
+instram    LYSO_bar
+instram    
+instram    #Before
+instram    29/04:
+instram    #CH
+instram    1
+instram    29
+instram    51.96
+instram    5.00
+instram    4
+instram    32
+instram    20
+instram    20
+instram    15
+instram    12379
+instram    S13360-3050CS
+instram    --
+instram    --
+instram    140
+instram    LYSO_bar
+instram    
+instram    #CH
+instram    2
+instram    8
+instram    51.47
+instram    5.00
+instram    4
+instram    35
+instram    20
+instram    20
+instram    15
+instram    12381
+instram    S13360-3050CS
+instram    --
+instram    --
+instram    140
+instram    LYSO_bar
+instram    
+instram    #
+instram    Note
+instram    on
+instram    VBR:
+instram    Different
+instram    CHs
+instram    can
+instram    be
+instram    connected
+instram    to
+instram    the
+instram    same
+instram    NHV.
+instram    If
+instram    different
+instram    values
+instram    of
+instram    VBR
+instram    are
+instram    provided
+instram    only
+instram    the
+instram    first
+instram    one
+instram    is
+instram    set
+instram    for
+instram    a
+instram    given
+instram    NHV.
+instram    
+instram    
+instram    
+59  LYSO_3_3_5
+288  LYSO_bar
+291  LYSO_bar
+originalmap  59 0
+originalmap  288 1
+originalmap  291 2
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000001_2019-04-30-08-42-56_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+242.749 137.785 148.959
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000004_2019-04-30-08-50-36_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+243.23 137.825 148.761
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000007_2019-04-30-08-58-16_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+242.189 138.123 149.175
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000010_2019-04-30-09-05-58_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+242.967 137.187 148.396
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000013_2019-04-30-09-13-39_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+243.612 137.476 148.731
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000016_2019-04-30-09-21-21_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+243.482 137.706 148.821
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000019_2019-04-30-09-29-00_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+243.965 137.379 148.708
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000022_2019-04-30-09-36-42_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+244.214 137.79 148.968
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000025_2019-04-30-09-44-24_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+244.388 137.544 148.965
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000028_2019-04-30-09-52-05_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+244.561 137.737 148.72
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000031_2019-04-30-09-59-44_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+244.326 137.056 148.842
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000034_2019-04-30-10-07-28_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+244.906 137.855 148.83
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000037_2019-04-30-10-15-08_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+244.544 137.267 148.415
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000040_2019-04-30-10-22-55_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+245.028 137.514 148.086
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000043_2019-04-30-10-30-36_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+244.746 137.796 148.493
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000046_2019-04-30-10-38-20_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+245.116 137.392 148.905
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000049_2019-04-30-10-46-00_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+245.226 137.56 148.452
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000052_2019-04-30-10-53-48_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+245.035 137.56 148.517
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000055_2019-04-30-11-01-31_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+245.25 137.823 148.535
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000058_2019-04-30-11-09-23_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+245.635 138.134 148.692
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000061_2019-04-30-11-17-05_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+245.384 138.189 148.802
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000064_2019-04-30-11-24-47_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+246.446 137.652 148.16
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000067_2019-04-30-11-32-28_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+246.935 137.52 148.42
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000070_2019-04-30-11-40-11_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+246.527 138.045 148.369
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000073_2019-04-30-11-47-53_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+246.463 137.719 148.429
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000076_2019-04-30-11-55-35_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+247.067 137.476 148.138
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000079_2019-04-30-12-03-20_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+247.637 137.805 148.729
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000082_2019-04-30-12-11-05_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+247.541 137.508 148.332
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000085_2019-04-30-12-18-50_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+248.037 137.519 148.327
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000088_2019-04-30-12-26-37_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+248.28 137.786 148.487
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000091_2019-04-30-12-34-29_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+248.06 136.118 148.519
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000094_2019-04-30-12-42-12_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+248.72 137.504 148.316
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000097_2019-04-30-12-49-59_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+248.762 137.722 148.595
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000100_2019-04-30-12-57-43_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+249.003 137.54 148.638
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000103_2019-04-30-13-05-29_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+249.431 137.859 148.431
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000106_2019-04-30-13-13-16_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+249.467 137.176 148.222
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000109_2019-04-30-13-21-00_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+249.746 137.562 147.936
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000112_2019-04-30-13-28-48_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+249.656 137.559 148.017
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000115_2019-04-30-13-36-34_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+249.482 137.951 148.224
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000118_2019-04-30-13-44-24_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+250.192 137.577 147.674
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000121_2019-04-30-13-52-08_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+250.081 137.446 147.633
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000124_2019-04-30-13-59-54_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+250.351 136.878 147.671
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000127_2019-04-30-14-07-40_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+250.154 137.214 147.72
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000130_2019-04-30-14-15-26_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+250.528 137.106 147.863
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000133_2019-04-30-14-23-18_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+250.919 137.458 147.914
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000136_2019-04-30-14-31-06_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+250.145 137.477 147.695
+open file ped:  ../TestStabilityBar_30_04_2019/../TestStabilityBar_30_04_2019/Run000139_2019-04-30-14-38-52_Na22Bar_PED_qdc_Time1_Gate15_Ov-1_singles.root
+Filled
+Filled
+249.98 137.748 147.908
+42 > 15  1
+81 > 42  2
+156 > 81  3
+286 > 156  4
+375 > 286  5
+471 > 375  6
+577 > 471  7
+588 > 577  8
+600 > 588  9
+722 > 600  10
+485 > 391  1
+601 > 485  2
+626 > 601  3
+669 > 626  4
+31 > 4  1
+80 > 31  2
+169 > 80  3
+303 > 169  4
+471 > 303  5
+513 > 471  6
+600 > 513  7
+637 > 600  8
+709 > 637  9
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+58 > 12  1
+110 > 58  2
+193 > 110  3
+328 > 193  4
+420 > 328  5
+467 > 420  6
+532 > 467  7
+603 > 532  8
+676 > 603  9
+530 > 378  1
+580 > 530  2
+743 > 580  3
+21 > 3  1
+84 > 21  2
+155 > 84  3
+302 > 155  4
+488 > 302  5
+583 > 488  6
+628 > 583  7
+706 > 628  8
+726 > 706  9
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+15 > 6  1
+67 > 15  2
+114 > 67  3
+217 > 114  4
+300 > 217  5
+417 > 300  6
+465 > 417  7
+565 > 465  8
+629 > 565  9
+643 > 629  10
+649 > 643  11
+652 > 649  12
+670 > 652  13
+575 > 536  1
+713 > 575  2
+114 > 23  1
+178 > 114  2
+276 > 178  3
+477 > 276  4
+591 > 477  5
+625 > 591  6
+639 > 625  7
+719 > 639  8
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+11 > 2  1
+67 > 11  2
+118 > 67  3
+193 > 118  4
+302 > 193  5
+410 > 302  6
+539 > 410  7
+569 > 539  8
+594 > 569  9
+635 > 594  10
+646 > 635  11
+549 > 418  1
+580 > 549  2
+704 > 580  3
+50 > 8  1
+103 > 50  2
+184 > 103  3
+313 > 184  4
+470 > 313  5
+575 > 470  6
+656 > 575  7
+691 > 656  8
+711 > 691  9
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+46 > 17  1
+105 > 46  2
+186 > 105  3
+313 > 186  4
+388 > 313  5
+509 > 388  6
+578 > 509  7
+640 > 578  8
+693 > 640  9
+524 > 415  1
+626 > 524  2
+694 > 626  3
+710 > 694  4
+31 > 5  1
+93 > 31  2
+205 > 93  3
+303 > 205  4
+496 > 303  5
+630 > 496  6
+644 > 630  7
+684 > 644  8
+691 > 684  9
+724 > 691  10
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+31 > 5  1
+84 > 31  2
+174 > 84  3
+260 > 174  4
+376 > 260  5
+462 > 376  6
+537 > 462  7
+585 > 537  8
+676 > 585  9
+698 > 676  10
+507 > 373  1
+617 > 507  2
+702 > 617  3
+18 > 8  1
+83 > 18  2
+179 > 83  3
+326 > 179  4
+504 > 326  5
+585 > 504  6
+628 > 585  7
+673 > 628  8
+707 > 673  9
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+11 > 6  1
+54 > 11  2
+121 > 54  3
+210 > 121  4
+285 > 210  5
+420 > 285  6
+502 > 420  7
+556 > 502  8
+615 > 556  9
+662 > 615  10
+500 > 359  1
+590 > 500  2
+682 > 590  3
+29 > 3  1
+82 > 29  2
+176 > 82  3
+318 > 176  4
+446 > 318  5
+576 > 446  6
+586 > 576  7
+649 > 586  8
+698 > 649  9
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+45 > 16  1
+92 > 45  2
+187 > 92  3
+258 > 187  4
+346 > 258  5
+467 > 346  6
+605 > 467  7
+651 > 605  8
+670 > 651  9
+523 > 442  1
+585 > 523  2
+722 > 585  3
+38 > 8  1
+99 > 38  2
+173 > 99  3
+331 > 173  4
+529 > 331  5
+618 > 529  6
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+37 > 5  1
+88 > 37  2
+165 > 88  3
+243 > 165  4
+358 > 243  5
+456 > 358  6
+544 > 456  7
+639 > 544  8
+491 > 391  1
+611 > 491  2
+682 > 611  3
+708 > 682  4
+33 > 12  1
+97 > 33  2
+218 > 97  3
+334 > 218  4
+509 > 334  5
+619 > 509  6
+675 > 619  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+34 > 10  1
+86 > 34  2
+151 > 86  3
+273 > 151  4
+371 > 273  5
+454 > 371  6
+519 > 454  7
+591 > 519  8
+658 > 591  9
+694 > 658  10
+544 > 397  1
+587 > 544  2
+710 > 587  3
+751 > 710  4
+43 > 8  1
+93 > 43  2
+176 > 93  3
+335 > 176  4
+500 > 335  5
+637 > 500  6
+697 > 637  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+30 > 9  1
+65 > 30  2
+133 > 65  3
+228 > 133  4
+342 > 228  5
+465 > 342  6
+516 > 465  7
+632 > 516  8
+665 > 632  9
+471 > 398  1
+594 > 471  2
+692 > 594  3
+697 > 692  4
+29 > 10  1
+116 > 29  2
+206 > 116  3
+352 > 206  4
+485 > 352  5
+609 > 485  6
+681 > 609  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+37 > 18  1
+81 > 37  2
+177 > 81  3
+288 > 177  4
+377 > 288  5
+475 > 377  6
+538 > 475  7
+640 > 538  8
+505 > 391  1
+600 > 505  2
+678 > 600  3
+712 > 678  4
+24 > 13  1
+92 > 24  2
+222 > 92  3
+328 > 222  4
+523 > 328  5
+584 > 523  6
+648 > 584  7
+722 > 648  8
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+41 > 8  1
+64 > 41  2
+145 > 64  3
+247 > 145  4
+327 > 247  5
+478 > 327  6
+565 > 478  7
+609 > 565  8
+496 > 461  1
+576 > 496  2
+750 > 576  3
+28 > 6  1
+104 > 28  2
+219 > 104  3
+366 > 219  4
+508 > 366  5
+610 > 508  6
+661 > 610  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+73 > 25  1
+133 > 73  2
+216 > 133  3
+334 > 216  4
+434 > 334  5
+538 > 434  6
+602 > 538  7
+631 > 602  8
+644 > 631  9
+653 > 644  10
+471 > 408  1
+569 > 471  2
+721 > 569  3
+57 > 9  1
+136 > 57  2
+251 > 136  3
+429 > 251  4
+530 > 429  5
+671 > 530  6
+713 > 671  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+20 > 3  1
+57 > 20  2
+129 > 57  3
+212 > 129  4
+309 > 212  5
+419 > 309  6
+495 > 419  7
+617 > 495  8
+532 > 411  1
+574 > 532  2
+671 > 574  3
+707 > 671  4
+41 > 12  1
+110 > 41  2
+207 > 110  3
+338 > 207  4
+540 > 338  5
+624 > 540  6
+672 > 624  7
+683 > 672  8
+716 > 683  9
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+39 > 10  1
+114 > 39  2
+169 > 114  3
+274 > 169  4
+360 > 274  5
+495 > 360  6
+606 > 495  7
+634 > 606  8
+514 > 384  1
+619 > 514  2
+741 > 619  3
+47 > 12  1
+87 > 47  2
+187 > 87  3
+358 > 187  4
+512 > 358  5
+589 > 512  6
+681 > 589  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+39 > 18  1
+114 > 39  2
+207 > 114  3
+308 > 207  4
+420 > 308  5
+526 > 420  6
+640 > 526  7
+510 > 416  1
+602 > 510  2
+709 > 602  3
+724 > 709  4
+45 > 9  1
+87 > 45  2
+251 > 87  3
+332 > 251  4
+498 > 332  5
+635 > 498  6
+687 > 635  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+72 > 33  1
+138 > 72  2
+217 > 138  3
+355 > 217  4
+454 > 355  5
+535 > 454  6
+621 > 535  7
+699 > 621  8
+568 > 390  1
+32 > 13  1
+121 > 32  2
+229 > 121  3
+334 > 229  4
+498 > 334  5
+643 > 498  6
+689 > 643  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+27 > 9  1
+84 > 27  2
+196 > 84  3
+264 > 196  4
+380 > 264  5
+443 > 380  6
+554 > 443  7
+589 > 554  8
+488 > 381  1
+552 > 488  2
+721 > 552  3
+54 > 3  1
+133 > 54  2
+230 > 133  3
+355 > 230  4
+514 > 355  5
+616 > 514  6
+639 > 616  7
+697 > 639  8
+732 > 697  9
+741 > 732  10
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+28 > 8  1
+80 > 28  2
+138 > 80  3
+262 > 138  4
+363 > 262  5
+452 > 363  6
+573 > 452  7
+599 > 573  8
+619 > 599  9
+658 > 619  10
+678 > 658  11
+583 > 524  1
+715 > 583  2
+34 > 9  1
+102 > 34  2
+262 > 102  3
+380 > 262  4
+516 > 380  5
+626 > 516  6
+671 > 626  7
+687 > 671  8
+723 > 687  9
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+26 > 5  1
+59 > 26  2
+119 > 59  3
+211 > 119  4
+299 > 211  5
+449 > 299  6
+529 > 449  7
+570 > 529  8
+604 > 570  9
+636 > 604  10
+715 > 636  11
+556 > 531  1
+681 > 556  2
+710 > 681  3
+32 > 9  1
+110 > 32  2
+226 > 110  3
+327 > 226  4
+527 > 327  5
+642 > 527  6
+722 > 642  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+53 > 24  1
+111 > 53  2
+206 > 111  3
+304 > 206  4
+447 > 304  5
+522 > 447  6
+599 > 522  7
+655 > 599  8
+658 > 655  9
+683 > 658  10
+698 > 683  11
+541 > 437  1
+608 > 541  2
+724 > 608  3
+761 > 724  4
+55 > 15  1
+128 > 55  2
+266 > 128  3
+378 > 266  4
+586 > 378  5
+675 > 586  6
+679 > 675  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+28 > 11  1
+81 > 28  2
+165 > 81  3
+227 > 165  4
+344 > 227  5
+457 > 344  6
+538 > 457  7
+628 > 538  8
+652 > 628  9
+682 > 652  10
+692 > 682  11
+506 > 421  1
+585 > 506  2
+762 > 585  3
+41 > 14  1
+151 > 41  2
+221 > 151  3
+364 > 221  4
+489 > 364  5
+641 > 489  6
+710 > 641  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+34 > 3  1
+73 > 34  2
+143 > 73  3
+235 > 143  4
+331 > 235  5
+472 > 331  6
+541 > 472  7
+646 > 541  8
+718 > 646  9
+584 > 536  1
+701 > 584  2
+728 > 701  3
+42 > 16  1
+140 > 42  2
+244 > 140  3
+383 > 244  4
+549 > 383  5
+625 > 549  6
+690 > 625  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+23 > 3  1
+72 > 23  2
+160 > 72  3
+229 > 160  4
+349 > 229  5
+454 > 349  6
+505 > 454  7
+706 > 505  8
+537 > 400  1
+574 > 537  2
+729 > 574  3
+40 > 12  1
+111 > 40  2
+239 > 111  3
+361 > 239  4
+539 > 361  5
+656 > 539  6
+704 > 656  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+43 > 12  1
+89 > 43  2
+180 > 89  3
+281 > 180  4
+362 > 281  5
+509 > 362  6
+550 > 509  7
+650 > 550  8
+495 > 431  1
+617 > 495  2
+745 > 617  3
+757 > 745  4
+54 > 23  1
+131 > 54  2
+261 > 131  3
+426 > 261  4
+592 > 426  5
+614 > 592  6
+713 > 614  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+33 > 11  1
+80 > 33  2
+149 > 80  3
+260 > 149  4
+323 > 260  5
+464 > 323  6
+571 > 464  7
+624 > 571  8
+668 > 624  9
+491 > 386  1
+632 > 491  2
+695 > 632  3
+712 > 695  4
+49 > 12  1
+120 > 49  2
+242 > 120  3
+355 > 242  4
+546 > 355  5
+605 > 546  6
+679 > 605  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+31 > 13  1
+70 > 31  2
+166 > 70  3
+258 > 166  4
+364 > 258  5
+448 > 364  6
+583 > 448  7
+519 > 429  1
+624 > 519  2
+723 > 624  3
+53 > 10  1
+133 > 53  2
+250 > 133  3
+398 > 250  4
+589 > 398  5
+628 > 589  6
+719 > 628  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+53 > 18  1
+137 > 53  2
+222 > 137  3
+323 > 222  4
+465 > 323  5
+537 > 465  6
+578 > 537  7
+629 > 578  8
+687 > 629  9
+699 > 687  10
+527 > 420  1
+617 > 527  2
+653 > 617  3
+772 > 653  4
+65 > 8  1
+135 > 65  2
+254 > 135  3
+392 > 254  4
+527 > 392  5
+653 > 527  6
+696 > 653  7
+715 > 696  8
+755 > 715  9
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+40 > 11  1
+79 > 40  2
+190 > 79  3
+286 > 190  4
+398 > 286  5
+493 > 398  6
+547 > 493  7
+658 > 547  8
+698 > 658  9
+559 > 444  1
+578 > 559  2
+761 > 578  3
+42 > 14  1
+150 > 42  2
+259 > 150  3
+399 > 259  4
+577 > 399  5
+693 > 577  6
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+61 > 24  1
+117 > 61  2
+201 > 117  3
+318 > 201  4
+432 > 318  5
+518 > 432  6
+571 > 518  7
+628 > 571  8
+647 > 628  9
+451 > 325  1
+578 > 451  2
+618 > 578  3
+736 > 618  4
+48 > 10  1
+134 > 48  2
+259 > 134  3
+439 > 259  4
+554 > 439  5
+649 > 554  6
+675 > 649  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+22 > 4  1
+67 > 22  2
+123 > 67  3
+197 > 123  4
+313 > 197  5
+434 > 313  6
+532 > 434  7
+601 > 532  8
+642 > 601  9
+683 > 642  10
+566 > 464  1
+606 > 566  2
+750 > 606  3
+46 > 12  1
+101 > 46  2
+231 > 101  3
+386 > 231  4
+536 > 386  5
+667 > 536  6
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+16 > 1  1
+57 > 16  2
+128 > 57  3
+200 > 128  4
+329 > 200  5
+425 > 329  6
+537 > 425  7
+600 > 537  8
+543 > 420  1
+575 > 543  2
+778 > 575  3
+44 > 15  1
+123 > 44  2
+250 > 123  3
+396 > 250  4
+583 > 396  5
+675 > 583  6
+689 > 675  7
+735 > 689  8
+755 > 735  9
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+40 > 15  1
+102 > 40  2
+212 > 102  3
+282 > 212  4
+411 > 282  5
+493 > 411  6
+605 > 493  7
+634 > 605  8
+700 > 634  9
+514 > 462  1
+637 > 514  2
+747 > 637  3
+53 > 17  1
+150 > 53  2
+270 > 150  3
+386 > 270  4
+560 > 386  5
+688 > 560  6
+697 > 688  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+29 > 7  1
+85 > 29  2
+163 > 85  3
+267 > 163  4
+367 > 267  5
+465 > 367  6
+580 > 465  7
+613 > 580  8
+670 > 613  9
+689 > 670  10
+512 > 409  1
+637 > 512  2
+733 > 637  3
+49 > 17  1
+113 > 49  2
+236 > 113  3
+371 > 236  4
+556 > 371  5
+693 > 556  6
+744 > 693  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+34 > 5  1
+80 > 34  2
+164 > 80  3
+264 > 164  4
+374 > 264  5
+480 > 374  6
+584 > 480  7
+692 > 584  8
+612 > 415  1
+64 > 27  1
+153 > 64  2
+297 > 153  3
+473 > 297  4
+625 > 473  5
+675 > 625  6
+761 > 675  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+28 > 8  1
+79 > 28  2
+153 > 79  3
+275 > 153  4
+360 > 275  5
+462 > 360  6
+565 > 462  7
+668 > 565  8
+524 > 427  1
+609 > 524  2
+712 > 609  3
+755 > 712  4
+17 > 4  1
+68 > 17  2
+153 > 68  3
+323 > 153  4
+437 > 323  5
+565 > 437  6
+719 > 565  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+19 > 6  1
+57 > 19  2
+141 > 57  3
+235 > 141  4
+371 > 235  5
+436 > 371  6
+550 > 436  7
+706 > 550  8
+566 > 469  1
+614 > 566  2
+735 > 614  3
+76 > 13  1
+176 > 76  2
+253 > 176  3
+455 > 253  4
+618 > 455  5
+702 > 618  6
+732 > 702  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+27 > 12  1
+83 > 27  2
+149 > 83  3
+239 > 149  4
+352 > 239  5
+461 > 352  6
+580 > 461  7
+692 > 580  8
+544 > 426  1
+635 > 544  2
+779 > 635  3
+71 > 32  1
+201 > 71  2
+337 > 201  3
+524 > 337  4
+628 > 524  5
+737 > 628  6
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+68 > 19  1
+154 > 68  2
+264 > 154  3
+358 > 264  4
+449 > 358  5
+596 > 449  6
+603 > 596  7
+690 > 603  8
+545 > 416  1
+635 > 545  2
+721 > 635  3
+29 > 8  1
+91 > 29  2
+225 > 91  3
+323 > 225  4
+471 > 323  5
+624 > 471  6
+697 > 624  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+74 > 22  1
+148 > 74  2
+237 > 148  3
+331 > 237  4
+467 > 331  5
+571 > 467  6
+625 > 571  7
+678 > 625  8
+549 > 480  1
+582 > 549  2
+747 > 582  3
+32 > 5  1
+82 > 32  2
+191 > 82  3
+307 > 191  4
+463 > 307  5
+695 > 463  6
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+31 > 7  1
+88 > 31  2
+201 > 88  3
+264 > 201  4
+377 > 264  5
+496 > 377  6
+543 > 496  7
+599 > 543  8
+664 > 599  9
+508 > 304  1
+543 > 508  2
+617 > 543  3
+716 > 617  4
+766 > 716  5
+36 > 3  1
+79 > 36  2
+200 > 79  3
+324 > 200  4
+494 > 324  5
+614 > 494  6
+708 > 614  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+62 > 16  1
+112 > 62  2
+219 > 112  3
+291 > 219  4
+448 > 291  5
+570 > 448  6
+607 > 570  7
+697 > 607  8
+597 > 460  1
+661 > 597  2
+785 > 661  3
+36 > 9  1
+83 > 36  2
+210 > 83  3
+350 > 210  4
+535 > 350  5
+636 > 535  6
+734 > 636  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+24 > 9  1
+101 > 24  2
+168 > 101  3
+293 > 168  4
+401 > 293  5
+496 > 401  6
+587 > 496  7
+637 > 587  8
+669 > 637  9
+672 > 669  10
+688 > 672  11
+554 > 435  1
+623 > 554  2
+734 > 623  3
+20 > 5  1
+73 > 20  2
+193 > 73  3
+262 > 193  4
+447 > 262  5
+619 > 447  6
+670 > 619  7
+710 > 670  8
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+23 > 8  1
+66 > 23  2
+126 > 66  3
+239 > 126  4
+332 > 239  5
+424 > 332  6
+524 > 424  7
+620 > 524  8
+560 > 504  1
+608 > 560  2
+738 > 608  3
+22 > 3  1
+77 > 22  2
+187 > 77  3
+330 > 187  4
+480 > 330  5
+616 > 480  6
+719 > 616  7
+722 > 719  8
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+33 > 10  1
+71 > 33  2
+165 > 71  3
+254 > 165  4
+373 > 254  5
+509 > 373  6
+572 > 509  7
+640 > 572  8
+582 > 391  1
+664 > 582  2
+721 > 664  3
+28 > 4  1
+108 > 28  2
+215 > 108  3
+348 > 215  4
+476 > 348  5
+624 > 476  6
+723 > 624  7
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+5 > 3  1
+34 > 5  2
+85 > 34  3
+169 > 85  4
+271 > 169  5
+352 > 271  6
+499 > 352  7
+560 > 499  8
+653 > 560  9
+571 > 463  1
+607 > 571  2
+739 > 607  3
+19 > 5  1
+80 > 19  2
+167 > 80  3
+317 > 167  4
+475 > 317  5
+609 > 475  6
+697 > 609  7
+732 > 697  8
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+ FCN=88.7367 FROM MIGRAD    STATUS=CONVERGED      79 CALLS          80 TOTAL
+                     EDM=5.37793e-10    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.27864e+04   3.87156e+01   1.32797e-01  -4.40568e-09
+   2  Mean        -1.35061e+02   3.60281e-01   1.66274e-03  -6.85868e-05
+   3  Sigma        1.33346e+02   3.90781e-01   3.70680e-06   2.13641e-02
+ FCN=242.307 FROM MIGRAD    STATUS=CONVERGED      72 CALLS          73 TOTAL
+                     EDM=8.72217e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.04871e+04   3.19372e+01   1.80387e-01  -1.85671e-06
+   2  Mean        -1.02625e+02   4.18057e-01   3.18098e-03   9.71716e-04
+   3  Sigma        1.58370e+02   4.41328e-01   5.71600e-06  -1.08090e-01
+ FCN=422.998 FROM MIGRAD    STATUS=CONVERGED      72 CALLS          73 TOTAL
+                     EDM=1.39875e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.12888e+04   3.39620e+01   2.54804e-01  -5.52409e-07
+   2  Mean        -1.71719e+02   3.79511e-01   3.81498e-03   4.33927e-04
+   3  Sigma        1.47486e+02   3.87941e-01   7.09607e-06  -3.69436e-02
+ FCN=3224.97 FROM MIGRAD    STATUS=CONVERGED      74 CALLS          75 TOTAL
+                     EDM=1.67477e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.21147e+04   3.43157e+01   7.17548e-01  -3.68934e-06
+   2  Mean        -1.33201e+02   3.08548e-01   8.55236e-03  -2.50293e-04
+   3  Sigma        1.44392e+02   2.68627e-01   1.21622e-05   9.47615e-02
+ FCN=6018.33 FROM MIGRAD    STATUS=CONVERGED      65 CALLS          66 TOTAL
+                     EDM=1.25574e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     9.56210e+03   2.88222e+01   7.78467e-01  -1.36478e-05
+   2  Mean        -1.02301e+02   3.88515e-01   1.47093e-02   1.05526e-03
+   3  Sigma        1.80676e+02   3.81787e-01   1.79857e-05  -5.37319e-01
+ FCN=6840.98 FROM MIGRAD    STATUS=CONVERGED      76 CALLS          77 TOTAL
+                     EDM=9.22148e-12    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.03709e+04   3.14000e+01   9.01816e-01  -3.28700e-08
+   2  Mean        -1.70625e+02   3.57842e-01   1.44325e-02   5.73928e-06
+   3  Sigma        1.65973e+02   3.53236e-01   1.89819e-05  -6.85766e-03
+
+****************************************
+Minimizer is Linear
+Chi2                      =   3.5024e+07
+NDf                       =         3494
+p0                        =      3067.87   +/-   1084.77     
+p1                        =     -499.984   +/-   257.099     
+p2                        =      41.1491   +/-   23.2291     
+p3                        =      -1.7759   +/-   1.00459     
+p4                        =    0.0374766   +/-   0.0208966   
+p5                        = -0.000304299   +/-   0.000168016 
+FitAddress1:0x5c3551c0
+
+****************************************
+Minimizer is Linear
+Chi2                      =  3.12289e+07
+NDf                       =         3746
+p0                        =       1400.2   +/-   1173.23     
+p1                        =     -65.9723   +/-   245.1       
+p2                        =      2.79787   +/-   19.6814     
+p3                        =    -0.145524   +/-   0.760716    
+p4                        =   0.00377963   +/-   0.0141928   
+p5                        =  -3.3706e-05   +/-   0.000102586 
+FitAddress2:0x5c356190
+Address1_:0x5c3551c0 3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address2_:0x5c356190 1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+
+****************************************
+Minimizer is Linear
+Chi2                      =  2.20934e+07
+NDf                       =         1559
+p0                        =     -357.629   +/-   147.188     
+p1                        =      19.9568   +/-   6.39741     
+
+****************************************
+Minimizer is Linear
+Chi2                      =  1.95668e+07
+NDf                       =         1532
+p0                        =     -375.123   +/-   139.718     
+p1                        =      23.6616   +/-   6.07268     
+
+****************************************
+Minimizer is Linear
+Chi2                      =  1.44434e+07
+NDf                       =         1464
+p0                        =     -366.759   +/-   122.83      
+p1                        =      21.8009   +/-   5.3387      
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1548479056
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1547105856
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1547186928
+ FCN=21.1712 FROM HESSE     STATUS=OK             16 CALLS         149 TOTAL
+                     EDM=7.23224e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.52870e+02   3.86839e+00   1.32967e-03   9.73116e-05
+   2  Mean         8.83403e+01   3.35352e+00   1.53936e-03  -6.05785e-05
+   3  Sigma        1.53818e+02   3.42806e+00   2.75769e-06   5.26176e-02
+ FCN=42.7774 FROM HESSE     STATUS=OK             16 CALLS         165 TOTAL
+                     EDM=2.27151e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.63662e+02   4.15752e+00   1.99374e-03   2.14929e-05
+   2  Mean         1.48530e+02   3.18520e+00   2.04127e-03   2.50914e-06
+   3  Sigma        1.44911e+02   3.30579e+00   3.92783e-06   8.10847e-03
+ FCN=25.7747 FROM MIGRAD    STATUS=CONVERGED      66 CALLS          67 TOTAL
+                     EDM=6.27355e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.91496e+02   4.79942e+00   9.06132e-03  -3.69292e-05
+   2  Mean         1.15077e+02   2.74592e+00   6.93634e-03   1.17986e-04
+   3  Sigma        1.25926e+02   2.84248e+00   1.54434e-05  -1.91926e-02
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1548531152
+filledAve
+ FCN=36.0237 FROM HESSE     STATUS=OK             16 CALLS         175 TOTAL
+                     EDM=3.17806e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     2.75231e+02   5.22513e+00   2.30034e-03  -9.01621e-06
+   2  Mean         8.19375e+01   2.50892e+00   1.49058e-03  -5.79061e-05
+   3  Sigma        1.54611e+02   2.62310e+00   2.69150e-06   2.76113e-02
+ FCN=39.7693 FROM MIGRAD    STATUS=CONVERGED      30 CALLS         277 TOTAL
+                     EDM=1.14227e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     2.91498e+02   5.45458e+00   1.27368e-02   1.28467e-05
+   2  Mean         1.43734e+02   2.35255e+00   7.31472e-03   5.97184e-05
+   3  Sigma        1.46460e+02   2.37622e+00   1.35539e-05  -4.79106e-03
+ FCN=31.5752 FROM MIGRAD    STATUS=CONVERGED      68 CALLS          69 TOTAL
+                     EDM=6.77515e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     3.30404e+02   6.21128e+00   1.28607e-02   1.12127e-04
+   2  Mean         1.10158e+02   2.24362e+00   6.24674e-03  -3.95465e-04
+   3  Sigma        1.33520e+02   2.42808e+00   1.39039e-05   1.59393e-01
+ fitstaus1: 4000
+filled1
+ fitstaus2: 0
+filled2
+ fitstausave: 1547234224
+filledAve
+ FCN=35.484 FROM HESSE     STATUS=OK             16 CALLS         371 TOTAL
+                     EDM=1.18219e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     6.41006e+02   7.88121e+00   3.46349e-03  -8.49757e-07
+   2  Mean         8.23341e+01   1.67769e+00   9.87895e-04   2.87145e-05
+   3  Sigma        1.57184e+02   1.74487e+00   1.76683e-06  -3.14011e-03
+ FCN=36.3449 FROM HESSE     STATUS=OK             16 CALLS          93 TOTAL
+                     EDM=1.33538e-10    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     7.08548e+02   8.65429e+00   3.86743e-03   1.33326e-06
+   2  Mean         1.44920e+02   1.47759e+00   8.80954e-04   9.27811e-06
+   3  Sigma        1.41338e+02   1.49266e+00   1.69211e-06   1.43596e-03
+ FCN=22.8496 FROM MIGRAD    STATUS=CONVERGED      68 CALLS          69 TOTAL
+                     EDM=7.01852e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     7.84046e+02   9.54705e+00   1.68768e-02  -1.05114e-05
+   2  Mean         1.10200e+02   1.40537e+00   3.34872e-03  -2.60120e-04
+   3  Sigma        1.32804e+02   1.48952e+00   7.21499e-06  -2.89022e-02
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1547320000
+filledAve
+ FCN=42.2988 FROM HESSE     STATUS=OK             16 CALLS         185 TOTAL
+                     EDM=9.95954e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     5.66736e+02   7.49238e+00   3.55610e-03  -5.41703e-06
+   2  Mean         8.66003e+01   1.77095e+00   1.13702e-03  -1.42583e-04
+   3  Sigma        1.56244e+02   1.87404e+00   2.05849e-06   8.04702e-02
+ FCN=49.0138 FROM HESSE     STATUS=OK             16 CALLS         218 TOTAL
+                     EDM=4.03781e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     6.18227e+02   8.16530e+00   4.15812e-03   2.01326e-05
+   2  Mean         1.51966e+02   1.61408e+00   1.11083e-03  -1.34867e-04
+   3  Sigma        1.43490e+02   1.69884e+00   2.16615e-06   6.34975e-02
+ FCN=23.971 FROM MIGRAD    STATUS=CONVERGED      66 CALLS          67 TOTAL
+                     EDM=1.33058e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     6.92629e+02   9.09572e+00   1.63710e-02  -1.30253e-05
+   2  Mean         1.17067e+02   1.52417e+00   3.71488e-03   3.23697e-04
+   3  Sigma        1.31791e+02   1.66294e+00   8.34575e-06  -3.87639e-02
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1547427488
+filledAve
+ FCN=25.5267 FROM HESSE     STATUS=OK             16 CALLS          93 TOTAL
+                     EDM=1.90838e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.21289e+03   1.08558e+01   4.08303e-03  -2.82279e-05
+   2  Mean         8.74773e+01   1.20179e+00   6.03418e-04  -4.69253e-04
+   3  Sigma        1.55113e+02   1.23198e+00   1.07815e-06  -9.18817e-02
+ FCN=61.9502 FROM HESSE     STATUS=OK             16 CALLS          93 TOTAL
+                     EDM=3.34309e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.30088e+03   1.17120e+01   6.73469e-03  -3.64543e-05
+   2  Mean         1.57061e+02   1.12275e+00   8.69632e-04   6.58927e-04
+   3  Sigma        1.45182e+02   1.17273e+00   1.67838e-06  -1.50827e-01
+ FCN=36.7595 FROM MIGRAD    STATUS=CONVERGED      68 CALLS          69 TOTAL
+                     EDM=1.44369e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.46542e+03   1.31080e+01   2.91908e-02  -7.84654e-06
+   2  Mean         1.18665e+02   1.05945e+00   3.17418e-03  -9.56780e-05
+   3  Sigma        1.32966e+02   1.14538e+00   7.06834e-06  -5.90511e-02
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1547511696
+filledAve
+ FCN=63.7247 FROM HESSE     STATUS=OK             16 CALLS          93 TOTAL
+                     EDM=8.396e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.72378e+03   1.29923e+01   7.54167e-03  -6.37764e-05
+   2  Mean         9.35137e+01   1.03191e+00   8.10650e-04   1.07459e-03
+   3  Sigma        1.58562e+02   1.09981e+00   1.46357e-06  -3.17017e-01
+ FCN=90.7686 FROM HESSE     STATUS=OK             16 CALLS          93 TOTAL
+                     EDM=4.37506e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.87961e+03   1.40771e+01   9.77476e-03  -2.42321e-07
+   2  Mean         1.60266e+02   9.33417e-01   8.73201e-04  -9.89424e-05
+   3  Sigma        1.45145e+02   9.74977e-01   1.68592e-06  -6.89604e-03
+ FCN=33.0481 FROM MIGRAD    STATUS=CONVERGED      75 CALLS          76 TOTAL
+                     EDM=4.28382e-10    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     2.11386e+03   1.57583e+01   3.33246e-02  -3.37402e-07
+   2  Mean         1.23962e+02   8.78030e-01   2.50140e-03  -2.40060e-05
+   3  Sigma        1.32586e+02   9.48626e-01   5.57783e-06   6.25593e-03
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1547549040
+filledAve
+ FCN=43.7361 FROM HESSE     STATUS=OK             16 CALLS         238 TOTAL
+                     EDM=2.72548e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     6.27819e+02   7.85353e+00   3.80178e-03  -4.02859e-06
+   2  Mean         1.01945e+02   1.68571e+00   1.09978e-03   1.37731e-04
+   3  Sigma        1.56491e+02   1.77067e+00   1.98054e-06  -1.14913e-02
+ FCN=40.8186 FROM HESSE     STATUS=OK             16 CALLS          91 TOTAL
+                     EDM=2.10526e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     6.72059e+02   8.34652e+00   3.93967e-03  -3.85533e-05
+   2  Mean         1.67360e+02   1.57316e+00   9.91195e-04  -3.76725e-04
+   3  Sigma        1.45798e+02   1.61962e+00   1.89541e-06  -6.72994e-02
+ FCN=30.8337 FROM MIGRAD    STATUS=CONVERGED      66 CALLS          67 TOTAL
+                     EDM=1.00037e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     7.65894e+02   9.40720e+00   1.93623e-02  -2.84503e-06
+   2  Mean         1.29989e+02   1.40078e+00   3.85669e-03  -9.98012e-05
+   3  Sigma        1.31102e+02   1.44944e+00   8.25061e-06  -7.96626e-03
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1547627040
+filledAve
+ FCN=31.3939 FROM HESSE     STATUS=OK             16 CALLS         190 TOTAL
+                     EDM=3.71981e-11    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     5.26987e+02   7.13799e+00   2.96682e-03  -2.22507e-07
+   2  Mean         1.03142e+02   1.83566e+00   1.01853e-03   1.61191e-06
+   3  Sigma        1.56089e+02   1.88664e+00   1.81636e-06  -2.11310e-03
+ FCN=38.5349 FROM HESSE     STATUS=OK             16 CALLS         232 TOTAL
+                     EDM=4.19026e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     5.72317e+02   7.81466e+00   3.56418e-03  -5.31193e-05
+   2  Mean         1.74158e+02   1.72233e+00   1.05749e-03  -4.88256e-04
+   3  Sigma        1.44417e+02   1.82561e+00   2.10317e-06  -9.76923e-02
+ FCN=13.7406 FROM MIGRAD    STATUS=CONVERGED      66 CALLS          67 TOTAL
+                     EDM=1.90727e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     6.38357e+02   8.61789e+00   1.20215e-02  -1.72075e-05
+   2  Mean         1.36810e+02   1.61290e+00   3.01962e-03   3.68528e-04
+   3  Sigma        1.33496e+02   1.73840e+00   6.70340e-06  -4.05060e-02
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1547732096
+filledAve
+ FCN=48.8045 FROM HESSE     STATUS=OK             16 CALLS         186 TOTAL
+                     EDM=1.33777e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     5.10579e+02   7.06834e+00   3.59447e-03  -2.06163e-05
+   2  Mean         1.05119e+02   1.90777e+00   1.31312e-03  -2.58513e-04
+   3  Sigma        1.59259e+02   2.04246e+00   2.36829e-06  -3.96689e-02
+ FCN=44.5664 FROM HESSE     STATUS=OK             16 CALLS         235 TOTAL
+                     EDM=6.84071e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     5.46524e+02   7.39634e+00   3.65089e-03  -3.02926e-05
+   2  Mean         1.79671e+02   1.76744e+00   1.16163e-03  -1.81947e-04
+   3  Sigma        1.50284e+02   1.80746e+00   2.14198e-06  -4.27793e-02
+ FCN=19.9917 FROM MIGRAD    STATUS=CONVERGED      69 CALLS          70 TOTAL
+                     EDM=2.63086e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     6.25828e+02   8.44285e+00   1.40978e-02   3.18189e-05
+   2  Mean         1.37811e+02   1.59250e+00   3.55969e-03   6.09301e-05
+   3  Sigma        1.34138e+02   1.67219e+00   7.59711e-06   4.89017e-02
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1547809824
+filledAve
+ FCN=29.578 FROM MIGRAD    STATUS=CONVERGED      30 CALLS         289 TOTAL
+                     EDM=1.89985e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     2.95234e+02   5.35613e+00   1.06825e-02   2.47451e-05
+   2  Mean         1.05064e+02   2.52761e+00   6.81750e-03   6.22876e-05
+   3  Sigma        1.60309e+02   2.70929e+00   1.22748e-05  -3.94792e-03
+ FCN=45.4542 FROM HESSE     STATUS=OK             16 CALLS         187 TOTAL
+                     EDM=4.41725e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     3.26976e+02   5.94606e+00   2.91075e-03   3.93406e-05
+   2  Mean         1.77197e+02   2.31789e+00   1.53358e-03   9.59862e-05
+   3  Sigma        1.45763e+02   2.51316e+00   3.07236e-06   3.60167e-02
+ FCN=34.5064 FROM MIGRAD    STATUS=CONVERGED      66 CALLS          67 TOTAL
+                     EDM=1.51902e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     3.68067e+02   6.65361e+00   1.42386e-02  -5.59310e-06
+   2  Mean         1.38328e+02   2.08786e+00   6.06442e-03  -9.06656e-06
+   3  Sigma        1.31576e+02   2.28879e+00   1.36537e-05  -1.10044e-02
+ fitstaus1: 0
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1547912912
+filledAve
+ FCN=46.0114 FROM HESSE     STATUS=OK             16 CALLS         229 TOTAL
+                     EDM=1.27796e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     6.61144e+02   8.00538e+00   3.97592e-03  -1.07974e-05
+   2  Mean         1.05064e+02   1.67473e+00   1.11932e-03  -2.98639e-04
+   3  Sigma        1.59039e+02   1.77034e+00   2.00852e-06  -1.68149e-02
+ FCN=41.1812 FROM HESSE     STATUS=OK             16 CALLS          91 TOTAL
+                     EDM=2.35011e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     7.14026e+02   8.57262e+00   4.06163e-03  -1.20270e-06
+   2  Mean         1.81116e+02   1.54222e+00   9.77292e-04   4.40103e-05
+   3  Sigma        1.47366e+02   1.59909e+00   1.86611e-06  -4.13980e-03
+ FCN=33.2605 FROM MIGRAD    STATUS=CONVERGED      66 CALLS          67 TOTAL
+                     EDM=2.50408e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     8.09010e+02   9.74082e+00   2.06272e-02  -9.04879e-06
+   2  Mean         1.40844e+02   1.43192e+00   4.09175e-03  -1.34601e-04
+   3  Sigma        1.33570e+02   1.55967e+00   9.12670e-06  -3.46484e-02
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1548743600
+filledAve
+ FCN=35.2539 FROM HESSE     STATUS=OK             16 CALLS          93 TOTAL
+                     EDM=1.31623e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     8.14268e+02   8.87715e+00   3.89290e-03  -8.94345e-06
+   2  Mean         1.15779e+02   1.48492e+00   8.72807e-04   9.89394e-05
+   3  Sigma        1.57025e+02   1.54128e+00   1.55978e-06  -2.52821e-02
+ FCN=81.3831 FROM HESSE     STATUS=OK             16 CALLS          92 TOTAL
+                     EDM=5.51929e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     8.75847e+02   9.57033e+00   6.32612e-03   8.64306e-07
+   2  Mean         1.86225e+02   1.36662e+00   1.21044e-03  -1.36057e-04
+   3  Sigma        1.44942e+02   1.41126e+00   2.32349e-06   8.17969e-02
+ FCN=20.8758 FROM MIGRAD    STATUS=CONVERGED      68 CALLS          69 TOTAL
+                     EDM=6.33262e-10    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     9.95185e+02   1.06826e+01   1.82422e-02  -7.63072e-07
+   2  Mean         1.49320e+02   1.24006e+00   2.83078e-03  -2.58835e-05
+   3  Sigma        1.32161e+02   1.28636e+00   6.04196e-06  -5.78909e-03
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1548834896
+filledAve
+ FCN=54.1677 FROM HESSE     STATUS=OK             16 CALLS          91 TOTAL
+                     EDM=3.77327e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.05787e+03   1.01549e+01   5.45910e-03  -2.22081e-05
+   2  Mean         1.24149e+02   1.31391e+00   9.52401e-04  -6.40970e-04
+   3  Sigma        1.58157e+02   1.38850e+00   1.71391e-06  -7.79554e-02
+ FCN=50.3093 FROM HESSE     STATUS=OK             16 CALLS          93 TOTAL
+                     EDM=8.2349e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.16893e+03   1.12385e+01   5.85080e-03  -1.43953e-05
+   2  Mean         1.94778e+02   1.17490e+00   8.21374e-04  -3.20895e-04
+   3  Sigma        1.41205e+02   1.22516e+00   1.63596e-06  -5.76228e-02
+ FCN=22.5409 FROM MIGRAD    STATUS=CONVERGED      68 CALLS          69 TOTAL
+                     EDM=7.34874e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.30753e+03   1.24700e+01   2.19308e-02  -1.10216e-05
+   2  Mean         1.57303e+02   1.09289e+00   2.58838e-03   3.25378e-04
+   3  Sigma        1.30241e+02   1.16881e+00   5.78335e-06  -5.55176e-02
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1548937104
+filledAve
+ FCN=28.9722 FROM HESSE     STATUS=OK             16 CALLS          93 TOTAL
+                     EDM=5.92249e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.02103e+03   1.00929e+01   3.99744e-03  -5.28142e-05
+   2  Mean         1.24718e+02   1.33914e+00   7.15811e-04   7.42453e-04
+   3  Sigma        1.55361e+02   1.42913e+00   1.32940e-06  -1.55184e-01
+ FCN=42.78 FROM HESSE     STATUS=OK             16 CALLS          93 TOTAL
+                     EDM=7.20722e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.08900e+03   1.06248e+01   5.12362e-03  -2.12803e-06
+   2  Mean         1.98723e+02   1.23759e+00   7.99653e-04   9.49800e-05
+   3  Sigma        1.46318e+02   1.28218e+00   1.53162e-06  -1.03608e-02
+ FCN=30.2376 FROM MIGRAD    STATUS=CONVERGED      68 CALLS          69 TOTAL
+                     EDM=8.29345e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.24134e+03   1.20278e+01   2.45438e-02  -4.29673e-06
+   2  Mean         1.58969e+02   1.13372e+00   3.08968e-03  -9.77408e-05
+   3  Sigma        1.31302e+02   1.19695e+00   6.82940e-06  -2.79437e-02
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1548987904
+filledAve
+ FCN=29.8034 FROM HESSE     STATUS=OK             16 CALLS         189 TOTAL
+                     EDM=2.47575e-08    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     4.48262e+02   6.57813e+00   2.65459e-03  -1.67739e-05
+   2  Mean         1.36953e+02   2.01917e+00   1.09418e-03   9.93048e-05
+   3  Sigma        1.58277e+02   2.11295e+00   1.95583e-06  -2.59831e-02
+ FCN=42.9037 FROM HESSE     STATUS=OK             16 CALLS         224 TOTAL
+                     EDM=8.84651e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     4.87679e+02   7.10330e+00   3.45051e-03  -6.35903e-06
+   2  Mean         2.02900e+02   1.82210e+00   1.17899e-03  -6.99408e-05
+   3  Sigma        1.44405e+02   1.85027e+00   2.24519e-06  -9.96745e-03
+ FCN=30.0676 FROM MIGRAD    STATUS=CONVERGED      66 CALLS          67 TOTAL
+                     EDM=3.31736e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     5.46758e+02   7.91479e+00   1.60860e-02  -1.86798e-06
+   2  Mean         1.67663e+02   1.68400e+00   4.57669e-03   4.64964e-05
+   3  Sigma        1.32794e+02   1.75515e+00   9.77458e-06  -5.28947e-03
+ fitstaus1: 4000
+filled1
+ fitstaus2: 4000
+filled2
+ fitstausave: 1549056208
+filledAve
+ FCN=1.73932 FROM HESSE     STATUS=OK             18 CALLS         448 TOTAL
+                     EDM=7.15483e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     3.45645e+00   1.69378e+01   7.97439e-04  -2.77303e-04
+   2  Mean        -1.41553e+03   3.56101e+03   1.67579e-01  -1.00201e-06
+   3  Sigma        1.03972e+03   8.64236e+02   1.27218e-02  -1.99978e-05
+ FCN=0.463396 FROM HESSE     STATUS=OK             16 CALLS         200 TOTAL
+                     EDM=3.0681e-07    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     1.07416e+00   3.93207e-01   3.44819e-05  -4.92624e-04
+   2  Mean         2.32526e+02   6.86066e+02   6.97098e-02  -1.02746e-06
+   3  Sigma        5.32445e+02   9.07600e+02   3.07493e-04   1.52342e-04
+ FCN=0.661822 FROM MIGRAD    STATUS=CONVERGED      77 CALLS          78 TOTAL
+                     EDM=6.31726e-09    STRATEGY= 1      ERROR MATRIX ACCURATE 
+  EXT PARAMETER                                   STEP         FIRST   
+  NO.   NAME      VALUE            ERROR          SIZE      DERIVATIVE 
+   1  Constant     2.64682e+00   1.12275e+00   4.56080e-04  -9.21773e-05
+   2  Mean         1.21637e+02   2.93993e+01   1.77338e-02   2.56239e-06
+   3  Sigma        9.93865e+01   3.49827e+01   4.85230e-05  -4.15452e-04
+ fitstaus1: 4000
+ fitstaus2: 4000
+ fitstausave: 1549180400
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1549220688
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1549199232
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1549282272
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1549315264
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1549346944
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1549380352
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1549413120
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1549445440
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1549477888
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1549510032
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1549542768
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1549576048
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1549608912
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1549641440
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1549673696
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1549706000
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1549738944
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1549771488
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1549803792
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1549836784
+ fitstaus1: -1
+ fitstaus2: -1
+ fitstausave: 1549869216
+PlotAddress :0x5c34a030 0x2d4c440 0x5c34a320
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -452.032   255.365
+5.5 276.997 33.6356
+Range_______:    -244.645   307.978
+7.5 181.152 13.4477
+Range_______:    -213.256   363.256
+9.5 177.414 14.3557
+Range_______:    -293.16   269.827
+11.5 141.659 7.84935
+Range_______:    -285.895   175.895
+13.5 156.405 15.8685
+Range_______:    -210.963   274.297
+15.5 110.004 15.8159
+Range_______:    -161.229   224.562
+17.5 131.204 9.25405
+Range_______:    -211.264   187.93
+19.5 128.23 5.9853
+Range_______:    -307.19   283.856
+21.5 115.05 8.3781
+Range_______:    161.667   161.667
+23.5 0.24422 1.35952
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      1711.54
+NDf                       =            6
+Edm                       =  3.05052e-11
+NCalls                    =          196
+p0                        =      1321.33   +/-   84.8712     
+p1                        =      33.7406   +/-   13.1677      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -332.303   395.636
+5.5 270.043 30.5166
+Range_______:    -463.889   180.555
+7.5 305.622 56.3788
+Range_______:    -296.52   359.853
+9.5 197.168 14.5514
+Range_______:    -201.512   438.179
+11.5 146.906 8.1743
+Range_______:    -208.768   185.435
+13.5 178.913 32.4237
+Range_______:    -281.142   171.142
+15.5 187.62 37.5072
+Range_______:    -222.224   198.89
+17.5 151.618 17.4779
+Range_______:    -156.695   220.028
+19.5 140.29 7.4578
+Range_______:    -182.481   159.148
+21.5 116.769 13.7536
+Range_______:    -47.5506   197.551
+23.5 53.5373 63.1553
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      10947.1
+NDf                       =            7
+Edm                       =  2.17401e-09
+NCalls                    =          153
+p0                        =      1565.23   +/-   209.41      
+p1                        =      52.5687   +/-   25.0181      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -399.673   376.34
+5.5 281.829 38.6491
+Range_______:    -140.061   463.394
+7.5 208.282 21.1869
+Range_______:    -213.733   363.733
+9.5 157.468 10.6239
+Range_______:    -171.214   321.214
+11.5 157.581 13.2151
+Range_______:    -258.332   234.998
+13.5 154.109 12.8074
+Range_______:    -234.522   211.189
+15.5 135.25 17.314
+Range_______:    -165.454   228.787
+17.5 125.054 7.08793
+Range_______:    -167.913   231.246
+19.5 127.748 5.78949
+Range_______:    -286.717   350.05
+21.5 136.532 12.8327
+Range_______:    -3478.33   -3478.33
+23.5 0 0
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      925.179
+NDf                       =            6
+Edm                       =  5.31055e-07
+NCalls                    =          135
+p0                        =      1387.11   +/-   64.0081     
+p1                        =      29.9559   +/-   12.1605      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -283.31   519.977
+5.5 246.201 21.5723
+Range_______:    -220.11   370.11
+7.5 226.198 29.6555
+Range_______:    -348.752   325.418
+9.5 177.633 11.4625
+Range_______:    -379.742   183.076
+11.5 218.878 32.0255
+Range_______:    -210.713   274.047
+13.5 157.926 17.0945
+Range_______:    -334.529   224.529
+15.5 154.461 15.3068
+Range_______:    -288.73   178.73
+17.5 137.148 9.37538
+Range_______:    -226.878   203.544
+19.5 127.88 5.86119
+Range_______:    -212.526   189.193
+21.5 121.211 9.77752
+Range_______:    -483.188   286.522
+23.5 736.217 378.586
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      5152.57
+NDf                       =            7
+Edm                       =  3.39766e-09
+NCalls                    =          182
+p0                        =      1319.99   +/-   151.709     
+p1                        =      56.1851   +/-   15.1527      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -426.224   402.891
+5.5 253.01 20.8941
+Range_______:    -277.336   254.003
+7.5 196.396 18.8037
+Range_______:    -282.739   259.406
+9.5 177.797 14.4685
+Range_______:    -335.136   225.136
+11.5 203.453 23.3882
+Range_______:    -266.327   156.327
+13.5 133.068 14.1831
+Range_______:    -298.851   188.851
+15.5 200.229 63.4777
+Range_______:    -199.956   176.623
+17.5 125.234 9.65463
+Range_______:    -159.561   222.895
+19.5 147.02 8.84328
+Range_______:    -262.057   152.057
+21.5 122.34 14.3946
+Range_______:    -185   -185
+23.5 0.249708 2.26326
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      7876.19
+NDf                       =            7
+Edm                       =  2.43076e-09
+NCalls                    =          194
+p0                        =      1212.81   +/-   193.492     
+p1                        =      63.9121   +/-   16.4248      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -318.819   382.152
+5.5 274.849 30.7015
+Range_______:    -288.793   352.126
+7.5 202.323 15.3241
+Range_______:    -258.787   322.12
+9.5 191.017 18.1323
+Range_______:    -195.187   345.187
+11.5 163.04 10.6561
+Range_______:    -199.191   262.524
+13.5 145.299 12.1055
+Range_______:    -358.827   248.827
+15.5 162.843 18.4675
+Range_______:    -171.004   234.337
+17.5 138.041 10.2423
+Range_______:    -150.059   213.393
+19.5 125.15 5.51692
+Range_______:    -238.778   128.778
+21.5 137.815 31.4776
+Range_______:    -3478.33   -3478.33
+23.5 0 0
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      1053.09
+NDf                       =            6
+Edm                       =  4.96848e-09
+NCalls                    =          168
+p0                        =      1352.45   +/-   72.8906     
+p1                        =      48.5807   +/-   9.05897      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -545.358   175.358
+5.5 399.23 99.3139
+Range_______:    -145.792   382.458
+7.5 218.537 26.9103
+Range_______:    -209.095   359.095
+9.5 198.824 18.7971
+Range_______:    -142.118   292.118
+11.5 182.918 20.0783
+Range_______:    -272.313   248.979
+13.5 157.269 9.32579
+Range_______:    -348.065   151.399
+15.5 159.68 29.0411
+Range_______:    -244.613   134.613
+17.5 118.077 7.66594
+Range_______:    -179.954   243.287
+19.5 135.422 7.15873
+Range_______:    -184.414   161.08
+21.5 131.515 22.604
+Range_______:    -226.125   29.4587
+23.5 0.24832 2.05147
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      6704.04
+NDf                       =            7
+Edm                       =  8.73479e-13
+NCalls                    =          197
+p0                        =      1846.39   +/-   104.809     
+p1                        =  1.74268e-07   +/-   958.775      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -158.574   481.907
+5.5 210.558 18.4957
+Range_______:    -302.418   279.084
+7.5 215.42 22.5795
+Range_______:    -230.496   293.829
+9.5 166.273 11.762
+Range_______:    -225.46   288.793
+11.5 141.393 10.3773
+Range_______:    -221.252   284.585
+13.5 150.294 13.721
+Range_______:    -252.538   142.538
+15.5 126.549 21.9432
+Range_______:    -203.595   180.262
+17.5 145.131 11.4224
+Range_______:    -191.849   168.515
+19.5 129.275 5.97183
+Range_______:    -293.666   270.333
+21.5 134.286 13.1623
+Range_______:    -55   -55
+23.5 0.24583 2.26589
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      2205.29
+NDf                       =            7
+Edm                       =  8.50388e-11
+NCalls                    =          199
+p0                        =      1050.43   +/-   102.046     
+p1                        =       56.947   +/-   8.47237      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -359.96   336.626
+5.5 215.249 15.5463
+Range_______:    -348.132   411.466
+7.5 197.481 11.9353
+Range_______:    -215.235   278.568
+9.5 156.507 15.2816
+Range_______:    -287.638   264.305
+11.5 180.446 15.4904
+Range_______:    -284.935   174.935
+13.5 160.027 15.8132
+Range_______:    -283.633   173.633
+15.5 179.321 37.19
+Range_______:    -183.718   160.384
+17.5 130.102 16.6535
+Range_______:    -175.176   238.51
+19.5 131.998 6.12492
+Range_______:    -192.768   169.435
+21.5 110.084 9.95221
+Range_______:    378.333   378.333
+23.5 0.252747 2.10246
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      5263.61
+NDf                       =            7
+Edm                       =  7.84879e-09
+NCalls                    =          196
+p0                        =      1046.18   +/-   166.549     
+p1                        =      62.3261   +/-   12.9661      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -392.97   282.97
+5.5 311.043 55.0701
+Range_______:    -223.37   373.37
+7.5 218.961 26.1889
+Range_______:    -181.751   331.751
+9.5 187.914 23.0933
+Range_______:    -159.063   309.063
+11.5 158.666 15.5137
+Range_______:    -193.594   170.26
+13.5 126.862 11.7394
+Range_______:    -205.34   182.007
+15.5 205.725 66.6857
+Range_______:    -156.109   219.442
+17.5 136.528 8.90133
+Range_______:    -188.022   251.356
+19.5 134.655 4.65159
+Range_______:    -339.295   315.962
+21.5 132.031 13.2085
+Range_______:    -3478.33   -3478.33
+23.5 0 0
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =       7036.3
+NDf                       =            7
+Edm                       =  1.27403e-10
+NCalls                    =          192
+p0                        =      1499.02   +/-   161.073     
+p1                        =      46.4525   +/-   20.1996      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -345.893   322.559
+5.5 198.558 19.4911
+Range_______:    -309.591   372.925
+7.5 190.531 14.2291
+Range_______:    -249.881   313.214
+9.5 168.901 12.583
+Range_______:    -276.135   339.468
+11.5 167.151 8.88287
+Range_______:    -189.764   253.097
+13.5 159.192 15.4875
+Range_______:    -287.704   264.371
+15.5 151.143 14.504
+Range_______:    -162.437   225.77
+17.5 150.836 17.5138
+Range_______:    -200.661   177.328
+19.5 120.532 4.73406
+Range_______:    -279.761   256.428
+21.5 126.289 5.8338
+Range_______:    -3478.33   -3478.33
+23.5 0 0
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      2133.21
+NDf                       =            7
+Edm                       =  8.98959e-07
+NCalls                    =          184
+p0                        =      922.856   +/-   113.039     
+p1                        =      67.1702   +/-   7.61823      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -290.332   440.332
+5.5 237.13 19.7714
+Range_______:    -268.187   244.854
+7.5 202.07 29.4929
+Range_______:    -216.078   279.412
+9.5 167.311 16.2138
+Range_______:    -148.883   298.883
+11.5 139.079 10.7641
+Range_______:    -248.836   225.502
+13.5 153.047 14.019
+Range_______:    -264.299   414.299
+15.5 128.15 11.8889
+Range_______:    -171.391   234.724
+17.5 152.999 11.245
+Range_______:    -191.46   254.793
+19.5 135.752 5.38855
+Range_______:    -313.605   463.605
+21.5 148.348 41.8483
+Range_______:    -3478.33   -3478.33
+23.5 0 0
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      1374.69
+NDf                       =            6
+Edm                       =  5.84789e-09
+NCalls                    =          180
+p0                        =      1122.95   +/-   87.5461     
+p1                        =      55.8615   +/-   8.42772      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -277.166   427.166
+5.5 222.031 22.011
+Range_______:    -315.904   292.571
+7.5 208.387 15.4206
+Range_______:    -288.371   351.704
+9.5 174.097 10.591
+Range_______:    -393.396   196.729
+11.5 167.836 13.6912
+Range_______:    -289.337   352.67
+13.5 154.324 8.80438
+Range_______:    -163.982   227.315
+15.5 128.953 18.9259
+Range_______:    -195.557   172.224
+17.5 162.451 18.1567
+Range_______:    -218.035   194.702
+19.5 126.773 5.42443
+Range_______:    -183.3   159.966
+21.5 119.36 18.4996
+Range_______:    -3478.33   -3478.33
+23.5 0 0
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      2678.94
+NDf                       =            7
+Edm                       =  5.43651e-10
+NCalls                    =          195
+p0                        =      1122.95   +/-   112.57      
+p1                        =      57.6017   +/-   9.75248      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -250.954   400.954
+5.5 209.016 16.2107
+Range_______:    -283.459   346.792
+7.5 191.611 11.963
+Range_______:    -278.399   341.733
+9.5 188.238 11.5992
+Range_______:    -283.219   259.886
+11.5 161.32 10.9847
+Range_______:    -302.643   192.643
+13.5 145.023 11.091
+Range_______:    -267.173   243.839
+15.5 150.281 23.642
+Range_______:    -216.051   192.718
+17.5 130.784 8.84569
+Range_______:    -164.702   228.035
+19.5 125.585 5.84497
+Range_______:    -197.322   260.655
+21.5 133.905 15.5522
+Range_______:    -3478.33   -3478.33
+23.5 0 0
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      1586.02
+NDf                       =            7
+Edm                       =  9.44044e-10
+NCalls                    =          196
+p0                        =       1021.6   +/-   90.7147     
+p1                        =      61.3253   +/-   7.01747      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -194.884   431.551
+5.5 223.212 23.7278
+Range_______:    -202.088   352.088
+7.5 210.782 21.5182
+Range_______:    -249.689   313.022
+9.5 159.734 10.7289
+Range_______:    -183.079   333.079
+11.5 154.471 13.277
+Range_______:    -231.637   294.971
+13.5 154.249 10.3992
+Range_______:    -201.736   178.402
+15.5 143.309 27.4797
+Range_______:    -146.559   209.893
+17.5 156.196 15.0275
+Range_______:    -180.803   157.47
+19.5 126.25 10.2
+Range_______:    -138.822   202.155
+21.5 102.539 16.838
+Range_______:    -3478.33   -3478.33
+23.5 0 0
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      3833.44
+NDf                       =            7
+Edm                       =  1.49825e-07
+NCalls                    =          171
+p0                        =       1151.6   +/-   129.749     
+p1                        =      49.0706   +/-   12.9146      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -254.963   404.963
+5.5 238.952 25.9197
+Range_______:    -285.315   348.648
+7.5 202.048 14.408
+Range_______:    -312.095   375.428
+9.5 191.088 13.4513
+Range_______:    -234.318   297.651
+11.5 169.927 11.6604
+Range_______:    -149.333   299.333
+13.5 159.836 16.4327
+Range_______:    -255.35   145.35
+15.5 137.726 26.784
+Range_______:    -207.182   183.848
+17.5 131.18 11.4032
+Range_______:    -200.892   177.558
+19.5 123.743 5.06869
+Range_______:    -166.133   316.133
+21.5 119.7 10.0392
+Range_______:    -3478.33   -3478.33
+23.5 0 0
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      1432.01
+NDf                       =            7
+Edm                       =  2.42103e-07
+NCalls                    =          165
+p0                        =      1249.55   +/-   77.6362     
+p1                        =      47.7861   +/-   8.39131      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -274.982   511.649
+5.5 260.336 22.9125
+Range_______:    -298.031   361.365
+7.5 197.342 13.5889
+Range_______:    -202.673   352.673
+9.5 189.786 19.3014
+Range_______:    -132.052   282.052
+11.5 151.477 17.9933
+Range_______:    -286.764   263.431
+13.5 148.33 10.0156
+Range_______:    -285.018   261.684
+15.5 168.942 21.8295
+Range_______:    -177.454   240.788
+17.5 131.016 8.12054
+Range_______:    -191.124   254.457
+19.5 140.254 5.56912
+Range_______:    -293.532   270.199
+21.5 145.102 10.8702
+Range_______:    -3478.33   -3478.33
+23.5 0 0
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      1601.98
+NDf                       =            7
+Edm                       =  3.52365e-10
+NCalls                    =          177
+p0                        =      1218.92   +/-   84.1647     
+p1                        =      60.9959   +/-   7.38158      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -283.675   433.675
+5.5 220.264 19.4978
+Range_______:    -283.486   346.819
+7.5 198.275 13.5354
+Range_______:    -237.402   300.735
+9.5 164.495 11.5453
+Range_______:    -311.631   201.631
+11.5 176.336 19.5393
+Range_______:    -252.413   142.413
+13.5 158.876 20.3663
+Range_______:    -469.798   186.465
+15.5 152.852 18.6877
+Range_______:    -160.067   310.067
+17.5 140.063 7.43269
+Range_______:    -218.309   194.976
+19.5 119.485 4.88538
+Range_______:    -280.669   344.002
+21.5 145.943 9.66822
+Range_______:    -3478.33   -3478.33
+23.5 0 0
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      1850.42
+NDf                       =            7
+Edm                       =  3.09659e-13
+NCalls                    =          236
+p0                        =      1035.02   +/-   99.0046     
+p1                        =       66.048   +/-   7.32726      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -390.971   367.638
+5.5 241.181 20.9906
+Range_______:    -306.163   456.163
+7.5 197.906 11.185
+Range_______:    -285.127   348.46
+9.5 165.714 10.2234
+Range_______:    -229.19   205.857
+11.5 152.065 12.8277
+Range_______:    -228.912   205.579
+13.5 141.975 11.4975
+Range_______:    -438.151   328.151
+15.5 140.081 11.3152
+Range_______:    -245.928   222.595
+17.5 144.55 7.98523
+Range_______:    -210.111   186.778
+19.5 139.266 7.07803
+Range_______:    -146.067   209.4
+21.5 139.691 26.7275
+Range_______:    -3478.33   -3478.33
+23.5 0 0
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      305.544
+NDf                       =            6
+Edm                       =  1.81263e-10
+NCalls                    =          192
+p0                        =      1113.49   +/-   40.5617     
+p1                        =      59.7245   +/-   3.58329      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -294.016   530.683
+5.5 240.304 23.6784
+Range_______:    -231.377   381.377
+7.5 212.536 18.5852
+Range_______:    -263.228   326.561
+9.5 169.344 11.7722
+Range_______:    -234.584   297.918
+11.5 176.472 14.3634
+Range_______:    -292.419   182.419
+13.5 131.818 8.11247
+Range_______:    -255.818   145.818
+15.5 142.556 27.0867
+Range_______:    -152.522   215.855
+17.5 139.048 9.87583
+Range_______:    -163.044   226.377
+19.5 129.569 6.11991
+Range_______:    -130.974   194.308
+21.5 87.5543 12.5886
+Range_______:    -3478.33   -3478.33
+23.5 0 0
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      1321.97
+NDf                       =            6
+Edm                       =   3.0285e-07
+NCalls                    =          163
+p0                        =      1211.86   +/-   84.4658     
+p1                        =      51.7247   +/-   9.1754       	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -138.319   461.652
+5.5 237.279 39.6702
+Range_______:    -273.061   249.728
+7.5 188.144 16.807
+Range_______:    -131.947   368.613
+9.5 192.485 29.4454
+Range_______:    -114.655   351.322
+11.5 149.2 12.6763
+Range_______:    -317.618   294.285
+13.5 154.889 9.10375
+Range_______:    -214.353   191.02
+15.5 130.089 18.0709
+Range_______:    -267.902   157.902
+17.5 131.969 7.98225
+Range_______:    -151.356   214.689
+19.5 129.753 7.21538
+Range_______:    -448.113   338.113
+21.5 137.912 26.5624
+Range_______:    -3478.33   -3478.33
+23.5 0 0
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      1154.19
+NDf                       =            6
+Edm                       =  1.36567e-08
+NCalls                    =          162
+p0                        =      1168.99   +/-   79.46       
+p1                        =      50.7881   +/-   8.5223       	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -436.236   239.569
+5.5 273.084 43.6842
+Range_______:    -347.569   410.902
+7.5 224.839 14.7905
+Range_______:    -262.62   325.954
+9.5 168.84 13.1748
+Range_______:    -356.093   332.76
+11.5 179.935 12.1689
+Range_______:    -179.1   242.433
+13.5 173.307 27.624
+Range_______:    -500.504   217.171
+15.5 142.744 11.901
+Range_______:    -204.803   181.469
+17.5 132.627 10.0546
+Range_______:    -213.933   190.6
+19.5 128.701 5.80166
+Range_______:    -183.016   159.682
+21.5 116.92 17.3329
+Range_______:    -3478.33   -3478.33
+23.5 0 0
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      1780.02
+NDf                       =            7
+Edm                       =  2.68267e-11
+NCalls                    =          196
+p0                        =      1422.21   +/-   82.3613     
+p1                        =      40.8981   +/-   11.1278      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -244.103   480.77
+5.5 210.025 14.7801
+Range_______:    -307.957   284.623
+7.5 193.596 18.5433
+Range_______:    -247.075   310.408
+9.5 166.826 11.8498
+Range_______:    -242.359   219.026
+11.5 172.302 17.2491
+Range_______:    -266.207   156.207
+13.5 162.573 27.5441
+Range_______:    -303.791   280.458
+15.5 162.222 24.4658
+Range_______:    -287.785   177.785
+17.5 146.704 8.08253
+Range_______:    -236.169   212.836
+19.5 133.018 4.65308
+Range_______:    -297.516   100.849
+21.5 132.167 42.9007
+Range_______:    -3478.33   -3478.33
+23.5 0 0
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      958.205
+NDf                       =            6
+Edm                       =  3.16583e-10
+NCalls                    =          215
+p0                        =      907.971   +/-   88.8849     
+p1                        =       76.016   +/-   5.85168      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -357.224   333.891
+5.5 223.975 28.6412
+Range_______:    -287.568   350.901
+7.5 177.205 10.3479
+Range_______:    -240.999   390.999
+9.5 171.188 10.1098
+Range_______:    -228.331   291.664
+11.5 152.6 11.6152
+Range_______:    -263.789   240.456
+13.5 158.867 16.584
+Range_______:    -183.996   247.329
+15.5 115.848 16.9872
+Range_______:    -211.529   188.196
+17.5 138.447 9.26253
+Range_______:    -215.114   191.78
+19.5 119.213 5.09462
+Range_______:    -246.915   136.915
+21.5 135.9 33.6269
+Range_______:    -3478.33   -3478.33
+23.5 0 0
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      1848.97
+NDf                       =            6
+Edm                       =   5.6795e-11
+NCalls                    =          194
+p0                        =      1078.85   +/-   101.627     
+p1                        =      48.6212   +/-   10.6046      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05
+time1 288 time2 291 timeRef 59 
+time1 LYSO_bar time2 LYSO_bar timeRef LYSO_3_3_5 
+Range_______:    -3478.33   -3478.33
+-10.5 0 0
+Range_______:    -3478.33   -3478.33
+-8.5 0 0
+Range_______:    -3478.33   -3478.33
+-6.5 0 0
+Range_______:    -3478.33   -3478.33
+-4.5 0 0
+Range_______:    -3478.33   -3478.33
+-2.5 0 0
+Range_______:    -3478.33   -3478.33
+-0.5 0 0
+Range_______:    -3478.33   -3478.33
+1.5 0 0
+Range_______:    -3478.33   -3478.33
+3.5 0 0
+Range_______:    -361.356   338.023
+5.5 224.381 16.7912
+Range_______:    -211.882   448.548
+7.5 195.791 13.5541
+Range_______:    -363.733   253.733
+9.5 200.524 16.1056
+Range_______:    -234.756   211.422
+11.5 178.858 21.1238
+Range_______:    -337.877   141.211
+13.5 147.166 14.493
+Range_______:    -339.876   229.876
+15.5 112.708 8.13398
+Range_______:    -214.26   190.927
+17.5 135.449 7.85947
+Range_______:    -269.643   159.643
+19.5 132.551 7.50921
+Range_______:    -314.223   30.8898
+21.5 140.525 119.731
+Range_______:    -3478.33   -3478.33
+23.5 0 0
+Range_______:    -3478.33   -3478.33
+25.5 0 0
+Range_______:    -3478.33   -3478.33
+27.5 0 0
+Range_______:    -3478.33   -3478.33
+29.5 0 0
+Range_______:    -3478.33   -3478.33
+31.5 0 0
+Range_______:    -3478.33   -3478.33
+33.5 0 0
+Range_______:    -3478.33   -3478.33
+35.5 0 0
+Range_______:    -3478.33   -3478.33
+37.5 0 0
+Range_______:    -3478.33   -3478.33
+39.5 0 0
+Range_______:    -3478.33   -3478.33
+41.5 0 0
+Range_______:    -3478.33   -3478.33
+43.5 0 0
+Range_______:    -3478.33   -3478.33
+45.5 0 0
+Range_______:    -3478.33   -3478.33
+47.5 0 0
+Range_______:    -3478.33   -3478.33
+49.5 0 0
+Range_______:    -3478.33   -3478.33
+51.5 0 0
+Range_______:    -3478.33   -3478.33
+53.5 0 0
+Range_______:    -3478.33   -3478.33
+55.5 0 0
+Range_______:    -3478.33   -3478.33
+57.5 0 0
+Range_______:    -3478.33   -3478.33
+59.5 0 0
+Range_______:    -3478.33   -3478.33
+61.5 0 0
+Range_______:    -3478.33   -3478.33
+63.5 0 0
+Range_______:    -3478.33   -3478.33
+65.5 0 0
+Range_______:    -3478.33   -3478.33
+67.5 0 0
+Range_______:    -3478.33   -3478.33
+69.5 0 0
+Range_______:    -3478.33   -3478.33
+71.5 0 0
+Range_______:    -3478.33   -3478.33
+73.5 0 0
+Range_______:    -3478.33   -3478.33
+75.5 0 0
+Range_______:    -3478.33   -3478.33
+77.5 0 0
+Range_______:    -3478.33   -3478.33
+79.5 0 0
+Range_______:    -3478.33   -3478.33
+81.5 0 0
+Range_______:    -3478.33   -3478.33
+83.5 0 0
+Range_______:    -3478.33   -3478.33
+85.5 0 0
+Range_______:    -3478.33   -3478.33
+87.5 0 0
+
+****************************************
+Minimizer is Minuit / MigradImproved
+Chi2                      =      4015.07
+NDf                       =            6
+Edm                       =  3.53335e-10
+NCalls                    =          202
+p0                        =      1162.46   +/-   152.099     
+p1                        =      52.8482   +/-   15.8226      	 (limited)
+up
+0x5c3551c0____0x5c356190
+Address:0x5c3551c0  Param:3067.87 -499.984 41.1491 -1.7759 0.0374766 -0.000304299
+Address:0x5c356190  Param:1400.2 -65.9723 2.79787 -0.145524 0.00377963 -3.3706e-05

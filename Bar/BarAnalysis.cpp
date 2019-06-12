@@ -17,7 +17,7 @@
 #include "TMath.h"
 #include "TLine.h"
 #include "TCut.h"
-
+#include "TLegend.h"
        
 std::vector<std::string> ReadData(std::string FileName){
   
@@ -39,9 +39,10 @@ void GetPedestal(TTree*,Double_t*,Double_t*, std::vector<int>,std::string,int);
 void GetSpectrum(TTree* ,TH1D**,Double_t* ,std::vector<int>);
 TF1* FitCoincSpectrum(TH1D*);
 void GetTdiff(TTree* , TH1D**,TH2D** ,TH2D**,TH2D*,Double_t*, TF1** , Double_t*, std::vector<int>, std::vector<std::string>);
-void GetTdiffCorr(TTree* ,TH2D**,TH2D* , TF1** ,std::vector<TF1*>, Double_t*,Double_t* , std::vector<int> , std::vector<std::string> );
+Double_t GetTdiffCorr(TTree* ,TH2D**,TH2D* ,TH2D*, TF1** ,std::vector<TF1*>, Double_t*,Double_t* , std::vector<int> , std::vector<std::string> );
 void ProjectionTemp(TH2D**,std::string);
-
+void GetTresVsAEff(TH2D* ,Double_t, std::string, Double_t*, Double_t*, Double_t*, Double_t*);
+TGraphErrors* GetTimeResVsE(TH2D* Histo, Int_t Ch,std::string DirData);
 
 int main(int argc, char* argv[] ){
   
@@ -64,7 +65,10 @@ int main(int argc, char* argv[] ){
   gSystem->Exec(("mkdir "+DirData+"/Plot/TR/Spectra").c_str());    
   gSystem->Exec(("mkdir "+DirData+"/Plot/TR/ProjectionAEff").c_str());
   gSystem->Exec(("mkdir "+DirData+"/Plot/TR/ProjectionTemp").c_str());
-  
+  gSystem->Exec(("mkdir "+DirData+"/Plot/TR/TdiffVsAmpEffTemp").c_str());
+  gSystem->Exec(("mkdir "+DirData+"/Plot/TR/TimeResVsAEffTemp").c_str());
+  gSystem->Exec(("mkdir "+DirData+"/Plot/TR/ProjTResE1").c_str());
+  gSystem->Exec(("mkdir "+DirData+"/Plot/TR/ProjTResE2").c_str());
   
   TFile* f = new TFile(("../RootFileGraphBar/"+RootFileName+".root").c_str(),"RECREATE");
 
@@ -127,8 +131,8 @@ int main(int argc, char* argv[] ){
   int NFilePhys=(int)FileListPhysics.size();
   int NFilePed = (int)FileListPedestal.size()-1;
 
-  /*  
-   NFilePhys=1;
+  /*
+   NFilePhys=2;
    NFilePed= NFilePhys*2;
   */
 
@@ -181,8 +185,8 @@ int main(int argc, char* argv[] ){
 
   TH2D* tdiffVsE[2];
 
-  tdiffVsE[0] = new TH2D("tdiffVsE_time1","tdiffVsE_time1",70,0,70,200,-3000,3000);
-  tdiffVsE[1] = new TH2D("tdiffVsE_time2","tdiffVsE_time2",70,0,70,200,-3000,3000);
+  tdiffVsE[0] = new TH2D("tdiffVsE_time1","tdiffVsE_time1",150,0,150,200,-3000,3000);
+  tdiffVsE[1] = new TH2D("tdiffVsE_time2","tdiffVsE_time2",150,0,150,200,-3000,3000);
 
   TH2D* tdiffVsT[3];
 
@@ -190,7 +194,7 @@ int main(int argc, char* argv[] ){
   tdiffVsT[1] = new TH2D("tdiffVsT_time2","tdiffVsT_time2",40,21,29,200,-2000,2000);
   tdiffVsT[2] = new TH2D("tdiffVsT_tave","tdiffVsT_time2",40,21,29,200,-2000,2000);
   
-  TH2D* tdiffVsAmpEff = new TH2D("tdiffVsAmpEff","tdiffVsAmpEff",50,-10,40,100,-3500,3000);
+  TH2D* tdiffVsAmpEff = new TH2D("tdiffVsAmpEff","tdiffVsAmpEff",100,-10,90,100,-3500,3000);
   
   TLine* line[(int)Channels.size()][2];
     
@@ -202,7 +206,7 @@ int main(int argc, char* argv[] ){
     
     for(int j=0; j< (int)Channels.size();j++){
       
-      Spectrum[i][mapCh[Channels[j]]] = new TH1D(Form("Ch%i_%i_%s",Channels[j],i,(ChannelType[mapCh[Channels[j]]]).c_str()),Form("Ch%i_%i_%s",Channels[j],i,(ChannelType[mapCh[Channels[j]]]).c_str()),100,0,100);
+      Spectrum[i][mapCh[Channels[j]]] = new TH1D(Form("Ch%i_%i_%s",Channels[j],i,(ChannelType[mapCh[Channels[j]]]).c_str()),Form("Ch%i_%i_%s",Channels[j],i,(ChannelType[mapCh[Channels[j]]]).c_str()),150,0,150);
       
     }//CHIUDO FOR J
     
@@ -224,7 +228,7 @@ int main(int argc, char* argv[] ){
       line[mapCh[Channels[k]]][1]= new TLine(max,0,max,Spectrum[i][mapCh[Channels[k]]]->GetMaximum());
       
       canvino->cd(k+1);
-      Spectrum[i][mapCh[Channels[k]]]->GetXaxis()->SetRange(1,100);
+      //Spectrum[i][mapCh[Channels[k]]]->GetXaxis()->SetRange(1,100);
       Spectrum[i][mapCh[Channels[k]]]->GetXaxis()->SetTitle("Energy [D.U.]");
       Spectrum[i][mapCh[Channels[k]]]->GetYaxis()->SetTitle("Counts");
       Spectrum[i][mapCh[Channels[k]]]->Draw();
@@ -302,7 +306,6 @@ int main(int argc, char* argv[] ){
   std::cout << "Address1_:" << fitTdiffVsE[0] << " "<< fitTdiffVsE[0]->GetParameter(0) << " "<< fitTdiffVsE[0]->GetParameter(1)<< " "<< fitTdiffVsE[0]->GetParameter(2)<< " "<< fitTdiffVsE[0]->GetParameter(3)<< " "<< fitTdiffVsE[0]->GetParameter(4)<< " "<< fitTdiffVsE[0]->GetParameter(5)<< std::endl;
   
   std::cout << "Address2_:" << fitTdiffVsE[1] << " "<< fitTdiffVsE[1]->GetParameter(0) << " "<< fitTdiffVsE[1]->GetParameter(1)<< " "<< fitTdiffVsE[1]->GetParameter(2)<< " "<< fitTdiffVsE[1]->GetParameter(3)<< " "<< fitTdiffVsE[1]->GetParameter(4)<< " "<< fitTdiffVsE[1]->GetParameter(5) << std::endl;
-
   
 
   CanvasTdiffVsE->SaveAs((DirData+"/Plot/TR/TdiffVsE.png").c_str());
@@ -348,25 +351,48 @@ int main(int argc, char* argv[] ){
 
   TH2D* tdiffCorrVsE[2];
 
-  tdiffCorrVsE[0] = new TH2D("tdiffCorrVsE_time1","tdiffCorrVsE_time1",70,0,70,200,-3000,3000);
-  tdiffCorrVsE[1] = new TH2D("tdiffCorrVsE_time2","tdiffCorrVsE_time2",70,0,70,200,-3000,3000);
+  tdiffCorrVsE[0] = new TH2D("tdiffCorrVsE_time1","tdiffCorrVsE_time1",150,0,150,200,-3000,3000);
+  tdiffCorrVsE[1] = new TH2D("tdiffCorrVsE_time2","tdiffCorrVsE_time2",150,0,150,200,-3000,3000);
   
-  TH2D* tdiffCorrVsAmpEff = new TH2D("tdiffCorrVsAmpEff","tdiffCorrVsAmpEff",50,-10,40,150,-3500,3000);
+  TH2D* tdiffCorrVsAmpEff = new TH2D("tdiffCorrVsAmpEff","tdiffCorrVsAmpEff",100,-10,90,150,-3500,3000);
 
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
+  
+  std::vector<TH2D*> tdiffCorrVsAEffTemp(NFilePhys);
+  Double_t tempRun[NFilePhys];
+  TCanvas* CanvasTdiffAEffTemp = new TCanvas("CanvasTdiffAEffTemp","CanvasTdiffAEffTemp",700,700);
 
+  Double_t N[NFilePhys], sN[NFilePhys], C[NFilePhys], sC[NFilePhys];
+  
   for(int i=0;i<NFilePhys;i++){
     
     f0= TFile::Open((DirData+"/"+FileListPhysics.at(i)).c_str());
     tree0 = (TTree*)f0->Get("data"); 
     
     //std::cout<<"before function " << fitTdiffVsE[0] << " " << fitTdiffVsE[1] << std::endl;
+    tdiffCorrVsAEffTemp[i]= new TH2D(Form("tdiffCorrVsAmpEff%i",i),Form("tdiffCorrVsAmpEff%i",i),100,-10,90,150,-3500,3000);
     
-    GetTdiffCorr(tree0,tdiffCorrVsE,tdiffCorrVsAmpEff,FitSpectrum[i],fitTdiffVsE,Pedestal[i],RMSPedestal[i],Channels,ChannelType);
-    // GetTdiffCorr(TTree* tree, TH2D** tdiffVsE ,TF1** fitspectrum,TF1** fitcorr, Double_t* ped, std::vector<int> NCH, std::vector<std::string> ChType)
+    tempRun[i] = GetTdiffCorr(tree0,tdiffCorrVsE,tdiffCorrVsAmpEff,tdiffCorrVsAEffTemp[i],FitSpectrum[i],fitTdiffVsE,Pedestal[i],RMSPedestal[i],Channels,ChannelType);
+        
+    CanvasTdiffAEffTemp = new TCanvas("CanvasTdiffAEffTemp","CanvasTdiffAEffTemp",700,700);
+    tdiffCorrVsAEffTemp[i]->GetXaxis()->SetTitle("#A_{eff}/#\sigma_{n}");
+    tdiffCorrVsAEffTemp[i]->GetYaxis()->SetTitle("t_ave-t_ref [ps]");
+    tdiffCorrVsAEffTemp[i]->SetTitle((((std::string)tdiffCorrVsAEffTemp[i]->GetTitle())+"_"+std::to_string(tempRun[i])).c_str());
+    tdiffCorrVsAEffTemp[i]->Draw("COLZ");
+    
+    CanvasTdiffAEffTemp->SaveAs((DirData+"/Plot/TR/TdiffVsAmpEffTemp/Plot"+std::to_string(i)+".png").c_str());
+    
+    GetTresVsAEff(tdiffCorrVsAEffTemp[i],tempRun[i],DirData,&N[i],&sN[i],&C[i],&sC[i]);
+    
   }
-
-   
-
+  
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
   TF1* FitTresoCorr[3];
   for(int i=0; i<(int)Channels.size();i++){
     FitTresoCorr[i] = new TF1(Form("t_reso_corr%i",i),"gaus",tdiffCorr[i]->GetMean()-1.5*tdiffCorr[i]->GetRMS(),tdiffCorr[i]->GetMean()+1.5*tdiffCorr[i]->GetRMS());
@@ -464,13 +490,15 @@ int main(int argc, char* argv[] ){
     FitProjection->SetParameter(1 , Projection->GetMaximumBin());
     
     fitStatus = Projection->Fit(FitProjection,"RQ");
-    
-    CanvasProjection->SaveAs((DirData+"/Plot/TR/ProjectionAEff/Projection"+std::to_string(i)+".png").c_str());
-    
-    if(fitStatus==0 && tdiffCorrVsAmpEff->GetXaxis()->GetBinCenter(i)>0){
+
+    if(fitStatus==0 && tdiffCorrVsAmpEff->GetXaxis()->GetBinCenter(i)>0 && Projection->GetEntries()>150){    
+     
+      CanvasProjection->SaveAs((DirData+"/Plot/TR/ProjectionAEff/Projection"+std::to_string(i)+".png").c_str());
+     
       AEffValue.push_back(tdiffCorrVsAmpEff->GetXaxis()->GetBinCenter(i));
-      TimeResValue.push_back(sqrt(FitProjection->GetParameter(2)*FitProjection->GetParameter(2)-93*93));
+      TimeResValue.push_back(sqrt(FitProjection->GetParameter(2)*FitProjection->GetParameter(2)-91.9*91.9));
       ErrTimeResValue.push_back(FitProjection->GetParError(2));
+    
     }
     
     
@@ -485,10 +513,11 @@ int main(int argc, char* argv[] ){
   
   TGraphErrors* TimeResVsAEff = new TGraphErrors((int)AEffValue.size(),&AEffValue[0],&TimeResValue[0],0,&ErrTimeResValue[0]);
   
-  TF1* fitAEff = new TF1("fitAEff", "sqrt([0]/(x*x)+sqrt(2)*[1]*[1])",1.8,22);
+  TF1* fitAEff = new TF1("fitAEff", "sqrt([0]*[0]/(x*x)+2*[1]*[1])");
   
-  fitAEff->SetParameter(0,2.58e6);
-  fitAEff->SetParameter(1,70);
+  fitAEff->SetParameter(0,1600);
+  fitAEff->SetParameter(1,38);
+  fitAEff->SetParLimits(0,500,2500);
   fitAEff->SetParLimits(1,0,500);
   
   TimeResVsAEff->SetTitle("TimeResVsAEff");
@@ -498,14 +527,94 @@ int main(int argc, char* argv[] ){
   
   TimeResVsAEff->SetMarkerStyle(8);
   
-  TimeResVsAEff->GetXaxis()->SetRangeUser(0,25);
-  TimeResVsAEff->GetYaxis()->SetRangeUser(0,800);
+  TimeResVsAEff->GetXaxis()->SetLimits(0,30);
+  TimeResVsAEff->GetXaxis()->SetRangeUser(0,30);
+  TimeResVsAEff->GetYaxis()->SetRangeUser(0,400);
 
   TimeResVsAEff->Draw("AP");
-  TimeResVsAEff->Fit(fitAEff,"RW");
+  TimeResVsAEff->Fit(fitAEff,"WEM");
   
   
   CanvasTimeResVsAEff->SaveAs((DirData+"/Plot/TR/TimeResVsAEff.png").c_str()); 
+  
+  TGraphErrors* NoiseTermVsTemp = new TGraphErrors(NFilePhys,tempRun,N,0,sN);
+  NoiseTermVsTemp->SetTitle("NoiseTermVsTemp");
+  NoiseTermVsTemp->SetName(NoiseTermVsTemp->GetTitle());
+  NoiseTermVsTemp->GetXaxis()->SetTitle("TempRun [°C]");
+  NoiseTermVsTemp->GetXaxis()->SetTitle("N");
+
+  Double_t MeanNoise,RMSNoise;
+  MeanNoise=TMath::Mean(NFilePhys,N);
+  RMSNoise = TMath::RMS(NFilePhys,N);
+  
+  TLegend* legNoise = new TLegend();
+  legNoise->SetHeader(Form("Mean: %.1lf \n RMS: %.1lf",MeanNoise,RMSNoise));
+  
+  TGraphErrors* ConstTermVsTemp = new TGraphErrors(NFilePhys,tempRun,C,0,sC);
+  ConstTermVsTemp->SetTitle("ConstTermVsTemp");
+  ConstTermVsTemp->SetName(ConstTermVsTemp->GetTitle());
+  ConstTermVsTemp->GetXaxis()->SetTitle("TempRun [°C]");
+  ConstTermVsTemp->GetXaxis()->SetTitle("C");
+  
+  Double_t MeanConst,RMSConst;
+  MeanConst=TMath::Mean(NFilePhys,C);
+  RMSConst = TMath::RMS(NFilePhys,C);
+  
+  TLegend* legConst = new TLegend();
+  legConst->SetHeader(Form("Mean: %.1lf \n RMS: %.1lf",MeanConst,RMSConst));
+
+
+  TCanvas* CanvasConstNoise = new TCanvas("CanvasConstNoise","CanvasConstNoise",1400,700);
+  CanvasConstNoise->Divide(2,1);
+  
+  CanvasConstNoise->cd(1);
+  NoiseTermVsTemp->Draw("AP");
+  legNoise->Draw("SAME");
+  
+  CanvasConstNoise->cd(2);
+  ConstTermVsTemp->Draw("AP");
+  legConst->Draw("SAME");  
+
+  CanvasConstNoise->SaveAs((DirData+"/Plot/TR/NCVsTemp.png").c_str());
+
+  TH1D* CProjection = new TH1D("CProjection","CProjection",40,0,100);
+  TH1D* NProjection = new TH1D("NProjection","NProjection",40,0,2000);
+  
+  for(int i=0;i< ConstTermVsTemp->GetN();i++){
+    CProjection->Fill(*(ConstTermVsTemp->GetY()+i));
+  }
+  
+  for(int i=0;i< NoiseTermVsTemp->GetN();i++){
+    NProjection->Fill(*(NoiseTermVsTemp->GetY()+i));
+  }
+  
+  TGraphErrors* TimeResVsE1;
+  TGraphErrors* TimeResVsE2;
+
+  TimeResVsE1= GetTimeResVsE(tdiffCorrVsE[0],1,DirData);
+  TimeResVsE2= GetTimeResVsE(tdiffCorrVsE[1],2,DirData);
+  
+  TF1* fitTResVsECh1 = new TF1("fitTResVsECh1","sqrt( [0]*[0]/(x*x) + [1]*[1]/(x) + [2]*[2] )");
+  TF1* fitTResVsECh2 = new TF1("fitTResVsECh2","sqrt( [0]*[0]/(x*x) + [1]*[1]/(x) + [2]*[2] )");
+
+  TCanvas* CanvTRVsE = new TCanvas("CanvTRVsE","CanvTRVsE",1400,700);
+  CanvTRVsE->Divide(2,1);
+  
+  CanvTRVsE->cd(1);
+  TimeResVsE1->Draw("AP");
+  fitTResVsECh1->SetParameter(0,1000);
+  fitTResVsECh1->SetParameter(1,0.1);
+  fitTResVsECh1->SetParameter(2,40);
+  TimeResVsE1->Fit(fitTResVsECh1);
+  
+  CanvTRVsE->cd(2);
+  TimeResVsE2->Draw("AP");
+  fitTResVsECh1->SetParameter(0,1000);
+  fitTResVsECh1->SetParameter(1,0.1);
+  fitTResVsECh1->SetParameter(2,40);
+  TimeResVsE2->Fit(fitTResVsECh2);
+  
+  CanvTRVsE->SaveAs((DirData+"/Plot/TR/TResVsE.png").c_str());
   
   
   TFile* f1 = new TFile((DirData+"/Plot/TResVsAEff.root").c_str(),"RECREATE");
@@ -513,6 +622,24 @@ int main(int argc, char* argv[] ){
   
   TimeResVsAEff->Write();
   fitAEff->Write();
+  NoiseTermVsTemp->Write();
+  ConstTermVsTemp->Write();
+  tdiffCorrVsE[0]->Write();
+  fitTdiffCorrVsE[0]->Write();
+  tdiffCorrVsE[1]->Write();
+  fitTdiffCorrVsE[1]->Write();
+  tdiffVsE[0]->Write();
+  fitTdiffVsE[0]->Write();
+  tdiffVsE[1]->Write();
+  fitTdiffVsE[1]->Write();
+  tdiffVsAmpEff->Write();
+  tdiffCorrVsAmpEff->Write();
+  NoiseTermVsTemp->Write();
+  ConstTermVsTemp->Write();
+  CProjection->Write();
+  NProjection->Write();
+  TimeResVsE1->Write();
+  TimeResVsE2->Write();
 
   f1->Save();
   f1->Close();
@@ -752,14 +879,16 @@ void GetTdiff(TTree* tree, TH1D** histo,TH2D** tdiffVsE,TH2D** tdiffVsT,TH2D* td
 
 
 
-void GetTdiffCorr(TTree* tree, TH2D** tdiffVsE,TH2D* tdiffVsAmpEffCorr ,TF1** fitspectrum, std::vector<TF1*> fitcorr, Double_t* ped,Double_t* RMSPed, std::vector<int> NCH, std::vector<std::string> ChType){
+Double_t GetTdiffCorr(TTree* tree, TH2D** tdiffVsE,TH2D* tdiffVsAmpEffCorr,TH2D* tdiffVsAmpEffTemp ,TF1** fitspectrum, std::vector<TF1*> fitcorr, Double_t* ped,Double_t* RMSPed, std::vector<int> NCH, std::vector<std::string> ChType){
   //Histo0 tref-tave, histo1 tref-t1, histo2 tref-t2
   
   Double_t energy[(int)NCH.size()];
   Double_t chID[(int)NCH.size()];
   Double_t time[(int)NCH.size()];
-  
+  Double_t temp1;
  
+  Double_t TMean=0;
+  
   std::map<int,int> mapCh;
   std::map<std::string,int> mapTime;
   
@@ -768,6 +897,7 @@ void GetTdiffCorr(TTree* tree, TH2D** tdiffVsE,TH2D* tdiffVsAmpEffCorr ,TF1** fi
   tree->SetBranchAddress("energy",energy);
   tree->SetBranchAddress("chId",chID);
   tree->SetBranchAddress("time",time);  
+  tree->SetBranchAddress("temp1",&temp1);  
   
   
   for(int i=0;i<(int)NCH.size();i++){
@@ -804,6 +934,8 @@ void GetTdiffCorr(TTree* tree, TH2D** tdiffVsE,TH2D* tdiffVsAmpEffCorr ,TF1** fi
   for(int i=0;i< tree->GetEntries();i++){
     tree->GetEntry(i);
     
+    TMean+=temp1;
+
      if(energy[mapCh[NCH[mapTime["timeRef"]]]]-ped[mapCh[NCH[mapTime["timeRef"]]]] < fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(1)+3*fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(2) && 
        energy[mapCh[NCH[mapTime["timeRef"]]]]-ped[mapCh[NCH[mapTime["timeRef"]]]] > fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(1)-3*fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(2) &&
        energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]] < fitspectrum[mapCh[NCH[mapTime["time1"]]]]->GetParameter(1)+3*fitspectrum[mapCh[NCH[mapTime["time1"]]]]->GetParameter(2) &&
@@ -822,26 +954,25 @@ void GetTdiffCorr(TTree* tree, TH2D** tdiffVsE,TH2D* tdiffVsAmpEffCorr ,TF1** fi
 
        tdiffVsAmpEffCorr->Fill(AmpEff/MeanRMSPed,time[mapCh[NCH[mapTime["timeRef"]]]]-(time[mapCh[NCH[mapTime["time1"]]]]- fitcorr[0]->Eval(energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]])+time[mapCh[NCH[mapTime["time2"]]]]- fitcorr[1]->Eval(energy[mapCh[NCH[mapTime["time2"]]]]-ped[mapCh[NCH[mapTime["time2"]]]]))/2);
       
+       tdiffVsAmpEffTemp->Fill(AmpEff/MeanRMSPed,time[mapCh[NCH[mapTime["timeRef"]]]]-(time[mapCh[NCH[mapTime["time1"]]]]- fitcorr[0]->Eval(energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]])+time[mapCh[NCH[mapTime["time2"]]]]- fitcorr[1]->Eval(energy[mapCh[NCH[mapTime["time2"]]]]-ped[mapCh[NCH[mapTime["time2"]]]]))/2);
 
        tdiffVsE[0]->Fill(energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]], time[mapCh[NCH[mapTime["time1"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]] - fitcorr[0]->Eval( energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]] ) );
 
-       //std:: cout << "Ch1___:"<< energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]]<<" ->("<< time[mapCh[NCH[mapTime["time1"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]] << ")-(" << fitcorr[0]->Eval( energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]] ) << ")=" << time[mapCh[NCH[mapTime["time1"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]] - fitcorr[0]->Eval( energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]] ) << std::endl;
-
+       
        
        tdiffVsE[1]->Fill(energy[mapCh[NCH[mapTime["time2"]]]]-ped[mapCh[NCH[mapTime["time2"]]]], time[mapCh[NCH[mapTime["time2"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]] - fitcorr[1]->Eval( energy[mapCh[NCH[mapTime["time2"]]]] - ped[mapCh[NCH[mapTime["time2"]]]] ) );
 
-       //std:: cout << "Ch2___"<< energy[mapCh[NCH[mapTime["time2"]]]]-ped[mapCh[NCH[mapTime["time2"]]]]<<" ->("<< time[mapCh[NCH[mapTime["time2"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]] << ")-(" << fitcorr[1]->Eval( energy[mapCh[NCH[mapTime["time2"]]]]-ped[mapCh[NCH[mapTime["time2"]]]] ) << ")=" << time[mapCh[NCH[mapTime["time2"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]] - fitcorr[1]->Eval( energy[mapCh[NCH[mapTime["time2"]]]]-ped[mapCh[NCH[mapTime["time2"]]]] ) << std::endl;
- 
+        
      }//chiudo altro if
-     
-     
-  }
-  
-  
-  
+       
+  }// chiudo for
+    
   std::cout << Form("time1 %i ",  NCH[mapTime["time1"]]) << Form("time2 %i ",     NCH[mapTime["time2"]]) << Form("timeRef %i ", NCH[mapTime["timeRef"]]) << std::endl;
   std::cout << Form("time1 %s ",  ChType[mapTime["time1"]].c_str()) << Form("time2 %s ",    ChType[mapTime["time2"]].c_str()) << Form("timeRef %s ", ChType[mapTime["timeRef"]].c_str()) << std::endl;
   
+  TMean/=tree->GetEntries();
+
+  return TMean;
 }
 
 
@@ -932,7 +1063,7 @@ void ProjectionTemp(TH2D** histoTemp,std::string DirData){
     fitStatus[2]=projection[2]->Fit(fitProjection[2],"R");
     
     std::cout << " fitstaus1: "<< fitStatus[0] << std::endl;
-    if( fitStatus[0]!=-1 && fitProjection[0]->GetParError(2)<40 ){       
+    if( fitStatus[0]!=-1 && fitProjection[0]->GetParError(2)<40 && projection[0]->GetEntries()>150 ){       
       Plot[0]->SetPoint(h,histoTemp[0]->GetXaxis()->GetBinCenter(i),fitProjection[0]->GetParameter(2));
       Plot[0]->SetPointError(h,0,fitProjection[0]->GetParError(2));
       h++;
@@ -940,7 +1071,7 @@ void ProjectionTemp(TH2D** histoTemp,std::string DirData){
     }
     
     std::cout << " fitstaus2: "<< fitStatus[1] << std::endl;
-    if( fitStatus[1]!=-1 && fitProjection[1]->GetParError(2)<40 ){      
+    if( fitStatus[1]!=-1 && fitProjection[1]->GetParError(2)<40 && projection[1]->GetEntries()>150){      
       Plot[1]->SetPoint(l,histoTemp[1]->GetXaxis()->GetBinCenter(i),fitProjection[1]->GetParameter(2));
       Plot[1]->SetPointError(l,0,fitProjection[1]->GetParError(2));
       l++;
@@ -948,7 +1079,7 @@ void ProjectionTemp(TH2D** histoTemp,std::string DirData){
     }
     
     std::cout << " fitstausave: "<< fitStatus[3] << std::endl;
-    if( fitStatus[1]!=-1 ){ 
+    if( fitStatus[1]!=-1 && projection[2]->GetEntries()>150){ 
       Plot[2]->SetPoint(m,histoTemp[2]->GetXaxis()->GetBinCenter(i),fitProjection[2]->GetParameter(2));
       Plot[2]->SetPointError(m,0,fitProjection[2]->GetParError(2));
       m++;
@@ -1000,4 +1131,161 @@ void ProjectionTemp(TH2D** histoTemp,std::string DirData){
   f1->Close();
 
 
+}
+
+
+
+
+void GetTresVsAEff(TH2D* Histo,Double_t temp,std::string DirData,Double_t* N,Double_t* sN,Double_t* C,Double_t* sC){
+
+  gSystem->Exec(("mkdir "+DirData+"/Plot/TR/TimeResVsAEffTemp/TimeResVsAEffTemp"+std::to_string(temp*1000).erase(12-7,12)).c_str());
+
+  Int_t nbins = Histo->GetXaxis()->GetNbins();
+  
+  TH1D* Projection;
+  TF1* FitProjection;
+  TCanvas* CanvasProjection;
+
+  std::vector<Double_t> AEffValue;
+  std::vector<Double_t> TimeResValue;
+  std::vector<Double_t> ErrTimeResValue;
+
+  Int_t fitStatus;
+
+  for(int i=0; i<nbins-1; i+=2){
+
+
+    CanvasProjection = new TCanvas("CanvasProjection","CanvasProjection",900,1000);
+    
+    Projection = Histo->ProjectionY(Form("ProjectionCorr%i_Amp%lf",i,Histo->GetXaxis()->GetBinCenter(i)),i,i);
+    Projection->GetXaxis()->SetTitle("t_diff [ps]");
+    Projection->GetYaxis()->SetTitle("Counts");
+    Projection->SetTitle(Projection->GetName());
+    Projection->Draw();
+    
+    FitProjection = new TF1(Form("fitProjectionCorr%i",i) , "gaus" , Projection->GetBinCenter(Projection->GetMaximumBin())-1.1*Projection->GetRMS(),Projection->GetBinCenter(Projection->GetMaximumBin())+1.1*Projection->GetRMS());
+    
+    std::cout << "Range_______:    " << Projection->GetBinCenter(Projection->GetMaximumBin())-1.1*Projection->GetRMS() << "   " << Projection->GetBinCenter(Projection->GetMaximumBin())+1.1*Projection->GetRMS() << std::endl;
+          
+    FitProjection->SetParameter(0 , Projection->GetMaximum());
+    FitProjection->SetParameter(1 , Projection->GetMaximumBin());
+    
+    fitStatus = Projection->Fit(FitProjection,"RQ");
+    
+    
+    
+    if(fitStatus==0 && Histo->GetXaxis()->GetBinCenter(i)>0 && Projection->GetEntries()>150){
+      
+      CanvasProjection->SaveAs((DirData+"/Plot/TR/TimeResVsAEffTemp/TimeResVsAEffTemp"+std::to_string(temp*1000).erase(12-7,12)+"/Proj"+std::to_string(i)+".png").c_str());
+      
+      AEffValue.push_back(Histo->GetXaxis()->GetBinCenter(i));
+      TimeResValue.push_back(sqrt(FitProjection->GetParameter(2)*FitProjection->GetParameter(2)-91.9*91.9));
+      ErrTimeResValue.push_back(FitProjection->GetParError(2));
+    }
+    
+    
+    delete Projection;
+    delete CanvasProjection;
+
+    std::cout << Histo->GetXaxis()->GetBinCenter(i) << " " << FitProjection->GetParameter(2) << " " << FitProjection->GetParError(2) << std::endl;
+  }
+  
+  TCanvas* CanvasTimeResVsAEff = new TCanvas("CanvasTimeResVsAEff","CanvasTimeResVsAEff",900,1000);
+  
+  
+  TGraphErrors* TimeResVsAEff = new TGraphErrors((int)AEffValue.size(),&AEffValue[0],&TimeResValue[0],0,&ErrTimeResValue[0]);
+  
+  TF1* fitAEff = new TF1("fitAEff", "sqrt([0]*[0]/(x*x)+2*[1]*[1])");
+  
+  fitAEff->SetParameter(0,1600);
+  fitAEff->SetParameter(1,60);
+  fitAEff->SetParLimits(1,1000,2500);
+  fitAEff->SetParLimits(1,0,500);
+  
+  TimeResVsAEff->SetTitle("TimeResVsAEff");
+  TimeResVsAEff->SetName(TimeResVsAEff->GetTitle());
+  TimeResVsAEff->GetXaxis()->SetTitle("A_Eff/#sigma_{n} [D.U]");
+  TimeResVsAEff->GetYaxis()->SetTitle("TimeRes [ps]");
+  
+  TimeResVsAEff->SetMarkerStyle(8);
+  
+  TimeResVsAEff->GetXaxis()->SetLimits(0,TMath::MaxElement(TimeResVsAEff->GetN(),TimeResVsAEff->GetX()));
+  TimeResVsAEff->GetXaxis()->SetRangeUser(0,TMath::MaxElement(TimeResVsAEff->GetN(),TimeResVsAEff->GetX()));
+  TimeResVsAEff->GetYaxis()->SetRangeUser(0,400);
+  
+  TimeResVsAEff->Draw("AP");
+  Int_t FitStatus =  TimeResVsAEff->Fit(fitAEff,"WEM");
+  
+  
+  CanvasTimeResVsAEff->SaveAs((DirData+"/Plot/TR/TimeResVsAEffTemp/TimeResVsAEff"+std::to_string(temp)+".png").c_str()); 
+
+  // if( fitAEff->GetParError(0) < 2000 && fitAEff->GetParError(1) < 2000){
+
+    *N=fitAEff->GetParameter(0);
+    *sN=fitAEff->GetParError(0);
+    *C=fitAEff->GetParameter(1);
+    *sC=fitAEff->GetParError(1);
+
+    std::cout << "up" << std::endl;
+    
+    /*} else {
+    
+    *N=-10;
+    *sN=0;
+    *C=-10;
+    *sC=0;
+    
+    }*/
+  
+  
+  delete CanvasTimeResVsAEff;
+}
+
+
+
+TGraphErrors* GetTimeResVsE(TH2D* Histo, Int_t Ch,std::string DirData){
+  
+  TH1D* proj;
+  TF1* fitProj = new TF1("fitProj","gaus");
+  TCanvas* canv = new TCanvas("canv","canv",700,700);
+  
+  Double_t ResPixel=91.9,SResPixel=0.1;
+  Double_t Res,SRes;
+  
+
+  std::vector<Double_t> X,Y,sY;
+
+  for(int i=0; i<Histo->GetXaxis()->GetNbins()-2; i+=2){ 
+    
+    proj = Histo->ProjectionY(Form("Histo%i_%i",i,(int)Histo->GetXaxis()->GetBinCenter(i+1)),i,i+1); 
+    proj->Draw();
+    proj->Fit(fitProj);
+
+    fitProj->SetRange(fitProj->GetParameter(1)-2*fitProj->GetParameter(2), fitProj->GetParameter(1)+2*fitProj->GetParameter(2));
+    
+    proj->Fit(fitProj);
+
+    Res=fitProj->GetParameter(2);
+    SRes=fitProj->GetParError(2);
+
+    if(proj->GetEntries()>1000 && fitProj->GetParError(2)<20){
+
+      X.push_back( Histo->GetXaxis()->GetBinCenter(i+1) );
+      Y.push_back( sqrt(Res*Res - ResPixel*ResPixel) );
+      sY.push_back(  sqrt( Res*Res/(Res*Res+ResPixel*ResPixel)*SRes*SRes + ResPixel*ResPixel/(Res*Res+ResPixel*ResPixel)*SResPixel*SResPixel ) ); 
+
+      canv->SaveAs((DirData+"/Plot/TE/ProjTResE"+std::to_string(Ch)+"/TimeResVsAEff"+std::to_string(i)+".png").c_str());  
+    }//chiudo if
+    
+ 
+  }//chiudo for
+  
+  TGraphErrors* graph = new TGraphErrors(X.size(),&X[0],&Y[0],0,&sY[0]);
+  graph->SetTitle(Form("TimeResVsECh%i",Ch));
+  graph->SetName(graph->GetTitle());
+  graph->GetXaxis()->SetTitle("ADC [D.U]");
+  graph->GetYaxis()->SetTitle("TimeRes [ps]");
+  
+  return graph;
+  
 }
