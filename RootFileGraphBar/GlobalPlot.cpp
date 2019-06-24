@@ -262,8 +262,8 @@ int main(int argc, char* argv[]){
   for(int i=0;i<NFile;i++){
   
     CanvasCh59->cd(1);
-    GraphCh59LTP1[i]->SetMarkerStyle(22+i);
-    GraphCh59LTP2[i]->SetMarkerStyle(22+i);
+    GraphCh59LTP1[i]->SetMarkerStyle(24+i);
+    GraphCh59LTP2[i]->SetMarkerStyle(24+i);
     LegendCh59->AddEntry(GraphCh59LTP1[i],(FileListOrigin.at(i).erase(FileListOrigin.at(i).size()-3,FileListOrigin.at(i).size())).c_str());
     GraphCh59LTP1[i]->Draw("SAMEP");
     GraphCh59LTP2[i]->Draw("SAMEP");
@@ -271,17 +271,17 @@ int main(int argc, char* argv[]){
   
     
     CanvasCh59->cd(2);
-    GraphCh59GTP1[i]->SetMarkerStyle(22+i);
-    GraphCh59GTP2[i]->SetMarkerStyle(22+i);
+    GraphCh59GTP1[i]->SetMarkerStyle(24+i);
+    GraphCh59GTP2[i]->SetMarkerStyle(24+i);
     GraphCh59GTP1[i]->Draw("SAMEP");
     Ch59P1->Add(GraphCh59GTP1[i]);
     GraphCh59GTP2[i]->Draw("SAMEP");
     Ch59P2->Add(GraphCh59GTP2[i]);
     
-    GraphBetaLYCh59[i]->SetMarkerStyle(22+i);
+    GraphBetaLYCh59[i]->SetMarkerStyle(24+i);
     LYVsTempCh59->Add(GraphBetaLYCh59[i]);
     
-    GraphSatValCh59[i]->SetMarkerStyle(22+i);
+    GraphSatValCh59[i]->SetMarkerStyle(24+i);
     SatValVsTempCh59->Add(GraphSatValCh59[i]);
   }
   
@@ -314,24 +314,24 @@ int main(int argc, char* argv[]){
   for(int i=0;i<NFile;i++){
   
     CanvasCh315->cd(1);
-    GraphCh315LTP1[i]->SetMarkerStyle(22+i);
-    GraphCh315LTP2[i]->SetMarkerStyle(22+i);
+    GraphCh315LTP1[i]->SetMarkerStyle(24+i);
+    GraphCh315LTP2[i]->SetMarkerStyle(24+i);
     LegendCh315->AddEntry(GraphCh315LTP1[i],(FileListOrigin.at(i).erase(FileListOrigin.at(i).size()-3,FileListOrigin.at(i).size())).c_str());
     GraphCh315LTP1[i]->Draw("SAMEP");
     GraphCh315LTP2[i]->Draw("SAMEP");
 
     CanvasCh315->cd(2);
-    GraphCh315GTP1[i]->SetMarkerStyle(22+i);
-    GraphCh315GTP2[i]->SetMarkerStyle(22+i);
+    GraphCh315GTP1[i]->SetMarkerStyle(24+i);
+    GraphCh315GTP2[i]->SetMarkerStyle(24+i);
     GraphCh315GTP1[i]->Draw("SAMEP");
     Ch315P1->Add(GraphCh315GTP1[i]);
     GraphCh315GTP2[i]->Draw("SAMEP");
     Ch315P2->Add(GraphCh315GTP2[i]);
  
-    GraphBetaLYCh315[i]->SetMarkerStyle(22+i);
+    GraphBetaLYCh315[i]->SetMarkerStyle(24+i);
     LYVsTempCh315->Add(GraphBetaLYCh315[i]);
 
-    GraphSatValCh315[i]->SetMarkerStyle(22+i);
+    GraphSatValCh315[i]->SetMarkerStyle(24+i);
     SatValVsTempCh315->Add(GraphSatValCh315[i]);
   }
   

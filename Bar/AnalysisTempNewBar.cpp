@@ -53,6 +53,8 @@ TF1* CalibrationCurve(TGraphErrors* graph,int i){
   fit->SetParameter(0,147);
   fit->SetParameter(1,4e-4);
 
+  graph->GetXaxis()->SetTitle("RealEnergy [KeV]");
+  graph->GetXaxis()->SetTitle("ADC [DU]");
   graph->Fit(fit,"Q");
 
   return fit;
@@ -221,7 +223,8 @@ TF1* FitNaSpectrumCBBar(TH1D* Profile,Int_t* fitStatus ,Int_t chID){
   
   std::cout << "p1 , RMS1 , p2 , RMS2 , CBPeak->  " << peak1<< " " << RMS1 << " " << peak2 << " " <<RMS2<< " " << CBPeak << std::endl;
 
-  TF1* spectrum = new TF1(Form("SpectrumFit_%s", Profile->GetName()),"[0] * exp(-( x-[1] )*( x-[1] )/( 2* [2]* [2])) + [3] / (exp( (x*[4]-(2*[1]*[1]/([1]+2*[1])))) + 1)+ [5] * exp(-( x-[6] )*( x-[6] )/( 2* [7]* [7])) +crystalball([8],[9],[10],[11],[12])",min+1,EndPlot);
+  //  TF1* spectrum = new TF1(Form("SpectrumFit_%s", Profile->GetName()),"[0] * exp(-( x-[1] )*( x-[1] )/( 2* [2]* [2])) + [3] / (exp( (x*[4]-(2*[1]*[1]/([1]+2*[1])))) + 1)+ [5] * exp(-( x-[6] )*( x-[6] )/( 2* [7]* [7])) +crystalball([8],[9],[10],[11],[12])",min+1,EndPlot);
+  TF1* spectrum = new TF1(Form("SpectrumFit_%s", Profile->GetName()),"[0] * exp(-( x-[1] )*( x-[1] )/( 2* [2]* [2])) + [5] * exp(-( x-[6] )*( x-[6] )/( 2* [7]* [7])) +crystalball([8],[9],[10],[11],[12])",min+1,EndPlot);
   
   //TF1* spectrumBar = new TF1(Form("SpectrumBarFit_%s", Profile->GetName()),"[0] * exp(-( x-[1] )*( x-[1] )/( 2* [2]* [2])) +[3] * exp(-( x-[6] )*( x-[6] )/( 2* [5]* [5])) +[4] / (exp( (x*[7]-(2*[6]*[6]/([6]+2*[1])))) + 1)");
   
@@ -1063,18 +1066,26 @@ int main(int argc, char* argv[] ){
   SatValVsMeanTemp[0]= new TGraphErrors(NFilePhys,MeanTGlobal,ACh59,SigmaTGlobal,sACh59);
   SatValVsMeanTemp[0]->SetTitle("SatValVsMeanTempCh59");
   SatValVsMeanTemp[0]->SetName(SatValVsMeanTemp[0]->GetTitle());
+  SatValVsMeanTemp[0]->GetYaxis()->SetTitle("#alpha");
+  SatValVsMeanTemp[0]->GetYaxis()->SetTitle("temp [#circ C]");
   SatValVsMeanTemp[0]->GetYaxis()->SetRangeUser(136,170);
   SatValVsMeanTemp[1]= new TGraphErrors(NFilePhys,MeanTGlobal,ACh288,SigmaTGlobal,sACh288);
   SatValVsMeanTemp[1]->SetTitle("SatValVsMeanTempCh288");
+  SatValVsMeanTemp[1]->GetYaxis()->SetTitle("#alpha");
+  SatValVsMeanTemp[1]->GetYaxis()->SetTitle("temp [#circ C]");
   SatValVsMeanTemp[1]->SetName(SatValVsMeanTemp[1]->GetTitle());
   SatValVsMeanTemp[1]->GetYaxis()->SetRangeUser( (TMath::MinElement(NFilePhys,SatValVsMeanTemp[1]->GetY()))-0.2*(TMath::MinElement(NFilePhys,SatValVsMeanTemp[1]->GetY())), (TMath::MaxElement(NFilePhys,SatValVsMeanTemp[1]->GetY()))+0.2*(TMath::MaxElement(NFilePhys,SatValVsMeanTemp[1]->GetY())) );  
 
   LYValVsMeanTemp[0]= new TGraphErrors(NFilePhys,MeanTGlobal,BCh59,SigmaTGlobal,sBCh59);
   LYValVsMeanTemp[0]->SetTitle("LYValVsMeanTempCh59");
+  LYValVsMeanTemp[0]->GetYaxis()->SetTitle("#beta");
+  LYValVsMeanTemp[0]->GetYaxis()->SetTitle("temp [#circ C]");
   LYValVsMeanTemp[0]->SetName(LYValVsMeanTemp[0]->GetTitle());
   LYValVsMeanTemp[0]->GetYaxis()->SetRangeUser(0.4e-3,0.7e-3);
   LYValVsMeanTemp[1]= new TGraphErrors(NFilePhys,MeanTGlobal,BCh288,SigmaTGlobal,sBCh288);
   LYValVsMeanTemp[1]->SetTitle("LYValVsMeanTempCh288");
+  LYValVsMeanTemp[1]->GetYaxis()->SetTitle("#beta");
+  LYValVsMeanTemp[1]->GetYaxis()->SetTitle("temp [#circ C]");
   LYValVsMeanTemp[1]->SetName(LYValVsMeanTemp[1]->GetTitle()); 
   LYValVsMeanTemp[1]->GetYaxis()->SetRangeUser((TMath::MinElement(NFilePhys,LYValVsMeanTemp[1]->GetY()))-0.2*(TMath::MinElement(NFilePhys,LYValVsMeanTemp[1]->GetY())), (TMath::MaxElement(NFilePhys,LYValVsMeanTemp[1]->GetY()))+0.2*(TMath::MaxElement(NFilePhys,LYValVsMeanTemp[1]->GetY())));
   
