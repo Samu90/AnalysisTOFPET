@@ -550,6 +550,7 @@ int main(int argc, char* argv[] ){
 
     if(FitProj->GetParError(2)<50 && proj->GetEntries()>100){
       
+
       X.push_back( TDiffCorrVsAEff->GetXaxis()->GetBinCenter(i+1) );
       Y.push_back( sqrt(Res*Res-ResPixel*ResPixel) );
       sY.push_back( sqrt( Res*Res/(Res*Res+ResPixel*ResPixel)*SRes*SRes + ResPixel*ResPixel/(Res*Res+ResPixel*ResPixel)*SResPixel*SResPixel ) );
@@ -628,6 +629,20 @@ int main(int argc, char* argv[] ){
   gSystem->Exec(("cp ../RootFileGraphPixel/"+FileName+"TRes.root "+DirData+"/Plot/.").c_str());
 
   return 0;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
@@ -644,16 +659,16 @@ void AmpCorrection(TTree* tree, TH2D* Histo59, TH2D* Histo315, TF1* Spectrum59, 
     tree->GetEntry(i);
     
     if(energy[0]-PedCh59 > 8 && energy[1]-PedCh315 > (Spectrum315->GetParameter(1)-3*Spectrum315->GetParameter(2)) 
-       && energy[1]-PedCh315 < (Spectrum315->GetParameter(1)+3*Spectrum315->GetParameter(2)) 
-       && energy[0]-PedCh59 < (Spectrum59->GetParameter(1)+3*Spectrum59->GetParameter(2))){
+       && energy[1]-PedCh315 < (Spectrum315->GetParameter(1)+1*Spectrum315->GetParameter(2)) 
+       && energy[0]-PedCh59 < (Spectrum59->GetParameter(1)+1*Spectrum59->GetParameter(2))){
 
       if(corr59) Histo59->Fill(energy[0]-PedCh59, time[0]-time[1] - corr59->Eval(energy[0]-PedCh59) );
       else Histo59->Fill(energy[0]-PedCh59, time[0]-time[1]);
       }//chiudo if
 
     if(energy[1]-PedCh315 > 8 && energy[0]-PedCh59 > (Spectrum59->GetParameter(1)-3*Spectrum59->GetParameter(2)) 
-       && energy[0]-PedCh59 < (Spectrum59->GetParameter(1)+3*Spectrum59->GetParameter(2)) 
-       && energy[1]-PedCh315 < (Spectrum315->GetParameter(1)+3*Spectrum315->GetParameter(2))){
+       && energy[0]-PedCh59 < (Spectrum59->GetParameter(1)+1*Spectrum59->GetParameter(2)) 
+       && energy[1]-PedCh315 < (Spectrum315->GetParameter(1)+1*Spectrum315->GetParameter(2))){
       
       if(corr315) Histo315->Fill(energy[1]-PedCh315, time[0]-time[1] - corr315->Eval(energy[1]-PedCh315) );
       else Histo315->Fill(energy[1]-PedCh315, time[0]-time[1] );
@@ -719,8 +734,9 @@ TGraphErrors* GetTimeResVsE(TH2D* Histo, Int_t Ch,std::string DirData,TF1* FitTR
   ResPixel= FitTResTot->GetParameter(2)/sqrt(2);
   SResPixel= FitTResTot->GetParError(2)/sqrt(2);
 
+  Int_t step=2;
 
-  for(int i=0; i<Histo->GetXaxis()->GetNbins()-2; i+=2){ 
+  for(int i=0; i<Histo->GetXaxis()->GetNbins()-step; i+=step){ 
     
     proj = Histo->ProjectionY(Form("Histo%i_%i",i,(int)Histo->GetXaxis()->GetBinCenter(i+1)),i,i+1); 
     proj->Draw();
@@ -733,9 +749,15 @@ TGraphErrors* GetTimeResVsE(TH2D* Histo, Int_t Ch,std::string DirData,TF1* FitTR
     Res = fitProj->GetParameter(2); 
     SRes = fitProj->GetParError(2);
 
-    if(proj->GetEntries()>1000 && fitProj->GetParError(2)<20){
+    Double_t Value[step],Weight[step];
 
-      X.push_back( Histo->GetXaxis()->GetBinCenter(i+1) );
+    if(proj->GetEntries()>1000 && fitProj->GetParError(2)<20){
+      Value[0]=Histo->GetXaxis()->GetBinCenter(i);
+      Value[1]=Histo->GetXaxis()->GetBinCenter(i+1);
+      Weight[0]=Histo->GetBinContent(i);
+      Weight[1]=Histo->GetBinContent(i+1);
+
+      X.push_back( TMath::Mean(step,Value,Weight) );
       Y.push_back( sqrt(Res*Res-ResPixel*ResPixel) );
       sY.push_back( sqrt( Res*Res/(Res*Res+ResPixel*ResPixel)*SRes*SRes + ResPixel*ResPixel/(Res*Res+ResPixel*ResPixel)*SResPixel*SResPixel ) );
       

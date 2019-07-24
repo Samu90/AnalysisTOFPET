@@ -797,14 +797,14 @@ int main(int argc, char* argv[]){
   
   CanvasLYUncorr->cd(1);
   LYVsTempCh59->SetTitle("LYVsTempCh59Total");
-  LYVsTempCh59->SetMinimum(0.45e-3);
+  LYVsTempCh59->SetMinimum(0.2e-3);
   LYVsTempCh59->SetMaximum(1.2e-3);
   LYVsTempCh59->Draw("AP");
   LYVsTempCh59->Fit(FitLYCh59,"FMW");
 
   CanvasLYUncorr->cd(2);
   LYVsTempCh315->SetTitle("LYVsTempCh315Total");
-  LYVsTempCh315->SetMinimum(0.45e-3);
+  LYVsTempCh315->SetMinimum(0.2e-3);
   LYVsTempCh315->SetMaximum(1.2e-3);
   LYVsTempCh315->Draw("AP");        
   LYVsTempCh315->Fit(FitLYCh315,"FMW");

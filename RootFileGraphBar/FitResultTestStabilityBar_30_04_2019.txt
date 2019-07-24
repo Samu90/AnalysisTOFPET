@@ -1,2 +1,0 @@
-TestStabilityBar_30_04_2019
-0.978723	1

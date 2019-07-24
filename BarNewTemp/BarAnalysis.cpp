@@ -223,8 +223,8 @@ int main(int argc, char* argv[] ){
     
     for(int k=0; k<(int)Channels.size(); k++){
       
-      Double_t min=FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(1)-2.5*FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(2);
-      Double_t max=FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(1)+2.5*FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(2);
+      Double_t min=FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(1)-2*FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(2);
+      Double_t max=FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(1)+2*FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(2);
       
       line[mapCh[Channels[k]]][0]= new TLine(min,0,min,Spectrum[i][mapCh[Channels[k]]]->GetMaximum());
       line[mapCh[Channels[k]]][1]= new TLine(max,0,max,Spectrum[i][mapCh[Channels[k]]]->GetMaximum());
@@ -810,7 +810,7 @@ void GetTdiff(TTree* tree, TH1D** histo,TH2D** tdiffVsE,TH2D** tdiffVsT,TH2D* td
   Double_t energy[(int)NCH.size()];
   Double_t chID[(int)NCH.size()];
   Double_t time[(int)NCH.size()];
-  Double_t temp1;
+  Double_t tempSiPMTest;
 
   std::map<int,int> mapCh;
   std::map<std::string,int> mapTime;
@@ -820,7 +820,7 @@ void GetTdiff(TTree* tree, TH1D** histo,TH2D** tdiffVsE,TH2D** tdiffVsT,TH2D* td
   tree->SetBranchAddress("energy",energy);
   tree->SetBranchAddress("chId",chID);
   tree->SetBranchAddress("time",time);  
-  tree->SetBranchAddress("temp1",&temp1);  
+  tree->SetBranchAddress("tempSiPMTest",&tempSiPMTest);  
 
   for(int i=0;i<(int)NCH.size();i++){
     mapCh[NCH[i]]=i;
@@ -863,9 +863,9 @@ void GetTdiff(TTree* tree, TH1D** histo,TH2D** tdiffVsE,TH2D** tdiffVsT,TH2D* td
       histo[1]->Fill(time[mapCh[NCH[mapTime["timeRef"]]]]-time[mapCh[NCH[mapTime["time1"]]]]);
       histo[2]->Fill(time[mapCh[NCH[mapTime["timeRef"]]]]-time[mapCh[NCH[mapTime["time2"]]]]);
 
-      tdiffVsT[0]->Fill(temp1,time[mapCh[NCH[mapTime["time1"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]);
-      tdiffVsT[1]->Fill(temp1,time[mapCh[NCH[mapTime["time2"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]);
-      tdiffVsT[2]->Fill(temp1,(time[mapCh[NCH[mapTime["time2"]]]]+time[mapCh[NCH[mapTime["time1"]]]])/2-time[mapCh[NCH[mapTime["timeRef"]]]]);
+      tdiffVsT[0]->Fill(tempSiPMTest,time[mapCh[NCH[mapTime["time1"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]);
+      tdiffVsT[1]->Fill(tempSiPMTest,time[mapCh[NCH[mapTime["time2"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]);
+      tdiffVsT[2]->Fill(tempSiPMTest,(time[mapCh[NCH[mapTime["time2"]]]]+time[mapCh[NCH[mapTime["time1"]]]])/2-time[mapCh[NCH[mapTime["timeRef"]]]]);
     
     }//chiudo if grande
 
@@ -915,7 +915,7 @@ Double_t GetTdiffCorr(TTree* tree, TH2D** tdiffVsE,TH2D* tdiffVsAmpEffCorr,TH2D*
   Double_t energy[(int)NCH.size()];
   Double_t chID[(int)NCH.size()];
   Double_t time[(int)NCH.size()];
-  Double_t temp1;
+  Double_t tempSiPMTest;
  
   Double_t TMean=0;
   
@@ -927,7 +927,7 @@ Double_t GetTdiffCorr(TTree* tree, TH2D** tdiffVsE,TH2D* tdiffVsAmpEffCorr,TH2D*
   tree->SetBranchAddress("energy",energy);
   tree->SetBranchAddress("chId",chID);
   tree->SetBranchAddress("time",time);  
-  tree->SetBranchAddress("temp1",&temp1);  
+  tree->SetBranchAddress("tempSiPMTest",&tempSiPMTest);  
   
   
   for(int i=0;i<(int)NCH.size();i++){
@@ -964,7 +964,7 @@ Double_t GetTdiffCorr(TTree* tree, TH2D** tdiffVsE,TH2D* tdiffVsAmpEffCorr,TH2D*
   for(int i=0;i< tree->GetEntries();i++){
     tree->GetEntry(i);
     
-    TMean+=temp1;
+    TMean+=tempSiPMTest;
 
      if(energy[mapCh[NCH[mapTime["timeRef"]]]]-ped[mapCh[NCH[mapTime["timeRef"]]]] < fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(1)+1*fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(2) && 
        energy[mapCh[NCH[mapTime["timeRef"]]]]-ped[mapCh[NCH[mapTime["timeRef"]]]] > fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(1)-1*fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(2) &&
@@ -1064,13 +1064,13 @@ void ProjectionTemp(TH2D** histoTemp,std::string DirData){
     canvino= new TCanvas(Form("CanvasProjection_%i",i),Form("CanvasProjection_%i",i),1400,700);
     canvino->Divide(3,1);
     
-    fitProjection[0]= new TF1(Form("FitProjectionTemp1_%i",i),"gaus");
+    fitProjection[0]= new TF1(Form("FitProjectionTempSiPMRef_%i",i),"gaus");
     fitProjection[1]= new TF1(Form("FitProjectionTemp2_%i",i),"gaus");
     fitProjection[2]= new TF1(Form("FitProjectionTempAve_%i",i),"gaus");
     
     canvino->cd(1);
-    projection[0] = histoTemp[0]->ProjectionY(Form("ProjectionTemp1_%i",i),i,i);
-    projection[0]->SetTitle(Form("ProjectionTemp1_%i",i));
+    projection[0] = histoTemp[0]->ProjectionY(Form("ProjectionTempSiPMRef_%i",i),i,i);
+    projection[0]->SetTitle(Form("ProjectionTempSiPMRef_%i",i));
     projection[0]->GetXaxis()->SetTitle("Time1-time_ref [ps]");
     projection[0]->GetYaxis()->SetTitle("Counts");
     fitProjection[0]->SetRange(projection[0]->GetMean()-2*projection[0]->GetRMS(),projection[0]->GetMean()+2*projection[0]->GetRMS());
