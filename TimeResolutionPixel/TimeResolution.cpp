@@ -166,7 +166,7 @@ void GetTimeRes(TTree* tree, TF1* FitCh59, TF1* FitCh315, Double_t PedCh59,Doubl
   Double_t mean315=FitCh315->GetParameter(1);
   Double_t RMS59=FitCh59->GetParameter(2);
   Double_t RMS315=FitCh315->GetParameter(2);
-  Float_t NS=3;
+  Float_t NS=2;
 
   tree->SetBranchAddress("time",time);
   tree->SetBranchAddress("energy",energy);
@@ -201,7 +201,7 @@ void GetTimeRes(TTree* tree, TF1* FitCh59, TF1* FitCh315, Double_t PedCh59,Doubl
 
 void AmpCorrection(TTree*, TH2D*, TH2D*, TF1*, TF1*, Double_t, Double_t,TF1*,TF1*);
 void GetTDiffVsAEff(TTree* , TH2D* , TF1*, TF1*, Double_t, Double_t , TF1*, TF1*, Double_t, Double_t);
-TGraphErrors* GetTimeResVsE(TH2D*, Int_t, std::string,TF1*  );
+std::pair<TGraphErrors*,TGraphErrors*> GetTimeResVsE(TH2D*, Int_t, std::string,TF1*  );
 
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -582,8 +582,8 @@ int main(int argc, char* argv[] ){
 
   CanvasTResVsAEff->SaveAs((DirData+"/Plot/TimeRes/TimeResVsAEff.png").c_str()); 
   
-  TGraphErrors* TimeResVsEnergyCh59;
-  TGraphErrors* TimeResVsEnergyCh315;
+  std::pair<TGraphErrors*,TGraphErrors*> TimeResVsEnergyCh59;
+  std::pair<TGraphErrors*,TGraphErrors*> TimeResVsEnergyCh315;
 
   TimeResVsEnergyCh59 = GetTimeResVsE(TDiffCorrVsE59, 59, DirData, FitTimeResTot);
   TimeResVsEnergyCh315 = GetTimeResVsE(TDiffCorrVsE315, 315, DirData, FitTimeResTot);
@@ -595,22 +595,28 @@ int main(int argc, char* argv[] ){
   CanvTResVsE->Divide(2,1);
 
   CanvTResVsE->cd(1);
-  TimeResVsEnergyCh59->Draw("AP");
+  TimeResVsEnergyCh59.first->Draw("AP");
+  TimeResVsEnergyCh59.second->Draw("SAMEP");
   fitTResVsECh59->SetParameter(0,1000);
   fitTResVsECh59->SetParameter(1,40);
-  TimeResVsEnergyCh59->Fit(fitTResVsECh59);
+  TimeResVsEnergyCh59.first->Fit(fitTResVsECh59);
 
   CanvTResVsE->cd(2);
-  TimeResVsEnergyCh315->Draw("AP");
+  TimeResVsEnergyCh315.first->Draw("AP");
+  TimeResVsEnergyCh315.second->Draw("SAMEP"); 
   fitTResVsECh315->SetParameter(0,1000);
   fitTResVsECh315->SetParameter(1,40);
-  TimeResVsEnergyCh315->Fit(fitTResVsECh315);
+  TimeResVsEnergyCh315.first->Fit(fitTResVsECh315);
   
   
   CanvTResVsE->SaveAs((DirData+"/Plot/TimeRes/TimeResVsE.png").c_str());
   
   
   f->cd();
+  HistoCh59[0]->Write();
+  HistoCh315[0]->Write();
+  FitSpectrum[0][0]->Write();
+  FitSpectrum[0][1]->Write();
   TimeResTot->Write();
   FitTimeResTot->Write();
   TDiffVsE59->Write();
@@ -619,8 +625,10 @@ int main(int argc, char* argv[] ){
   TDiffCorrVsE315->Write();
   TDiffVsAEff->Write();
   TDiffCorrVsAEff->Write();
-  TimeResVsEnergyCh59->Write();
-  TimeResVsEnergyCh315->Write();
+  TimeResVsEnergyCh59.first->Write();
+  TimeResVsEnergyCh59.second->Write(); 
+  TimeResVsEnergyCh315.first->Write();
+  TimeResVsEnergyCh315.second->Write();
 
   f->Save();
   f->Close();
@@ -658,17 +666,23 @@ void AmpCorrection(TTree* tree, TH2D* Histo59, TH2D* Histo315, TF1* Spectrum59, 
   for(int i=0; i< tree->GetEntries();i++){
     tree->GetEntry(i);
     
-    if(energy[0]-PedCh59 > 8 && energy[1]-PedCh315 > (Spectrum315->GetParameter(1)-3*Spectrum315->GetParameter(2)) 
-       && energy[1]-PedCh315 < (Spectrum315->GetParameter(1)+1*Spectrum315->GetParameter(2)) 
-       && energy[0]-PedCh59 < (Spectrum59->GetParameter(1)+1*Spectrum59->GetParameter(2))){
+    if(//energy[0]-PedCh59 > Spectrum59->GetParameter(1)-3*Spectrum59->GetParameter(2) 
+       energy[0]-PedCh59 >8
+       && energy[0]-PedCh59 < (Spectrum59->GetParameter(1)+3*Spectrum59->GetParameter(2))
+       && energy[1]-PedCh315 > (Spectrum315->GetParameter(1)-1*Spectrum315->GetParameter(2)) 
+       && energy[1]-PedCh315 < (Spectrum315->GetParameter(1)+1*Spectrum315->GetParameter(2)))
+       {
 
       if(corr59) Histo59->Fill(energy[0]-PedCh59, time[0]-time[1] - corr59->Eval(energy[0]-PedCh59) );
       else Histo59->Fill(energy[0]-PedCh59, time[0]-time[1]);
       }//chiudo if
 
-    if(energy[1]-PedCh315 > 8 && energy[0]-PedCh59 > (Spectrum59->GetParameter(1)-3*Spectrum59->GetParameter(2)) 
+    if(//energy[1]-PedCh315 > (Spectrum315->GetParameter(1)-3*Spectrum315->GetParameter(2)) 
+       energy[1]-PedCh315 >8
+       && energy[1]-PedCh315 < (Spectrum315->GetParameter(1)+3*Spectrum315->GetParameter(2))
+       && energy[0]-PedCh59 > (Spectrum59->GetParameter(1)-1*Spectrum59->GetParameter(2)) 
        && energy[0]-PedCh59 < (Spectrum59->GetParameter(1)+1*Spectrum59->GetParameter(2)) 
-       && energy[1]-PedCh315 < (Spectrum315->GetParameter(1)+1*Spectrum315->GetParameter(2))){
+       ){
       
       if(corr315) Histo315->Fill(energy[1]-PedCh315, time[0]-time[1] - corr315->Eval(energy[1]-PedCh315) );
       else Histo315->Fill(energy[1]-PedCh315, time[0]-time[1] );
@@ -701,14 +715,19 @@ void GetTDiffVsAEff(TTree* tree, TH2D* Histo, TF1* Spectrum59, TF1* Spectrum315,
     A1=energy[0]-PedCh59;
     A2=energy[1]-PedCh315;
 
-    if(A1 > 8 && A1 < ( Spectrum59->GetParameter(1)+2.5*Spectrum59->GetParameter(3) ) && A2 > 8 && A2 < ( Spectrum315->GetParameter(1)+2.5*Spectrum315->GetParameter(3) )){
+    if(//A1 > 8 
+       A1>Spectrum59->GetParameter(1)-3*Spectrum59->GetParameter(3)
+       && A1 < ( Spectrum59->GetParameter(1)+3*Spectrum59->GetParameter(3) ) 
+       //&& A2 > 8
+       && A2>Spectrum315->GetParameter(1)-3*Spectrum315->GetParameter(3)
+       && A2 < ( Spectrum315->GetParameter(1)+3*Spectrum315->GetParameter(3) )){
      
       AmpEff=A1*A2/(sqrt(A1*A1+A2*A2))/((RMSPedCh59+RMSPedCh315)/2);
       //    AmpEff=A1*A2/(A1+A2);
       
       if(corr59 && corr315) {
 	
-	Histo->Fill(AmpEff, ( time[0]-corr59->Eval(A1) ) - ( time[1]+corr315->Eval(A2) ) );
+	Histo->Fill(AmpEff, ( time[0]+corr59->Eval(A1) ) - ( time[1]-corr315->Eval(A2) ) );
 	
       }
       else Histo->Fill(AmpEff, time[0]-time[1]);
@@ -720,13 +739,13 @@ void GetTDiffVsAEff(TTree* tree, TH2D* Histo, TF1* Spectrum59, TF1* Spectrum315,
 }
 
 
-TGraphErrors* GetTimeResVsE(TH2D* Histo, Int_t Ch,std::string DirData,TF1* FitTResTot){
+std::pair<TGraphErrors*,TGraphErrors*> GetTimeResVsE(TH2D* Histo, Int_t Ch,std::string DirData,TF1* FitTResTot){
   
   TH1D* proj;
   TF1* fitProj = new TF1("fitProj","gaus");
   TCanvas* canv = new TCanvas("canv","canv",700,700);
   
-  std::vector<Double_t> X,Y,sY;
+  std::vector<Double_t> X,Y,sY,Y2;
 
   Double_t ResPixel,SResPixel;
   Double_t Res,SRes;
@@ -738,7 +757,7 @@ TGraphErrors* GetTimeResVsE(TH2D* Histo, Int_t Ch,std::string DirData,TF1* FitTR
 
   for(int i=0; i<Histo->GetXaxis()->GetNbins()-step; i+=step){ 
     
-    proj = Histo->ProjectionY(Form("Histo%i_%i",i,(int)Histo->GetXaxis()->GetBinCenter(i+1)),i,i+1); 
+    proj = Histo->ProjectionY(Form("Histo%i_%i",i,(int)Histo->GetXaxis()->GetBinCenter(i+1)),i,i+step-1); 
     proj->Draw();
     proj->Fit(fitProj);
 
@@ -760,7 +779,7 @@ TGraphErrors* GetTimeResVsE(TH2D* Histo, Int_t Ch,std::string DirData,TF1* FitTR
       X.push_back( TMath::Mean(step,Value,Weight) );
       Y.push_back( sqrt(Res*Res-ResPixel*ResPixel) );
       sY.push_back( sqrt( Res*Res/(Res*Res+ResPixel*ResPixel)*SRes*SRes + ResPixel*ResPixel/(Res*Res+ResPixel*ResPixel)*SResPixel*SResPixel ) );
-      
+      Y2.push_back(sqrt(proj->GetRMS()*proj->GetRMS()-ResPixel*ResPixel ));
 
       canv->SaveAs((DirData+"/Plot/TimeRes/ProjTResE"+std::to_string(Ch)+"/TimeRes"+std::to_string(i)+".png").c_str());  
     }//chiudo if
@@ -774,6 +793,12 @@ TGraphErrors* GetTimeResVsE(TH2D* Histo, Int_t Ch,std::string DirData,TF1* FitTR
   graph->GetXaxis()->SetTitle("ADC [D.U]");
   graph->GetYaxis()->SetTitle("TimeRes [ps]");
   
-  return graph;
+  TGraphErrors* graph2= new TGraphErrors(X.size(),&X[0],&Y2[0],0,0);
+  graph2->SetTitle(Form("RMSVsECh%i",Ch));
+  graph2->SetName(graph2->GetTitle()); 
+  
+  std::pair<TGraphErrors*,TGraphErrors*> pippo(graph,graph2);
+
+  return pippo;
   
 }

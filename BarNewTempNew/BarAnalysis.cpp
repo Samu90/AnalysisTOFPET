@@ -44,136 +44,6 @@ void ProjectionTemp(TH2D**,std::string);
 void GetTresVsAEff(TH2D* ,Double_t, std::string, Double_t*, Double_t*, Double_t*, Double_t*);
 TGraphErrors* GetTimeResVsE(TH2D* , std::string ,std::string );
 
-
-void GetTdiffAW(TTree* tree,TH2D* Time1VsIP,TH2D* Time2VsIP,TH2D* TimeAveVsIP, TF1** fitspectrum, Double_t* ped, std::vector<int> NCH, std::vector<std::string> ChType){
-  //Histo0 tref-tave, histo1 tref-t1, histo2 tref-t2
-  Double_t energy[(int)NCH.size()];
-  Double_t chID[(int)NCH.size()];
-  Double_t time[(int)NCH.size()];
-  Double_t temp1;
-
-  std::map<int,int> mapCh;
-  std::map<std::string,int> mapTime;
-  
-  int h=1;
-
-  tree->SetBranchAddress("energy",energy);
-  tree->SetBranchAddress("chId",chID);
-  tree->SetBranchAddress("time",time);  
-  tree->SetBranchAddress("temp1",&temp1);  
-
-  for(int i=0;i<(int)NCH.size();i++){
-    mapCh[NCH[i]]=i;
-    if(ChType[mapCh[NCH[i]]]=="LYSO_bar"){
-      mapTime["time"+std::to_string(h)]=i;
-      h++;
-    }//CHIUDO IF
-    else{ 
-      mapTime["timeRef"]=i; 
-    }//CHIUDO ELSE
-  }//CHIUDO FOR
-  
-   
-  Double_t NSigma=2;
- 
-  for(int i=0;i< tree->GetEntries();i++){
-    tree->GetEntry(i);
-    //Histo0 tref-tave, histo1 tref-t1, histo2 tref-t2
-   
-    if( energy[mapCh[NCH[0]]]-ped[mapCh[NCH[0]]]<fitspectrum[mapCh[NCH[0]]]->GetParameter(1)+NSigma*fitspectrum[mapCh[NCH[0]]]->GetParameter(2) && 
-	energy[mapCh[NCH[0]]]-ped[mapCh[NCH[0]]]>fitspectrum[mapCh[NCH[0]]]->GetParameter(1)-NSigma*fitspectrum[mapCh[NCH[0]]]->GetParameter(2) && 
-        energy[mapCh[NCH[1]]]-ped[mapCh[NCH[1]]]<fitspectrum[mapCh[NCH[1]]]->GetParameter(1)+NSigma*fitspectrum[mapCh[NCH[1]]]->GetParameter(2) && 
-        energy[mapCh[NCH[1]]]-ped[mapCh[NCH[1]]]>fitspectrum[mapCh[NCH[1]]]->GetParameter(1)-NSigma*fitspectrum[mapCh[NCH[1]]]->GetParameter(2) && 
-        energy[mapCh[NCH[2]]]-ped[mapCh[NCH[2]]]<fitspectrum[mapCh[NCH[2]]]->GetParameter(1)+NSigma*fitspectrum[mapCh[NCH[2]]]->GetParameter(2) && 
-        energy[mapCh[NCH[2]]]-ped[mapCh[NCH[2]]]>fitspectrum[mapCh[NCH[2]]]->GetParameter(1)-NSigma*fitspectrum[mapCh[NCH[2]]]->GetParameter(2) ){
-      
-      Time1VsIP->Fill(time[mapCh[NCH[mapTime["time1"]]]]-time[mapCh[NCH[mapTime["time2"]]]],time[mapCh[NCH[mapTime["time1"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]);
-      Time2VsIP->Fill(time[mapCh[NCH[mapTime["time1"]]]]-time[mapCh[NCH[mapTime["time2"]]]],time[mapCh[NCH[mapTime["time2"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]);
-      TimeAveVsIP->Fill(time[mapCh[NCH[mapTime["time1"]]]]-time[mapCh[NCH[mapTime["time2"]]]],(time[mapCh[NCH[mapTime["time1"]]]]+time[mapCh[NCH[mapTime["time2"]]]])/2-time[mapCh[NCH[mapTime["timeRef"]]]]);
-    }//chiudo if grande
-
-    
-  }
-  /*
-  TH2D* Time1VsIP = new TH2D("Time1VsIP","Time1VsIP",200,-2000,2000,200,-2000,2000);
-  TH2D* Time2VsIP = new TH2D("Time2VsIP","Time2VsIP",200,-2000,2000,200,-2000,2000);   
-  TH2D* Time1CorrVsIP = new TH2D("Time1VsIP","Time1VsIP",200,-2000,2000,200,-2000,2000);
-  TH2D* Time2CorrVsIP = new TH2D("Time2VsIP","Time2VsIP",200,-2000,2000,200,-2000,2000);   
-  TH2D* TimeAveCorrVsIP = new TH2D("TimeAveCorrVsIP","TimeAveCorrVsIP",200,-2000,2000,200,-2000,2000); 
-  tdiffVsT[0]->Fill(temp1,time[mapCh[NCH[mapTime["time1"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]);                                                                                                                                     
-  tdiffVsT[1]->Fill(temp1,time[mapCh[NCH[mapTime["time2"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]);
-  tdiffVsT[2]->Fill(temp1,(time[mapCh[NCH[mapTime["time2"]]]]+time[mapCh[NCH[mapTime["time1"]]]])/2-time[mapCh[NCH[mapTime["timeRef"]]]]);
-  */
-}
-
-
-void GetTdiffAWCorr(TTree* tree,TH2D* Time1CorrVsIP,TH2D* Time2CorrVsIP,TH2D* TimeAveCorrVsIP,TF1* FitCorr1,TF1* FitCorr2, TF1** fitspectrum, Double_t* ped, std::vector<int> NCH, std::vector<std::string> ChType){
-  //Histo0 tref-tave, histo1 tref-t1, histo2 tref-t2
-  Double_t energy[(int)NCH.size()];
-  Double_t chID[(int)NCH.size()];
-  Double_t time[(int)NCH.size()];
-  Double_t temp1;
-
-  std::map<int,int> mapCh;
-  std::map<std::string,int> mapTime;
-  
-  int h=1;
-
-  tree->SetBranchAddress("energy",energy);
-  tree->SetBranchAddress("chId",chID);
-  tree->SetBranchAddress("time",time);  
-  tree->SetBranchAddress("temp1",&temp1);  
-
-  for(int i=0;i<(int)NCH.size();i++){
-    mapCh[NCH[i]]=i;
-    if(ChType[mapCh[NCH[i]]]=="LYSO_bar"){
-      mapTime["time"+std::to_string(h)]=i;
-      h++;
-    }//CHIUDO IF
-    else{ 
-      mapTime["timeRef"]=i; 
-    }//CHIUDO ELSE
-  }//CHIUDO FOR
-  
-   
-  Double_t NSigma=1;
-  Double_t x;
-  for(int i=0;i< tree->GetEntries();i++){
-    tree->GetEntry(i);
-    //Histo0 tref-tave, histo1 tref-t1, histo2 tref-t2
-   
-    if( energy[mapCh[NCH[0]]]-ped[mapCh[NCH[0]]]<fitspectrum[mapCh[NCH[0]]]->GetParameter(1)+NSigma*fitspectrum[mapCh[NCH[0]]]->GetParameter(2) && 
-	energy[mapCh[NCH[0]]]-ped[mapCh[NCH[0]]]>fitspectrum[mapCh[NCH[0]]]->GetParameter(1)-NSigma*fitspectrum[mapCh[NCH[0]]]->GetParameter(2) && 
-        energy[mapCh[NCH[1]]]-ped[mapCh[NCH[1]]]<fitspectrum[mapCh[NCH[1]]]->GetParameter(1)+NSigma*fitspectrum[mapCh[NCH[1]]]->GetParameter(2) && 
-        energy[mapCh[NCH[1]]]-ped[mapCh[NCH[1]]]>fitspectrum[mapCh[NCH[1]]]->GetParameter(1)-NSigma*fitspectrum[mapCh[NCH[1]]]->GetParameter(2) && 
-        energy[mapCh[NCH[2]]]-ped[mapCh[NCH[2]]]<fitspectrum[mapCh[NCH[2]]]->GetParameter(1)+NSigma*fitspectrum[mapCh[NCH[2]]]->GetParameter(2) && 
-        energy[mapCh[NCH[2]]]-ped[mapCh[NCH[2]]]>fitspectrum[mapCh[NCH[2]]]->GetParameter(1)-NSigma*fitspectrum[mapCh[NCH[2]]]->GetParameter(2) ){
-      
-      x=time[mapCh[NCH[mapTime["time1"]]]]-time[mapCh[NCH[mapTime["time2"]]]];
-
-      Time1CorrVsIP->Fill(x, time[mapCh[NCH[mapTime["time1"]]]]-FitCorr1->Eval(x)-time[mapCh[NCH[mapTime["timeRef"]]]]);
-      Time2CorrVsIP->Fill(x, time[mapCh[NCH[mapTime["time2"]]]]-FitCorr2->Eval(x)-time[mapCh[NCH[mapTime["timeRef"]]]]);
-      TimeAveCorrVsIP->Fill(x, ( time[mapCh[NCH[mapTime["time1"]]]]-FitCorr1->Eval(x) + (time[mapCh[NCH[mapTime["time2"]]]]-FitCorr2->Eval(x)) )/2 -time[mapCh[NCH[mapTime["timeRef"]]]]);
-      
-    }//chiudo if grande
-
-    
-  }
-  /*
-  TH2D* Time1VsIP = new TH2D("Time1VsIP","Time1VsIP",200,-2000,2000,200,-2000,2000);
-  TH2D* Time2VsIP = new TH2D("Time2VsIP","Time2VsIP",200,-2000,2000,200,-2000,2000);   
-  TH2D* Time1CorrVsIP = new TH2D("Time1VsIP","Time1VsIP",200,-2000,2000,200,-2000,2000);
-  TH2D* Time2CorrVsIP = new TH2D("Time2VsIP","Time2VsIP",200,-2000,2000,200,-2000,2000);   
-  TH2D* TimeAveCorrVsIP = new TH2D("TimeAveCorrVsIP","TimeAveCorrVsIP",200,-2000,2000,200,-2000,2000); 
-  tdiffVsT[0]->Fill(temp1,time[mapCh[NCH[mapTime["time1"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]);                                                                                                                                     
-  tdiffVsT[1]->Fill(temp1,time[mapCh[NCH[mapTime["time2"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]);
-  tdiffVsT[2]->Fill(temp1,(time[mapCh[NCH[mapTime["time2"]]]]+time[mapCh[NCH[mapTime["time1"]]]])/2-time[mapCh[NCH[mapTime["timeRef"]]]]);
-  */
-}
-
-
-
-
 int main(int argc, char* argv[] ){
   
   std::cout << "Analisys" << std::endl;
@@ -263,10 +133,10 @@ int main(int argc, char* argv[] ){
   int NFilePhys=(int)FileListPhysics.size();
   int NFilePed = (int)FileListPedestal.size()-1;
 
-  
-  //   NFilePhys=5;
-  // NFilePed= NFilePhys*2;
-  
+  /*
+   NFilePhys=2;
+   NFilePed= NFilePhys*2;
+  */
 
   Double_t Pedestal[NFilePhys][(int)Channels.size()];
   Double_t RMSPedestal[NFilePhys][(int)Channels.size()];
@@ -311,9 +181,9 @@ int main(int argc, char* argv[] ){
   
   TH1D* tdiff[3];
 
-  tdiff[0] = new TH1D("tref-tave","tref-tave",200,-2000,2000);
-  tdiff[1] = new TH1D("tref-t1","tref-t1",200,-2000,2000);
-  tdiff[2] = new TH1D("tref-t2","tref-t2",200,-2000,2000);
+  tdiff[0] = new TH1D("tref-tave","tref-tave",200,-3000,3000);
+  tdiff[1] = new TH1D("tref-t1","tref-t1",200,-3000,3000);
+  tdiff[2] = new TH1D("tref-t2","tref-t2",200,-3000,3000);
 
   TH2D* tdiffVsE[2];
 
@@ -322,21 +192,12 @@ int main(int argc, char* argv[] ){
 
   TH2D* tdiffVsT[3];
 
-  tdiffVsT[0] = new TH2D("tdiffVsT_time1","tdiffVsT_time1",40,21,29,200,-2000,2000);
-  tdiffVsT[1] = new TH2D("tdiffVsT_time2","tdiffVsT_time2",40,21,29,200,-2000,2000);
-  tdiffVsT[2] = new TH2D("tdiffVsT_tave","tdiffVsT_time_ave",40,21,29,200,-2000,2000);
+  tdiffVsT[0] = new TH2D("tdiffVsT_time1","tdiffVsT_time1",40,21,29,200,-3000,3000);
+  tdiffVsT[1] = new TH2D("tdiffVsT_time2","tdiffVsT_time2",40,21,29,200,-3000,3000);
+  tdiffVsT[2] = new TH2D("tdiffVsT_tave","tdiffVsT_time_ave",40,21,29,200,-3000,3000);
   
-  TH2D* tdiffVsAmpEff = new TH2D("tdiffVsAmpEff","tdiffVsAmpEff",100,-10,90,100,-3500,3000);
+  TH2D* tdiffVsAmpEff = new TH2D("tdiffVsAmpEff","tdiffVsAmpEff",100,-10,90,200,-3500,3000);
   
-  TH2D* Time1VsIP = new TH2D("Time1VsIP","Time1VsIP",200,-2000,2000,200,-2000,2000);
-  TH2D* Time2VsIP = new TH2D("Time2VsIP","Time2VsIP",200,-2000,2000,200,-2000,2000); 
-  TH2D* TimeAveVsIP = new TH2D("TimeAveVsIP","TimeAveVsIP",200,-2000,2000,200,-2000,2000);  
-  TF1* FitTime1VsIP=new TF1("FitTime1VsIP","pol1");
-  TF1* FitTime2VsIP=new TF1("FitTime2VsIP","pol1");  
-  TH2D* Time1CorrVsIP = new TH2D("Time1CorrVsIP","Time1CorrVsIP",200,-2000,2000,200,-2000,2000);
-  TH2D* Time2CorrVsIP = new TH2D("Time2CorrVsIP","Time2CorrVsIP",200,-2000,2000,200,-2000,2000);   
-  TH2D* TimeAveCorrVsIP = new TH2D("TimeAveCorrVsIP","TimeAveCorrVsIP",200,-2000,2000,200,-2000,2000); 
-
   TLine* line[(int)Channels.size()][2];
     
   for(int i=0;i<NFilePhys;i++){
@@ -347,7 +208,7 @@ int main(int argc, char* argv[] ){
     
     for(int j=0; j< (int)Channels.size();j++){
       
-      Spectrum[i][mapCh[Channels[j]]] = new TH1D(Form("Ch%i_%i_%s",Channels[j],i,(ChannelType[mapCh[Channels[j]]]).c_str()),Form("Ch%i_%i_%s",Channels[j],i,(ChannelType[mapCh[Channels[j]]]).c_str()),150,0,150);
+      Spectrum[i][mapCh[Channels[j]]] = new TH1D(Form("Ch%i_%i_%s",Channels[j],i,(ChannelType[mapCh[Channels[j]]]).c_str()),Form("Ch%i_%i_%s",Channels[j],i,(ChannelType[mapCh[Channels[j]]]).c_str()),60,0,60);
       
     }//CHIUDO FOR J
     
@@ -362,8 +223,8 @@ int main(int argc, char* argv[] ){
     
     for(int k=0; k<(int)Channels.size(); k++){
       
-      Double_t min=FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(1)-2.5*FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(2);
-      Double_t max=FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(1)+2.5*FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(2);
+      Double_t min=FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(1)-2*FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(2);
+      Double_t max=FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(1)+2*FitSpectrum[i][mapCh[Channels[k]]]->GetParameter(2);
       
       line[mapCh[Channels[k]]][0]= new TLine(min,0,min,Spectrum[i][mapCh[Channels[k]]]->GetMaximum());
       line[mapCh[Channels[k]]][1]= new TLine(max,0,max,Spectrum[i][mapCh[Channels[k]]]->GetMaximum());
@@ -384,8 +245,8 @@ int main(int argc, char* argv[] ){
     delete canvino;
     
     GetTdiff(tree0,tdiff,tdiffVsE,tdiffVsT,tdiffVsAmpEff,RMSPedestal[i],FitSpectrum[i],Pedestal[i],Channels,ChannelType);
-    GetTdiffAW(tree0,Time1VsIP,Time2VsIP,TimeAveVsIP,FitSpectrum[i],Pedestal[i],Channels,ChannelType);
-    //GetTdiffAW(TTree* tree,TH2D* Time1VsIP,TH2D* Time2VsIP,TH2D* TimeAveVsIP, TF1** fitspectrum, Double_t* ped, std::vector<int> NCH, std::vector<std::string> ChType)
+    
+    
    }//CHIUDO FOR
   
   TF1* FitTreso[3];
@@ -401,8 +262,12 @@ int main(int argc, char* argv[] ){
     tdiff[i]->GetYaxis()->SetTitle("counts");
     tdiff[i]->Draw();
     tdiff[i]->Fit(FitTreso[i],"R");
+    FitTreso[i]->SetRange(FitTreso[i]->GetParameter(1)-2*FitTreso[i]->GetParameter(2),FitTreso[i]->GetParameter(1)+2*FitTreso[i]->GetParameter(2));
+    tdiff[i]->Fit(FitTreso[i],"R");
   }
   
+  gSystem->Exec( ("echo "+DirData+" "+(std::to_string(FitTreso[0]->GetParameter(2)))+"\t "+(std::to_string(FitTreso[0]->GetParError(2))) +">> ../TR.txt").c_str() );
+
   TimeResoCavas->SaveAs((DirData+"/Plot/TR/TimeReso.png").c_str());
 
   
@@ -413,23 +278,8 @@ int main(int argc, char* argv[] ){
     tdiff[i]->Draw();
     tdiff[i]->Fit(FitTreso[i]);
   }
-TimeResoLogCavas->SaveAs((DirData+"/Plot/TR/TimeResoLog.png").c_str());
-
- 
-////////////////NUOVOOOOOOOOOOOOOOOOOOOOOO//////////////////////
-  TCanvas* CanvasAWCorr = new TCanvas("CanvasAWCorr","CanvasAWCorr",1700,800);
-  CanvasAWCorr->Divide(3,1);
-  CanvasAWCorr->cd(1);
-  Time1VsIP->Draw("COLZ");
-  Time1VsIP->Fit(FitTime1VsIP,"W");
-  CanvasAWCorr->cd(2); 
-  Time2VsIP->Draw("COLZ");
-  Time2VsIP->Fit(FitTime2VsIP,"W");
-  CanvasAWCorr->cd(3); 
-  TimeAveVsIP->Draw("COLZ");
-  CanvasAWCorr->SaveAs((DirData+"/Plot/TR/CanvasAW.png").c_str()); 
-////////////////NUOVOOOOOOOOOOOOOOOOOOOOOO//////////////////////
   
+  TimeResoLogCavas->SaveAs((DirData+"/Plot/TR/TimeResoLog.png").c_str());
   
   std::vector<TF1*> fitTdiffVsE;
   TF1* pippo1 = new TF1("fitTdiffVsE0pippo","pol5");
@@ -543,29 +393,9 @@ TimeResoLogCavas->SaveAs((DirData+"/Plot/TR/TimeResoLog.png").c_str());
     CanvasTdiffAEffTemp->SaveAs((DirData+"/Plot/TR/TdiffVsAmpEffTemp/Plot"+std::to_string(i)+".png").c_str());
     
     GetTresVsAEff(tdiffCorrVsAEffTemp[i],tempRun[i],DirData,&N[i],&sN[i],&C[i],&sC[i]);
-    ////////////////NUOVOOOOOOOOOOOOOOOOOOOOOO//////////////////////     
-    GetTdiffAWCorr(tree0,Time1CorrVsIP,Time2CorrVsIP,TimeAveCorrVsIP,FitTime1VsIP,FitTime2VsIP,FitSpectrum[i],Pedestal[i],Channels,ChannelType);
-    ////////////////NUOVOOOOOOOOOOOOOOOOOOOOOO//////////////////////   
+    
   }
-
-  ////////////////NUOVOOOOOOOOOOOOOOOOOOOOOO//////////////////////   
-  TF1* FitTime1CorrVsIP= new TF1("Time1CorrVsI","pol1");
-  TF1* FitTime2CorrVsIP= new TF1("Time2CorrVsI","pol1");
-  TCanvas* CanvasTdiffAWCorr = new TCanvas("CanvasTdiffAWCorr","CanvasTdiffAWCorr",1700,800);
-  CanvasTdiffAWCorr->Divide(3,1);
-  CanvasTdiffAWCorr->cd(1);
-  Time1CorrVsIP->Draw("COLZ");
-  Time1CorrVsIP->Fit(FitTime1CorrVsIP);
-  CanvasTdiffAWCorr->cd(2);
-  Time2CorrVsIP->Draw("COLZ");
-  Time2CorrVsIP->Fit(FitTime2CorrVsIP);
-  CanvasTdiffAWCorr->cd(3);
-  TimeAveCorrVsIP->Draw("COLZ");
-  CanvasTdiffAWCorr->SaveAs((DirData+"/Plot/TR/CanvasAWCorr.png").c_str());
-  ////////////////NUOVOOOOOOOOOOOOOOOOOOOOOO//////////////////////   
-
-
-
+  
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -679,7 +509,7 @@ TimeResoLogCavas->SaveAs((DirData+"/Plot/TR/TimeResoLog.png").c_str());
       CanvasProjection->SaveAs((DirData+"/Plot/TR/ProjectionAEff/Projection"+std::to_string(i)+".png").c_str());
      
       AEffValue.push_back(tdiffCorrVsAmpEff->GetXaxis()->GetBinCenter(i));
-      TimeResValue.push_back(sqrt(FitProjection->GetParameter(2)*FitProjection->GetParameter(2)-91*91));
+      TimeResValue.push_back(sqrt(FitProjection->GetParameter(2)*FitProjection->GetParameter(2)-91.9*91.9));
       ErrTimeResValue.push_back(FitProjection->GetParError(2));
     
     }
@@ -843,18 +673,7 @@ TimeResoLogCavas->SaveAs((DirData+"/Plot/TR/TimeResoLog.png").c_str());
   tdiff[2]->Write();
   tdiffCorrVsE[2]->Write();
   TimeResVsEMean->Write();
-  Spectrum[1][0]->Write();
-  Spectrum[1][1]->Write();
-  Spectrum[1][2]->Write();
-  
-  Time1VsIP->Write();
-  Time2VsIP->Write();
-  TimeAveVsIP->Write();
-  FitTime1VsIP->Write();
-  FitTime2VsIP->Write();
-  Time1CorrVsIP->Write();
-  Time2CorrVsIP->Write();
-  TimeAveCorrVsIP->Write();
+   
 
   f1->Save();
   f1->Close();
@@ -995,7 +814,7 @@ void GetTdiff(TTree* tree, TH1D** histo,TH2D** tdiffVsE,TH2D** tdiffVsT,TH2D* td
   Double_t energy[(int)NCH.size()];
   Double_t chID[(int)NCH.size()];
   Double_t time[(int)NCH.size()];
-  Double_t temp1;
+  Double_t tempSiPMTest;
 
   std::map<int,int> mapCh;
   std::map<std::string,int> mapTime;
@@ -1005,7 +824,7 @@ void GetTdiff(TTree* tree, TH1D** histo,TH2D** tdiffVsE,TH2D** tdiffVsT,TH2D* td
   tree->SetBranchAddress("energy",energy);
   tree->SetBranchAddress("chId",chID);
   tree->SetBranchAddress("time",time);  
-  tree->SetBranchAddress("temp1",&temp1);  
+  tree->SetBranchAddress("tempSiPMTest",&tempSiPMTest);  
 
   for(int i=0;i<(int)NCH.size();i++){
     mapCh[NCH[i]]=i;
@@ -1026,8 +845,8 @@ void GetTdiff(TTree* tree, TH1D** histo,TH2D** tdiffVsE,TH2D** tdiffVsT,TH2D* td
     TotalCut+=cut[mapCh[NCH[i]]];
   }
   
-  Double_t NSigma=3;
-  
+  Double_t NSigma=2;
+  Double_t NSigmaBar=1.5;
   Double_t AmpEff;
   Double_t A1,A2;
   Double_t MeanRMSPed = (RMSPed[mapCh[NCH[mapTime["time1"]]]] + RMSPed[mapCh[NCH[mapTime["time2"]]]])/2;
@@ -1037,20 +856,20 @@ void GetTdiff(TTree* tree, TH1D** histo,TH2D** tdiffVsE,TH2D** tdiffVsT,TH2D* td
     tree->GetEntry(i);
     //Histo0 tref-tave, histo1 tref-t1, histo2 tref-t2
    
-    if( energy[mapCh[NCH[0]]]-ped[mapCh[NCH[0]]]<fitspectrum[mapCh[NCH[0]]]->GetParameter(1)+NSigma*fitspectrum[mapCh[NCH[0]]]->GetParameter(2) && 
-	energy[mapCh[NCH[0]]]-ped[mapCh[NCH[0]]]>fitspectrum[mapCh[NCH[0]]]->GetParameter(1)-NSigma*fitspectrum[mapCh[NCH[0]]]->GetParameter(2) && 
-        energy[mapCh[NCH[1]]]-ped[mapCh[NCH[1]]]<fitspectrum[mapCh[NCH[1]]]->GetParameter(1)+NSigma*fitspectrum[mapCh[NCH[1]]]->GetParameter(2) && 
-        energy[mapCh[NCH[1]]]-ped[mapCh[NCH[1]]]>fitspectrum[mapCh[NCH[1]]]->GetParameter(1)-NSigma*fitspectrum[mapCh[NCH[1]]]->GetParameter(2) && 
-        energy[mapCh[NCH[2]]]-ped[mapCh[NCH[2]]]<fitspectrum[mapCh[NCH[2]]]->GetParameter(1)+NSigma*fitspectrum[mapCh[NCH[2]]]->GetParameter(2) && 
-        energy[mapCh[NCH[2]]]-ped[mapCh[NCH[2]]]>fitspectrum[mapCh[NCH[2]]]->GetParameter(1)-NSigma*fitspectrum[mapCh[NCH[2]]]->GetParameter(2) ){
+    if( energy[mapCh[NCH[mapTime["timeRef"]]]]-ped[mapCh[NCH[mapTime["timeRef"]]]]<fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(1)+NSigma*fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(2) && 
+	energy[mapCh[NCH[mapTime["timeRef"]]]]-ped[mapCh[NCH[mapTime["timeRef"]]]]>fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(1)-NSigma*fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(2) && 
+        energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]]<fitspectrum[mapCh[NCH[mapTime["time1"]]]]->GetParameter(1)+NSigmaBar*fitspectrum[mapCh[NCH[mapTime["time1"]]]]->GetParameter(2) && 
+        energy[mapCh[NCH[mapTime["time1"]]]]-ped[mapCh[NCH[mapTime["time1"]]]]>fitspectrum[mapCh[NCH[mapTime["time1"]]]]->GetParameter(1)-NSigmaBar*fitspectrum[mapCh[NCH[mapTime["time1"]]]]->GetParameter(2) && 
+        energy[mapCh[NCH[mapTime["time2"]]]]-ped[mapCh[NCH[mapTime["time2"]]]]<fitspectrum[mapCh[NCH[mapTime["time2"]]]]->GetParameter(1)+NSigmaBar*fitspectrum[mapCh[NCH[mapTime["time2"]]]]->GetParameter(2) && 
+        energy[mapCh[NCH[mapTime["time2"]]]]-ped[mapCh[NCH[mapTime["time2"]]]]>fitspectrum[mapCh[NCH[mapTime["time2"]]]]->GetParameter(1)-NSigmaBar*fitspectrum[mapCh[NCH[mapTime["time2"]]]]->GetParameter(2) ){
       
       histo[0]->Fill(time[mapCh[NCH[mapTime["timeRef"]]]]-(time[mapCh[NCH[mapTime["time1"]]]]+time[mapCh[NCH[mapTime["time2"]]]])/2);
       histo[1]->Fill(time[mapCh[NCH[mapTime["timeRef"]]]]-time[mapCh[NCH[mapTime["time1"]]]]);
       histo[2]->Fill(time[mapCh[NCH[mapTime["timeRef"]]]]-time[mapCh[NCH[mapTime["time2"]]]]);
 
-      tdiffVsT[0]->Fill(temp1,time[mapCh[NCH[mapTime["time1"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]);
-      tdiffVsT[1]->Fill(temp1,time[mapCh[NCH[mapTime["time2"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]);
-      tdiffVsT[2]->Fill(temp1,(time[mapCh[NCH[mapTime["time2"]]]]+time[mapCh[NCH[mapTime["time1"]]]])/2-time[mapCh[NCH[mapTime["timeRef"]]]]);
+      tdiffVsT[0]->Fill(tempSiPMTest,time[mapCh[NCH[mapTime["time1"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]);
+      tdiffVsT[1]->Fill(tempSiPMTest,time[mapCh[NCH[mapTime["time2"]]]]-time[mapCh[NCH[mapTime["timeRef"]]]]);
+      tdiffVsT[2]->Fill(tempSiPMTest,(time[mapCh[NCH[mapTime["time2"]]]]+time[mapCh[NCH[mapTime["time1"]]]])/2-time[mapCh[NCH[mapTime["timeRef"]]]]);
     
     }//chiudo if grande
 
@@ -1100,7 +919,7 @@ Double_t GetTdiffCorr(TTree* tree, TH2D** tdiffVsE,TH2D* tdiffVsAmpEffCorr,TH2D*
   Double_t energy[(int)NCH.size()];
   Double_t chID[(int)NCH.size()];
   Double_t time[(int)NCH.size()];
-  Double_t temp1;
+  Double_t tempSiPMTest;
  
   Double_t TMean=0;
   
@@ -1112,7 +931,7 @@ Double_t GetTdiffCorr(TTree* tree, TH2D** tdiffVsE,TH2D* tdiffVsAmpEffCorr,TH2D*
   tree->SetBranchAddress("energy",energy);
   tree->SetBranchAddress("chId",chID);
   tree->SetBranchAddress("time",time);  
-  tree->SetBranchAddress("temp1",&temp1);  
+  tree->SetBranchAddress("tempSiPMTest",&tempSiPMTest);  
   
   
   for(int i=0;i<(int)NCH.size();i++){
@@ -1149,7 +968,7 @@ Double_t GetTdiffCorr(TTree* tree, TH2D** tdiffVsE,TH2D* tdiffVsAmpEffCorr,TH2D*
   for(int i=0;i< tree->GetEntries();i++){
     tree->GetEntry(i);
     
-    TMean+=temp1;
+    TMean+=tempSiPMTest;
 
      if(energy[mapCh[NCH[mapTime["timeRef"]]]]-ped[mapCh[NCH[mapTime["timeRef"]]]] < fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(1)+1*fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(2) && 
        energy[mapCh[NCH[mapTime["timeRef"]]]]-ped[mapCh[NCH[mapTime["timeRef"]]]] > fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(1)-1*fitspectrum[mapCh[NCH[mapTime["timeRef"]]]]->GetParameter(2) &&
@@ -1207,7 +1026,7 @@ TF1* FitCoincSpectrum(TH1D* Profile){
   Double_t max;
   Double_t peak1;
   Int_t minRange=0;
-  
+  Double_t maxFD;
   for(int i=1 ; i<Profile->GetNbinsX();i++){
     
     if( Profile->GetBinContent(i+1)>Profile->GetBinContent(i) ){  minRange=i; 
@@ -1216,17 +1035,34 @@ TF1* FitCoincSpectrum(TH1D* Profile){
     
   }
 
-  peak1 = Profile->GetBinCenter(Profile->GetMaximumBin());
+  peak1=50;
+  
+  for(int i=50;i>10;i--){
+   
+    std::cout << "FitCoincidencePeak:  " << i << std::endl;
+    
+    if( Profile->GetBinContent(i-1)<Profile->GetBinContent(i) && Profile->GetBinContent(i)>130){
+      peak1=i;
+      break;
+    }
+    
+  }
+
+  maxFD = Profile->GetBinContent((int)peak1/2);
+
+  //peak1 = Profile->GetBinCenter(Profile->GetMaximumBin());
   max = Profile->GetMaximum();
-  Profile->GetXaxis()->UnZoom();
+  //Profile->GetXaxis()->UnZoom();
 
   TF1* spectrum = new TF1(Form("SpectrumFit_%s", Profile->GetName()),"[0] * exp(-( x-[1] )*( x-[1] )/( 2* [2]* [2])) + [3] / (exp( (x*[4]-(2*[1]*[1]/([1]+2*[1])))) + 1)",minRange,peak1+10);
 
   spectrum->SetParameter(0,max);
   spectrum->SetParameter(1,peak1);
   spectrum->SetParameter(2,3);
-  spectrum->SetParameter(3,max/2.1);
+  spectrum->SetParameter(3,maxFD);
   spectrum->SetParameter(4,0.82);
+  
+  spectrum->SetParLimits(4,0.79,1.2);
   
   Profile->Fit(Form("SpectrumFit_%s", Profile->GetName()),"R0Q");
 
@@ -1249,13 +1085,13 @@ void ProjectionTemp(TH2D** histoTemp,std::string DirData){
     canvino= new TCanvas(Form("CanvasProjection_%i",i),Form("CanvasProjection_%i",i),1400,700);
     canvino->Divide(3,1);
     
-    fitProjection[0]= new TF1(Form("FitProjectionTemp1_%i",i),"gaus");
+    fitProjection[0]= new TF1(Form("FitProjectionTempSiPMRef_%i",i),"gaus");
     fitProjection[1]= new TF1(Form("FitProjectionTemp2_%i",i),"gaus");
     fitProjection[2]= new TF1(Form("FitProjectionTempAve_%i",i),"gaus");
     
     canvino->cd(1);
-    projection[0] = histoTemp[0]->ProjectionY(Form("ProjectionTemp1_%i",i),i,i);
-    projection[0]->SetTitle(Form("ProjectionTemp1_%i",i));
+    projection[0] = histoTemp[0]->ProjectionY(Form("ProjectionTempSiPMRef_%i",i),i,i);
+    projection[0]->SetTitle(Form("ProjectionTempSiPMRef_%i",i));
     projection[0]->GetXaxis()->SetTitle("Time1-time_ref [ps]");
     projection[0]->GetYaxis()->SetTitle("Counts");
     fitProjection[0]->SetRange(projection[0]->GetMean()-2*projection[0]->GetRMS(),projection[0]->GetMean()+2*projection[0]->GetRMS());
@@ -1414,7 +1250,7 @@ void GetTresVsAEff(TH2D* Histo,Double_t temp,std::string DirData,Double_t* N,Dou
       CanvasProjection->SaveAs((DirData+"/Plot/TR/TimeResVsAEffTemp/TimeResVsAEffTemp"+std::to_string(temp*1000).erase(12-7,12)+"/Proj"+std::to_string(i)+".png").c_str());
       
       AEffValue.push_back(Histo->GetXaxis()->GetBinUpEdge(i));
-      TimeResValue.push_back(sqrt(FitProjection->GetParameter(2)*FitProjection->GetParameter(2)-91*91));
+      TimeResValue.push_back(sqrt(FitProjection->GetParameter(2)*FitProjection->GetParameter(2)-91.9*91.9));
       ErrTimeResValue.push_back(FitProjection->GetParError(2));
     }
     
